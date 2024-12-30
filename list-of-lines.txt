@@ -1,0 +1,642 @@
+[0;32m"swm:03057:G:R:015===57 Hörweg"[0m
+[0;32m"swm:03056:G:R:015===56 Schloss Blutenburg"[0m
+[0;32m"mvv:19259: :H:s25===259 Martinsried"[0m
+[0;32m"swm:03057:G:H:015===57 Laimer Platz"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing Bf."[0m
+[0;32m"swm:03056:G:H:015===56 Fürstenried West"[0m
+[0;32m"swm:03057:G:R:015===57 Freiham Bf."[0m
+[0;32m"swm:03056:G:R:015===56 Schloss Blutenburg"[0m
+[0;32m"swm:03057:G:H:015===57 Laimer Platz"[0m
+[0;32m"swm:03056:G:H:015===56 Fürstenried West"[0m
+[0;32m"swm:03057:G:R:015===57 Hörweg"[0m
+[0;32m"swm:03056:G:R:015===56 Schloss Blutenburg"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg Bf."[0m
+[0;32m"swm:03057:G:H:015===57 Laimer Platz"[0m
+[0;32m"mvv:19259: :R:s25===259 Pasing Bf."[0m
+[0;32m"swm:03056:G:H:015===56 Fürstenried West"[0m
+[0;32m"swm:03057:G:R:015===57 Freiham Bf."[0m
+[0;32m"swm:03056:G:R:015===56 Schloss Blutenburg"[0m
+[0;32m"swm:03057:G:H:015===57 Laimer Platz"[0m
+[0;32m"swm:03056:G:H:015===56 Fürstenried West"[0m
+[0;32m"swm:03057:G:R:015===57 Hörweg"[0m
+[0;32m"swm:03056:G:R:015===56 Schloss Blutenburg"[0m
+[0;32m"mvv:19259: :H:s25===259 Martinsried"[0m
+[0;32m"swm:03057:G:H:015===57 Laimer Platz"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing Bf."[0m
+[0;32m"swm:03056:G:H:015===56 Fürstenried West"[0m
+[0;32m"swm:03057:G:R:015===57 Freiham Bf."[0m
+[0;32m"swm:03056:G:R:015===56 Schloss Blutenburg"[0m
+[0;32m"swm:03057:G:H:015===57 Laimer Platz"[0m
+[0;32m"swm:03056:G:H:015===56 Fürstenried West"[0m
+[0;32m"swm:03057:G:R:015===57 Hörweg"[0m
+[0;32m"swm:03056:G:R:015===56 Schloss Blutenburg"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg Bf."[0m
+[0;32m"swm:03057:G:H:015===57 Laimer Platz"[0m
+[0;32m"mvv:19259: :R:s25===259 Pasing Bf."[0m
+[0;32m"swm:03056:G:H:015===56 Fürstenried West"[0m
+[0;32m"swm:03057:G:R:015===57 Freiham Bf."[0m
+[0;32m"swm:03056:G:R:015===56 Schloss Blutenburg"[0m
+[0;32m"swm:03057:G:H:015===57 Laimer Platz"[0m
+[0;32m"swm:03056:G:H:015===56 Fürstenried West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19967: :R:s25===967 Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Sperberweg"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19967: :R:s25===967 Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Sperberweg"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19967: :R:s25===967 Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Muggenthalerstraße"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19967: :R:s25===967 Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Sperberweg"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19967: :R:s25===967 Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Sperberweg"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19967: :R:s25===967 Planegg (S)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Muggenthalerstraße"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19266: :R:s25===266 Planegg (S)"[0m
+[0;32m"ddb:92M06: :R:j25===S6 Starnberg"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Sperberweg"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"ddb:92M06: :H:j25===S6 Ebersberg"[0m
+[0;32m"ddb:92M06: :R:j25===S6 Tutzing"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Sperberweg"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"ddb:92M06: :H:j25===S6 Ebersberg"[0m
+[0;32m"ddb:92M06: :R:j25===S6 Tutzing"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Muggenthalerstraße"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"ddb:92M06: :H:j25===S6 Grafing-Bahnhof"[0m
+[0;32m"ddb:92M06: :R:j25===S6 Starnberg"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Sperberweg"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"ddb:92M06: :H:j25===S6 Ebersberg"[0m
+[0;32m"ddb:92M06: :R:j25===S6 Tutzing"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Sperberweg"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"ddb:92M06: :H:j25===S6 Ebersberg"[0m
+[0;32m"ddb:92M06: :R:j25===S6 Tutzing"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19967: :H:s25===967 Krailling, Muggenthalerstraße"[0m
+[0;32m"mvv:19266: :H:s25===266 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"ddb:92M06: :H:j25===S6 Grafing-Bahnhof"[0m
+[0;32m"ddb:92M06: :R:j25===S6 Starnberg"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19906: :H:s25===906 Krailling, KIM/Konrad-Zuse-Bogen"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19906: :H:s25===906 Krailling, KIM/Konrad-Zuse-Bogen"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19906: :H:s25===906 Krailling, KIM/Konrad-Zuse-Bogen"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19906: :H:s25===906 Krailling, KIM/Konrad-Zuse-Bogen"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19906: :H:s25===906 Krailling, KIM/Konrad-Zuse-Bogen"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19906: :H:s25===906 Krailling, KIM/Konrad-Zuse-Bogen"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19906: :H:s25===906 Krailling, KIM/Konrad-Zuse-Bogen"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S) ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Lochham (S)"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19260: :R:s25===260 Germering-Unterpfaffenhofen (S) ü. Planegg (S) West"[0m
+[0;32m"mvv:19260: :H:s25===260 Fürstenried West (U)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Lochham, Starnberger Straße ü. Planegg (S)"[0m
+[0;32m"mvv:19258: :H:s25===258 Gräfelfing (S)"[0m
+[0;32m"mvv:19258: :R:s25===258 Planegg (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:20208: :R:s25===X208 Klinikum Großhadern (U)"[0m
+[0;32m"mvv:20208: :H:s25===X208 Germering-Unterpfaffenhofen (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19265: :R:s25===265 Pasing (S)"[0m
+[0;32m"mvv:19265: :H:s25===265 Planegg (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m
+[0;32m"mvv:19962: :H:s25===962 Fürstenried West (U)"[0m
+[0;32m"mvv:19962: :R:s25===962 Gauting (S)"[0m

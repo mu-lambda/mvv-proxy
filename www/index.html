@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body style="height: 100vh; overflow: hidden; margin: 0; padding: 0">
+        <iframe
+            id="nearby"
+            src="loading.html"
+            style="
+                width: 100%;
+                height: 100%;
+                border: 0;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            "
+        ></iframe>
+        <script>
+            const frame = document.getElementById("nearby");
+            const p = new URLSearchParams(window.location.search);
+            if (p.get("lat") && p.get("long")) {
+                console.log(`Here ${p}`);
+                const now = new Date();
+                frame.src = `/nearby?timestamp=${Math.floor(now.getTime() / 1000)}&lat=${p.get("lat")}&long=${p.get("long")}`
+            } else {
+                console.log(`There ${p}`);
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        const c = pos.coords;
+                        const now = new Date();
+                        frame.src = `/nearby?timestamp=${Math.floor(now.getTime() / 1000)}&lat=${c.latitude}&long=${c.longitude}&d=500`;
+                    },
+
+                    () => {
+                        frame.src = "/error.html";
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        maximumAge: 5000,
+                    },
+                );
+            }
+        </script>
+    </body>
+</html>

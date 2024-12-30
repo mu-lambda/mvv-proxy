@@ -1,0 +1,3 @@
+#! /bin/sh
+
+npm run build && docker build --tag mulambda/mvv-proxy:v0 .

@@ -1,0 +1,3 @@
+#! /bin/sh
+
+docker push mulambda/mvv-proxy:v0
