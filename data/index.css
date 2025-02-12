@@ -42,6 +42,11 @@ tr.departure-row {
     font-family: "Public Sans", sans-serif;
 }
 
+.disclaimer {
+    font-size: 2vw;
+    color: black;
+}
+
 .time-normal {
     color: green;
 }

@@ -99,8 +99,7 @@ export class Renderer {
     }
 
     renderHeader(_: Date): string {
-        return `\
-            <div class="departures-header">MVV Departures</div>`;
+        return "";
     }
 
     public render(departures: Iterable<Departure>): string {
@@ -146,8 +145,10 @@ export class GeoRenderer extends Renderer {
 
         return `\
             <div class="departures-header">
+                <div>
                 MVV Departures around <a href="${this.stringCache.locationUrl(this.#location)}" target="_blank">you</a>
-                at ${h}:${m}
+                at ${h}:${m}</div>
+                <span class="disclaimer">Not an official service of MVV</span>
             </div>`;
     }
 
