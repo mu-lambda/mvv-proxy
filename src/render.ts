@@ -1,8 +1,4 @@
-import {
-    type Departure,
-    type LatLong,
-    dateForDeparture,
-} from "./info";
+import { type Departure, type LatLong, dateForDeparture } from "./info";
 import * as request from "./request";
 import * as geo from "./geo";
 import { type StringCache } from "./stringCache";
@@ -146,9 +142,14 @@ export class GeoRenderer extends Renderer {
         return `\
             <div class="departures-header">
                 <div>
-                MVV Departures around <a href="${this.stringCache.locationUrl(this.#location)}" target="_blank">you</a>
-                at ${h}:${m}</div>
-                <span class="disclaimer">Not an official service of MVV</span>
+                    MVV Departures around <a href="${this.stringCache.locationUrl(this.#location)}" target="_blank">you</a>
+                    at ${h}:${m}
+                </div>
+                <span class="disclaimer">Not an official service of MVV
+                    <a href="https://www.paypal.com/donate?hosted_button_id=SVH3NYCAR3UAN" target="_blank">
+                        <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"/>
+                    </a>
+                </span>
             </div>`;
     }
 

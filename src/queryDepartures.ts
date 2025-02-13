@@ -25,7 +25,7 @@ export class Q {
         this.#a = axios.create({
             baseURL:
                 "https://www.mvv-muenchen.de/?eID=departuresFinder&action=get_departures",
-            timeout: 3000,
+            timeout: 5000,
         });
         this.#stops = stops;
         this.#stopMap = new Map<string, Stop>();
