@@ -3,8 +3,6 @@ type Departure = info.Departure;
 type LatLong = info.LatLong;
 type StringCache = stringCache.StringCache;
 
-import * as geo from "./geo";
-
 const closeDepartureGap = 4; // min
 
 export class Renderer {
@@ -116,7 +114,7 @@ export class Renderer {
 }
 
 export class GeoRenderer extends Renderer {
-    #distances: Map<string, geo.StopWithDistance>;
+    #distances: Map<string, info.StopWithDistance>;
     #location: LatLong;
 
     constructor(
@@ -124,7 +122,7 @@ export class GeoRenderer extends Renderer {
         date: Date,
         location: LatLong,
         request: request.MultiStop,
-        distances: geo.StopWithDistance[],
+        distances: info.StopWithDistance[],
     ) {
         super(stringCache, date, request);
         this.#distances = new Map();

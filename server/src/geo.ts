@@ -50,11 +50,6 @@ export function buildQuadtree(
     return result;
 }
 
-export type StopWithDistance = {
-    stop: info.Stop;
-    distance: number; // meters
-};
-
 export class Locator {
     #qt: d3.Quadtree<info.Stop>;
     #stops: Iterable<info.Stop>;
@@ -75,7 +70,7 @@ export class Locator {
     *findStopsBruteforce(
         p: info.LatLong,
         maxDistance: number,
-    ): Iterable<StopWithDistance> {
+    ): Iterable<info.StopWithDistance> {
         for (const stop of this.#stops) {
             if (!stop.location) continue;
             const d = distance(p, stop.location);
@@ -89,8 +84,8 @@ export class Locator {
         p: info.LatLong,
         maxDistance: number,
         e?: info.LatLong,
-    ): StopWithDistance[] {
-        const result: StopWithDistance[] = [];
+    ): info.StopWithDistance[] {
+        const result: info.StopWithDistance[] = [];
         let visited = 0;
 
         this.#qt.visit((node, lat1, long1, lat2, long2): boolean => {

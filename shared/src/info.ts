@@ -29,6 +29,12 @@ export type Stop = {
     gid: string;
     location: LatLong | undefined;
 };
+
+export type StopWithDistance = {
+    stop: Stop;
+    distance: number; // meters
+};
+
 export type Departure = {
     stop: {
         name: string;

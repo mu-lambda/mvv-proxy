@@ -129,7 +129,7 @@ export class Handlers {
     };
 
     private stopsWithDistanceToRequests(
-        ss: geo.StopWithDistance[],
+        ss: info.StopWithDistance[],
     ): request.MultiStop {
         const predestrianSpeed = 60; // meter/min
         let result: request.MultiStop = { stops: [], limit: 30 };
