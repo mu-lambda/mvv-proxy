@@ -22,6 +22,8 @@ class Table extends React.Component<IProps, State> {
 
 
    override componentDidMount?() {
+        this.setState({status: "loading"});
+        this.update();
    }
 
    override render(): ReactElement {
@@ -38,6 +40,12 @@ class Table extends React.Component<IProps, State> {
             <div className="loading">Loading...<span className="loader" /></div>
         </div>
        }
+   }
+
+   async update() {
+       const now = Math.floor(new Date().getTime() / 1000);
+       const r = await fetch(`/api/v1/timetable?timestamp=${now}`);
+       this.setState({ status: "ready", timetable: await r.json() }); 
    }
 }
 

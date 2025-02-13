@@ -26,7 +26,7 @@ export class Q {
         this.#a = axios.create({
             baseURL:
                 "https://www.mvv-muenchen.de/?eID=departuresFinder&action=get_departures",
-            timeout: 5000,
+            timeout: 10000,
         });
         this.#stops = stops;
         this.#stopMap = new Map<string, Stop>();
@@ -92,7 +92,7 @@ export class Q {
         let error: any;
         const reqId = this.#reqCount++;
         console.log(`${reqId}: ${this.#a.getUri(c)}`);
-        for (let t = 0; t < 5; t++) {
+        for (let t = 0; t < 10; t++) {
             try {
                 const x = await this.#a.request(c);
                 console.log(`${reqId}: success`);

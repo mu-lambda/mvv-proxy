@@ -49,6 +49,7 @@ export async function server(onReady: () => void) {
     // Routing to handlers.
     const handlers = new Handlers(q, request);
     app.get("/timetable", handlers.timetable);
+    app.get("/api/v1/timetable", handlers.timetableApi);
     app.get("/lines", handlers.lines);
     app.get("/stops", handlers.stops);
     app.get("/nearby", handlers.nearby);

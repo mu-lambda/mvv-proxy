@@ -66,6 +66,34 @@ export class Handlers {
         }
     };
 
+    timetableApi = async (req: express.Request, res: express.Response) => {
+        if (!this.#defaultRequest) {
+            res.sendStatus(404);
+            return;
+        }
+        const t = req.query.timestamp ? +req.query.timestamp : NaN;
+        if (isNaN(t)) {
+            res.sendStatus(404);
+            return;
+        }
+        const timestamp = new Date(t * 1000);
+        try {
+            const d = await this.#q.getDeparturesForMultipleStops(
+                this.#defaultRequest,
+                timestamp,
+            );
+
+            let result: request.TimetableResponse = {
+                date: timestamp,
+                request: this.#defaultRequest,
+                departures: d,
+            };
+            res.send(result);
+        } catch (e) {
+            res.sendStatus(500);
+        }
+    };
+
     lines = async (_: express.Request, res: express.Response) => {
         res.send(JSON.stringify(lines.lines));
     };
