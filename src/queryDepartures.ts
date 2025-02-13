@@ -73,6 +73,19 @@ export class Q {
         });
     }
 
+    private async request(c: axios.AxiosRequestConfig): Promise<axios.AxiosResponse> {
+        let error;
+        for (let t = 0; t < 5; t++) {
+            try {
+                return await this.#a.request(c)
+            } catch(e) {
+                console.log(e);
+                error = e;
+            }
+        }
+        throw error;
+    }
+
     public async getDepartures(
         s: request.SingleStop,
         timestamp: Date,
@@ -113,7 +126,7 @@ export class Q {
             };
         });
         configs.map((c) => console.log(this.#a.getUri(c)));
-        const resp = await Promise.all(configs.map((c) => this.#a.request(c)));
+        const resp = await Promise.all(configs.map((c) => this.request(c)));
         const jsonArrays = resp.map((r) => r.data.departures as Array<any>);
         let jsonArray = jsonArrays.flat();
 
