@@ -58,8 +58,8 @@ export async function server(onReady: () => void) {
         res.setHeader("content-type", "text/css");
         res.send(cssContent);
     });
-    app.use("/", express.static("www/"));
-    app.use("/fonts", express.static("fonts"));
+    app.use("/", express.static("../www/"));
+    app.use("/fonts", express.static("../fonts"));
     app.use("/data/index.css", express.static("data/index.css"));
 
     app.listen(port, () => {

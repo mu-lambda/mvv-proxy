@@ -3,14 +3,15 @@ ARG NODE_ENV=production
 ENV NODE_ENV=$NODE_ENV
 ENV TZ="Europe/Berlin"
 
-COPY ./out /out
-COPY ./data/stops.csv /data/stops.csv
-COPY ./data/index.css /data/index.css
+COPY ./server/out /server/out
+COPY ./server/data/stops.csv /server/data/stops.csv
+COPY ./server/data/index.css /server/data/index.css
 COPY ./www/*.html /www/
 COPY ./www/*.css /www/
 COPY ./www/*.svg /www/
-COPY ./package.json /package.json
-COPY ./package-lock.json /package-lock.json
+COPY ./server/package.json /server/package.json
+COPY ./server/package-lock.json /server/package-lock.json
 COPY ./fonts /fonts
+WORKDIR /server
 RUN NODE_ENV=$NODE_ENV npm install
-CMD ["node", "out/main.js"]
+CMD ["node", "server/out/main.js"]
