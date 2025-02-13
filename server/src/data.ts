@@ -1,7 +1,7 @@
 import * as fs from "node:fs/promises";
-import { Stop } from "./info";
+import { info } from "shared";
 
-export async function* loadStops(filename: string): AsyncGenerator<Stop> {
+export async function* loadStops(filename: string): AsyncGenerator<info.Stop> {
     const data: string = await fs.readFile(filename, { encoding: "utf-8" });
     const lines = data.split("\r\n");
     for (const line of lines) {

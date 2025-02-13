@@ -1,7 +1,10 @@
-import { type Departure, type LatLong, dateForDeparture } from "./info";
+import { info, stringCache } from "shared";
+type Departure = info.Departure;
+type LatLong = info.LatLong;
+type StringCache = stringCache.StringCache;
+
 import * as request from "./request";
 import * as geo from "./geo";
-import { type StringCache } from "./stringCache";
 
 const closeDepartureGap = 4; // min
 
@@ -27,7 +30,7 @@ export class Renderer {
 
     isCloseDeparture(d: Departure): boolean {
         let diff =
-            (dateForDeparture(d).getTime() - this.#date.getTime()) / 60000;
+            (info.dateForDeparture(d).getTime() - this.#date.getTime()) / 60000;
         let timeToStop = this.#timesToStop.get(d.stop.gid);
         if (timeToStop === undefined) {
             return false;

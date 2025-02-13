@@ -1,6 +1,6 @@
-import type { Line } from "./info";
+import { info } from "shared";
 
-export const lines: Line[] = [
+export const lines: info.Line[] = [
     // ./deps-from-stop.sh | sort | uniq  and manual editing.
     // -s/-n: Süd/Nord, -e/-w: East/West, -i/-a: stadtinwarts/stadtauswarts
 

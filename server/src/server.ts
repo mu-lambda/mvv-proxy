@@ -2,8 +2,9 @@ import * as fs from "node:fs/promises";
 import express from "express";
 import * as yaml from "yaml";
 
+import { info } from "shared";
+
 import * as queryDepartures from "./queryDepartures";
-import type { Stop } from "./info";
 import { loadStops } from "./data";
 import * as request from "./request";
 import { Handlers } from "./handlers";
@@ -36,7 +37,7 @@ async function loadAndValidateRequest(
 }
 
 export async function server(onReady: () => void) {
-    const stops: Stop[] = [];
+    const stops: info.Stop[] = [];
     for await (const s of loadStops(stopsFile)) {
         stops.push(s);
     }

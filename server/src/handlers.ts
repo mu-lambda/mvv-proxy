@@ -1,19 +1,21 @@
 import * as express from "express";
+import { info, stringCache } from "shared";
 
 import * as lines from "./lines";
 import * as queryDepartures from "./queryDepartures";
-import type { Stop, LatLong } from "./info";
 import * as request from "./request";
 import { Renderer, GeoRenderer } from "./render";
 import * as geo from "./geo";
-import { StringCache } from "./stringCache";
+
+type Stop = info.Stop;
+type LatLong = info.LatLong;
 
 export class Handlers {
     #q: queryDepartures.Q;
     #stops: Stop[];
     #defaultRequest: request.MultiStop | undefined;
     #locator: geo.Locator;
-    #stringCache: StringCache;
+    #stringCache: stringCache.StringCache;
 
     constructor(
         q: queryDepartures.Q,
@@ -23,7 +25,7 @@ export class Handlers {
         this.#defaultRequest = defaultRequest;
         this.#stops = q.stops();
         this.#locator = new geo.Locator(this.#stops);
-        this.#stringCache = new StringCache();
+        this.#stringCache = new stringCache.StringCache();
     }
 
     private handleError(e: any, res: express.Response) {

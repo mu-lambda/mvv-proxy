@@ -17,12 +17,13 @@
     "axios": "^1.7.9",
     "d3-quadtree": "^3.0.1",
     "express": "^4.21.2",
+    "shared": "file:../shared",
     "yaml": "^2.7.0"
   },
   "devDependencies": {
+    "@types/d3-quadtree": "^3.0.6",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.2",
-    "@types/d3-quadtree": "^3.0.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   }

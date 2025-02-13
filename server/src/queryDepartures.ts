@@ -1,8 +1,10 @@
 import axios, { AxiosInstance } from "axios";
+import { info } from "shared";
 
-import type { Line, Stop, Departure } from "./info";
+type Line = info.Line;
+type Stop = info.Stop;
+type Departure = info.Departure;
 import * as request from "./request";
-import { dateForDeparture } from "./info";
 import { lines } from "./lines";
 
 function sleep(msec: number) {
@@ -195,18 +197,18 @@ export class Q {
         if (r.limit) {
             const cutoff = new Date(timestamp.getTime() + r.limit * 60 * 1000);
             filter = (d) => {
-                const t = dateForDeparture(d);
+                const t = info.dateForDeparture(d);
                 return t >= timestamp && t <= cutoff;
             };
         } else {
-            filter = (d) => dateForDeparture(d) >= timestamp;
+            filter = (d) => info.dateForDeparture(d) >= timestamp;
         }
         const mergedDepartures: Departure[] = allDepartures
             .flat()
             .filter(filter)
             .sort((departure1, departure2) => {
-                const d1 = dateForDeparture(departure1);
-                const d2 = dateForDeparture(departure2);
+                const d1 = info.dateForDeparture(departure1);
+                const d2 = info.dateForDeparture(departure2);
                 if (d1 < d2) return -1;
                 else if (d1 > d2) return 1;
                 else if (departure1.line.name < departure2.line.name) return -1;

@@ -1,5 +1,5 @@
 import * as d3 from "d3-quadtree";
-import { type LatLong, type Stop } from "./info";
+import { info } from "shared";
 
 function rad(x: number) {
     return (x * Math.PI) / 180;
@@ -25,7 +25,7 @@ export function latitudalDistance(
     return d; // returns the distance in meter
 }
 
-export function distance(p1: LatLong, p2: LatLong): number {
+export function distance(p1: info.LatLong, p2: info.LatLong): number {
     // Use Pythagorean distance as an approximation.
     const longitudal = longitudalDistance(p1.latitude, p2.latitude);
     const latitudal = latitudalDistance(
@@ -36,10 +36,12 @@ export function distance(p1: LatLong, p2: LatLong): number {
     return Math.sqrt(longitudal ** 2 + latitudal ** 2);
 }
 
-export function buildQuadtree(stops: Iterable<Stop>): d3.Quadtree<Stop> {
-    const result: d3.Quadtree<Stop> = d3.quadtree();
-    result.x((s: Stop) => (s.location ? s.location.latitude : 0));
-    result.y((s: Stop) => (s.location ? s.location.longitude : 0));
+export function buildQuadtree(
+    stops: Iterable<info.Stop>,
+): d3.Quadtree<info.Stop> {
+    const result: d3.Quadtree<info.Stop> = d3.quadtree();
+    result.x((s: info.Stop) => (s.location ? s.location.latitude : 0));
+    result.y((s: info.Stop) => (s.location ? s.location.longitude : 0));
     for (const s of stops) {
         if (s.location) {
             result.add(s);
@@ -49,15 +51,15 @@ export function buildQuadtree(stops: Iterable<Stop>): d3.Quadtree<Stop> {
 }
 
 export type StopWithDistance = {
-    stop: Stop;
+    stop: info.Stop;
     distance: number; // meters
 };
 
 export class Locator {
-    #qt: d3.Quadtree<Stop>;
-    #stops: Iterable<Stop>;
+    #qt: d3.Quadtree<info.Stop>;
+    #stops: Iterable<info.Stop>;
 
-    constructor(stops: Iterable<Stop>) {
+    constructor(stops: Iterable<info.Stop>) {
         this.#qt = buildQuadtree(stops);
         this.#stops = stops;
     }
@@ -66,12 +68,12 @@ export class Locator {
         return this.#qt.size();
     }
 
-    stopsWithLocations(): Iterable<Stop> {
+    stopsWithLocations(): Iterable<info.Stop> {
         return this.#qt.data();
     }
 
     *findStopsBruteforce(
-        p: LatLong,
+        p: info.LatLong,
         maxDistance: number,
     ): Iterable<StopWithDistance> {
         for (const stop of this.#stops) {
@@ -84,16 +86,16 @@ export class Locator {
     }
 
     findStops(
-        p: LatLong,
+        p: info.LatLong,
         maxDistance: number,
-        e?: LatLong,
+        e?: info.LatLong,
     ): StopWithDistance[] {
         const result: StopWithDistance[] = [];
         let visited = 0;
 
         this.#qt.visit((node, lat1, long1, lat2, long2): boolean => {
             if (!node.length) {
-                let leaf = node as d3.QuadtreeLeaf<Stop>;
+                let leaf = node as d3.QuadtreeLeaf<info.Stop>;
                 do {
                     const stop = leaf.data;
                     if (stop.location) {

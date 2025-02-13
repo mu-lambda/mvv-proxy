@@ -1,11 +1,11 @@
 import * as d3 from "d3-quadtree";
+import { info } from "shared";
 
 import { suite, test, testAsync, expect } from "./testing";
-import { type LatLong, type Stop } from "./info";
 import { distance, buildQuadtree, Locator } from "./geo";
 import { loadStops } from "./data";
 
-function ll(latitude: number, longitude: number): LatLong {
+function ll(latitude: number, longitude: number): info.LatLong {
     return { latitude, longitude };
 }
 async function locator() {
@@ -15,7 +15,7 @@ async function locator() {
     }
     return new Locator(stops);
 }
-function check(l: Locator, p: LatLong, d: number) {
+function check(l: Locator, p: info.LatLong, d: number) {
     const r = new Set(l.findStops(p, d).map((s) => s.stop));
     const rCanonical = new Set(
         [...l.findStopsBruteforce(p, d)].map((s) => s.stop),
@@ -77,10 +77,10 @@ const tests = [
             stops.push(s);
         }
         let qt = buildQuadtree(stops);
-        let stopsFromQt = new Set<Stop>();
+        let stopsFromQt = new Set<info.Stop>();
         qt.visit((node) => {
             if (!node.length) {
-                let leaf = node as d3.QuadtreeLeaf<Stop>;
+                let leaf = node as d3.QuadtreeLeaf<info.Stop>;
                 do {
                     stopsFromQt.add(leaf.data);
                     if (leaf.next) {
@@ -156,8 +156,9 @@ const exhaustiveTest = (
             stops.push(s);
         }
         const l = new Locator(stops);
-        const latitude = (s: Stop) => (s.location ? s.location.latitude : NaN);
-        const longitude = (s: Stop) =>
+        const latitude = (s: info.Stop) =>
+            s.location ? s.location.latitude : NaN;
+        const longitude = (s: info.Stop) =>
             s.location ? s.location.longitude : NaN;
         let minLatitude = stops.reduce(
             (min, s) => (min < latitude(s) ? min : latitude(s)),
@@ -216,8 +217,9 @@ const benchmarkTest = (distance: number, npoints: number) =>
             stops.push(s);
         }
         const l = new Locator(stops);
-        const latitude = (s: Stop) => (s.location ? s.location.latitude : NaN);
-        const longitude = (s: Stop) =>
+        const latitude = (s: info.Stop) =>
+            s.location ? s.location.latitude : NaN;
+        const longitude = (s: info.Stop) =>
             s.location ? s.location.longitude : NaN;
         let minLatitude = stops.reduce(
             (min, s) => (min < latitude(s) ? min : latitude(s)),
