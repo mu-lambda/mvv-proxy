@@ -10,6 +10,8 @@ function sleep(msec: number) {
     return new Promise((r) => setTimeout(r, msec));
 }
 
+const timeout = 10000;
+const retries = 3;
 export class MVVRequestFailure extends Error {
     constructor(e: any) {
         const m = e instanceof Error ? (e as Error).message : `${e}`;
@@ -26,7 +28,7 @@ export class Q {
         this.#a = axios.create({
             baseURL:
                 "https://www.mvv-muenchen.de/?eID=departuresFinder&action=get_departures",
-            timeout: 10000,
+            timeout,
         });
         this.#stops = stops;
         this.#stopMap = new Map<string, Stop>();
@@ -92,13 +94,14 @@ export class Q {
         let error: any;
         const reqId = this.#reqCount++;
         console.log(`${reqId}: ${this.#a.getUri(c)}`);
-        for (let t = 0; t < 10; t++) {
+        for (let t = 0; t < retries; t++) {
             try {
                 const x = await this.#a.request(c);
                 console.log(`${reqId}: success`);
                 return x;
             } catch (e) {
-                console.log(`${reqId}: failure, try ${t}`);
+                const m = e instanceof Error ? e.message : `${e}`;
+                console.log(`${reqId}: try ${t}, failure: ${m}`);
                 error = e;
             }
             await sleep(Math.random() * 100);
