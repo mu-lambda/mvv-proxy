@@ -5,6 +5,16 @@ import * as request from "./request";
 import { dateForDeparture } from "./info";
 import { lines } from "./lines";
 
+function sleep(msec: number) {
+    return new Promise((r) => setTimeout(r, msec));
+}
+
+export class MVVRequestFailure extends Error {
+    constructor(e: any) {
+        const m = e instanceof Error ? (e as Error).message : `${e}`;
+        super(m);
+    }
+}
 export class Q {
     #a: AxiosInstance;
     #stops: Stop[];
@@ -13,7 +23,7 @@ export class Q {
         this.#a = axios.create({
             baseURL:
                 "https://www.mvv-muenchen.de/?eID=departuresFinder&action=get_departures",
-            timeout: 10000,
+            timeout: 5000,
         });
         this.#stops = stops;
         this.#stopMap = new Map<string, Stop>();
@@ -73,17 +83,20 @@ export class Q {
         });
     }
 
-    private async request(c: axios.AxiosRequestConfig): Promise<axios.AxiosResponse> {
-        let error;
+    private async request(
+        c: axios.AxiosRequestConfig,
+    ): Promise<axios.AxiosResponse> {
+        let error: any;
         for (let t = 0; t < 5; t++) {
             try {
-                return await this.#a.request(c)
-            } catch(e) {
+                return await this.#a.request(c);
+            } catch (e) {
                 console.log(e);
                 error = e;
             }
+            await sleep(Math.random() * 200);
         }
-        throw error;
+        throw new MVVRequestFailure(error);
     }
 
     public async getDepartures(

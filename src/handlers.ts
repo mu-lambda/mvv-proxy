@@ -26,6 +26,16 @@ export class Handlers {
         this.#stringCache = new StringCache();
     }
 
+    private handleError(e: any, res: express.Response) {
+        if (e instanceof queryDepartures.MVVRequestFailure) {
+            const m = (e as queryDepartures.MVVRequestFailure).message;
+            res.send(`MVV API Request failed: ${m}`);
+        } else {
+            console.log(`${(e as Error).stack}`);
+            res.send(e as Error).toString();
+        }
+    }
+
     timetable = async (req: express.Request, res: express.Response) => {
         if (!this.#defaultRequest) {
             res.sendStatus(404);
@@ -43,7 +53,6 @@ export class Handlers {
                 timestamp,
             );
 
-            res.set("Cache-Control", "no-store");
             res.send(
                 new Renderer(
                     this.#stringCache,
@@ -52,8 +61,7 @@ export class Handlers {
                 ).render(d),
             );
         } catch (e) {
-            console.log(`${(e as Error).stack}`);
-            res.send(e as Error).toString();
+            this.handleError(e, res);
         }
     };
 
@@ -116,7 +124,7 @@ export class Handlers {
                 ).render(d),
             );
         } catch (e) {
-            next(e);
+            this.handleError(e, res);
         }
     };
 
