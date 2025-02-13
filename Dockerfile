@@ -6,12 +6,17 @@ ENV TZ="Europe/Berlin"
 COPY ./server/out /server/out
 COPY ./server/data/stops.csv /server/data/stops.csv
 COPY ./server/data/index.css /server/data/index.css
+COPY ./server/package.json /server/package.json
+COPY ./server/package-lock.json /server/package-lock.json
+
+COPY ./shared/out /shared/out
+COPY ./shared/package.json /shared/package.json
+COPY ./shared/package-lock.json /shared/package-lock.json
+
 COPY ./www/*.html /www/
 COPY ./www/*.css /www/
 COPY ./www/*.svg /www/
-COPY ./server/package.json /server/package.json
-COPY ./server/package-lock.json /server/package-lock.json
 COPY ./fonts /fonts
 WORKDIR /server
 RUN NODE_ENV=$NODE_ENV npm install
-CMD ["node", "server/out/main.js"]
+CMD ["node", "out/main.js"]
