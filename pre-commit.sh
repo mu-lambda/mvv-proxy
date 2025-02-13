@@ -6,5 +6,6 @@ if [[ $FILES ]]; then
     npx prettier -w $FILES || echo "wtf"
     git add $FILES
 fi
+(cd shared && npm run build) || exit 1
 (cd server && npm run build) || exit 1
 (cd server && npm test) || exit 1

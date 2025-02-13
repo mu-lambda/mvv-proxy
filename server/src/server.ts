@@ -2,11 +2,10 @@ import * as fs from "node:fs/promises";
 import express from "express";
 import * as yaml from "yaml";
 
-import { info } from "shared";
+import { info, request } from "shared";
 
 import * as queryDepartures from "./queryDepartures";
 import { loadStops } from "./data";
-import * as request from "./request";
 import { Handlers } from "./handlers";
 
 const app = express();

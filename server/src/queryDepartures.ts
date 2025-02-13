@@ -1,10 +1,9 @@
 import axios, { AxiosInstance } from "axios";
-import { info } from "shared";
+import { info, request } from "shared";
 
 type Line = info.Line;
 type Stop = info.Stop;
 type Departure = info.Departure;
-import * as request from "./request";
 import { lines } from "./lines";
 
 function sleep(msec: number) {

@@ -1,9 +1,8 @@
-import { info, stringCache } from "shared";
+import { info, stringCache, request } from "shared";
 type Departure = info.Departure;
 type LatLong = info.LatLong;
 type StringCache = stringCache.StringCache;
 
-import * as request from "./request";
 import * as geo from "./geo";
 
 const closeDepartureGap = 4; // min

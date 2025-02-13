@@ -1,9 +1,8 @@
 import * as express from "express";
-import { info, stringCache } from "shared";
+import { info, stringCache, request } from "shared";
 
 import * as lines from "./lines";
 import * as queryDepartures from "./queryDepartures";
-import * as request from "./request";
 import { Renderer, GeoRenderer } from "./render";
 import * as geo from "./geo";
 
