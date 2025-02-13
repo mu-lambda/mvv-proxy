@@ -19,11 +19,13 @@ export class Q {
     #a: AxiosInstance;
     #stops: Stop[];
     #stopMap: Map<string, Stop>;
+    #reqCount = 0;
+
     constructor(stops: Stop[]) {
         this.#a = axios.create({
             baseURL:
                 "https://www.mvv-muenchen.de/?eID=departuresFinder&action=get_departures",
-            timeout: 5000,
+            timeout: 3000,
         });
         this.#stops = stops;
         this.#stopMap = new Map<string, Stop>();
@@ -87,15 +89,20 @@ export class Q {
         c: axios.AxiosRequestConfig,
     ): Promise<axios.AxiosResponse> {
         let error: any;
+        const reqId = this.#reqCount++;
+        console.log(`${reqId}: ${this.#a.getUri(c)}`);
         for (let t = 0; t < 5; t++) {
             try {
-                return await this.#a.request(c);
+                const x = await this.#a.request(c);
+                console.log(`${reqId}: success`);
+                return x;
             } catch (e) {
-                console.log(e);
+                console.log(`${reqId}: failure, try ${t}`);
                 error = e;
             }
-            await sleep(Math.random() * 200);
+            await sleep(Math.random() * 100);
         }
+        console.log(`${reqId}: failure, giving up`);
         throw new MVVRequestFailure(error);
     }
 

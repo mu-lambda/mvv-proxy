@@ -113,7 +113,6 @@ export class Handlers {
                 now,
             );
 
-            res.set("Cache-Control", "no-store");
             res.send(
                 new GeoRenderer(
                     this.#stringCache,
