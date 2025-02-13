@@ -1,3 +1,4 @@
+import * as info from "./info";
 export type SingleStop = {
     /** Stop global identifier */
     stopGid: string;
@@ -11,4 +12,10 @@ export type MultiStop = {
     stops: SingleStop[];
     /** Limit in minutes */
     limit: number | undefined;
+};
+
+export type TimetableResponse = {
+    date: Date;
+    request: MultiStop;
+    departures: info.Departure[];
 };

@@ -1,9 +1,15 @@
+import React, { ReactElement } from "react";
+
 import { info, stringCache, request } from "shared";
 type Departure = info.Departure;
 type LatLong = info.LatLong;
 type StringCache = stringCache.StringCache;
 
 const closeDepartureGap = 4; // min
+
+function svgIconOnError(textOnError: string) : React.ReactEventHandler {
+    return e => { e.currentTarget.replaceWith(textOnError) }
+}
 
 export class Renderer {
     protected stringCache: StringCache;
@@ -35,7 +41,7 @@ export class Renderer {
         return diff < timeToStop + closeDepartureGap;
     }
 
-    renderSymbolTag(d: Departure): string {
+    renderSymbolTag(d: Departure): ReactElement {
         const textOnError =
             d.line.name.length <= 5
                 ? d.line.name
@@ -45,18 +51,16 @@ export class Renderer {
             const s =
                 d.line.symbol === "20208.svg" ? "19208.svg" : d.line.symbol;
             if (!s.endsWith(".svg")) {
-                return textOnError;
+                return <span>{textOnError}</span>;
             }
-            return `<img src="https://www.mvv-muenchen.de/fileadmin/lines/${s}" 
-                class="line-icon" 
-                onerror="this.replaceWith('${textOnError}')"
-                alt="${d.line.name}" />`;
+            const src = `https://www.mvv-muenchen.de/fileadmin/lines/${s}`;
+            return <img src={src} className="line-icon" onError={svgIconOnError(textOnError)} alt={d.line.name}></img>;
         } else {
-            return textOnError;
+            return <span>{textOnError}</span>;
         }
     }
 
-    renderDeparture(d: Departure): string {
+    renderDeparture(d: Departure): ReactElement {
         const [time, isLive] =
             d.departure.live != null
                 ? [d.departure.live, true]
@@ -67,31 +71,29 @@ export class Renderer {
                 : "time-late"
             : "time-planned";
         const lateClass = this.isCloseDeparture(d) ? "time-close" : "";
-        return `
-            <tr class="departure-row">
-            <td class="line-icon-column">${this.renderSymbolTag(d)}</td>
-            <td class="line-name">${this.stringCache.destinationRender(d.line.destination)}</td>
-            <td class="stop-name">${this.renderStop(d)}</td>
-            <td class="departure-time"><div class="time ${timeClass} ${lateClass}">${time}</div></td>
-            </tr>\
-`;
+        const className = `time ${timeClass} ${lateClass}`;
+        return <tr className="departure-row">
+                <td className="line-icon-column">{this.renderSymbolTag(d)}</td>
+                <td className="line-name">{this.stringCache.destinationRender(d.line.destination)}</td>
+                <td className="stop-name">{this.renderStop(d)}</td>
+                <td className="departure-time"><div className={className}>${time}</div></td>
+            </tr>;
     }
 
     renderStop(d: Departure): string {
         return this.stringCache.destinationRender(d.stop.name);
     }
 
-    renderTable(departures: Iterable<Departure>): string {
-        let tableRows = "";
+    renderTable(departures: Iterable<Departure>): ReactElement {
+        let tableRows = [];
         for (const d of departures) {
-            tableRows += this.renderDeparture(d);
+            tableRows.push(this.renderDeparture(d));
         }
-        return `\
-            <table class="departure-table">
+        return <table className="departure-table">
         <tbody>
-        ${tableRows}
+        {tableRows}
         </tbody>
-        </table>`;
+        </table>;
     }
 
     renderHeader(_: Date): string {
@@ -140,12 +142,12 @@ export class GeoRenderer extends Renderer {
                 : date.getMinutes().toString();
 
         return `\
-            <div class="departures-header">
+            <div className="departures-header">
                 <div>
                     MVV Departures around <a href="${this.stringCache.locationUrl(this.#location)}" target="_blank">you</a>
                     at ${h}:${m}
                 </div>
-                <span class="disclaimer">Not an official service of MVV
+                <span className="disclaimer">Not an official service of MVV
                     <a href="https://www.paypal.com/donate?hosted_button_id=SVH3NYCAR3UAN" target="_blank">
                         <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"/>
                     </a>
