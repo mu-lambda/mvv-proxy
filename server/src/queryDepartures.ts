@@ -1,4 +1,6 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import fetch from "node-fetch";
+import { SocksProxyAgent } from "socks-proxy-agent";
 import { info, request } from "shared";
 
 type Line = info.Line;
@@ -10,14 +12,16 @@ function sleep(msec: number) {
     return new Promise((r) => setTimeout(r, msec));
 }
 
-const timeout = 10000;
-const retries = 3;
+const timeout = 3000;
+const retries = 4;
 export class MVVRequestFailure extends Error {
     constructor(e: any) {
         const m = e instanceof Error ? (e as Error).message : `${e}`;
         super(m);
     }
 }
+
+const agent = new SocksProxyAgent(process.env.SOCKS_PROXY || "");
 export class Q {
     #a: AxiosInstance;
     #stops: Stop[];
@@ -88,17 +92,16 @@ export class Q {
         });
     }
 
-    private async request(
-        c: axios.AxiosRequestConfig,
-    ): Promise<axios.AxiosResponse> {
+    private async request(c: axios.AxiosRequestConfig): Promise<any> {
         let error: any;
         const reqId = this.#reqCount++;
-        console.log(`${reqId}: ${this.#a.getUri(c)}`);
+        const url = this.#a.getUri(c);
+        console.log(`${reqId}: ${url}`);
         for (let t = 0; t < retries; t++) {
             try {
-                const x = await this.#a.request(c);
+                const x = await fetch(url, { agent, timeout });
                 console.log(`${reqId}: success`);
-                return x;
+                return await x.json();
             } catch (e) {
                 const m = e instanceof Error ? e.message : `${e}`;
                 console.log(`${reqId}: try ${t}, failure: ${m}`);
@@ -144,14 +147,13 @@ export class Q {
             });
         }
 
-        const configs = params.map((p) => {
+        const configs: AxiosRequestConfig[] = params.map((p) => {
             return {
                 params: new URLSearchParams(p),
             };
         });
-        configs.map((c) => console.log(this.#a.getUri(c)));
         const resp = await Promise.all(configs.map((c) => this.request(c)));
-        const jsonArrays = resp.map((r) => r.data.departures as Array<any>);
+        const jsonArrays = resp.map((r) => r.departures as Array<any>);
         let jsonArray = jsonArrays.flat();
 
         if (jsonArray === null) {

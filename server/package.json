@@ -17,13 +17,16 @@
     "axios": "^1.7.9",
     "d3-quadtree": "^3.0.1",
     "express": "^4.21.2",
+    "node-fetch": "^2.7.0",
     "shared": "file:../shared",
+    "socks-proxy-agent": "^8.0.5",
     "yaml": "^2.7.0"
   },
   "devDependencies": {
     "@types/d3-quadtree": "^3.0.6",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.2",
+    "@types/node-fetch": "^2.6.12",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   }
