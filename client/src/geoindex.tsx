@@ -80,19 +80,13 @@ class GeoDepsTable extends React.Component<{}, State> {
           this.setState({status: "error", message: `Geolocation failed: ${e}`});
           return;
       }
-      const stopsR = await fetch('/api/v1/stops');
-      if (!stopsR.ok) {
-           this.setState({status: "error", message: `Fetching stops nearby failed: ${stopsR.statusText}`});
-           return;
-      }
-      const stops: info.Stop[] = await stopsR.json();
       const r = await fetch(`/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}`);
       if (!r.ok) {
            this.setState({status: "error", message: `Fetching stops nearby failed: ${r.statusText}`});
            return;
       }
       const resp : request.NearbyStopsResponse = await r.json();
-      const q = new queryDepartures.Q([], stops, new WebFetcher());
+      const q = new queryDepartures.Q([], resp.stops.map(s => s.stop), new WebFetcher());
       const now = new Date();
       const departures = await q.getDeparturesForMultipleStops(resp.request, now);
       this.setState({status: "ready", date: now, location: c.coords, nearbyStops: resp, departures });

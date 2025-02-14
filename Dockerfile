@@ -13,6 +13,7 @@ COPY ./shared/package.json /shared/package.json
 COPY ./shared/package-lock.json /shared/package-lock.json
 
 COPY ./www/*.html /www/
+COPY ./www/out/*.js /www/out/
 COPY ./www/*.css /www/
 COPY ./www/*.svg /www/
 COPY ./fonts /fonts

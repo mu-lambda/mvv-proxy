@@ -41,6 +41,10 @@ export class Renderer {
         return diff < timeToStop + closeDepartureGap;
     }
 
+    protected svgUrl(filename: string) : string {
+        return `/svg/${filename}`;        
+    }
+
     renderSymbolTag(d: Departure): ReactElement {
         const textOnError =
             d.line.name.length <= 5
@@ -53,7 +57,7 @@ export class Renderer {
             if (!s.endsWith(".svg")) {
                 return <span>{textOnError}</span>;
             }
-            const src = `svg/${s}`;
+            const src = this.svgUrl(s) ;
             return <img src={src} className="line-icon" onError={svgIconOnError(textOnError)} alt={d.line.name}></img>;
         } else {
             return <span>{textOnError}</span>;
@@ -157,6 +161,10 @@ export class GeoRenderer extends Renderer {
 
     public override renderTable(ds: Iterable<Departure>): ReactElement  {
         return super.renderTable(this.filterDeparturesWithClosestStops(ds));
+    }
+
+    protected override svgUrl(filename: string) : string {
+        return `https://www.mvv-muenchen.de/fileadmin/lines/${filename}`
     }
 
     public *filterDeparturesWithClosestStops(
