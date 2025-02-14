@@ -22,6 +22,7 @@ export class MVVRequestFailure extends Error {
 }
 
 const agent = new SocksProxyAgent(process.env.SOCKS_PROXY || "");
+
 export class Q {
     #a: AxiosInstance;
     #stops: Stop[];
