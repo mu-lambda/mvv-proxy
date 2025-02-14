@@ -128,7 +128,7 @@ export class GeoRenderer extends Renderer {
 
         return <div className="departures-header">
                 <div>
-                    MVV Departures around <a href={this.stringCache.locationUrl(this.#location)} target="_blank">you</a>
+                    MVV Departures around <a href={this.stringCache.locationUrl(this.#location)} target="_blank">you</a>&nbsp;
                     at {h}:{m}
                 </div>
                 <span className="disclaimer">Not an official service of MVV

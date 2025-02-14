@@ -92,7 +92,6 @@ class GeoDepsTable extends React.Component<{}, State> {
            return;
       }
       const resp : request.NearbyStopsResponse = await r.json();
-      console.log(JSON.stringify(resp));
       const q = new queryDepartures.Q([], stops, new WebFetcher());
       const now = new Date();
       const departures = await q.getDeparturesForMultipleStops(resp.request, now);
