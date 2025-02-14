@@ -47,7 +47,7 @@ export class Renderer {
             if (!s.endsWith(".svg")) {
                 return textOnError;
             }
-            return `<img src="https://www.mvv-muenchen.de/fileadmin/lines/${s}" 
+            return `<img src="/svg/${s}" 
                 class="line-icon" 
                 onerror="this.replaceWith('${textOnError}')"
                 alt="${d.line.name}" />`;

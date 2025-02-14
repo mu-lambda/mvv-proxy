@@ -49,12 +49,13 @@ export async function server(onReady: () => void) {
     const request = await loadAndValidateRequest(requestFile, q);
 
     // Routing to handlers.
-    const handlers = new Handlers(q, request);
+    const handlers = new Handlers(q, fetcher, request);
     app.get("/timetable", handlers.timetable);
     app.get("/api/v1/timetable", handlers.timetableApi);
     app.get("/lines", handlers.lines);
     app.get("/stops", handlers.stops);
     app.get("/nearby", handlers.nearby);
+    app.get("/svg/*", handlers.svg);
 
     // Static routing.
     app.get("/index.css", (_, res) => {

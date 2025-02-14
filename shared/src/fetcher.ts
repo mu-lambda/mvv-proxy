@@ -7,6 +7,7 @@ export class MVVRequestFailure extends Error {
 
 export interface IFetchResult {
     json(): Promise<any>;
+    text(): Promise<string>;
 }
 
 export interface IFetcher {

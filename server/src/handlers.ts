@@ -1,4 +1,5 @@
 import * as express from "express";
+import * as path from "path";
 import { info, stringCache, request, fetcher } from "shared";
 
 import * as lines from "./lines";
@@ -14,13 +15,17 @@ export class Handlers {
     #stops: Stop[];
     #defaultRequest: request.MultiStop | undefined;
     #locator: geo.Locator;
-    #stringCache: stringCache.StringCache;
+    readonly #stringCache: stringCache.StringCache;
+    readonly #fetcher: fetcher.IFetcher;
+    readonly #svgCache = new Map<string, string>();
 
     constructor(
         q: queryDepartures.Q,
+        f: fetcher.IFetcher,
         defaultRequest: request.MultiStop | undefined,
     ) {
         this.#q = q;
+        this.#fetcher = f;
         this.#defaultRequest = defaultRequest;
         this.#stops = q.stops();
         this.#locator = new geo.Locator(this.#stops);
@@ -170,4 +175,32 @@ export class Handlers {
         }
         return result;
     }
+
+    svg = async (req: express.Request, res: express.Response) => {
+        const filename = path.basename(req.path);
+        if (!filename.endsWith(".svg")) {
+            res.sendStatus(404);
+            return;
+        }
+        if (this.#svgCache.has(filename)) {
+            console.log(`Sending cached ${filename}`);
+            res.setHeader("Content-Type", "image/svg+xml");
+            res.setHeader("Cache-Control", "max-age=864000");
+            res.send(this.#svgCache.get(filename));
+            return;
+        }
+        try {
+            const r = await this.#fetcher.fetch(
+                `https://www.mvv-muenchen.de/fileadmin/lines/${filename}`,
+            );
+            res.setHeader("Content-Type", "image/svg+xml");
+            res.setHeader("Cache-Control", "max-age=864000");
+            const text = await r.text();
+            this.#svgCache.set(filename, text);
+            res.send(text);
+            return;
+        } catch (e) {
+            res.sendStatus(404);
+        }
+    };
 }
