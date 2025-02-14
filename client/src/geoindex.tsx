@@ -4,18 +4,6 @@ import { stringCache,  request, info, queryDepartures, fetcher  } from "shared";
 
 import { GeoRenderer } from "./render2";
 
-
-type State = 
-    { status : "loading" } |
-    { status : "ready", 
-        date: Date, 
-        location: info.LatLong, 
-        nearbyStops: request.NearbyStopsResponse, 
-        departures: info.Departure[] 
-    } |
-    { status : "error", message : string }
-;
-
 function getPosition(options?: PositionOptions): Promise<{coords: info.LatLong}> {
     return new Promise((resolve, reject) => 
         navigator.geolocation.getCurrentPosition(resolve, reject, options)
@@ -28,10 +16,28 @@ class WebFetcher implements fetcher.IFetcher {
     }
 } 
 
-class GeoDepsTable extends React.Component<{}, State> {
+
+type State = 
+    { status : "loading" } |
+    { status : "ready", 
+        date: Date, 
+        location: info.LatLong, 
+        nearbyStops: request.NearbyStopsResponse, 
+        departures: info.Departure[] 
+    } |
+    { status : "error", message : string }
+;
+
+type Props = {
+    lat: number | undefined,
+    long: number | undefined,
+    d: number | undefined,
+}
+
+class GeoDepsTable extends React.Component<Props, State> {
     #stringCache = new stringCache.StringCache();
 
-    constructor(props: {}) {
+    constructor(props: Props) {
         super(props);
         this.state = {status: "loading"};
     }
@@ -74,13 +80,18 @@ class GeoDepsTable extends React.Component<{}, State> {
 
    async update() {
       let c : { coords: info.LatLong };
-      try {
-        c = await getPosition();
-      } catch(e) {
-          this.setState({status: "error", message: `Geolocation failed: ${e}`});
-          return;
+      if (this.props.lat && this.props.long) {
+          c = { coords: { latitude: this.props.lat, longitude: this.props.long } };
+      } else {
+          try {
+              c = await getPosition();
+          } catch(e) {
+              this.setState({status: "error", message: `Geolocation failed: ${e}`});
+              return;
+          }
       }
-      const r = await fetch(`/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}`);
+      const d = this.props.d ? this.props.d : 500;
+      const r = await fetch(`/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}&d=${d}`);
       if (!r.ok) {
            this.setState({status: "error", message: `Fetching stops nearby failed: ${r.statusText}`});
            return;
@@ -93,6 +104,14 @@ class GeoDepsTable extends React.Component<{}, State> {
    }   
 }
 
+const p = new URLSearchParams(window.location.search);
+let lat = p.get("lat") != null ? +p.get("lat")! : undefined;
+let long = p.get("long") != null ? +p.get("long")! : undefined;
+let d = p.get("d") != null ? +p.get("d")! : undefined;
+
+lat = lat && isNaN(lat) ? undefined : lat;
+long = long && isNaN(long) ? undefined : long;
+d = d && isNaN(d) ? undefined : d;
 
 const root = createRoot(document.body);
-root.render(<GeoDepsTable></GeoDepsTable>);
+root.render(<GeoDepsTable lat={lat} long={long} d={d}></GeoDepsTable>);

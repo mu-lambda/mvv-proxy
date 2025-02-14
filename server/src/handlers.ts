@@ -94,6 +94,7 @@ export class Handlers {
                 "lat, long, d, or timestamp are missing or not numbers",
             );
         }
+        console.log(`stops nearby: ${p.latitude} ${p.longitude} ${distance}`);
         const stops = this.#locator.findStops(p, distance);
         const multistop = this.stopsWithDistanceToRequests(stops);
         const result: request.NearbyStopsResponse = {
