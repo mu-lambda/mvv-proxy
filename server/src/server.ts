@@ -5,6 +5,7 @@ import * as yaml from "yaml";
 import { info, request } from "shared";
 
 import * as queryDepartures from "./queryDepartures";
+import { ProxyFetcher } from "./proxyFetcher";
 import { loadStops } from "./data";
 import { Handlers } from "./handlers";
 
@@ -43,7 +44,8 @@ export async function server(onReady: () => void) {
 
     console.log(`Using css ${cssFile}`);
     const cssContent = await fs.readFile(cssFile, { encoding: "utf-8" });
-    const q = new queryDepartures.Q(stops);
+    const fetcher = new ProxyFetcher();
+    const q = new queryDepartures.Q(stops, fetcher);
     const request = await loadAndValidateRequest(requestFile, q);
 
     // Routing to handlers.

@@ -1,5 +1,5 @@
 import * as express from "express";
-import { info, stringCache, request } from "shared";
+import { info, stringCache, request, fetcher } from "shared";
 
 import * as lines from "./lines";
 import * as queryDepartures from "./queryDepartures";
@@ -28,8 +28,8 @@ export class Handlers {
     }
 
     private handleError(e: any, res: express.Response) {
-        if (e instanceof queryDepartures.MVVRequestFailure) {
-            const m = (e as queryDepartures.MVVRequestFailure).message;
+        if (e instanceof fetcher.MVVRequestFailure) {
+            const m = (e as fetcher.MVVRequestFailure).message;
             res.send(`MVV API Request failed: ${m}`);
         } else {
             console.log(`${(e as Error).stack}`);

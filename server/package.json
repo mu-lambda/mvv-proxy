@@ -6,7 +6,6 @@
     "build": "tsc",
     "dev": "node --watch --watch-path=. --watch-path=./src --watch-path=./data -r ts-node/register src/main.ts",
     "prod": "node -r ts-node/register src/main.ts",
-    "dev-tester": "node --watch --watch-path=. --watch-path=./src --watch-path=./data -r ts-node/register src/tester.ts",
     "test": "node -r ts-node/register src/geo.test.ts"
   },
   "keywords": [],

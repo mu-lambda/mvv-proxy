@@ -1,40 +1,23 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import fetch from "node-fetch";
-import { SocksProxyAgent } from "socks-proxy-agent";
-import { info, request } from "shared";
+import { info, request, fetcher } from "shared";
 
 type Line = info.Line;
 type Stop = info.Stop;
 type Departure = info.Departure;
 import { lines } from "./lines";
 
-function sleep(msec: number) {
-    return new Promise((r) => setTimeout(r, msec));
-}
-
-const timeout = 3000;
-const retries = 4;
-export class MVVRequestFailure extends Error {
-    constructor(e: any) {
-        const m = e instanceof Error ? (e as Error).message : `${e}`;
-        super(m);
-    }
-}
-
-const agent = new SocksProxyAgent(process.env.SOCKS_PROXY || "");
-
 export class Q {
     #a: AxiosInstance;
+    #fetcher: fetcher.IFetcher;
     #stops: Stop[];
     #stopMap: Map<string, Stop>;
-    #reqCount = 0;
 
-    constructor(stops: Stop[]) {
+    constructor(stops: Stop[], fetcher: fetcher.IFetcher) {
         this.#a = axios.create({
             baseURL:
                 "https://www.mvv-muenchen.de/?eID=departuresFinder&action=get_departures",
-            timeout,
         });
+        this.#fetcher = fetcher;
         this.#stops = stops;
         this.#stopMap = new Map<string, Stop>();
         for (const s of this.#stops) {
@@ -93,25 +76,8 @@ export class Q {
         });
     }
 
-    private async request(c: axios.AxiosRequestConfig): Promise<any> {
-        let error: any;
-        const reqId = this.#reqCount++;
-        const url = this.#a.getUri(c);
-        console.log(`${reqId}: ${url}`);
-        for (let t = 0; t < retries; t++) {
-            try {
-                const x = await fetch(url, { agent, timeout });
-                console.log(`${reqId}: success`);
-                return await x.json();
-            } catch (e) {
-                const m = e instanceof Error ? e.message : `${e}`;
-                console.log(`${reqId}: try ${t}, failure: ${m}`);
-                error = e;
-            }
-            await sleep(Math.random() * 100);
-        }
-        console.log(`${reqId}: failure, giving up`);
-        throw new MVVRequestFailure(error);
+    private async fetchJson(url: string): Promise<any> {
+        return (await this.#fetcher.fetch(url)).json();
     }
 
     public async getDepartures(
@@ -153,7 +119,9 @@ export class Q {
                 params: new URLSearchParams(p),
             };
         });
-        const resp = await Promise.all(configs.map((c) => this.request(c)));
+        const resp = await Promise.all(
+            configs.map((c) => this.fetchJson(this.#a.getUri(c))),
+        );
         const jsonArrays = resp.map((r) => r.departures as Array<any>);
         let jsonArray = jsonArrays.flat();
 
