@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { createRoot } from "react-dom/client";
 import { stringCache,  request, info, queryDepartures, fetcher  } from "shared";
 
-import { GeoRenderer } from "./render2";
+import { GeoRenderer } from "./render";
 
 function getPosition(options?: PositionOptions): Promise<{coords: info.LatLong}> {
     return new Promise((resolve, reject) => 

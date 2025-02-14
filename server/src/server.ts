@@ -52,7 +52,6 @@ export async function server(onReady: () => void) {
     app.get("/api/v1/lines", handlers.lines);
     app.get("/api/v1/stops", handlers.stops);
 
-    app.get("/nearby", handlers.nearby);
     app.get("/svg/*", handlers.svg);
 
     app.use("/", express.static("../www/"));

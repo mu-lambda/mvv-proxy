@@ -1,9 +1,8 @@
 import * as express from "express";
 import * as path from "path";
-import { info, stringCache, request, fetcher, queryDepartures } from "shared";
+import { info, request, fetcher, queryDepartures } from "shared";
 
 import * as lines from "./lines";
-import { GeoRenderer } from "./render";
 import * as geo from "./geo";
 
 type Stop = info.Stop;
@@ -14,7 +13,6 @@ export class Handlers {
     #stops: Stop[];
     #defaultRequest: request.MultiStop | undefined;
     #locator: geo.Locator;
-    readonly #stringCache: stringCache.StringCache;
     readonly #fetcher: fetcher.IFetcher;
     readonly #svgCache = new Map<string, string>();
 
@@ -28,17 +26,6 @@ export class Handlers {
         this.#defaultRequest = defaultRequest;
         this.#stops = q.stops();
         this.#locator = new geo.Locator(this.#stops);
-        this.#stringCache = new stringCache.StringCache();
-    }
-
-    private handleError(e: any, res: express.Response) {
-        if (e instanceof fetcher.MVVRequestFailure) {
-            const m = (e as fetcher.MVVRequestFailure).message;
-            res.send(`MVV API Request failed: ${m}`);
-        } else {
-            console.log(`${(e as Error).stack}`);
-            res.send(e as Error).toString();
-        }
     }
 
     timetableApi = async (req: express.Request, res: express.Response) => {
@@ -102,54 +89,6 @@ export class Handlers {
             request: multistop,
         };
         res.send(result);
-    };
-
-    nearby = async (
-        req: express.Request,
-        res: express.Response,
-        next: express.NextFunction,
-    ) => {
-        const p: LatLong = {
-            latitude: req.query.lat ? +req.query.lat : NaN,
-            longitude: req.query.long ? +req.query.long : NaN,
-        };
-        const distance: number = req.query.d ? +req.query.d : 500;
-        const t = req.query.timestamp ? +req.query.timestamp : NaN;
-        if (
-            isNaN(p.latitude) ||
-            isNaN(p.longitude) ||
-            isNaN(distance) ||
-            isNaN(t)
-        ) {
-            next(
-                new Error(
-                    "lat, long, d, or timestamp are missing or not numbers",
-                ),
-            );
-            return;
-        }
-        try {
-            const stops = this.#locator.findStops(p, distance);
-            const multistop = this.stopsWithDistanceToRequests(stops);
-
-            const now = new Date(t * 1000);
-            const d = await this.#q.getDeparturesForMultipleStops(
-                multistop,
-                now,
-            );
-
-            res.send(
-                new GeoRenderer(
-                    this.#stringCache,
-                    now,
-                    p,
-                    multistop,
-                    stops,
-                ).render(d),
-            );
-        } catch (e) {
-            this.handleError(e, res);
-        }
     };
 
     private stopsWithDistanceToRequests(
