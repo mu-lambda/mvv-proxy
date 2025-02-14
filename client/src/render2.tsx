@@ -53,7 +53,7 @@ export class Renderer {
             if (!s.endsWith(".svg")) {
                 return <span>{textOnError}</span>;
             }
-            const src = `https://www.mvv-muenchen.de/fileadmin/lines/${s}`;
+            const src = `svg/${s}`;
             return <img src={src} className="line-icon" onError={svgIconOnError(textOnError)} alt={d.line.name}></img>;
         } else {
             return <span>{textOnError}</span>;
@@ -74,9 +74,11 @@ export class Renderer {
         const className = `time ${timeClass} ${lateClass}`;
         return <tr className="departure-row">
                 <td className="line-icon-column">{this.renderSymbolTag(d)}</td>
-                <td className="line-name">{this.stringCache.destinationRender(d.line.destination)}</td>
+                <td className="line-name" dangerouslySetInnerHTML={
+                    {__html:this.stringCache.destinationRender(d.line.destination)}
+                }></td>
                 <td className="stop-name">{this.renderStop(d)}</td>
-                <td className="departure-time"><div className={className}>${time}</div></td>
+                <td className="departure-time"><div className={className}>{time}</div></td>
             </tr>;
     }
 

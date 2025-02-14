@@ -1,54 +1,74 @@
 import React, { ReactElement } from "react";
 import { createRoot } from "react-dom/client";
-import { stringCache, request } from "shared";
+import {  stringCache,  request } from "shared";
 
 import { Renderer } from "./render2";
 
 console.log("Here!");
 
-interface IProps {}
+type Props = {
+    update: number | undefined;
+}
 
 type State = 
     { status : "loading" } |
-    { status : "ready",
-      timetable : request.TimetableResponse };
+    { status : "ready", timetable : request.TimetableResponse };
 
-class Table extends React.Component<IProps, State> {
+function sleep(msec: number): Promise<void> {
+    return new Promise((r) => setTimeout(r, msec));
+}
+
+class DepsTable extends React.Component<Props, State> {
     #stringCache = new stringCache.StringCache();
-    constructor(props: IProps) {
+    #update: number | undefined;
+    #stopUpdating = false;
+
+    constructor(props: Props) {
         super(props);
-        this.setState({status: "loading"});
+        this.state = {status: "loading"};
+        this.#update = props.update;
     }
 
 
    override componentDidMount?() {
-        this.setState({status: "loading"});
-        this.update();
+        this.updateLoop();
+   }
+
+   override componentWillUnmount() {
+       this.#stopUpdating = true;
    }
 
    override render(): ReactElement {
        if (this.state && this.state.status === "ready") {
            const r = new Renderer(
-               this.#stringCache, this.state.timetable.date, 
+               this.#stringCache, new Date(this.state.timetable.date), 
                this.state.timetable.request);
-           return <div>
-            {r.render(this.state.timetable.departures)}
-           </div>
+           const table = r.renderTable(this.state.timetable.departures);
+           return <div className="box">{table}</div>
        } else {
-           
-        return <div className="box">
+        return <div className="loading-box">
             <div className="loading">Loading...<span className="loader" /></div>
         </div>
-       }
+       } 
    }
 
-   async update() {
-       const now = Math.floor(new Date().getTime() / 1000);
-       const r = await fetch(`/api/v1/timetable?timestamp=${now}`);
-       this.setState({ status: "ready", timetable: await r.json() }); 
+   async updateLoop() {
+       while(!this.#stopUpdating) {
+           console.log("Updating");
+           const now = Math.floor(new Date().getTime() / 1000);
+           const r = await fetch(`/api/v1/timetable?timestamp=${now}`);
+           this.setState({ status: "ready", timetable: await r.json() }); 
+           if (!this.#update) return;
+           await sleep(this.#update);
+       }
    }
 }
 
-const root = createRoot(document.getElementById("root")!);
-root.render(<Table></Table>);
+const p = new URLSearchParams(window.location.search).get("u");
+let u = p !== null ? +p : undefined;
+if (u && isNaN(u)) {
+    throw new Error(`Bad u: ${u}`);
+}
+const root = createRoot(document.body);
+root.render(<DepsTable update={u}></DepsTable>);
 

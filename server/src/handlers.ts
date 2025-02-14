@@ -89,7 +89,7 @@ export class Handlers {
             );
 
             let result: request.TimetableResponse = {
-                date: timestamp,
+                date: timestamp.getTime(),
                 request: this.#defaultRequest,
                 departures: d,
             };

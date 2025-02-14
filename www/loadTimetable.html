@@ -17,10 +17,6 @@
             "
         ></iframe>
         <script>
-            function sleep(msec) {
-                return new Promise((r) => setTimeout(r, msec));
-            }
-
             window.onload = async () => {
                 const p = new URLSearchParams(window.location.search);
                 let u = p.get("u") ? +p.get("u") : NaN;

@@ -15,7 +15,7 @@ export type MultiStop = {
 };
 
 export type TimetableResponse = {
-    date: Date;
+    date: number;
     request: MultiStop;
     departures: info.Departure[];
 };
