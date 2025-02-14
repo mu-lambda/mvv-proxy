@@ -4,7 +4,7 @@ import { info, stringCache, request, fetcher } from "shared";
 
 import * as lines from "./lines";
 import * as queryDepartures from "./queryDepartures";
-import { Renderer, GeoRenderer } from "./render";
+import { GeoRenderer } from "./render";
 import * as geo from "./geo";
 
 type Stop = info.Stop;
@@ -41,35 +41,6 @@ export class Handlers {
             res.send(e as Error).toString();
         }
     }
-
-    timetable = async (req: express.Request, res: express.Response) => {
-        if (!this.#defaultRequest) {
-            res.sendStatus(404);
-            return;
-        }
-        const t = req.query.timestamp ? +req.query.timestamp : NaN;
-        if (isNaN(t)) {
-            res.sendStatus(404);
-            return;
-        }
-        const timestamp = new Date(t * 1000);
-        try {
-            const d = await this.#q.getDeparturesForMultipleStops(
-                this.#defaultRequest,
-                timestamp,
-            );
-
-            res.send(
-                new Renderer(
-                    this.#stringCache,
-                    timestamp,
-                    this.#defaultRequest,
-                ).render(d),
-            );
-        } catch (e) {
-            this.handleError(e, res);
-        }
-    };
 
     timetableApi = async (req: express.Request, res: express.Response) => {
         if (!this.#defaultRequest) {

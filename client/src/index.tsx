@@ -56,7 +56,7 @@ class DepsTable extends React.Component<Props, State> {
            }
            case "error": {
                return <div className="loading-box">
-                   <div className="loading">Error: {this.state.message}</div>
+                   <div className="loading">{this.state.message}</div>
                </div>
            }
        }
@@ -68,6 +68,9 @@ class DepsTable extends React.Component<Props, State> {
            const now = Math.floor(new Date().getTime() / 1000);
            try {
                const r = await fetch(`/api/v1/timetable?timestamp=${now}`);
+               if (!r.ok) {
+                   throw new Error(`${r.status}: ${r.statusText}`);
+               }
                this.setState({ status: "ready", timetable: await r.json() }); 
            } catch (e) {
                this.setState({ status : "error", message : `${e}`});

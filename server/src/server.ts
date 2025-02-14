@@ -50,10 +50,10 @@ export async function server(onReady: () => void) {
 
     // Routing to handlers.
     const handlers = new Handlers(q, fetcher, request);
-    app.get("/timetable", handlers.timetable);
     app.get("/api/v1/timetable", handlers.timetableApi);
-    app.get("/lines", handlers.lines);
-    app.get("/stops", handlers.stops);
+    app.get("/api/v1/lines", handlers.lines);
+    app.get("/api/v1/stops", handlers.stops);
+
     app.get("/nearby", handlers.nearby);
     app.get("/svg/*", handlers.svg);
 
