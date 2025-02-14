@@ -10,7 +10,12 @@ async function main() {
     try {
         await server(() => notifyReady());
     } catch (e) {
-        console.log(`Error ${e}`);
+        if (e instanceof Error) {
+            const error = e as Error;
+            console.log(`Error ${error.message} @ ${error.stack}`);
+        } else {
+            console.log(`Error ${e}`);
+        }
         process.exitCode = 1;
     }
 }

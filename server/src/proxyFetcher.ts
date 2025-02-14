@@ -9,7 +9,9 @@ function sleep(msec: number) {
     return new Promise((r) => setTimeout(r, msec));
 }
 export class ProxyFetcher implements fetcher.IFetcher {
-    #agent = new SocksProxyAgent(process.env.SOCKS_PROXY || "");
+    #agent = process.env.SOCKS_PROXY
+        ? new SocksProxyAgent(process.env.SOCKS_PROXY)
+        : undefined;
     #reqCount = 0;
 
     async fetch(url: string): Promise<fetcher.IFetchResult> {
