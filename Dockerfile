@@ -5,7 +5,6 @@ ENV TZ="Europe/Berlin"
 
 COPY ./server/out /server/out
 COPY ./server/data/stops.csv /server/data/stops.csv
-COPY ./server/data/index.css /server/data/index.css
 COPY ./server/package.json /server/package.json
 COPY ./server/package-lock.json /server/package-lock.json
 

@@ -56,7 +56,6 @@ export async function server(onReady: () => void) {
 
     app.use("/", express.static("../www/"));
     app.use("/fonts", express.static("../fonts"));
-    app.use("/data/index.css", express.static("data/index.css"));
 
     app.listen(port, () => {
         console.log("The application is listening on port " + port + "!");
