@@ -21,6 +21,11 @@ export class ProxyFetcher implements fetcher.IFetcher {
         for (let t = 0; t < retries; t++) {
             try {
                 const x = await fetch(url, { agent: this.#agent, timeout });
+                if (!x.ok) {
+                    throw new Error(
+                        `MVV Fetch failed: ${x.status} ${x.statusText}`,
+                    );
+                }
                 console.log(`${reqId}: success`);
                 return x;
             } catch (e) {
@@ -28,7 +33,7 @@ export class ProxyFetcher implements fetcher.IFetcher {
                 console.log(`${reqId}: try ${t}, failure: ${m}`);
                 error = e;
             }
-            await sleep(Math.random() * 100);
+            await sleep(Math.random() * 1000);
         }
         console.log(`${reqId}: failure, giving up`);
         throw new fetcher.MVVRequestFailure(error);

@@ -52,6 +52,7 @@ export class Handlers {
             };
             res.send(result);
         } catch (e) {
+            console.log(`${(e as Error).stack}`);
             res.sendStatus(500);
         }
     };
