@@ -1,27 +1,25 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { info, request, fetcher } from "shared";
+import * as info from "./info";
+import * as request from "./request";
+import * as fetcher from "./fetcher";
 
 type Line = info.Line;
 type Stop = info.Stop;
 type Departure = info.Departure;
-import { lines } from "./lines";
 
 export class Q {
-    #a: AxiosInstance;
     #fetcher: fetcher.IFetcher;
     #stops: Stop[];
-    #stopMap: Map<string, Stop>;
+    #stopMap = new Map<string, Stop>();
+    #linesMap = new Map<string, Line>();
 
-    constructor(stops: Stop[], fetcher: fetcher.IFetcher) {
-        this.#a = axios.create({
-            baseURL:
-                "https://www.mvv-muenchen.de/?eID=departuresFinder&action=get_departures",
-        });
+    constructor(lines: Line[], stops: Stop[], fetcher: fetcher.IFetcher) {
         this.#fetcher = fetcher;
         this.#stops = stops;
-        this.#stopMap = new Map<string, Stop>();
         for (const s of this.#stops) {
             this.#stopMap.set(s.gid, s);
+        }
+        for (const l of lines) {
+            this.#linesMap.set(l.id, l);
         }
     }
 
@@ -32,7 +30,7 @@ export class Q {
             errors.push(`Unknown stop: ${s.stopGid}`);
         }
         for (const l of s.lines) {
-            if (!Q.#linesMap.has(l)) {
+            if (!this.#linesMap.has(l)) {
                 errors.push(`Line ${l} is not known for stop ${s.stopGid}`);
             }
         }
@@ -49,7 +47,7 @@ export class Q {
     private buildLinesParam(s: request.SingleStop): string {
         let linesParam = "";
         for (const l of s.lines) {
-            const line = Q.#linesMap.get(l);
+            const line = this.#linesMap.get(l);
             if (line === undefined) {
                 throw new Error("Bad line identifier " + l);
             }
@@ -78,6 +76,15 @@ export class Q {
 
     private async fetchJson(url: string): Promise<any> {
         return (await this.#fetcher.fetch(url)).json();
+    }
+
+    private getUrl(params: URLSearchParams): string {
+        let result =
+            "https://www.mvv-muenchen.de/?eID=departuresFinder&action=get_departures";
+        for (const [k, v] of params.entries()) {
+            result += `&${k}=${v}`;
+        }
+        return result;
     }
 
     public async getDepartures(
@@ -114,21 +121,21 @@ export class Q {
             });
         }
 
-        const configs: AxiosRequestConfig[] = params.map((p) => {
-            return {
-                params: new URLSearchParams(p),
-            };
-        });
         const resp = await Promise.all(
-            configs.map((c) => this.fetchJson(this.#a.getUri(c))),
+            params.map((p) =>
+                this.fetchJson(this.getUrl(new URLSearchParams(p))),
+            ),
         );
         const jsonArrays = resp.map((r) => r.departures as Array<any>);
-        let jsonArray = jsonArrays.flat();
+        let jsonArray = [];
+        for (const as of jsonArrays) {
+            jsonArray.push(...as);
+        }
 
         if (jsonArray === null) {
             throw new Error("Result is not an array");
         }
-        if (configs.length > 1) {
+        if (params.length > 1) {
             jsonArray = this.dedupe(jsonArray);
         }
         const result: Departure[] = [];
@@ -176,8 +183,11 @@ export class Q {
         } else {
             filter = (d) => info.dateForDeparture(d) >= timestamp;
         }
-        const mergedDepartures: Departure[] = allDepartures
-            .flat()
+        let mergedDepartures: Departure[] = [];
+        for (const ad of allDepartures) {
+            mergedDepartures.push(...ad);
+        }
+        mergedDepartures = mergedDepartures
             .filter(filter)
             .sort((departure1, departure2) => {
                 const d1 = info.dateForDeparture(departure1);
@@ -189,13 +199,5 @@ export class Q {
                 else return 0;
             });
         return mergedDepartures;
-    }
-
-    static #linesMap = new Map<string, Line>();
-
-    static {
-        for (const l of lines) {
-            this.#linesMap.set(l.id, l);
-        }
     }
 }

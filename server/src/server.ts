@@ -2,11 +2,11 @@ import * as fs from "node:fs/promises";
 import express from "express";
 import * as yaml from "yaml";
 
-import { info, request } from "shared";
+import { info, request, queryDepartures } from "shared";
 
-import * as queryDepartures from "./queryDepartures";
 import { ProxyFetcher } from "./proxyFetcher";
 import { loadStops } from "./data";
+import { lines } from "./lines";
 import { Handlers } from "./handlers";
 
 const app = express();
@@ -42,7 +42,7 @@ export async function server(onReady: () => void) {
     }
 
     const fetcher = new ProxyFetcher();
-    const q = new queryDepartures.Q(stops, fetcher);
+    const q = new queryDepartures.Q(lines, stops, fetcher);
     const request = await loadAndValidateRequest(requestFile, q);
 
     // Routing to handlers.
