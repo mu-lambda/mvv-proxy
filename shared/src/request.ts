@@ -19,3 +19,8 @@ export type TimetableResponse = {
     request: MultiStop;
     departures: info.Departure[];
 };
+
+export type NearbyStopsResponse = {
+    stops: info.StopWithDistance[];
+    request: MultiStop;
+};

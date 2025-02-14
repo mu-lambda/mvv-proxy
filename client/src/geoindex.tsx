@@ -1,0 +1,105 @@
+import React, { ReactElement } from "react";
+import { createRoot } from "react-dom/client";
+import { stringCache,  request, info, queryDepartures, fetcher  } from "shared";
+
+import { GeoRenderer } from "./render2";
+
+
+type State = 
+    { status : "loading" } |
+    { status : "ready", 
+        date: Date, 
+        location: info.LatLong, 
+        nearbyStops: request.NearbyStopsResponse, 
+        departures: info.Departure[] 
+    } |
+    { status : "error", message : string }
+;
+
+function getPosition(options?: PositionOptions): Promise<{coords: info.LatLong}> {
+    return new Promise((resolve, reject) => 
+        navigator.geolocation.getCurrentPosition(resolve, reject, options)
+    );
+}
+
+class WebFetcher implements fetcher.IFetcher {
+    fetch(url: string) : Promise<fetcher.IFetchResult> {
+        return fetch(url);
+    }
+} 
+
+class GeoDepsTable extends React.Component<{}, State> {
+    #stringCache = new stringCache.StringCache();
+
+    constructor(props: {}) {
+        super(props);
+        this.state = {status: "loading"};
+    }
+
+
+   override componentDidMount?() {
+        this.update();
+   }
+
+   override componentWillUnmount() {
+   }
+
+   override render(): ReactElement {
+       switch(this.state.status) {
+           case "ready": {
+               const r = new GeoRenderer(
+                   this.#stringCache, new Date(this.state.date),
+                   this.state.location,
+                   this.state.nearbyStops.request,
+                   this.state.nearbyStops.stops,
+               );
+               const table = r.renderTable(this.state.departures);
+               return <div className="box">
+               {r.renderHeader(this.state.date)}
+               {table}
+               </div>
+           }
+           case "loading": {
+               return <div className="loading-box">
+                   <div className="loading">Loading...<span className="loader" /></div>
+               </div>
+           }
+           case "error": {
+               return <div className="loading-box">
+                   <div className="loading">{this.state.message}</div>
+               </div>
+           }
+       }
+   }
+
+   async update() {
+      let c : { coords: info.LatLong };
+      try {
+        c = await getPosition();
+      } catch(e) {
+          this.setState({status: "error", message: `Geolocation failed: ${e}`});
+          return;
+      }
+      const stopsR = await fetch('/api/v1/stops');
+      if (!stopsR.ok) {
+           this.setState({status: "error", message: `Fetching stops nearby failed: ${stopsR.statusText}`});
+           return;
+      }
+      const stops: info.Stop[] = await stopsR.json();
+      const r = await fetch(`/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}`);
+      if (!r.ok) {
+           this.setState({status: "error", message: `Fetching stops nearby failed: ${r.statusText}`});
+           return;
+      }
+      const resp : request.NearbyStopsResponse = await r.json();
+      console.log(JSON.stringify(resp));
+      const q = new queryDepartures.Q([], stops, new WebFetcher());
+      const now = new Date();
+      const departures = await q.getDeparturesForMultipleStops(resp.request, now);
+      this.setState({status: "ready", date: now, location: c.coords, nearbyStops: resp, departures });
+   }   
+}
+
+
+const root = createRoot(document.body);
+root.render(<GeoDepsTable></GeoDepsTable>);

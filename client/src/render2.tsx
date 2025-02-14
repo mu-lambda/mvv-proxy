@@ -77,7 +77,8 @@ export class Renderer {
                 <td className="line-name" dangerouslySetInnerHTML={
                     {__html:this.stringCache.destinationRender(d.line.destination)}
                 }></td>
-                <td className="stop-name">{this.renderStop(d)}</td>
+                <td className="stop-name" dangerouslySetInnerHTML={
+                {__html:this.renderStop(d)}}></td>
                 <td className="departure-time"><div className={className}>{time}</div></td>
             </tr>;
     }
@@ -96,24 +97,6 @@ export class Renderer {
         {tableRows}
         </tbody>
         </table>;
-    }
-
-    renderHeader(_: Date): string {
-        return "";
-    }
-
-    public render(departures: Iterable<Departure>): string {
-        return `\
-        <!DOCTYPE html>
-        <html>
-        <head>
-        <link rel="stylesheet" href="index.css"\>
-        </head>
-        <body>
-        ${this.renderHeader(this.#date)}
-        ${this.renderTable(departures)}
-        </body>
-        </html>`;
     }
 }
 
@@ -136,25 +119,24 @@ export class GeoRenderer extends Renderer {
         }
     }
 
-    override renderHeader(date: Date): string {
+    renderHeader(date: Date): ReactElement {
         const h = date.getHours();
         const m =
             date.getMinutes() < 10
                 ? "0" + date.getMinutes()
                 : date.getMinutes().toString();
 
-        return `\
-            <div className="departures-header">
+        return <div className="departures-header">
                 <div>
-                    MVV Departures around <a href="${this.stringCache.locationUrl(this.#location)}" target="_blank">you</a>
-                    at ${h}:${m}
+                    MVV Departures around <a href={this.stringCache.locationUrl(this.#location)} target="_blank">you</a>
+                    at {h}:{m}
                 </div>
                 <span className="disclaimer">Not an official service of MVV
                     <a href="https://www.paypal.com/donate?hosted_button_id=SVH3NYCAR3UAN" target="_blank">
                         <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"/>
                     </a>
                 </span>
-            </div>`;
+            </div>;
     }
 
     override renderStop(d: Departure) {
@@ -173,8 +155,8 @@ export class GeoRenderer extends Renderer {
         }
     }
 
-    public override render(ds: Iterable<Departure>): string {
-        return super.render(this.filterDeparturesWithClosestStops(ds));
+    public override renderTable(ds: Iterable<Departure>): ReactElement  {
+        return super.renderTable(this.filterDeparturesWithClosestStops(ds));
     }
 
     public *filterDeparturesWithClosestStops(

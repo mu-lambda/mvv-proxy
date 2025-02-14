@@ -1,10 +1,8 @@
 import React, { ReactElement } from "react";
 import { createRoot } from "react-dom/client";
-import {  stringCache,  request } from "shared";
+import { stringCache,  request } from "shared";
 
 import { Renderer } from "./render2";
-
-console.log("Here!");
 
 type Props = {
     update: number | undefined;

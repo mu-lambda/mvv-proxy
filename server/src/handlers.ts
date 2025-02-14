@@ -77,10 +77,30 @@ export class Handlers {
         const town: string | undefined = req.query.town?.toString();
         if (town !== undefined) {
             const result = this.#stops.filter((s) => s.town === town);
-            res.send(JSON.stringify(result));
+            res.send(result);
         } else {
-            res.send(JSON.stringify(this.#stops));
+            res.send(this.#stops);
         }
+    };
+
+    stopsNearby = (req: express.Request, res: express.Response) => {
+        const p: LatLong = {
+            latitude: req.query.lat ? +req.query.lat : NaN,
+            longitude: req.query.long ? +req.query.long : NaN,
+        };
+        const distance: number = req.query.d ? +req.query.d : 500;
+        if (isNaN(p.latitude) || isNaN(p.longitude) || isNaN(distance)) {
+            throw new Error(
+                "lat, long, d, or timestamp are missing or not numbers",
+            );
+        }
+        const stops = this.#locator.findStops(p, distance);
+        const multistop = this.stopsWithDistanceToRequests(stops);
+        const result: request.NearbyStopsResponse = {
+            stops,
+            request: multistop,
+        };
+        res.send(result);
     };
 
     nearby = async (
