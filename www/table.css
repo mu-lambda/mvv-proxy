@@ -22,6 +22,8 @@
 table.departure-table {
     width: 100%;
     border-collapse: collapse;
+    font-size: 3.2vw;
+    font-family: "Public Sans", sans-serif;
 }
 
 * tr {
@@ -35,16 +37,6 @@ tr.departure-row {
 
 * tr:nth-child(odd) {
     background-color: cornsilk;
-}
-
-* {
-    font-size: 3.2vw;
-    font-family: "Public Sans", sans-serif;
-}
-
-.disclaimer {
-    font-size: 2vw;
-    color: black;
 }
 
 .time-normal {
