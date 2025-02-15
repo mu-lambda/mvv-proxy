@@ -26,6 +26,58 @@ body {
 }
 
 .table-container {
-    overflow: scroll;
+    overflow-y: auto;
     flex: 1 0;
+}
+
+.floating-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    width: 10vw;
+    height: 10vw;
+    bottom: 2vh;
+    right: 2vw;
+
+    font-size: 8vw;
+    border-width: 3px;
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+    outline: none;
+
+    opacity: 0.7;
+}
+
+.loading img {
+    width: 1em;
+    background-color: red;
+
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: black;
+    border-style: solid;
+}
+
+.floating-button.start {
+    opacity: 1;
+    background-color: red;
+}
+
+.floating-button:hover {
+    opacity: 1;
+}
+
+.floating-button.start:hover {
+    background-color: orangered;
+}
+.floating-button:active {
+    opacity: 1;
+    background-color: white;
+}
+
+.floating-button img {
+    width: 6vw;
 }

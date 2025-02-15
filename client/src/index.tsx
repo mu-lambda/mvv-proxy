@@ -19,6 +19,7 @@ class WebFetcher implements fetcher.IFetcher {
 }
 
 type State =
+    | { status: "initial" }
     | { status: "loading" }
     | {
           status: "ready";
@@ -40,11 +41,17 @@ class GeoDepsTable extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
-        this.state = { status: "loading" };
+        if (props.lat && props.long) {
+            this.state = { status: "loading" };
+        } else {
+            this.state = { status: "initial" };
+        }
     }
 
     override componentDidMount?() {
-        this.update();
+        if (this.state.status === "loading") {
+            this.update();
+        }
     }
 
     override componentWillUnmount() {}
@@ -52,6 +59,7 @@ class GeoDepsTable extends React.Component<Props, State> {
     renderHeader(): ReactElement {
         let top: ReactElement;
         switch (this.state.status) {
+            case "initial":
             case "loading":
             case "error":
                 top = <div>MVV Departures</div>;
@@ -69,8 +77,8 @@ class GeoDepsTable extends React.Component<Props, State> {
                         MVV Departures around{" "}
                         <a href={href} target="_blank">
                             you
-                        </a>
-                        &nbsp; at {h}:{m}
+                        </a>{" "}
+                        at {h}:{m}
                     </div>
                 );
             }
@@ -93,19 +101,65 @@ class GeoDepsTable extends React.Component<Props, State> {
         );
     }
 
-    private renderNonReadyState(e: ReactElement): ReactElement {
+    private renderNonReadyState(
+        e: ReactElement,
+        button?: ReactElement,
+    ): ReactElement {
+        const b = button ? button : "";
         return (
             <div className="box">
                 {this.renderHeader()}
                 <div className="spacer" />
                 <div className="loading-box">{e}</div>
                 <div className="spacer" />
+                {b}
             </div>
         );
     }
+    private reloadButton(): ReactElement {
+        return (
+            <button
+                className="floating-button"
+                onClick={() => {
+                    this.update();
+                }}
+            >
+                <img src="/reload-svgrepo-com.svg" />
+            </button>
+        );
+    }
 
+    private startButton(): ReactElement {
+        return (
+            <button
+                className="floating-button start"
+                onClick={() => {
+                    this.update();
+                }}
+            >
+                <img src="/map-pin-alt-svgrepo-com.svg" />
+            </button>
+        );
+    }
     override render(): ReactElement {
         switch (this.state.status) {
+            case "initial":
+                return this.renderNonReadyState(
+                    <div className="loading">
+                        Press <img src="/map-pin-alt-svgrepo-com.svg" /> to see
+                        departures around you.
+                    </div>,
+                    this.startButton(),
+                );
+
+            case "loading":
+                return this.renderNonReadyState(
+                    <div className="loading">
+                        Loading...
+                        <span className="loader" />
+                    </div>,
+                );
+
             case "ready": {
                 const r = new GeoRenderer(
                     this.#stringCache,
@@ -118,25 +172,20 @@ class GeoDepsTable extends React.Component<Props, State> {
                     <div className="box">
                         {this.renderHeader()}
                         <div className="table-container">{table}</div>
+                        {this.reloadButton()}
                     </div>
                 );
             }
-            case "loading":
-                return this.renderNonReadyState(
-                    <div className="loading">
-                        Loading...
-                        <span className="loader" />
-                    </div>,
-                );
-
             case "error":
                 return this.renderNonReadyState(
                     <div className="loading">{this.state.message}</div>,
+                    this.reloadButton(),
                 );
         }
     }
 
     async update() {
+        this.setState({ status: "loading" });
         let c: { coords: info.LatLong };
         if (this.props.lat && this.props.long) {
             c = {
