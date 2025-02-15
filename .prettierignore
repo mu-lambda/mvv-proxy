@@ -1,1 +1,4 @@
-!src/**/*.ts
+client/out/**
+server/out/**
+shared/out/**
+www/out/**
