@@ -2,13 +2,14 @@ import React, { ReactElement } from "react";
 
 import { info, stringCache, request } from "shared";
 type Departure = info.Departure;
-type LatLong = info.LatLong;
 type StringCache = stringCache.StringCache;
 
 const closeDepartureGap = 4; // min
 
-function svgIconOnError(textOnError: string) : React.ReactEventHandler {
-    return e => { e.currentTarget.replaceWith(textOnError) }
+function svgIconOnError(textOnError: string): React.ReactEventHandler {
+    return (e) => {
+        e.currentTarget.replaceWith(textOnError);
+    };
 }
 
 export class Renderer {
@@ -41,8 +42,8 @@ export class Renderer {
         return diff < timeToStop + closeDepartureGap;
     }
 
-    protected svgUrl(filename: string) : string {
-        return `/svg/${filename}`;        
+    protected svgUrl(filename: string): string {
+        return `/svg/${filename}`;
     }
 
     renderSymbolTag(d: Departure): ReactElement {
@@ -57,8 +58,15 @@ export class Renderer {
             if (!s.endsWith(".svg")) {
                 return <span>{textOnError}</span>;
             }
-            const src = this.svgUrl(s) ;
-            return <img src={src} className="line-icon" onError={svgIconOnError(textOnError)} alt={d.line.name}></img>;
+            const src = this.svgUrl(s);
+            return (
+                <img
+                    src={src}
+                    className="line-icon"
+                    onError={svgIconOnError(textOnError)}
+                    alt={d.line.name}
+                ></img>
+            );
         } else {
             return <span>{textOnError}</span>;
         }
@@ -76,15 +84,26 @@ export class Renderer {
             : "time-planned";
         const lateClass = this.isCloseDeparture(d) ? "time-close" : "";
         const className = `time ${timeClass} ${lateClass}`;
-        return <tr className="departure-row">
+        return (
+            <tr className="departure-row">
                 <td className="line-icon-column">{this.renderSymbolTag(d)}</td>
-                <td className="line-name" dangerouslySetInnerHTML={
-                    {__html:this.stringCache.destinationRender(d.line.destination)}
-                }></td>
-                <td className="stop-name" dangerouslySetInnerHTML={
-                {__html:this.renderStop(d)}}></td>
-                <td className="departure-time"><div className={className}>{time}</div></td>
-            </tr>;
+                <td
+                    className="line-name"
+                    dangerouslySetInnerHTML={{
+                        __html: this.stringCache.destinationRender(
+                            d.line.destination,
+                        ),
+                    }}
+                ></td>
+                <td
+                    className="stop-name"
+                    dangerouslySetInnerHTML={{ __html: this.renderStop(d) }}
+                ></td>
+                <td className="departure-time">
+                    <div className={className}>{time}</div>
+                </td>
+            </tr>
+        );
     }
 
     renderStop(d: Departure): string {
@@ -96,51 +115,28 @@ export class Renderer {
         for (const d of departures) {
             tableRows.push(this.renderDeparture(d));
         }
-        return <table className="departure-table">
-        <tbody>
-        {tableRows}
-        </tbody>
-        </table>;
+        return (
+            <table className="departure-table">
+                <tbody>{tableRows}</tbody>
+            </table>
+        );
     }
 }
 
 export class GeoRenderer extends Renderer {
     #distances: Map<string, info.StopWithDistance>;
-    #location: LatLong;
 
     constructor(
         stringCache: StringCache,
         date: Date,
-        location: LatLong,
         request: request.MultiStop,
         distances: info.StopWithDistance[],
     ) {
         super(stringCache, date, request);
         this.#distances = new Map();
-        this.#location = location;
         for (const d of distances) {
             this.#distances.set(d.stop.gid, d);
         }
-    }
-
-    renderHeader(date: Date): ReactElement {
-        const h = date.getHours();
-        const m =
-            date.getMinutes() < 10
-                ? "0" + date.getMinutes()
-                : date.getMinutes().toString();
-
-        return <div className="departures-header">
-                <div>
-                    MVV Departures around <a href={this.stringCache.locationUrl(this.#location)} target="_blank">you</a>&nbsp;
-                    at {h}:{m}
-                </div>
-                <span className="disclaimer">Not an official service of MVV
-                    <a href="https://www.paypal.com/donate?hosted_button_id=SVH3NYCAR3UAN" target="_blank">
-                        <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"/>
-                    </a>
-                </span>
-            </div>;
     }
 
     override renderStop(d: Departure) {
@@ -159,12 +155,12 @@ export class GeoRenderer extends Renderer {
         }
     }
 
-    public override renderTable(ds: Iterable<Departure>): ReactElement  {
+    public override renderTable(ds: Iterable<Departure>): ReactElement {
         return super.renderTable(this.filterDeparturesWithClosestStops(ds));
     }
 
-    protected override svgUrl(filename: string) : string {
-        return `https://www.mvv-muenchen.de/fileadmin/lines/${filename}`
+    protected override svgUrl(filename: string): string {
+        return `https://www.mvv-muenchen.de/fileadmin/lines/${filename}`;
     }
 
     public *filterDeparturesWithClosestStops(

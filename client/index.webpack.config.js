@@ -1,9 +1,9 @@
 module.exports = {
-    entry: "./out/geoindex.js",
+    entry: "./out/index.js",
     mode: "production",
     output: {
         path: `${__dirname}/../www/out`,
-        filename: "geobundle.js",
+        filename: "index-bundle.js",
     },
     resolve: {
         roots: ["./out"],

@@ -1,78 +1,31 @@
-@import url("/fonts/publicsans/publicsans.css");
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 
-* .line-icon {
-    width: 2em;
+    overflow: hidden;
 }
 
-* .line-icon-column {
-    width: 2.2em;
-    padding-left: 1em;
-    padding-top: 0.3em;
-    padding-bottom: 0;
-    margin-right: 0;
-    vertical-align: middle;
-}
-
-* .departure-time {
-    padding-left: 0;
-    padding-right: 0.5em;
-    font-style: bold;
-}
-
-table.departure-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-* tr {
-    vertical-align: middle;
-}
-
-tr.departure-row {
-    border-bottom: solid;
-    border-width: 1px;
-}
-
-* tr:nth-child(odd) {
-    background-color: cornsilk;
-}
-
-* {
-    font-size: 3.2vw;
-    font-family: "Public Sans", sans-serif;
-}
-
-.disclaimer {
-    font-size: 2vw;
-    color: black;
-}
-
-.time-normal {
-    color: green;
-}
-
-.time-late {
-    color: red;
-}
-
-.time-close {
-    animation: blinker 2s ease-out infinite;
-}
-
-.bahn-logo {
-    display: inline;
-    max-width: 0.7em;
-}
-
-@keyframes blinker {
-    50% {
-        opacity: 0;
-    }
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
 }
 
 .departures-header {
+    flex: 0 0;
     font-style: bold;
     padding: 20px;
     background-color: #c0d101;
     color: white;
+}
+
+.donate {
+    float: right;
+}
+
+.table-container {
+    overflow: scroll;
+    flex: 1 0;
 }
