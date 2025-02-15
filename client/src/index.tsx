@@ -34,6 +34,7 @@ type Props = {
     lat: number | undefined;
     long: number | undefined;
     d: number | undefined;
+    canQuery: boolean;
 };
 
 class GeoDepsTable extends React.Component<Props, State> {
@@ -41,7 +42,7 @@ class GeoDepsTable extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
-        if (props.lat && props.long) {
+        if (props.canQuery || (props.lat && props.long)) {
             this.state = { status: "loading" };
         } else {
             this.state = { status: "initial" };
@@ -124,7 +125,7 @@ class GeoDepsTable extends React.Component<Props, State> {
                     this.update();
                 }}
             >
-                <img src="/reload-svgrepo-com.svg" />
+                <img src="/map-pin-alt-svgrepo-com.svg" />
             </button>
         );
     }
@@ -197,10 +198,13 @@ class GeoDepsTable extends React.Component<Props, State> {
         } else {
             try {
                 c = await getPosition();
-            } catch (e) {
+            } catch (e: any) {
                 this.setState({
                     status: "error",
-                    message: `Geolocation failed: ${e}`,
+                    message:
+                        "message" in e
+                            ? (e.message as string)
+                            : "Geolocation failed",
                 });
                 return;
             }
@@ -246,5 +250,25 @@ lat = lat && isNaN(lat) ? undefined : lat;
 long = long && isNaN(long) ? undefined : long;
 d = d && isNaN(d) ? undefined : d;
 
-const root = createRoot(document.body);
-root.render(<GeoDepsTable lat={lat} long={long} d={d}></GeoDepsTable>);
+async function setup() {
+    let canQuery: boolean;
+    try {
+        const state = await navigator.permissions.query({
+            name: "geolocation",
+        });
+        canQuery = state.state === "granted";
+    } catch {
+        canQuery = false;
+    }
+    const root = createRoot(document.body);
+    root.render(
+        <GeoDepsTable
+            lat={lat}
+            long={long}
+            d={d}
+            canQuery={canQuery}
+        ></GeoDepsTable>,
+    );
+}
+
+setup();
