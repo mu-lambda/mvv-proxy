@@ -30,14 +30,24 @@ body {
     flex: 1 0;
 }
 
+.loading img {
+    width: 1em;
+    background-color: red;
+
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: black;
+    border-style: solid;
+}
+
 .floating-button {
     display: flex;
     justify-content: center;
     align-items: center;
 
     position: fixed;
-    width: 10vw;
-    height: 10vw;
+    width: 20vw;
+    height: 20vw;
     bottom: 2vh;
     right: 2vw;
 
@@ -51,14 +61,8 @@ body {
     opacity: 0.7;
 }
 
-.loading img {
-    width: 1em;
-    background-color: red;
-
-    border-width: 1px;
-    border-radius: 3px;
-    border-color: black;
-    border-style: solid;
+.floating-button img {
+    width: 15vw;
 }
 
 .floating-button.start {
@@ -76,8 +80,4 @@ body {
 .floating-button:active {
     opacity: 1;
     background-color: white;
-}
-
-.floating-button img {
-    width: 6vw;
 }
