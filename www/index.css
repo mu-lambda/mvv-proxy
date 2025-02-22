@@ -69,7 +69,8 @@ body {
 }
 
 .floating-button img {
-    width: 90%;
+    width: min(18vw, 9vh);
+    height: min(18vw, 9vh);;
 }
 
 .floating-button.start {
