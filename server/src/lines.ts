@@ -221,4 +221,20 @@ export const lines: info.Line[] = [
         name: "S8",
         destination: "Herrsching",
     },
+
+
+    // S6/8
+    {
+        mvvApiId: "ddb:92M68:P:R:j25",
+        id: "S6/8",
+        name: "S6/8",
+        destination: "Flughafen München",
+    },
+    // S8/6
+    {
+        mvvApiId: "ddb:92M86:P:R:j25",
+        id: "S8/6",
+        name: "S8/6",
+        destination: "Flughafen München",
+    },
 ];
