@@ -74,7 +74,7 @@ class DepsTable extends React.Component<Props, State> {
             try {
                 const r = await fetch(`/api/v1/timetable?timestamp=${now}`);
                 if (!r.ok) {
-                    throw new Error(`${r.status}: ${r.statusText}`);
+                    throw new Error(`${r.status}: ${await r.text()}`);
                 }
                 this.setState({ status: "ready", timetable: await r.json() });
             } catch (e) {

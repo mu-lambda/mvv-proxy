@@ -30,12 +30,13 @@ export class Handlers {
 
     timetableApi = async (req: express.Request, res: express.Response) => {
         if (!this.#defaultRequest) {
-            res.sendStatus(404);
+            res.status(404).send("server not configured for default timetable");
+            console.log("Here");
             return;
         }
         const t = req.query.timestamp ? +req.query.timestamp : NaN;
         if (isNaN(t)) {
-            res.sendStatus(404);
+            res.status(404).send("timestamp should be a number");
             return;
         }
         const timestamp = new Date(t * 1000);
@@ -53,7 +54,7 @@ export class Handlers {
             res.send(result);
         } catch (e) {
             console.log(`${(e as Error).stack}`);
-            res.sendStatus(500);
+            res.status(500).send((e as any)?.message ?? "");
         }
     };
 
