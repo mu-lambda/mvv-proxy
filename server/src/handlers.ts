@@ -31,7 +31,6 @@ export class Handlers {
     timetableApi = async (req: express.Request, res: express.Response) => {
         if (!this.#defaultRequest) {
             res.status(404).send("server not configured for default timetable");
-            console.log("Here");
             return;
         }
         const t = req.query.timestamp ? +req.query.timestamp : NaN;
