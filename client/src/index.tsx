@@ -39,7 +39,7 @@ type Props = {
 
 class GeoDepsTable extends React.Component<Props, State> {
     #stringCache = new stringCache.StringCache();
-
+    d: number;
     constructor(props: Props) {
         super(props);
         if (props.canQuery || (props.lat && props.long)) {
@@ -47,6 +47,7 @@ class GeoDepsTable extends React.Component<Props, State> {
         } else {
             this.state = { status: "initial" };
         }
+        this.d = this.props.d ? this.props.d : 500;
     }
 
     override componentDidMount?() {
@@ -162,6 +163,23 @@ class GeoDepsTable extends React.Component<Props, State> {
                 );
 
             case "ready": {
+                if (this.state.nearbyStops.stops.length == 0) {
+                    return this.renderNonReadyState(
+                        <div className="loading">
+                            No stops within {this.d} m from here
+                        </div>,
+                        this.reloadButton(),
+                    );
+                }
+                if (this.state.departures.length == 0) {
+                    return this.renderNonReadyState(
+                        <div className="loading">
+                            No departures within{" "}
+                            {this.state.nearbyStops.request.limit} minutes
+                        </div>,
+                        this.reloadButton(),
+                    );
+                }
                 const r = new GeoRenderer(
                     this.#stringCache,
                     new Date(this.state.date),
@@ -209,14 +227,13 @@ class GeoDepsTable extends React.Component<Props, State> {
                 return;
             }
         }
-        const d = this.props.d ? this.props.d : 500;
         const r = await fetch(
-            `/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}&d=${d}`,
+            `/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}&d=${this.d}`,
         );
         if (!r.ok) {
             this.setState({
                 status: "error",
-                message: `Fetching stops nearby failed: ${r.statusText}`,
+                message: `Fetching stops nearby failed: ${await r.text()}`,
             });
             return;
         }
@@ -227,17 +244,24 @@ class GeoDepsTable extends React.Component<Props, State> {
             new WebFetcher(),
         );
         const now = new Date();
-        const departures = await q.getDeparturesForMultipleStops(
-            resp.request,
-            now,
-        );
-        this.setState({
-            status: "ready",
-            date: now,
-            location: c.coords,
-            nearbyStops: resp,
-            departures,
-        });
+        try {
+            const departures = await q.getDeparturesForMultipleStops(
+                resp.request,
+                now,
+            );
+            this.setState({
+                status: "ready",
+                date: now,
+                location: c.coords,
+                nearbyStops: resp,
+                departures,
+            });
+        } catch (e: any) {
+            this.setState({
+                status: "error",
+                message: "message" in e ? (e.message as string) : "Try again",
+            });
+        }
     }
 }
 

@@ -39,6 +39,16 @@ class DepsTable extends React.Component<Props, State> {
     override render(): ReactElement {
         switch (this.state.status) {
             case "ready": {
+                if (this.state.timetable.departures.length == 0) {
+                    return (
+                        <div className="loading-box">
+                            <div className="loading">
+                                No departures within{" "}
+                                {this.state.timetable.request.limit} minutes.
+                            </div>
+                        </div>
+                    );
+                }
                 const r = new Renderer(
                     this.#stringCache,
                     new Date(this.state.timetable.date),
