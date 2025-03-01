@@ -1,9 +1,12 @@
 module.exports = {
-    entry: "./out/index.js",
+    entry: { 
+        index: "./out/index.js",
+        timetable: "./out/timetable.js",
+    },
     mode: "production",
     output: {
         path: `${__dirname}/../www/out`,
-        filename: "index-bundle.js",
+        filename: "[name]-bundle.js",
     },
     resolve: {
         roots: ["./out"],
