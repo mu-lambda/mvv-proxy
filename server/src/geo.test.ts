@@ -73,7 +73,7 @@ const tests = [
 
     testAsync("building quadtree", async () => {
         let stops = [];
-        for await (const s of loadStops("data/stops.csv")) {
+        for await (const s of loadStops("data/stops-for-testing.csv")) {
             stops.push(s);
         }
         let qt = buildQuadtree(stops);
@@ -151,7 +151,7 @@ const exhaustiveTest = (
 ) =>
     testAsync(name, async () => {
         let stops = [];
-        for await (const s of loadStops("data/stops.csv")) {
+        for await (const s of loadStops("data/stops-for-testing.csv")) {
             if (!s.location) continue;
             stops.push(s);
         }
