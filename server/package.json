@@ -18,7 +18,7 @@
     "node-fetch": "^2.7.0",
     "shared": "file:../shared",
     "socks-proxy-agent": "^8.0.5",
-    "yaml": "^2.7.0"
+    "yaml": "^2.8.3"
   },
   "devDependencies": {
     "@types/d3-quadtree": "^3.0.6",
