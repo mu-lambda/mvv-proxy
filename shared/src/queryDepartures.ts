@@ -44,14 +44,25 @@ export class Q {
         return result;
     }
 
-    private buildLinesParam(s: request.SingleStop): string {
+    private async buildLinesParam(s: request.SingleStop): Promise<string> {
         let linesParam = "";
-        for (const l of s.lines) {
-            const line = this.#linesMap.get(l);
-            if (line === undefined) {
-                throw new Error("Bad line identifier " + l);
-            }
-            linesParam += "&line=" + encodeURIComponent(line.mvvApiId);
+        let lineIds: string[];
+        if (s.lines.length > 0) {
+            lineIds = s.lines.map((l) => {
+                const line = this.#linesMap.get(l);
+
+                if (line === undefined) {
+                    throw new Error("Bad line identifier " + l);
+                }
+                return line.mvvApiId;
+            });
+        } else {
+            let url = `https://www.mvv-muenchen.de/?eID=departuresFinder&action=available_lines&stop_id=${s.stopGid}`;
+            let result = await this.fetchJson(url);
+            lineIds = result.lines.map((l: any) => l.stateless);
+        }
+        for (const l of lineIds) {
+            linesParam += "&line=" + encodeURIComponent(l);
         }
         linesParam += "";
         return btoa(linesParam);
@@ -100,7 +111,7 @@ export class Q {
             timestamp.getTime() + s.timeToStop * 60000,
         );
 
-        const linesParam = this.buildLinesParam(s);
+        const linesParam = await this.buildLinesParam(s);
         let params = [];
         params.push({
             stop_id: s.stopGid,
