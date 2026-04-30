@@ -112,6 +112,9 @@ export class Q {
         );
 
         const linesParam = await this.buildLinesParam(s);
+        if (linesParam === "") {
+            return [];
+        }
         let params = [];
         params.push({
             stop_id: s.stopGid,
