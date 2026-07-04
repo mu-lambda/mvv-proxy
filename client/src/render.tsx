@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 
 import { info, stringCache, request } from "shared";
 type Departure = info.Departure;
@@ -6,11 +6,33 @@ type StringCache = stringCache.StringCache;
 
 const closeDepartureGap = 4; // min
 
-function svgIconOnError(textOnError: string): React.ReactEventHandler {
-    return (e) => {
-        e.currentTarget.replaceWith(textOnError);
-    };
-}
+const ImageWithFallback = ({
+    src,
+    alt,
+    fallbackText,
+}: {
+    src: string;
+    alt: string;
+    fallbackText: string;
+}) => {
+    // State to track if the image has failed to load
+    const [hasError, setHasError] = useState(false);
+
+    // If there's an error, render the fallback text instead of the img tag
+    if (hasError) {
+        return <span>{fallbackText}</span>;
+    }
+
+    // Otherwise, attempt to render the image
+    return (
+        <img
+            src={src}
+            className="line-icon"
+            alt={alt}
+            onError={() => setHasError(true)}
+        />
+    );
+};
 
 export class Renderer {
     protected stringCache: StringCache;
@@ -45,7 +67,6 @@ export class Renderer {
     protected svgUrl(filename: string): string {
         return `/svg/${filename}`;
     }
-
     renderSymbolTag(d: Departure): ReactElement {
         const textOnError =
             d.line.name.length <= 5
@@ -60,12 +81,12 @@ export class Renderer {
             }
             const src = this.svgUrl(s);
             return (
-                <img
+                <ImageWithFallback
+                    key={src}
                     src={src}
-                    className="line-icon"
-                    onError={svgIconOnError(textOnError)}
                     alt={d.line.name}
-                ></img>
+                    fallbackText={textOnError}
+                ></ImageWithFallback>
             );
         } else {
             return <span>{textOnError}</span>;
