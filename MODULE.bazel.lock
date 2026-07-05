@@ -260,7 +260,7 @@
   "moduleExtensions": {
     "@@aspect_rules_esbuild+//esbuild:extensions.bzl%esbuild": {
       "general": {
-        "bzlTransitiveDigest": "IeJLLoNWPAi+fG6CWJSjh6GoXBpiqRaZhYnrRQoPyxc=",
+        "bzlTransitiveDigest": "9RvxTg8QmORXemz41gi5SRoZk1hlJg2wd3/rq00V0Aw=",
         "usagesDigest": "LSQ+zZp7JNgnBONTxxXnwGr4NTh2qtQYk7qwXXz5qWo=",
         "recordedInputs": [
           "REPO_MAPPING:aspect_rules_esbuild+,aspect_rules_js aspect_rules_js+",
