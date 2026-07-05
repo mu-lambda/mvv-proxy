@@ -1,4 +1,0 @@
-#! /bin/sh
-set -e
-./build.sh
-docker build --tag mulambda/mvv-proxy:v0 .

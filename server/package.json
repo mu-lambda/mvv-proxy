@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "build": "tsc",
     "dev": "node --watch --watch-path=. --watch-path=./src --watch-path=./data -r ts-node/register src/main.ts",
-    "prod": "node -r ts-node/register src/main.ts",
-    "test": "node -r ts-node/register src/geo.test.ts"
+    "prod": "node -r ts-node/register src/main.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +14,7 @@
     "d3-quadtree": "^3.0.1",
     "express": "^4.21.2",
     "node-fetch": "^2.7.0",
-    "shared": "file:../shared",
+    "shared": "workspace:*",
     "socks-proxy-agent": "^8.0.5",
     "yaml": "^2.8.3"
   },

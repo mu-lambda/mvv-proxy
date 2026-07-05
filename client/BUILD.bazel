@@ -1,0 +1,46 @@
+load("@aspect_rules_esbuild//esbuild:defs.bzl", "esbuild")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_config", "ts_project")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+
+npm_link_all_packages(name = "node_modules")
+
+ts_config(
+    name = "tsconfig",
+    src = "tsconfig.json",
+)
+
+ts_project(
+    name = "tsc",
+    srcs = glob(["src/**/*.tsx"]),
+    out_dir = "out",
+    root_dir = "src",
+    tsconfig = ":tsconfig",
+    deps = [
+        ":node_modules/@types/react",
+        ":node_modules/@types/react-dom",
+        ":node_modules/react",
+        ":node_modules/react-dom",
+        ":node_modules/shared",
+    ],
+)
+
+# Entries mirror the two entry points in the former webpack.config.js.
+# render.tsx is not its own entry point; it's pulled in transitively since
+# both index.tsx and timetable.tsx import it.
+esbuild(
+    name = "index_bundle",
+    srcs = [":tsc"],
+    entry_point = "out/index.js",
+    minify = True,
+    output = "index-bundle.js",
+    visibility = ["//www:__pkg__"],
+)
+
+esbuild(
+    name = "timetable_bundle",
+    srcs = [":tsc"],
+    entry_point = "out/timetable.js",
+    minify = True,
+    output = "timetable-bundle.js",
+    visibility = ["//www:__pkg__"],
+)

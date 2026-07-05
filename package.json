@@ -1,0 +1,9 @@
+{
+  "name": "mvv-proxy-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

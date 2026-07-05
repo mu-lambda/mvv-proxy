@@ -4,3 +4,4 @@ node_modules
 *.swp
 Session.vim
 .DS_Store
+bazel-*

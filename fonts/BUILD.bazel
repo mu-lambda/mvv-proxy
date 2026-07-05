@@ -1,0 +1,10 @@
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+
+# js_library (not filegroup) because rules_js requires source files consumed
+# as `data` by a js_binary/js_test in another package to be wrapped in a
+# JsInfo-providing target declared in their own package.
+js_library(
+    name = "fonts",
+    srcs = glob(["publicsans/**"]),
+    visibility = ["//visibility:public"],
+)

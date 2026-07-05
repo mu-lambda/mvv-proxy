@@ -1,0 +1,112 @@
+load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_image_layer", "js_test")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_config", "ts_project")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load", "oci_push")
+
+npm_link_all_packages(name = "node_modules")
+
+ts_config(
+    name = "tsconfig",
+    src = "tsconfig.json",
+)
+
+ts_project(
+    name = "tsc",
+    srcs = glob(["src/**/*.ts"]),
+    out_dir = "out",
+    root_dir = "src",
+    tsconfig = ":tsconfig",
+    deps = [
+        ":node_modules/@types/d3-quadtree",
+        ":node_modules/@types/express",
+        ":node_modules/@types/node",
+        ":node_modules/@types/node-fetch",
+        ":node_modules/d3-quadtree",
+        ":node_modules/express",
+        ":node_modules/node-fetch",
+        ":node_modules/shared",
+        ":node_modules/socks-proxy-agent",
+        ":node_modules/yaml",
+    ],
+)
+
+# chdir = "server" (this package) so that server.ts's cwd-relative paths
+# (express.static("../www/"), express.static("../fonts"), "./data/stops.csv")
+# resolve the same way they do when run outside Bazel from the server/ dir.
+js_binary(
+    name = "server_bin",
+    chdir = package_name(),
+    data = [
+        ":tsc",
+        "//fonts",
+        "//server/data:stops",
+        "//www",
+    ],
+    entry_point = "out/main.js",
+    visibility = ["//visibility:public"],
+)
+
+js_test(
+    name = "geo_test",
+    chdir = package_name(),
+    data = [
+        ":tsc",
+        "//server/data:stops",
+        "//server/data:stops_for_testing",
+    ],
+    entry_point = "out/geo.test.js",
+)
+
+# --- Container image, replacing Dockerfile / docker-build / docker-push ---
+
+platform(
+    name = "linux_amd64",
+    constraint_values = [
+        "@platforms//cpu:x86_64",
+        "@platforms//os:linux",
+    ],
+)
+
+platform(
+    name = "linux_arm64",
+    constraint_values = [
+        "@platforms//cpu:arm64",
+        "@platforms//os:linux",
+    ],
+)
+
+js_image_layer(
+    name = "server_layer",
+    binary = ":server_bin",
+    platform = select({
+        "@platforms//cpu:arm64": ":linux_arm64",
+        "@platforms//cpu:x86_64": ":linux_amd64",
+    }),
+    root = "/app",
+    tags = ["no-remote-exec"],
+)
+
+oci_image(
+    name = "image",
+    # js_binary's launcher is a bash script, so the base needs bash (node's
+    # full image has it; matches the Dockerfile's `FROM node:23.5.0`).
+    base = "@node_base",
+    # `/[js_image_layer root]/[package of the binary target]/[binary name]`
+    cmd = ["/app/server/server_bin"],
+    entrypoint = ["/usr/bin/bash"],
+    tars = [":server_layer"],
+    # `cmd` + `.runfiles/[workspace name]`
+    workdir = "/app/server/server_bin.runfiles/_main",
+)
+
+oci_load(
+    name = "image_load",
+    image = ":image",
+    repo_tags = ["mvv-proxy:v0"],
+)
+
+oci_push(
+    name = "image_push",
+    image = ":image",
+    repository = "docker.io/mulambda/mvv-proxy",
+)

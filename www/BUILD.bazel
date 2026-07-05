@@ -1,0 +1,40 @@
+load("@aspect_bazel_lib//lib:copy_file.bzl", "copy_file")
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+
+# Copied here (rather than referenced directly from //client) so the runfiles
+# path is "www/out/*-bundle.js", matching what index.html/timetable.html
+# hardcode in their <script src="out/...-bundle.js"> tags and what
+# express.static("../www/") in server.ts expects to find.
+copy_file(
+    name = "index_bundle",
+    src = "//client:index-bundle.js",
+    out = "out/index-bundle.js",
+)
+
+copy_file(
+    name = "timetable_bundle",
+    src = "//client:timetable-bundle.js",
+    out = "out/timetable-bundle.js",
+)
+
+# js_library (not filegroup): rules_js requires source files consumed as
+# `data` by a js_binary/js_test in another package to be wrapped in a
+# JsInfo-providing target declared in their own package.
+js_library(
+    name = "static",
+    srcs = glob([
+        "*.html",
+        "*.css",
+        "*.svg",
+    ]),
+)
+
+js_library(
+    name = "www",
+    srcs = [
+        ":index_bundle",
+        ":static",
+        ":timetable_bundle",
+    ],
+    visibility = ["//visibility:public"],
+)
