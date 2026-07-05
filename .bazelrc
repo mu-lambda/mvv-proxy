@@ -1,4 +1,5 @@
 common --enable_bzlmod
+common --lockfile_mode=error
 build --incompatible_strict_action_env
 build --@aspect_rules_ts//ts:default_to_tsc_transpiler
 test --test_output=errors
