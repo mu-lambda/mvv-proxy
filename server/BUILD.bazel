@@ -55,6 +55,7 @@ js_test(
         "//server/data:stops_for_testing",
     ],
     entry_point = "out/geo.test.js",
+    size = "small",
 )
 
 js_test(
@@ -68,6 +69,7 @@ js_test(
     # all servers run Europe/Berlin). Pin it so the test is deterministic.
     env = {"TZ": "Europe/Berlin"},
     entry_point = "out/queryDepartures.test.js",
+    size = "small",
 )
 
 # Tool for capturing real MVV responses into a per-test fixtures file (see
