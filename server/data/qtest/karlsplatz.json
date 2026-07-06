@@ -1,0 +1,1305 @@
+{
+    "available_lines|de:09162:1": {
+        "error": "",
+        "lines": [
+            {
+                "number": "S1",
+                "symbol": "92M01.svg",
+                "direction": "Leuchtenbergring",
+                "stateless": "ddb:92M01: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S1",
+                "symbol": "92M01.svg",
+                "direction": "Freising",
+                "stateless": "ddb:92M01: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S2",
+                "symbol": "92M02.svg",
+                "direction": "Erding",
+                "stateless": "ddb:92M02: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S2",
+                "symbol": "92M02.svg",
+                "direction": "Petershausen",
+                "stateless": "ddb:92M02: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S3",
+                "symbol": "92M03.svg",
+                "direction": "Ostbahnhof",
+                "stateless": "ddb:92M03: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S3",
+                "symbol": "92M03.svg",
+                "direction": "Mammendorf",
+                "stateless": "ddb:92M03: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S4",
+                "symbol": "92M04.svg",
+                "direction": "Haar",
+                "stateless": "ddb:92M04: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S4",
+                "symbol": "92M04.svg",
+                "direction": "Geltendorf",
+                "stateless": "ddb:92M04: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S5",
+                "symbol": "92M05.svg",
+                "direction": "Kreuzstraße",
+                "stateless": "ddb:92M05: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S5",
+                "symbol": "92M05.svg",
+                "direction": "Pasing",
+                "stateless": "ddb:92M05: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S6",
+                "symbol": "92M06.svg",
+                "direction": "Ebersberg",
+                "stateless": "ddb:92M06: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S6",
+                "symbol": "92M06.svg",
+                "direction": "Tutzing",
+                "stateless": "ddb:92M06: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S8",
+                "symbol": "92M08.svg",
+                "direction": "Flughafen München",
+                "stateless": "ddb:92M08: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S8",
+                "symbol": "92M08.svg",
+                "direction": "Herrsching",
+                "stateless": "ddb:92M08: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "U4",
+                "symbol": "010U4.svg",
+                "direction": "Arabellapark",
+                "stateless": "swm:010U4:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U4",
+                "symbol": "010U4.svg",
+                "direction": "Theresienwiese",
+                "stateless": "swm:010U4:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U5",
+                "symbol": "010U5.svg",
+                "direction": "Neuperlach Süd",
+                "stateless": "swm:010U5:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U5",
+                "symbol": "010U5.svg",
+                "direction": "Laimer Platz",
+                "stateless": "swm:010U5:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "16",
+                "symbol": "02016.svg",
+                "direction": "Ottostraße",
+                "stateless": "swm:02016:G:H:016",
+                "name": "Tram"
+            },
+            {
+                "number": "16",
+                "symbol": "02016.svg",
+                "direction": "Romanplatz",
+                "stateless": "swm:02016:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "17",
+                "symbol": "02017.svg",
+                "direction": "Amalienburgstraße",
+                "stateless": "swm:02017:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "19",
+                "symbol": "02019.svg",
+                "direction": "Berg am Laim",
+                "stateless": "swm:02019:G:H:016",
+                "name": "Tram"
+            },
+            {
+                "number": "19",
+                "symbol": "02019.svg",
+                "direction": "Pasing",
+                "stateless": "swm:02019:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "20",
+                "symbol": "02020.svg",
+                "direction": "Moosach",
+                "stateless": "swm:02020:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "21",
+                "symbol": "02021.svg",
+                "direction": "St.-Veit-Straße",
+                "stateless": "swm:02021:G:H:016",
+                "name": "Tram"
+            },
+            {
+                "number": "21",
+                "symbol": "02021.svg",
+                "direction": "Westfriedhof",
+                "stateless": "swm:02021:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "23",
+                "symbol": "02023.svg",
+                "direction": "Schwabing Nord",
+                "stateless": "swm:02023:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "27",
+                "symbol": "02027.svg",
+                "direction": "Petuelring",
+                "stateless": "swm:02027:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "28",
+                "symbol": "02028.svg",
+                "direction": "Scheidplatz",
+                "stateless": "swm:02028:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "N17",
+                "symbol": "32917.svg",
+                "direction": "Amalienburgstraße",
+                "stateless": "swm:32917:G:R:016",
+                "name": "NachtTram"
+            },
+            {
+                "number": "N19",
+                "symbol": "32919.svg",
+                "direction": "St.-Veit-Straße",
+                "stateless": "swm:32919:G:H:016",
+                "name": "NachtTram"
+            },
+            {
+                "number": "N19",
+                "symbol": "32919.svg",
+                "direction": "Pasing",
+                "stateless": "swm:32919:G:R:016",
+                "name": "NachtTram"
+            },
+            {
+                "number": "N20",
+                "symbol": "32920.svg",
+                "direction": "Moosach",
+                "stateless": "swm:32920:G:R:016",
+                "name": "NachtTram"
+            },
+            {
+                "number": "N27",
+                "symbol": "32927.svg",
+                "direction": "Petuelring",
+                "stateless": "swm:32927:G:R:016",
+                "name": "NachtTram"
+            },
+            {
+                "number": "16",
+                "symbol": "34516.svg",
+                "direction": "Sendlinger Tor",
+                "stateless": "swm:34516:G:H:016",
+                "name": "SEV"
+            },
+            {
+                "number": "16",
+                "symbol": "34516.svg",
+                "direction": "Lenbachplatz",
+                "stateless": "swm:34516:G:R:016",
+                "name": "SEV"
+            },
+            {
+                "number": "N17",
+                "symbol": "36717.svg",
+                "direction": "Effnerplatz",
+                "stateless": "swm:36717:G:H:016",
+                "name": "SEV"
+            },
+            {
+                "number": "N17",
+                "symbol": "36717.svg",
+                "direction": "Lenbachplatz",
+                "stateless": "swm:36717:G:R:016",
+                "name": "SEV"
+            },
+            {
+                "number": "N27",
+                "symbol": "36727.svg",
+                "direction": "Großhesseloher Brücke",
+                "stateless": "swm:36727:G:H:016",
+                "name": "SEV"
+            },
+            {
+                "number": "N27",
+                "symbol": "36727.svg",
+                "direction": "Lenbachplatz",
+                "stateless": "swm:36727:G:R:016",
+                "name": "SEV"
+            },
+            {
+                "number": "N40",
+                "symbol": "33N40.svg",
+                "direction": "Klinikum Großhadern",
+                "stateless": "swm:33N40:G:H:016",
+                "name": "NachtBus"
+            },
+            {
+                "number": "N40",
+                "symbol": "33N40.svg",
+                "direction": "Kieferngarten",
+                "stateless": "swm:33N40:G:R:016",
+                "name": "NachtBus"
+            },
+            {
+                "number": "N41",
+                "symbol": "33N41.svg",
+                "direction": "Fürstenried West",
+                "stateless": "swm:33N41:G:H:016",
+                "name": "NachtBus"
+            },
+            {
+                "number": "N41",
+                "symbol": "33N41.svg",
+                "direction": "Feldmoching",
+                "stateless": "swm:33N41:G:R:016",
+                "name": "NachtBus"
+            },
+            {
+                "number": "N45",
+                "symbol": "33N45.svg",
+                "direction": "Waldperlach (Süd)",
+                "stateless": "swm:33N45:G:H:016",
+                "name": "NachtBus"
+            },
+            {
+                "number": "N45",
+                "symbol": "33N45.svg",
+                "direction": "Münchner Freiheit",
+                "stateless": "swm:33N45:G:R:016",
+                "name": "NachtBus"
+            }
+        ],
+        "icons": {
+            "S-Bahn": "/fileadmin/Lines/92M08.svg.svg",
+            "U-Bahn": "/fileadmin/Lines/010U5.svg.svg",
+            "Tram": "/fileadmin/Lines/02028.svg.svg",
+            "NachtTram": "/fileadmin/Lines/32927.svg.svg",
+            "SEV": "/fileadmin/Lines/36727.svg.svg",
+            "NachtBus": "/fileadmin/Lines/33N45.svg.svg"
+        }
+    },
+    "get_departures|de:09162:1|1783360402": {
+        "error": "",
+        "departures": [
+            {
+                "line": {
+                    "number": "23",
+                    "symbol": "02023.svg",
+                    "direction": "Einsteinstraße",
+                    "stateless": "swm:02023:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Einsteinstraße",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 6",
+                "departureDate": "20260706",
+                "departurePlanned": "19:46",
+                "departureLive": "19:54",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Petershausen",
+                    "stateless": "ddb:92M02: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Petershausen",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "2",
+                "departureDate": "20260706",
+                "departurePlanned": "19:46",
+                "departureLive": "19:53",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "2",
+                "departureDate": "20260706",
+                "departurePlanned": "19:49",
+                "departureLive": "19:55",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S4/S6 - Umleitungen und geänderte Takte zwischen München Ost und Zorneding/Ebersberg (07.02.-10.07.)",
+                        "link": "https://efa.mvv-muenchen.de/ttb2/mvv_01006_M_H_s26_2.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Erding",
+                    "stateless": "ddb:92M02: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Erding",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260706",
+                "departurePlanned": "19:51",
+                "departureLive": "19:54",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Laimer Platz",
+                    "stateless": "swm:010U5:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Laimer Platz",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260706",
+                "departurePlanned": "19:54",
+                "departureLive": "19:54",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U5: Innsbrucker Ring <> Hauptbahnhof: Umleitung wegen eines Schienenwechsels",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/b0011447-8c41-4e8b-888b-281d3e92e13b_-223316179",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "21",
+                    "symbol": "02021.svg",
+                    "direction": "St.-Veit-Straße",
+                    "stateless": "swm:02021:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "St.-Veit-Straße",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 6",
+                "departureDate": "20260706",
+                "departurePlanned": "19:54",
+                "departureLive": "19:56",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "16",
+                    "symbol": "34516.svg",
+                    "direction": "SEV Goetheplatz Sendlinger Tor",
+                    "stateless": "swm:34516:G:H:016",
+                    "name": "SEV"
+                },
+                "direction": "SEV Goetheplatz Sendlinger Tor",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "",
+                "departureDate": "20260706",
+                "departurePlanned": "19:54",
+                "departureLive": "19:55",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S8",
+                    "symbol": "92M08.svg",
+                    "direction": "Ostbahnhof",
+                    "stateless": "ddb:92M08: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ostbahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260706",
+                "departurePlanned": "19:55",
+                "departureLive": "19:56",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Neuperlach Süd",
+                    "stateless": "swm:010U5:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Neuperlach Süd",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260706",
+                "departurePlanned": "19:55",
+                "departureLive": "19:55",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U5: Innsbrucker Ring <> Hauptbahnhof: Umleitung wegen eines Schienenwechsels",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/b0011447-8c41-4e8b-888b-281d3e92e13b_-223316179",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "92M03.svg",
+                    "direction": "Mammendorf",
+                    "stateless": "ddb:92M03: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Mammendorf",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "2",
+                "departureDate": "20260706",
+                "departurePlanned": "19:55",
+                "departureLive": "19:57",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S3 - Zugausfälle, geänderte Linienführung und Ersatzverkehr zwischen Holzkirchen und Ostbahnhof (29.06.-07.07. Durchgehend)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:07a8a797-e746-4821-abb0-e76b5f8a9a8e/Fpl%20S%203-40-M-T%20MOP-MHO%2029%20Juni-7%20Juli.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Leuchtenbergring",
+                    "stateless": "ddb:92M01: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Leuchtenbergring",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260706",
+                "departurePlanned": "19:57",
+                "departureLive": "20:00",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "16",
+                    "symbol": "02016.svg",
+                    "direction": "Romanplatz",
+                    "stateless": "swm:02016:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Romanplatz",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 7",
+                "departureDate": "20260706",
+                "departurePlanned": "19:57",
+                "departureLive": "19:57",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 16 &amp; 17: Karlsplatz (Stachus) <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "21",
+                    "symbol": "02021.svg",
+                    "direction": "Westfriedhof",
+                    "stateless": "swm:02021:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Westfriedhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 7",
+                "departureDate": "20260706",
+                "departurePlanned": "19:57",
+                "departureLive": "19:57",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "28",
+                    "symbol": "02028.svg",
+                    "direction": "Scheidplatz",
+                    "stateless": "swm:02028:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Scheidplatz",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 6",
+                "departureDate": "20260706",
+                "departurePlanned": "19:58",
+                "departureLive": "19:58",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 27 &amp; 28: Verkürzter Linienweg Petuelring bzw. Scheidplatz <> Karlsplatz (Stachus) wegen Weichenerneuerung",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S4",
+                    "symbol": "92M04.svg",
+                    "direction": "Geltendorf",
+                    "stateless": "ddb:92M04: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Geltendorf",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "2",
+                "departureDate": "20260706",
+                "departurePlanned": "19:58",
+                "departureLive": "20:00",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S4/S6 - Umleitungen und geänderte Takte zwischen München Ost und Zorneding/Ebersberg (07.02.-10.07.)",
+                        "link": "https://efa.mvv-muenchen.de/ttb2/mvv_01006_M_H_s26_2.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "19",
+                    "symbol": "02019.svg",
+                    "direction": "Berg am Laim Bf.",
+                    "stateless": "swm:02019:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "Berg am Laim Bf.",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 6",
+                "departureDate": "20260706",
+                "departurePlanned": "19:59",
+                "departureLive": "19:59",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S4",
+                    "symbol": "92M04.svg",
+                    "direction": "Trudering",
+                    "stateless": "ddb:92M04: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Trudering",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260706",
+                "departurePlanned": "19:59",
+                "departureLive": "20:02",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S4/S6 - Umleitungen und geänderte Takte zwischen München Ost und Zorneding/Ebersberg (07.02.-10.07.)",
+                        "link": "https://efa.mvv-muenchen.de/ttb2/mvv_01006_M_H_s26_2.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Flughafen München",
+                    "stateless": "ddb:92M01: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Flughafen München",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "2",
+                "departureDate": "20260706",
+                "departurePlanned": "20:00",
+                "departureLive": "20:02",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "16",
+                    "symbol": "34516.svg",
+                    "direction": "Lenbachplatz",
+                    "stateless": "swm:34516:G:R:016",
+                    "name": "SEV"
+                },
+                "direction": "Lenbachplatz",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "",
+                "departureDate": "20260706",
+                "departurePlanned": "20:00",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Freising",
+                    "stateless": "ddb:92M01: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Freising",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "2",
+                "departureDate": "20260706",
+                "departurePlanned": "20:00",
+                "departureLive": "20:02",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "92M03.svg",
+                    "direction": "Ostbahnhof",
+                    "stateless": "ddb:92M03: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ostbahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260706",
+                "departurePlanned": "20:01",
+                "departureLive": "20:02",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S3 - Zugausfälle, geänderte Linienführung und Ersatzverkehr zwischen Holzkirchen und Ostbahnhof (29.06.-07.07. Durchgehend)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:07a8a797-e746-4821-abb0-e76b5f8a9a8e/Fpl%20S%203-40-M-T%20MOP-MHO%2029%20Juni-7%20Juli.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U4",
+                    "symbol": "010U4.svg",
+                    "direction": "Theresienwiese",
+                    "stateless": "swm:010U4:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Theresienwiese",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260706",
+                "departurePlanned": "20:01",
+                "departureLive": "20:01",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "19",
+                    "symbol": "02019.svg",
+                    "direction": "Pasing Bf.",
+                    "stateless": "swm:02019:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Pasing Bf.",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 7",
+                "departureDate": "20260706",
+                "departurePlanned": "20:01",
+                "departureLive": "20:01",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U4",
+                    "symbol": "010U4.svg",
+                    "direction": "Arabellapark",
+                    "stateless": "swm:010U4:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Arabellapark",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260706",
+                "departurePlanned": "20:02",
+                "departureLive": "20:02",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "17",
+                    "symbol": "02017.svg",
+                    "direction": "Amalienburgstraße",
+                    "stateless": "swm:02017:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Amalienburgstraße",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 7",
+                "departureDate": "20260706",
+                "departurePlanned": "20:02",
+                "departureLive": "20:02",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 16 &amp; 17: Karlsplatz (Stachus) <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "20",
+                    "symbol": "02020.svg",
+                    "direction": "Moosach Bf.",
+                    "stateless": "swm:02020:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Moosach Bf.",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 5",
+                "departureDate": "20260706",
+                "departurePlanned": "20:02",
+                "departureLive": "20:02",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "27",
+                    "symbol": "02027.svg",
+                    "direction": "Petuelring",
+                    "stateless": "swm:02027:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Petuelring",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 6",
+                "departureDate": "20260706",
+                "departurePlanned": "20:02",
+                "departureLive": "20:02",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 27 &amp; 28: Verkürzter Linienweg Petuelring bzw. Scheidplatz <> Karlsplatz (Stachus) wegen Weichenerneuerung",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S8",
+                    "symbol": "92M08.svg",
+                    "direction": "Herrsching",
+                    "stateless": "ddb:92M08: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Herrsching",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "2",
+                "departureDate": "20260706",
+                "departurePlanned": "20:02",
+                "departureLive": "20:06",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S8 - Zugausfälle und Taktänderung zwischen Johanneskirchen und Flughafen/Airport (Nächte 6./7. bis 9./10. Juli)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:bfb0b9e5-47a2-4012-9391-8f3370194370/Fpl%2040-M-T%20MJK-MFHT%206-10%20Juli.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "21",
+                    "symbol": "02021.svg",
+                    "direction": "St.-Veit-Straße",
+                    "stateless": "swm:02021:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "St.-Veit-Straße",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 6",
+                "departureDate": "20260706",
+                "departurePlanned": "20:04",
+                "departureLive": "20:04",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "16",
+                    "symbol": "34516.svg",
+                    "direction": "SEV Goetheplatz Sendlinger Tor",
+                    "stateless": "swm:34516:G:H:016",
+                    "name": "SEV"
+                },
+                "direction": "SEV Goetheplatz Sendlinger Tor",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "",
+                "departureDate": "20260706",
+                "departurePlanned": "20:04",
+                "departureLive": "20:04",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Laimer Platz",
+                    "stateless": "swm:010U5:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Laimer Platz",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260706",
+                "departurePlanned": "20:04",
+                "departureLive": "20:04",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U5: Innsbrucker Ring <> Hauptbahnhof: Umleitung wegen eines Schienenwechsels",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/b0011447-8c41-4e8b-888b-281d3e92e13b_-223316179",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Neuperlach Süd",
+                    "stateless": "swm:010U5:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Neuperlach Süd",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260706",
+                "departurePlanned": "20:05",
+                "departureLive": "20:05",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U5: Innsbrucker Ring <> Hauptbahnhof: Umleitung wegen eines Schienenwechsels",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/b0011447-8c41-4e8b-888b-281d3e92e13b_-223316179",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Petershausen",
+                    "stateless": "ddb:92M02: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Petershausen",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "2",
+                "departureDate": "20260706",
+                "departurePlanned": "20:06",
+                "departureLive": "20:08",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "21",
+                    "symbol": "02021.svg",
+                    "direction": "Westfriedhof",
+                    "stateless": "swm:02021:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Westfriedhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 7",
+                "departureDate": "20260706",
+                "departurePlanned": "20:07",
+                "departureLive": "20:07",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "16",
+                    "symbol": "02016.svg",
+                    "direction": "Romanplatz",
+                    "stateless": "swm:02016:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Romanplatz",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 7",
+                "departureDate": "20260706",
+                "departurePlanned": "20:07",
+                "departureLive": "20:07",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 16 &amp; 17: Karlsplatz (Stachus) <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "28",
+                    "symbol": "02028.svg",
+                    "direction": "Scheidplatz",
+                    "stateless": "swm:02028:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Scheidplatz",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 6",
+                "departureDate": "20260706",
+                "departurePlanned": "20:08",
+                "departureLive": "20:08",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 27 &amp; 28: Verkürzter Linienweg Petuelring bzw. Scheidplatz <> Karlsplatz (Stachus) wegen Weichenerneuerung",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "2",
+                "departureDate": "20260706",
+                "departurePlanned": "20:09",
+                "departureLive": "20:12",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S4/S6 - Umleitungen und geänderte Takte zwischen München Ost und Zorneding/Ebersberg (07.02.-10.07.)",
+                        "link": "https://efa.mvv-muenchen.de/ttb2/mvv_01006_M_H_s26_2.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "19",
+                    "symbol": "02019.svg",
+                    "direction": "Berg am Laim Bf.",
+                    "stateless": "swm:02019:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "Berg am Laim Bf.",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "Pos. 6",
+                "departureDate": "20260706",
+                "departurePlanned": "20:09",
+                "departureLive": "20:09",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260706",
+                "departurePlanned": "20:09",
+                "departureLive": "20:09",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "S4/S6 - Umleitungen und geänderte Takte zwischen München Ost und Zorneding/Ebersberg (07.02.-10.07.)",
+                        "link": "https://efa.mvv-muenchen.de/ttb2/mvv_01006_M_H_s26_2.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "16",
+                    "symbol": "34516.svg",
+                    "direction": "Lenbachplatz",
+                    "stateless": "swm:34516:G:R:016",
+                    "name": "SEV"
+                },
+                "direction": "Lenbachplatz",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "",
+                "departureDate": "20260706",
+                "departurePlanned": "20:10",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            }
+        ],
+        "notifications": [
+            {
+                "text": "S4/S6 - Umleitungen und geänderte Takte zwischen München Ost und Zorneding/Ebersberg (07.02.-10.07.)",
+                "link": "https://efa.mvv-muenchen.de/ttb2/mvv_01006_M_H_s26_2.pdf",
+                "type": "line"
+            },
+            {
+                "text": "U5: Innsbrucker Ring <> Hauptbahnhof: Umleitung wegen eines Schienenwechsels",
+                "link": "https://www.mvg.de/api/ems/tickers/file/b0011447-8c41-4e8b-888b-281d3e92e13b_-223316179",
+                "type": "line"
+            },
+            {
+                "text": "S3 - Zugausfälle, geänderte Linienführung und Ersatzverkehr zwischen Holzkirchen und Ostbahnhof (29.06.-07.07. Durchgehend)",
+                "link": "https://assets.static-bahn.de/dam/jcr:07a8a797-e746-4821-abb0-e76b5f8a9a8e/Fpl%20S%203-40-M-T%20MOP-MHO%2029%20Juni-7%20Juli.pdf",
+                "type": "line"
+            },
+            {
+                "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                "link": "http://",
+                "type": "line"
+            },
+            {
+                "text": "Tram 16 &amp; 17: Karlsplatz (Stachus) <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung",
+                "link": "https://www.mvg.de/verbindungen/trambau.html",
+                "type": "line"
+            },
+            {
+                "text": "Tram 27 &amp; 28: Verkürzter Linienweg Petuelring bzw. Scheidplatz <> Karlsplatz (Stachus) wegen Weichenerneuerung",
+                "link": "https://www.mvg.de/verbindungen/trambau.html",
+                "type": "line"
+            },
+            {
+                "text": "S8 - Zugausfälle und Taktänderung zwischen Johanneskirchen und Flughafen/Airport (Nächte 6./7. bis 9./10. Juli)",
+                "link": "https://assets.static-bahn.de/dam/jcr:bfb0b9e5-47a2-4012-9391-8f3370194370/Fpl%2040-M-T%20MJK-MFHT%206-10%20Juli.pdf",
+                "type": "line"
+            }
+        ]
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "get_departures|de:09162:1|1783324980": {
+        "departures": [
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260706",
+                "departurePlanned": "10:05",
+                "departureLive": "10:06",
+                "inTime": true
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260706",
+                "departurePlanned": "10:15",
+                "departureLive": "",
+                "inTime": true
+            }
+        ]
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "get_departures|de:09162:1|1783372800": {
+        "departures": [
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260706",
+                "departurePlanned": "23:25",
+                "departureLive": "",
+                "inTime": true
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260707",
+                "departurePlanned": "00:05",
+                "departureLive": "",
+                "inTime": true
+            }
+        ]
+    },
+    "get_departures|de:09162:1|1783375200": {
+        "departures": [
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260707",
+                "departurePlanned": "00:05",
+                "departureLive": "",
+                "inTime": true
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260707",
+                "departurePlanned": "00:20",
+                "departureLive": "",
+                "inTime": true
+            }
+        ]
+    }
+}
