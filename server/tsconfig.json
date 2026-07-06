@@ -26,10 +26,17 @@
 
     /* Modules */
     "module": "nodenext",                                /* Specify what module code is generated. */
-    "rootDir": "./src/",                                 /* Specify the root folder within your source files. */
+    // rootDir intentionally unset: the editor's `shared` -> ../shared/src
+    // mapping pulls files outside src/, and Bazel supplies root_dir via the
+    // ts_project rule instead.
+    // "rootDir": "./src/",                              /* Specify the root folder within your source files. */
     "moduleResolution": "nodenext",                     /* Specify how TypeScript looks up a file from a given module specifier. */
-    // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
-    // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
+    "baseUrl": "./",                                     /* Specify the base directory to resolve non-relative module names. */
+    // Editor/tsserver only: resolve the `shared` workspace package to its
+    // source, since its built out/ lives in bazel-bin, not on disk. Bazel
+    // provides shared via node_modules and ignores this mapping (the mapped
+    // path is absent in the sandbox, so tsc falls back to node_modules).
+    "paths": { "shared": ["../shared/src/index.ts"] },
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
