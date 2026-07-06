@@ -1,6 +1,7 @@
 import * as fs from "node:fs/promises";
-import { info, fetcher, queryDepartures, testing } from "shared";
+import { info, queryDepartures, testing } from "shared";
 import { lines } from "mvv-proxy";
+import { Fixtures, FixtureFetcher } from "./testingFetcher";
 
 // The test harness, re-exported so each *.test.ts imports it from one place.
 export const testAsync = testing.testAsync;
@@ -28,21 +29,21 @@ const STOPS: info.Stop[] = [
 
 // One fixtures file per test, under data/qtest/. chdir is the tests package
 // (see BUILD.bazel). New files are produced by //server:record_departures.
-export async function loadFixtures(file: string): Promise<fetcher.Fixtures> {
+export async function loadFixtures(file: string): Promise<Fixtures> {
     const raw = await fs.readFile(`data/qtest/${file}`, {
         encoding: "utf-8",
     });
-    return JSON.parse(raw) as fetcher.Fixtures;
+    return JSON.parse(raw) as Fixtures;
 }
 
 export async function newQ(file: string): Promise<{
     q: queryDepartures.Q;
-    fetcher: fetcher.FixtureFetcher;
+    fetcher: FixtureFetcher;
 }> {
-    const f = new fetcher.FixtureFetcher(await loadFixtures(file));
+    const f = new FixtureFetcher(await loadFixtures(file));
     return { q: new queryDepartures.Q(lines, STOPS, f), fetcher: f };
 }
 
-export function departuresRequests(f: fetcher.FixtureFetcher): string[] {
+export function departuresRequests(f: FixtureFetcher): string[] {
     return f.requested.filter((u) => u.includes("action=get_departures"));
 }

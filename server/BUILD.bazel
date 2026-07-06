@@ -70,23 +70,6 @@ js_test(
     size = "small",
 )
 
-# queryDepartures tests moved to the top-level //tests package.
-
-# Tool for capturing real MVV responses into a per-test fixtures file (see
-# tests/data/qtest/). Run e.g.:
-#   bazel run //server:record_departures -- \
-#       tests/data/qtest/karlsplatz.json de:09162:1 now
-js_binary(
-    name = "record_departures",
-    chdir = package_name(),
-    data = [
-        ":tsc",
-        "//server/data:stops",
-    ],
-    entry_point = "out/recordDepartures.js",
-    visibility = ["//visibility:public"],
-)
-
 # --- Container image, replacing Dockerfile / docker-build / docker-push ---
 
 platform(
