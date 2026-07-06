@@ -2,7 +2,7 @@ import * as express from "express";
 import * as path from "path";
 import { info, request, fetcher, queryDepartures } from "shared";
 
-import * as lines from "./lines";
+import { lines } from "./lines";
 import * as geo from "./geo";
 
 type Stop = info.Stop;
@@ -58,7 +58,7 @@ export class Handlers {
     };
 
     lines = async (_: express.Request, res: express.Response) => {
-        res.send(JSON.stringify(lines.lines));
+        res.send(JSON.stringify(lines));
     };
 
     stops = (req: express.Request, res: express.Response) => {

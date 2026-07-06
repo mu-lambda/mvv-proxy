@@ -1,0 +1,10 @@
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+
+# js_library (not filegroup): rules_js requires source files consumed as `data`
+# by a js_test in another package to be wrapped in a JsInfo-providing target
+# declared in their own package.
+js_library(
+    name = "departures_fixtures",
+    srcs = glob(["qtest/*.json"]),
+    visibility = ["//tests:__pkg__"],
+)

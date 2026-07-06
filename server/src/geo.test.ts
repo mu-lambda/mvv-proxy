@@ -1,9 +1,10 @@
 import * as d3 from "d3-quadtree";
-import { info } from "shared";
+import { info, testing as harness } from "shared";
 
-import { suite, test, testAsync, expect } from "./testing";
 import { distance, buildQuadtree, Locator } from "./geo";
 import { loadStops } from "./data";
+
+const { suite, test, testAsync, expect } = harness;
 
 function ll(latitude: number, longitude: number): info.LatLong {
     return { latitude, longitude };

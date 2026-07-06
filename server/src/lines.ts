@@ -222,7 +222,6 @@ export const lines: info.Line[] = [
         destination: "Herrsching",
     },
 
-
     // S6/8
     {
         mvvApiId: "ddb:92M68:P:R:j25",

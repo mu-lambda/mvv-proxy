@@ -1,7 +1,8 @@
 {
   "name": "mvv-proxy",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
   "scripts": {
     "dev": "node --watch --watch-path=. --watch-path=./src --watch-path=./data -r ts-node/register src/main.ts",
     "prod": "node -r ts-node/register src/main.ts"

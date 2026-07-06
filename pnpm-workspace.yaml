@@ -3,5 +3,6 @@ packages:
     - "shared"
     - "client"
     - "server"
+    - "tests"
 
 onlyBuiltDependencies: []

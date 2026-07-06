@@ -14,9 +14,3 @@ js_library(
     srcs = ["stops-for-testing.csv"],
     visibility = ["//server:__pkg__"],
 )
-
-js_library(
-    name = "departures_fixtures",
-    srcs = glob(["qtest/*.json"]),
-    visibility = ["//server:__pkg__"],
-)

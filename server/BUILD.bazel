@@ -1,4 +1,4 @@
-load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_image_layer", "js_test")
+load("@aspect_rules_js//js:defs.bzl", "js_binary", "js_image_layer", "js_library", "js_test")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_config", "ts_project")
 load("@npm//:defs.bzl", "npm_link_all_packages")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load", "oci_push")
@@ -13,6 +13,9 @@ ts_config(
 ts_project(
     name = "tsc",
     srcs = glob(["src/**/*.ts"]),
+    # declaration = True so //server:pkg exposes .d.ts for the "mvv-proxy"
+    # library surface (src/index.ts) consumed by the //tests package.
+    declaration = True,
     out_dir = "out",
     root_dir = "src",
     tsconfig = ":tsconfig",
@@ -28,6 +31,15 @@ ts_project(
         ":node_modules/socks-proxy-agent",
         ":node_modules/yaml",
     ],
+)
+
+# Target name "pkg" is the npm_package_target_name convention rules_js uses to
+# link first-party workspace packages; lets //tests import "mvv-proxy".
+js_library(
+    name = "pkg",
+    srcs = ["package.json"],
+    visibility = ["//visibility:public"],
+    deps = [":tsc"],
 )
 
 # chdir = "server" (this package) so that server.ts's cwd-relative paths
@@ -58,24 +70,12 @@ js_test(
     size = "small",
 )
 
-js_test(
-    name = "query_departures_test",
-    chdir = package_name(),
-    data = [
-        ":tsc",
-        "//server/data:departures_fixtures",
-    ],
-    # The midnight branch keys off Munich local time (matches production, where
-    # all servers run Europe/Berlin). Pin it so the test is deterministic.
-    env = {"TZ": "Europe/Berlin"},
-    entry_point = "out/queryDepartures.test.js",
-    size = "small",
-)
+# queryDepartures tests moved to the top-level //tests package.
 
 # Tool for capturing real MVV responses into a per-test fixtures file (see
-# server/data/qtest/). Run e.g.:
+# tests/data/qtest/). Run e.g.:
 #   bazel run //server:record_departures -- \
-#       server/data/qtest/karlsplatz.json de:09162:1 now
+#       tests/data/qtest/karlsplatz.json de:09162:1 now
 js_binary(
     name = "record_departures",
     chdir = package_name(),
