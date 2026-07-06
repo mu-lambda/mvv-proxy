@@ -2,18 +2,11 @@ import * as fs from "node:fs/promises";
 import { info, request, fetcher, queryDepartures } from "shared";
 
 import { suite, testAsync, expect } from "./testing";
+import { lines } from "./lines";
 
-// Synthetic lines/stops so the tests depend only on the fixtures, not on the
-// real stops.csv or lines.ts. The gids/ids below match the fixture keys in
-// data/qtest/*.json.
-const LINES: info.Line[] = [
-    {
-        id: "S6-i",
-        name: "S6",
-        destination: "Ebersberg",
-        mvvApiId: "ddb:92M06: :H:j25",
-    },
-];
+// Real line definitions (from lines.ts) with synthetic stops: the tests
+// exercise the production line table but don't depend on the real stops.csv.
+// The gids below match the fixture keys in data/qtest/*.json.
 const STOPS: info.Stop[] = [
     {
         id: 1,
@@ -46,7 +39,7 @@ async function newQ(file: string): Promise<{
     fetcher: fetcher.FixtureFetcher;
 }> {
     const f = new fetcher.FixtureFetcher(await loadFixtures(file));
-    return { q: new queryDepartures.Q(LINES, STOPS, f), fetcher: f };
+    return { q: new queryDepartures.Q(lines, STOPS, f), fetcher: f };
 }
 
 function departuresRequests(f: fetcher.FixtureFetcher): string[] {
