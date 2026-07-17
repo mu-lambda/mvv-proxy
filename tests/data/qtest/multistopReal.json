@@ -1,0 +1,1888 @@
+{
+    "get_departures|de:09162:1|1784281831": {
+        "error": "",
+        "departures": [
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "11:49",
+                "departureLive": "11:50",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:09",
+                "departureLive": "12:10",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:29",
+                "departureLive": "12:32",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:49",
+                "departureLive": "12:49",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "13:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "13:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "13:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "14:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "14:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "14:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "15:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "15:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "15:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "16:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "16:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "16:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "17:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "17:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "17:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "18:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "18:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "18:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "19:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "19:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "19:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "20:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "20:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "20:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "21:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "21:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "21:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "22:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "22:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "22:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "23:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "23:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ostbahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ostbahnhof",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "23:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260718",
+                "departurePlanned": "00:09",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260718",
+                "departurePlanned": "00:49",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000001",
+                    "name": "Karlsplatz (Stachus)"
+                },
+                "track": "1",
+                "departureDate": "20260718",
+                "departurePlanned": "01:29",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            }
+        ],
+        "notifications": []
+    },
+    "available_lines|de:09162:2": {
+        "error": "",
+        "lines": [
+            {
+                "number": "S1",
+                "symbol": "92M01.svg",
+                "direction": "Leuchtenbergring",
+                "stateless": "ddb:92M01: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S1",
+                "symbol": "92M01.svg",
+                "direction": "Flughafen München",
+                "stateless": "ddb:92M01: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S2",
+                "symbol": "92M02.svg",
+                "direction": "Erding",
+                "stateless": "ddb:92M02: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S2",
+                "symbol": "92M02.svg",
+                "direction": "Altomünster",
+                "stateless": "ddb:92M02: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S3",
+                "symbol": "92M03.svg",
+                "direction": "Holzkirchen",
+                "stateless": "ddb:92M03: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S3",
+                "symbol": "92M03.svg",
+                "direction": "Mammendorf",
+                "stateless": "ddb:92M03: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S4",
+                "symbol": "92M04.svg",
+                "direction": "Haar",
+                "stateless": "ddb:92M04: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S4",
+                "symbol": "92M04.svg",
+                "direction": "Geltendorf",
+                "stateless": "ddb:92M04: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S5",
+                "symbol": "92M05.svg",
+                "direction": "Kreuzstraße",
+                "stateless": "ddb:92M05: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S5",
+                "symbol": "92M05.svg",
+                "direction": "Pasing",
+                "stateless": "ddb:92M05:P:R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S6",
+                "symbol": "92M06.svg",
+                "direction": "Grafing-Bahnhof",
+                "stateless": "ddb:92M06: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S6",
+                "symbol": "92M06.svg",
+                "direction": "Tutzing",
+                "stateless": "ddb:92M06: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S8",
+                "symbol": "92M08.svg",
+                "direction": "Flughafen München",
+                "stateless": "ddb:92M08: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S8",
+                "symbol": "92M08.svg",
+                "direction": "Herrsching",
+                "stateless": "ddb:92M08: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "U3",
+                "symbol": "010U3.svg",
+                "direction": "Sendlinger Tor",
+                "stateless": "swm:010U3:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U3",
+                "symbol": "010U3.svg",
+                "direction": "Moosach",
+                "stateless": "swm:010U3:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U6",
+                "symbol": "010U6.svg",
+                "direction": "Sendlinger Tor",
+                "stateless": "swm:010U6:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U6",
+                "symbol": "010U6.svg",
+                "direction": "Fröttmaning",
+                "stateless": "swm:010U6:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "132",
+                "symbol": "03132.svg",
+                "direction": "Forstenrieder Park",
+                "stateless": "swm:03132:G:H:016",
+                "name": "Bus"
+            }
+        ],
+        "icons": {
+            "S-Bahn": "/fileadmin/Lines/92M08.svg.svg",
+            "U-Bahn": "/fileadmin/Lines/010U6.svg.svg",
+            "Bus": "/fileadmin/Lines/03132.svg.svg"
+        }
+    },
+    "get_departures|de:09162:2|1784281831": {
+        "error": "",
+        "departures": [
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Leuchtenbergring",
+                    "stateless": "ddb:92M01: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Leuchtenbergring",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "11:39",
+                "departureLive": "11:50",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "11:47",
+                "departureLive": "11:55",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S5",
+                    "symbol": "92M05.svg",
+                    "direction": "Pasing",
+                    "stateless": "ddb:92M05:P:R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Pasing",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "11:49",
+                "departureLive": "11:51",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "11:50",
+                "departureLive": "11:52",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Erding",
+                    "stateless": "ddb:92M02: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Erding",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "11:52",
+                "departureLive": "11:59",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260717",
+                "departurePlanned": "11:52",
+                "departureLive": "11:52",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Garching, Forschungszentrum",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Garching, Forschungszentrum",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260717",
+                "departurePlanned": "11:52",
+                "departureLive": "11:52",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260717",
+                "departurePlanned": "11:54",
+                "departureLive": "11:57",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260717",
+                "departurePlanned": "11:54",
+                "departureLive": "11:54",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "92M03.svg",
+                    "direction": "Mammendorf",
+                    "stateless": "ddb:92M03: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Mammendorf",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "11:54",
+                "departureLive": "11:56",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S4",
+                    "symbol": "92M04.svg",
+                    "direction": "Geltendorf",
+                    "stateless": "ddb:92M04: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Geltendorf",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "11:56",
+                "departureLive": "12:03",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Fröttmaning",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Fröttmaning",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260717",
+                "departurePlanned": "11:56",
+                "departureLive": "Halt entfällt",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "132",
+                    "symbol": "03132.svg",
+                    "direction": "Implerstraße",
+                    "stateless": "swm:03132:G:H:016",
+                    "name": "Bus"
+                },
+                "direction": "Implerstraße",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "",
+                "departureDate": "20260717",
+                "departurePlanned": "11:56",
+                "departureLive": "11:56",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S8",
+                    "symbol": "92M08.svg",
+                    "direction": "Flughafen München",
+                    "stateless": "ddb:92M08: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Flughafen München",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "11:57",
+                "departureLive": "11:59",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Freising",
+                    "stateless": "ddb:92M01: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Freising",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "11:58",
+                "departureLive": "12:00",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260717",
+                "departurePlanned": "11:58",
+                "departureLive": "11:58",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Flughafen München",
+                    "stateless": "ddb:92M01: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Flughafen München",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "11:58",
+                "departureLive": "12:00",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Leuchtenbergring",
+                    "stateless": "ddb:92M01: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Leuchtenbergring",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "11:59",
+                "departureLive": "12:02",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S8",
+                    "symbol": "92M08.svg",
+                    "direction": "Herrsching",
+                    "stateless": "ddb:92M08: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Herrsching",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:00",
+                "departureLive": "12:03",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S4",
+                    "symbol": "92M04.svg",
+                    "direction": "Haar",
+                    "stateless": "ddb:92M04: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Haar",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:01",
+                "departureLive": "12:04",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:02",
+                "departureLive": "12:02",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Garching, Forschungszentrum",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Garching, Forschungszentrum",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:02",
+                "departureLive": "12:02",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "92M03.svg",
+                    "direction": "Holzkirchen",
+                    "stateless": "ddb:92M03: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Holzkirchen",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:03",
+                "departureLive": "12:04",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:04",
+                "departureLive": "12:04",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:04",
+                "departureLive": "12:04",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Petershausen",
+                    "stateless": "ddb:92M02: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Petershausen",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:04",
+                "departureLive": "12:10",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Fröttmaning",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Fröttmaning",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:06",
+                "departureLive": "12:06",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "132",
+                    "symbol": "03132.svg",
+                    "direction": "Forstenrieder Park",
+                    "stateless": "swm:03132:G:H:016",
+                    "name": "Bus"
+                },
+                "direction": "Forstenrieder Park",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "",
+                "departureDate": "20260717",
+                "departurePlanned": "12:06",
+                "departureLive": "12:06",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:07",
+                "departureLive": "12:10",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:08",
+                "departureLive": "12:08",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S5",
+                    "symbol": "92M05.svg",
+                    "direction": "Aying",
+                    "stateless": "ddb:92M05: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Aying",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:08",
+                "departureLive": "12:08",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S5",
+                    "symbol": "92M05.svg",
+                    "direction": "Pasing",
+                    "stateless": "ddb:92M05:P:R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Pasing",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:09",
+                "departureLive": "12:12",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:10",
+                "departureLive": "12:12",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:12",
+                "departureLive": "12:12",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Garching, Forschungszentrum",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Garching, Forschungszentrum",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:12",
+                "departureLive": "12:12",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Erding",
+                    "stateless": "ddb:92M02: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Erding",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:12",
+                "departureLive": "12:17",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:14",
+                "departureLive": "12:14",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "U-Bahn Gleis 1",
+                "departureDate": "20260717",
+                "departurePlanned": "12:14",
+                "departureLive": "12:14",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                        "link": "https://www.mvg.de/news/gopc.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "92M03.svg",
+                    "direction": "Mammendorf",
+                    "stateless": "ddb:92M03: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Mammendorf",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:14",
+                "departureLive": "12:16",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S4",
+                    "symbol": "92M04.svg",
+                    "direction": "Buchenau",
+                    "stateless": "ddb:92M04: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Buchenau",
+                "station": {
+                    "id": "91000002",
+                    "name": "Marienplatz"
+                },
+                "track": "2",
+                "departureDate": "20260717",
+                "departurePlanned": "12:16",
+                "departureLive": "12:19",
+                "inTime": false,
+                "notifications": []
+            }
+        ],
+        "notifications": [
+            {
+                "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                "link": "http://",
+                "type": "line"
+            },
+            {
+                "text": "U3, U6: Sendlinger Tor <> Implerstraße: Ersatzverkehr mit Bussen zwischen 18.05. und 18.09.2026",
+                "link": "https://www.mvg.de/news/gopc.html",
+                "type": "line"
+            }
+        ]
+    }
+}

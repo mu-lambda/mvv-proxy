@@ -10,6 +10,7 @@ import { test as urlGetDepartures } from "./urlGetDepartures.test";
 import { test as urlDiscovery } from "./urlDiscovery.test";
 import { test as urlMidnight } from "./urlMidnight.test";
 import { test as karlsplatz } from "./karlsplatz.test";
+import { test as mulitstopReal } from "./multistopReal.test";
 
 // Each *.test.ts exports a single Test (the result of a testAsync call); this
 // combines them into one suite.
@@ -25,6 +26,7 @@ async function main() {
         urlDiscovery,
         urlMidnight,
         karlsplatz,
+        mulitstopReal,
     );
     if (!ok) process.exitCode = 1;
 }
