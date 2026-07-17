@@ -43,9 +43,13 @@ js_test(
 # tests/data/qtest/). Run e.g.:
 #   bazel run //server:record_departures -- \
 #       tests/data/qtest/karlsplatz.json de:09162:1 now
+# chdir = "server" (not this package) so the tool's default ./data/stops.csv
+# resolves to //server/data:stops in the runfiles, matching how server_bin runs.
+# The output path is resolved against BUILD_WORKING_DIRECTORY, so it is
+# unaffected by cwd.
 js_binary(
     name = "record_departures",
-    chdir = package_name(),
+    chdir = "server",
     data = [
         ":tsc",
         "//server/data:stops",
