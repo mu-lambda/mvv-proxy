@@ -4,6 +4,8 @@ import { test as normalize } from "./normalize.test";
 import { test as discovery } from "./discovery.test";
 import { test as midnight } from "./midnight.test";
 import { test as multistop } from "./multistop.test";
+import { test as multistopLimit } from "./multistopLimit.test";
+import { test as multistopPast } from "./multistopPast.test";
 import { test as urlGetDepartures } from "./urlGetDepartures.test";
 import { test as urlDiscovery } from "./urlDiscovery.test";
 import { test as urlMidnight } from "./urlMidnight.test";
@@ -17,6 +19,8 @@ async function main() {
         discovery,
         midnight,
         multistop,
+        multistopLimit,
+        multistopPast,
         urlGetDepartures,
         urlDiscovery,
         urlMidnight,

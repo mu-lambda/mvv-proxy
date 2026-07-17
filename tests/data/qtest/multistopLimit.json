@@ -1,0 +1,82 @@
+{
+    "get_departures|de:09162:1|1783324800": {
+        "departures": [
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260706",
+                "departurePlanned": "09:55",
+                "departureLive": "",
+                "inTime": true
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260706",
+                "departurePlanned": "10:10",
+                "departureLive": "",
+                "inTime": true
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260706",
+                "departurePlanned": "10:25",
+                "departureLive": "",
+                "inTime": true
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "S6.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j25"
+                },
+                "departureDate": "20260706",
+                "departurePlanned": "10:45",
+                "departureLive": "",
+                "inTime": true
+            }
+        ]
+    },
+    "get_departures|de:09162:2|1783324800": {
+        "departures": [
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "S3.svg",
+                    "direction": "Holzkirchen",
+                    "stateless": "ddb:92M03: :H:j25"
+                },
+                "departureDate": "20260706",
+                "departurePlanned": "10:20",
+                "departureLive": "",
+                "inTime": true
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "S3.svg",
+                    "direction": "Holzkirchen",
+                    "stateless": "ddb:92M03: :H:j25"
+                },
+                "departureDate": "20260706",
+                "departurePlanned": "10:50",
+                "departureLive": "",
+                "inTime": true
+            }
+        ]
+    }
+}
