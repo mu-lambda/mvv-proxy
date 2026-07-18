@@ -11,14 +11,17 @@ import { RecordingFetcher } from "./testingFetcher";
 // Captures real MVV responses into a per-test fixtures file (one file per test,
 // under tests/data/qtest/) that the //tests package replays offline via
 // FixtureFetcher. Fixtures are written to <out.json>; a ready-to-paste
-// tests/src/<name>.test.ts is printed to stdout (diagnostics go to stderr, so
+// tests/src/<name>.test.ts is written to the path given with `--test`, or, if
+// that flag is omitted, printed to stdout (diagnostics go to stderr, so
 // `2>/dev/null > file` captures just the test).
 //
 // Single stop (getDepartures):
-//   record_departures <out.json> <stopGid> [unixSeconds|now] [lineId...]
+//   record_departures <out.json> [--test <file.test.ts>] \
+//       <stopGid> [unixSeconds|now] [lineId...]
 //
 // Multiple stops (getDeparturesForMultipleStops), triggered by --stop:
-//   record_departures <out.json> [--at unixSeconds|now] [--limit minutes] \
+//   record_departures <out.json> [--test <file.test.ts>] \
+//       [--at unixSeconds|now] [--limit minutes] \
 //       --stop <gid>[=<line,line,...>] [--stop ...]
 //
 // gid and its lines are separated by '=' (not ':', since gids contain colons).
@@ -29,8 +32,10 @@ import { RecordingFetcher } from "./testingFetcher";
 function usage(): never {
     console.error(
         "Usage:\n" +
-            "  record_departures <out.json> <stopGid> [unixSeconds|now] [lineId...]\n" +
-            "  record_departures <out.json> [--at unixSeconds|now] [--limit minutes] \\\n" +
+            "  record_departures <out.json> [--test <file.test.ts>] \\\n" +
+            "      <stopGid> [unixSeconds|now] [lineId...]\n" +
+            "  record_departures <out.json> [--test <file.test.ts>] \\\n" +
+            "      [--at unixSeconds|now] [--limit minutes] \\\n" +
             "      --stop <gid>[=<line,line,...>] [--stop ...]",
     );
     process.exit(2);
@@ -41,15 +46,29 @@ async function main() {
     const outArg = args[0];
     if (!outArg) usage();
 
-    if (args.includes("--stop")) {
-        await recordMulti(outArg, args.slice(1));
+    // `--test <file>` may appear in either mode; pull it out before dispatch.
+    const rest = args.slice(1);
+    let testFile: string | undefined;
+    const testIdx = rest.indexOf("--test");
+    if (testIdx >= 0) {
+        testFile = rest[testIdx + 1];
+        if (testFile === undefined) usage();
+        rest.splice(testIdx, 2);
+    }
+
+    if (rest.includes("--stop")) {
+        await recordMulti(outArg, testFile, rest);
     } else {
-        await recordSingle(outArg, args.slice(1));
+        await recordSingle(outArg, testFile, rest);
     }
 }
 
 /** Records one stop and emits a `getDepartures` (SingleStop) test. */
-async function recordSingle(outArg: string, rest: string[]) {
+async function recordSingle(
+    outArg: string,
+    testFile: string | undefined,
+    rest: string[],
+) {
     const [stopGid, tsArg, ...lineIds] = rest;
     if (!stopGid) usage();
     const timestamp = parseTimestamp(tsArg);
@@ -61,12 +80,19 @@ async function recordSingle(outArg: string, rest: string[]) {
 
     await writeFixtures(outArg, recorder);
     const unix = Math.floor(timestamp.getTime() / 1000);
-    report(outArg, recorder, departures, unix, [stopGid]);
-    console.log(singleStopStub(req, unix, departures, path.basename(outArg)));
+    report(outArg, testFile, recorder, departures, unix, [stopGid]);
+    await emitStub(
+        testFile,
+        singleStopStub(req, unix, departures, path.basename(outArg)),
+    );
 }
 
 /** Records several stops and emits a `getDeparturesForMultipleStops` test. */
-async function recordMulti(outArg: string, rest: string[]) {
+async function recordMulti(
+    outArg: string,
+    testFile: string | undefined,
+    rest: string[],
+) {
     let tsArg: string | undefined;
     let limit: number | undefined;
     const stops: request.SingleStop[] = [];
@@ -103,12 +129,16 @@ async function recordMulti(outArg: string, rest: string[]) {
     const unix = Math.floor(timestamp.getTime() / 1000);
     report(
         outArg,
+        testFile,
         recorder,
         departures,
         unix,
         stops.map((s) => s.stopGid),
     );
-    console.log(multiStopStub(req, unix, departures, path.basename(outArg)));
+    await emitStub(
+        testFile,
+        multiStopStub(req, unix, departures, path.basename(outArg)),
+    );
 }
 
 function parseTimestamp(tsArg: string | undefined): Date {
@@ -127,37 +157,55 @@ async function loadStops(): Promise<info.Stop[]> {
     return stops;
 }
 
+/**
+ * Resolves a relative output path against the directory `bazel run` was invoked
+ * from (BUILD_WORKING_DIRECTORY), not the runfiles sandbox.
+ */
+function resolveOut(p: string): string {
+    return path.isAbsolute(p)
+        ? p
+        : path.join(process.env.BUILD_WORKING_DIRECTORY ?? process.cwd(), p);
+}
+
 /** Writes the recorded fixtures next to the directory `bazel run` was run from. */
 async function writeFixtures(outArg: string, recorder: RecordingFetcher) {
-    // Resolve a relative output path against the directory `bazel run` was
-    // invoked from, not the runfiles sandbox.
-    const outFile = path.isAbsolute(outArg)
-        ? outArg
-        : path.join(
-              process.env.BUILD_WORKING_DIRECTORY ?? process.cwd(),
-              outArg,
-          );
     await fs.writeFile(
-        outFile,
+        resolveOut(outArg),
         JSON.stringify(recorder.fixtures, null, 4) + "\n",
     );
 }
 
+/**
+ * Writes the generated test stub to `testFile` (resolved like the fixtures) if
+ * one was given, otherwise prints it to stdout for `2>/dev/null > file` capture.
+ */
+async function emitStub(testFile: string | undefined, stub: string) {
+    if (testFile === undefined) {
+        console.log(stub);
+    } else {
+        await fs.writeFile(resolveOut(testFile), stub);
+    }
+}
+
 function report(
     outArg: string,
+    testFile: string | undefined,
     recorder: RecordingFetcher,
     departures: info.Departure[],
     unix: number,
     gids: string[],
 ) {
-    const testName = path.basename(outArg, ".json");
+    const dest =
+        testFile ?? `tests/src/${path.basename(outArg, ".json")}.test.ts`;
+    const wrote =
+        testFile === undefined ? "Write the snippet below to" : "Wrote";
     console.error(
         `Recorded ${departures.length} departures into ` +
             `${Object.keys(recorder.fixtures).length} fixture(s).`,
     );
     console.error(`Queried at unix ${unix}.`);
     console.error(
-        `\nWrite the snippet below to tests/src/${testName}.test.ts, then ` +
+        `\n${wrote} ${dest}, then ` +
             "register it in tests/src/queryDepartures.test.ts (import its " +
             "`test` and add it to the suite() call). Ensure each stop below is " +
             `in STOPS in tests/src/fixtures.ts: ${gids.join(", ")}.\n`,

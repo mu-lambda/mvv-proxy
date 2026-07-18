@@ -43,6 +43,11 @@ js_test(
 # tests/data/qtest/). Run e.g.:
 #   bazel run //server:record_departures -- \
 #       tests/data/qtest/karlsplatz.json de:09162:1 now
+# Pass `--test <file.test.ts>` to write the generated test straight to a file
+# instead of stdout, e.g.:
+#   bazel run //server:record_departures -- \
+#       tests/data/qtest/karlsplatz.json --test tests/src/karlsplatz.test.ts \
+#       de:09162:1 now
 # chdir = "server" (not this package) so the tool's default ./data/stops.csv
 # resolves to //server/data:stops in the runfiles, matching how server_bin runs.
 # The output path is resolved against BUILD_WORKING_DIRECTORY, so it is
