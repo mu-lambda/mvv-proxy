@@ -122,4 +122,5 @@ oci_push(
     name = "image_push",
     image = ":image",
     repository = "docker.io/mulambda/mvv-proxy",
+    remote_tags = ["v0"],
 )
