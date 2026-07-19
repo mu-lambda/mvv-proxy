@@ -6,6 +6,46 @@ type Line = info.Line;
 type Stop = info.Stop;
 type Departure = info.Departure;
 
+/**
+ * Parses MVV's raw `track` string into a DeparturePoint. The designation is the
+ * last number in the string; the kind is read from the string's own vocabulary
+ * (see departurePointKind). Returns undefined when there is no number (e.g.
+ * plain bus stops, whose `track` is empty).
+ */
+function parseDeparturePoint(
+    track: string | undefined,
+): info.DeparturePoint | undefined {
+    if (track === undefined) {
+        return undefined;
+    }
+    const designation = lastNumber(track);
+    if (designation === undefined) {
+        return undefined;
+    }
+    return { kind: departurePointKind(track), designation };
+}
+
+function departurePointKind(track: string): "Gleis" | "Steig" {
+    // Trams report "Pos. N" (position) and buses "Bstg. N" (Bussteig): a Steig.
+    if (/steig|bstg|pos/i.test(track)) {
+        return "Steig";
+    }
+    // U-Bahn/S-Bahn report "... Gleis N" or a bare platform number ("1", "36"):
+    // a Gleis. The bare-number case has no marker, so anything else is assumed
+    // to be a Gleis.
+    return "Gleis";
+}
+
+/** The last run of digits in `s` as a number, or undefined if there is none. */
+function lastNumber(s: string): number | undefined {
+    const matches = s.match(/\d+/g);
+    if (matches === null) {
+        return undefined;
+    }
+    const last = matches[matches.length - 1];
+    return last === undefined ? undefined : Number(last);
+}
+
 export class Q {
     #fetcher: fetcher.IFetcher;
     #stops: Stop[];
@@ -174,6 +214,7 @@ export class Q {
                             : obj.departureLive,
                     inTime: obj.inTime,
                 },
+                departurePoint: parseDeparturePoint(obj.track),
             };
             result.push(d);
         }

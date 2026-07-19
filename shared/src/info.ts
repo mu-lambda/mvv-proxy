@@ -35,6 +35,22 @@ export type StopWithDistance = {
     distance: number; // meters
 };
 
+/**
+ * Where at a stop a vehicle departs from, normalized from MVV's mode-specific
+ * `track` field. Two kinds:
+ * - `Gleis`: a rail platform/track — U-Bahn and S-Bahn/trains
+ *   (raw MVV e.g. "1", "36", "U1/7 Gleis 3").
+ * - `Steig`: a street-level boarding point — Trams and Buses
+ *   (raw MVV e.g. "Bstg. 2" (Bussteig), "Pos. 6" (tram position)).
+ *
+ * `designation` is the number extracted from the raw string. When no number can
+ * be extracted the departure point is omitted entirely (shown as nothing).
+ */
+export type DeparturePoint = {
+    kind: "Gleis" | "Steig";
+    designation: number;
+};
+
 export type Departure = {
     stop: {
         name: string;
@@ -60,6 +76,9 @@ export type Departure = {
         live: string | null;
         inTime: boolean;
     };
+
+    /** Where the vehicle departs from, or undefined if MVV gave no usable value. */
+    departurePoint: DeparturePoint | undefined;
 };
 
 /** Returns a date that can be used to compare departures */

@@ -21,6 +21,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[0]!.departure.planned).toBe("11:28");
     expect(departures[0]!.departure.live).toBe("11:30");
     expect(departures[0]!.departure.inTime).toBe(false);
+    expect(departures[0]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[0]!.departurePoint?.designation).toBe(1);
 
     expect(departures[1]!.stop.gid).toBe("de:09184:2600");
     expect(departures[1]!.line.name).toBe("S6");
@@ -31,6 +33,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[1]!.departure.planned).toBe("11:32");
     expect(departures[1]!.departure.live).toBe("11:32");
     expect(departures[1]!.departure.inTime).toBe(true);
+    expect(departures[1]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[1]!.departurePoint?.designation).toBe(2);
 
     expect(departures[2]!.stop.gid).toBe("de:09184:2600");
     expect(departures[2]!.line.name).toBe("265");
@@ -41,6 +45,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[2]!.departure.planned).toBe("11:41");
     expect(departures[2]!.departure.live).toBe("11:41");
     expect(departures[2]!.departure.inTime).toBe(true);
+    expect(departures[2]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[2]!.departurePoint?.designation).toBe(2);
 
     expect(departures[3]!.stop.gid).toBe("de:09184:2600");
     expect(departures[3]!.line.name).toBe("967");
@@ -53,6 +59,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[3]!.departure.planned).toBe("11:43");
     expect(departures[3]!.departure.live).toBe("11:43");
     expect(departures[3]!.departure.inTime).toBe(true);
+    expect(departures[3]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[3]!.departurePoint?.designation).toBe(3);
 
     expect(departures[4]!.stop.gid).toBe("de:09184:2600");
     expect(departures[4]!.line.name).toBe("S6");
@@ -63,6 +71,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[4]!.departure.planned).toBe("11:48");
     expect(departures[4]!.departure.live).toBe("11:50");
     expect(departures[4]!.departure.inTime).toBe(false);
+    expect(departures[4]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[4]!.departurePoint?.designation).toBe(1);
 
     expect(departures[5]!.stop.gid).toBe("de:09184:2600");
     expect(departures[5]!.line.name).toBe("S6");
@@ -73,6 +83,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[5]!.departure.planned).toBe("11:52");
     expect(departures[5]!.departure.live).toBe("11:57");
     expect(departures[5]!.departure.inTime).toBe(false);
+    expect(departures[5]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[5]!.departurePoint?.designation).toBe(2);
 
     expect(departures[6]!.stop.gid).toBe("de:09184:2600");
     expect(departures[6]!.line.name).toBe("258");
@@ -85,6 +97,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[6]!.departure.planned).toBe("11:57");
     expect(departures[6]!.departure.live).toBe(null);
     expect(departures[6]!.departure.inTime).toBe(true);
+    expect(departures[6]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[6]!.departurePoint?.designation).toBe(3);
 
     expect(departures[7]!.stop.gid).toBe("de:09184:2600");
     expect(departures[7]!.line.name).toBe("266");
@@ -95,6 +109,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[7]!.departure.planned).toBe("11:59");
     expect(departures[7]!.departure.live).toBe(null);
     expect(departures[7]!.departure.inTime).toBe(true);
+    expect(departures[7]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[7]!.departurePoint?.designation).toBe(1);
 
     expect(departures[8]!.stop.gid).toBe("de:09184:2600");
     expect(departures[8]!.line.name).toBe("258");
@@ -105,6 +121,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[8]!.departure.planned).toBe("12:02");
     expect(departures[8]!.departure.live).toBe(null);
     expect(departures[8]!.departure.inTime).toBe(true);
+    expect(departures[8]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[8]!.departurePoint?.designation).toBe(3);
 
     expect(departures[9]!.stop.gid).toBe("de:09184:2600");
     expect(departures[9]!.line.name).toBe("S6");
@@ -115,6 +133,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[9]!.departure.planned).toBe("12:08");
     expect(departures[9]!.departure.live).toBe("12:08");
     expect(departures[9]!.departure.inTime).toBe(true);
+    expect(departures[9]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[9]!.departurePoint?.designation).toBe(1);
 
     expect(departures[10]!.stop.gid).toBe("de:09184:2600");
     expect(departures[10]!.line.name).toBe("S6");
@@ -125,6 +145,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[10]!.departure.planned).toBe("12:12");
     expect(departures[10]!.departure.live).toBe("12:22");
     expect(departures[10]!.departure.inTime).toBe(false);
+    expect(departures[10]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[10]!.departurePoint?.designation).toBe(2);
 
     expect(departures[11]!.stop.gid).toBe("de:09184:2600");
     expect(departures[11]!.line.name).toBe("967");
@@ -135,6 +157,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[11]!.departure.planned).toBe("12:18");
     expect(departures[11]!.departure.live).toBe("12:18");
     expect(departures[11]!.departure.inTime).toBe(true);
+    expect(departures[11]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[11]!.departurePoint?.designation).toBe(3);
 
     expect(departures[12]!.stop.gid).toBe("de:09184:2600");
     expect(departures[12]!.line.name).toBe("266");
@@ -145,6 +169,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[12]!.departure.planned).toBe("12:19");
     expect(departures[12]!.departure.live).toBe(null);
     expect(departures[12]!.departure.inTime).toBe(true);
+    expect(departures[12]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[12]!.departurePoint?.designation).toBe(1);
 
     expect(departures[13]!.stop.gid).toBe("de:09184:2600");
     expect(departures[13]!.line.name).toBe("265");
@@ -155,6 +181,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[13]!.departure.planned).toBe("12:21");
     expect(departures[13]!.departure.live).toBe("12:21");
     expect(departures[13]!.departure.inTime).toBe(true);
+    expect(departures[13]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[13]!.departurePoint?.designation).toBe(2);
 
     expect(departures[14]!.stop.gid).toBe("de:09184:2600");
     expect(departures[14]!.line.name).toBe("S6");
@@ -165,6 +193,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[14]!.departure.planned).toBe("12:28");
     expect(departures[14]!.departure.live).toBe(null);
     expect(departures[14]!.departure.inTime).toBe(true);
+    expect(departures[14]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[14]!.departurePoint?.designation).toBe(1);
 
     expect(departures[15]!.stop.gid).toBe("de:09184:2600");
     expect(departures[15]!.line.name).toBe("S6");
@@ -175,6 +205,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[15]!.departure.planned).toBe("12:32");
     expect(departures[15]!.departure.live).toBe("12:42");
     expect(departures[15]!.departure.inTime).toBe(false);
+    expect(departures[15]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[15]!.departurePoint?.designation).toBe(2);
 
     expect(departures[16]!.stop.gid).toBe("de:09184:2600");
     expect(departures[16]!.line.name).toBe("258");
@@ -187,6 +219,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[16]!.departure.planned).toBe("12:37");
     expect(departures[16]!.departure.live).toBe(null);
     expect(departures[16]!.departure.inTime).toBe(true);
+    expect(departures[16]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[16]!.departurePoint?.designation).toBe(3);
 
     expect(departures[17]!.stop.gid).toBe("de:09184:2600");
     expect(departures[17]!.line.name).toBe("967");
@@ -199,6 +233,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[17]!.departure.planned).toBe("12:38");
     expect(departures[17]!.departure.live).toBe("12:38");
     expect(departures[17]!.departure.inTime).toBe(true);
+    expect(departures[17]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[17]!.departurePoint?.designation).toBe(3);
 
     expect(departures[18]!.stop.gid).toBe("de:09184:2600");
     expect(departures[18]!.line.name).toBe("258");
@@ -209,6 +245,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[18]!.departure.planned).toBe("12:42");
     expect(departures[18]!.departure.live).toBe(null);
     expect(departures[18]!.departure.inTime).toBe(true);
+    expect(departures[18]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[18]!.departurePoint?.designation).toBe(3);
 
     expect(departures[19]!.stop.gid).toBe("de:09184:2600");
     expect(departures[19]!.line.name).toBe("S6");
@@ -219,6 +257,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[19]!.departure.planned).toBe("12:48");
     expect(departures[19]!.departure.live).toBe(null);
     expect(departures[19]!.departure.inTime).toBe(true);
+    expect(departures[19]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[19]!.departurePoint?.designation).toBe(1);
 
     expect(departures[20]!.stop.gid).toBe("de:09184:2600");
     expect(departures[20]!.line.name).toBe("S6");
@@ -229,6 +269,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[20]!.departure.planned).toBe("12:52");
     expect(departures[20]!.departure.live).toBe("13:02");
     expect(departures[20]!.departure.inTime).toBe(false);
+    expect(departures[20]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[20]!.departurePoint?.designation).toBe(2);
 
     expect(departures[21]!.stop.gid).toBe("de:09184:2600");
     expect(departures[21]!.line.name).toBe("967");
@@ -241,6 +283,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[21]!.departure.planned).toBe("12:58");
     expect(departures[21]!.departure.live).toBe(null);
     expect(departures[21]!.departure.inTime).toBe(true);
+    expect(departures[21]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[21]!.departurePoint?.designation).toBe(3);
 
     expect(departures[22]!.stop.gid).toBe("de:09184:2600");
     expect(departures[22]!.line.name).toBe("266");
@@ -251,6 +295,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[22]!.departure.planned).toBe("12:59");
     expect(departures[22]!.departure.live).toBe(null);
     expect(departures[22]!.departure.inTime).toBe(true);
+    expect(departures[22]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[22]!.departurePoint?.designation).toBe(1);
 
     expect(departures[23]!.stop.gid).toBe("de:09184:2600");
     expect(departures[23]!.line.name).toBe("265");
@@ -261,6 +307,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[23]!.departure.planned).toBe("13:01");
     expect(departures[23]!.departure.live).toBe(null);
     expect(departures[23]!.departure.inTime).toBe(true);
+    expect(departures[23]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[23]!.departurePoint?.designation).toBe(2);
 
     expect(departures[24]!.stop.gid).toBe("de:09184:2600");
     expect(departures[24]!.line.name).toBe("S6");
@@ -271,6 +319,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[24]!.departure.planned).toBe("13:08");
     expect(departures[24]!.departure.live).toBe(null);
     expect(departures[24]!.departure.inTime).toBe(true);
+    expect(departures[24]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[24]!.departurePoint?.designation).toBe(1);
 
     expect(departures[25]!.stop.gid).toBe("de:09184:2600");
     expect(departures[25]!.line.name).toBe("S6");
@@ -281,6 +331,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[25]!.departure.planned).toBe("13:12");
     expect(departures[25]!.departure.live).toBe("13:22");
     expect(departures[25]!.departure.inTime).toBe(false);
+    expect(departures[25]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[25]!.departurePoint?.designation).toBe(2);
 
     expect(departures[26]!.stop.gid).toBe("de:09184:2600");
     expect(departures[26]!.line.name).toBe("258");
@@ -293,6 +345,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[26]!.departure.planned).toBe("13:17");
     expect(departures[26]!.departure.live).toBe(null);
     expect(departures[26]!.departure.inTime).toBe(true);
+    expect(departures[26]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[26]!.departurePoint?.designation).toBe(3);
 
     expect(departures[27]!.stop.gid).toBe("de:09184:2600");
     expect(departures[27]!.line.name).toBe("967");
@@ -303,6 +357,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[27]!.departure.planned).toBe("13:18");
     expect(departures[27]!.departure.live).toBe(null);
     expect(departures[27]!.departure.inTime).toBe(true);
+    expect(departures[27]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[27]!.departurePoint?.designation).toBe(3);
 
     expect(departures[28]!.stop.gid).toBe("de:09184:2600");
     expect(departures[28]!.line.name).toBe("266");
@@ -313,6 +369,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[28]!.departure.planned).toBe("13:19");
     expect(departures[28]!.departure.live).toBe(null);
     expect(departures[28]!.departure.inTime).toBe(true);
+    expect(departures[28]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[28]!.departurePoint?.designation).toBe(1);
 
     expect(departures[29]!.stop.gid).toBe("de:09184:2600");
     expect(departures[29]!.line.name).toBe("258");
@@ -323,6 +381,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[29]!.departure.planned).toBe("13:22");
     expect(departures[29]!.departure.live).toBe(null);
     expect(departures[29]!.departure.inTime).toBe(true);
+    expect(departures[29]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[29]!.departurePoint?.designation).toBe(3);
 
     expect(departures[30]!.stop.gid).toBe("de:09184:2600");
     expect(departures[30]!.line.name).toBe("S6");
@@ -333,6 +393,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[30]!.departure.planned).toBe("13:28");
     expect(departures[30]!.departure.live).toBe(null);
     expect(departures[30]!.departure.inTime).toBe(true);
+    expect(departures[30]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[30]!.departurePoint?.designation).toBe(1);
 
     expect(departures[31]!.stop.gid).toBe("de:09184:2600");
     expect(departures[31]!.line.name).toBe("S6");
@@ -343,6 +405,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[31]!.departure.planned).toBe("13:32");
     expect(departures[31]!.departure.live).toBe("13:42");
     expect(departures[31]!.departure.inTime).toBe(false);
+    expect(departures[31]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[31]!.departurePoint?.designation).toBe(2);
 
     expect(departures[32]!.stop.gid).toBe("de:09184:2600");
     expect(departures[32]!.line.name).toBe("967");
@@ -355,6 +419,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[32]!.departure.planned).toBe("13:38");
     expect(departures[32]!.departure.live).toBe(null);
     expect(departures[32]!.departure.inTime).toBe(true);
+    expect(departures[32]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[32]!.departurePoint?.designation).toBe(3);
 
     expect(departures[33]!.stop.gid).toBe("de:09184:2600");
     expect(departures[33]!.line.name).toBe("265");
@@ -365,6 +431,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[33]!.departure.planned).toBe("13:41");
     expect(departures[33]!.departure.live).toBe(null);
     expect(departures[33]!.departure.inTime).toBe(true);
+    expect(departures[33]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[33]!.departurePoint?.designation).toBe(2);
 
     expect(departures[34]!.stop.gid).toBe("de:09184:2600");
     expect(departures[34]!.line.name).toBe("S6");
@@ -375,6 +443,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[34]!.departure.planned).toBe("13:48");
     expect(departures[34]!.departure.live).toBe(null);
     expect(departures[34]!.departure.inTime).toBe(true);
+    expect(departures[34]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[34]!.departurePoint?.designation).toBe(1);
 
     expect(departures[35]!.stop.gid).toBe("de:09184:2600");
     expect(departures[35]!.line.name).toBe("S6");
@@ -385,6 +455,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[35]!.departure.planned).toBe("13:52");
     expect(departures[35]!.departure.live).toBe(null);
     expect(departures[35]!.departure.inTime).toBe(true);
+    expect(departures[35]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[35]!.departurePoint?.designation).toBe(2);
 
     expect(departures[36]!.stop.gid).toBe("de:09184:2600");
     expect(departures[36]!.line.name).toBe("258");
@@ -397,6 +469,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[36]!.departure.planned).toBe("13:57");
     expect(departures[36]!.departure.live).toBe(null);
     expect(departures[36]!.departure.inTime).toBe(true);
+    expect(departures[36]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[36]!.departurePoint?.designation).toBe(3);
 
     expect(departures[37]!.stop.gid).toBe("de:09184:2600");
     expect(departures[37]!.line.name).toBe("967");
@@ -409,6 +483,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[37]!.departure.planned).toBe("13:58");
     expect(departures[37]!.departure.live).toBe(null);
     expect(departures[37]!.departure.inTime).toBe(true);
+    expect(departures[37]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[37]!.departurePoint?.designation).toBe(3);
 
     expect(departures[38]!.stop.gid).toBe("de:09184:2600");
     expect(departures[38]!.line.name).toBe("266");
@@ -419,6 +495,8 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[38]!.departure.planned).toBe("13:59");
     expect(departures[38]!.departure.live).toBe(null);
     expect(departures[38]!.departure.inTime).toBe(true);
+    expect(departures[38]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[38]!.departurePoint?.designation).toBe(1);
 
     expect(departures[39]!.stop.gid).toBe("de:09184:2600");
     expect(departures[39]!.line.name).toBe("258");
@@ -429,4 +507,6 @@ export const test = testAsync("Planegg real departures", async () => {
     expect(departures[39]!.departure.planned).toBe("14:02");
     expect(departures[39]!.departure.live).toBe(null);
     expect(departures[39]!.departure.inTime).toBe(true);
+    expect(departures[39]!.departurePoint?.kind).toBe("Steig");
+    expect(departures[39]!.departurePoint?.designation).toBe(3);
 });

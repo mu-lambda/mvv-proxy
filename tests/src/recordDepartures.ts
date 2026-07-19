@@ -213,9 +213,9 @@ function report(
 }
 
 /**
- * The 9-field-per-departure assertion block shared by both stubs. `stop.name`
- * is skipped because it comes from the test's synthetic STOPS, not the MVV
- * response; every other field pins the current normalization behavior.
+ * The per-departure assertion block shared by both stubs. `stop.name` is skipped
+ * because it comes from the test's synthetic STOPS, not the MVV response; every
+ * other field pins the current normalization behavior.
  */
 function fieldAssertions(departures: info.Departure[]): string {
     const lit = (v: unknown) => JSON.stringify(v);
@@ -232,9 +232,24 @@ function fieldAssertions(departures: info.Departure[]): string {
                 `    expect(${p}.departure.planned).toBe(${lit(d.departure.planned)});`,
                 `    expect(${p}.departure.live).toBe(${lit(d.departure.live)});`,
                 `    expect(${p}.departure.inTime).toBe(${lit(d.departure.inTime)});`,
+                ...departurePointAssertions(p, d.departurePoint),
             ].join("\n");
         })
         .join("\n\n");
+}
+
+/** Asserts `departurePoint`: kind + designation when present, undefined otherwise. */
+function departurePointAssertions(
+    p: string,
+    dp: info.DeparturePoint | undefined,
+): string[] {
+    if (dp === undefined) {
+        return [`    expect(${p}.departurePoint).toBe(undefined);`];
+    }
+    return [
+        `    expect(${p}.departurePoint?.kind).toBe(${JSON.stringify(dp.kind)});`,
+        `    expect(${p}.departurePoint?.designation).toBe(${dp.designation});`,
+    ];
 }
 
 /** A ready-to-paste single-stop test that pins the current behavior. */

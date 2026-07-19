@@ -31,6 +31,7 @@ export const test = testAsync(
         expect(departures[0]!.departure.planned).toBe("10:10");
         expect(departures[0]!.departure.live).toBe(null);
         expect(departures[0]!.departure.inTime).toBe(true);
+        expect(departures[0]!.departurePoint).toBe(undefined);
 
         expect(departures[1]!.stop.gid).toBe("de:09162:2");
         expect(departures[1]!.line.name).toBe("S3");
@@ -41,6 +42,7 @@ export const test = testAsync(
         expect(departures[1]!.departure.planned).toBe("10:20");
         expect(departures[1]!.departure.live).toBe(null);
         expect(departures[1]!.departure.inTime).toBe(true);
+        expect(departures[1]!.departurePoint).toBe(undefined);
 
         expect(departures[2]!.stop.gid).toBe("de:09162:1");
         expect(departures[2]!.line.name).toBe("S6");
@@ -51,5 +53,6 @@ export const test = testAsync(
         expect(departures[2]!.departure.planned).toBe("10:25");
         expect(departures[2]!.departure.live).toBe(null);
         expect(departures[2]!.departure.inTime).toBe(true);
+        expect(departures[2]!.departurePoint).toBe(undefined);
     },
 );
