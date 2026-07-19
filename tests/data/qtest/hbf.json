@@ -1,0 +1,1033 @@
+{
+    "available_lines|de:09162:6": {
+        "error": "",
+        "lines": [
+            {
+                "number": "U1",
+                "symbol": "010U1.svg",
+                "direction": "Mangfallplatz",
+                "stateless": "swm:010U1:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U1",
+                "symbol": "010U1.svg",
+                "direction": "Gern",
+                "stateless": "swm:010U1:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U2",
+                "symbol": "010U2.svg",
+                "direction": "Messestadt Ost",
+                "stateless": "swm:010U2:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U2",
+                "symbol": "010U2.svg",
+                "direction": "Feldmoching",
+                "stateless": "swm:010U2:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U4",
+                "symbol": "010U4.svg",
+                "direction": "Arabellapark",
+                "stateless": "swm:010U4:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U4",
+                "symbol": "010U4.svg",
+                "direction": "Theresienwiese",
+                "stateless": "swm:010U4:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U5",
+                "symbol": "010U5.svg",
+                "direction": "Neuperlach Süd",
+                "stateless": "swm:010U5:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U5",
+                "symbol": "010U5.svg",
+                "direction": "Laimer Platz",
+                "stateless": "swm:010U5:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U7",
+                "symbol": "010U7.svg",
+                "direction": "Sendlinger Tor",
+                "stateless": "swm:010U7:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U7",
+                "symbol": "010U7.svg",
+                "direction": "Olympia-Einkaufszentrum",
+                "stateless": "swm:010U7:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "18",
+                "symbol": "02018.svg",
+                "direction": "Hochschule München",
+                "stateless": "swm:02018:G:H:016",
+                "name": "Tram"
+            },
+            {
+                "number": "18",
+                "symbol": "02018.svg",
+                "direction": "Gondrellplatz",
+                "stateless": "swm:02018:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "19",
+                "symbol": "02019.svg",
+                "direction": "Berg am Laim",
+                "stateless": "swm:02019:G:H:016",
+                "name": "Tram"
+            },
+            {
+                "number": "19",
+                "symbol": "02019.svg",
+                "direction": "Pasing",
+                "stateless": "swm:02019:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "20",
+                "symbol": "02020.svg",
+                "direction": "Moosach",
+                "stateless": "swm:02020:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "N19",
+                "symbol": "32919.svg",
+                "direction": "St.-Veit-Straße",
+                "stateless": "swm:32919:G:H:016",
+                "name": "NachtTram"
+            },
+            {
+                "number": "N19",
+                "symbol": "32919.svg",
+                "direction": "Pasing",
+                "stateless": "swm:32919:G:R:016",
+                "name": "NachtTram"
+            },
+            {
+                "number": "N20",
+                "symbol": "32920.svg",
+                "direction": "Moosach",
+                "stateless": "swm:32920:G:R:016",
+                "name": "NachtTram"
+            }
+        ],
+        "icons": {
+            "U-Bahn": "/fileadmin/Lines/010U7.svg.svg",
+            "Tram": "/fileadmin/Lines/02020.svg.svg",
+            "NachtTram": "/fileadmin/Lines/32920.svg.svg"
+        }
+    },
+    "get_departures|de:09162:6|1784452665": {
+        "error": "",
+        "departures": [
+            {
+                "line": {
+                    "number": "18",
+                    "symbol": "02018.svg",
+                    "direction": "Hochschule München",
+                    "stateless": "swm:02018:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "Hochschule München",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:16",
+                "departureLive": "11:17",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "Tram 18: Hauptbahnhof <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung (06.07.-31.07.26)",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "19",
+                    "symbol": "02019.svg",
+                    "direction": "Pasing Bf.",
+                    "stateless": "swm:02019:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Pasing Bf.",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:17",
+                "departureLive": "11:17",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U1",
+                    "symbol": "010U1.svg",
+                    "direction": "Mangfallplatz",
+                    "stateless": "swm:010U1:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Mangfallplatz",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U1/7 Gleis 4",
+                "departureDate": "20260719",
+                "departurePlanned": "11:17",
+                "departureLive": "11:18",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "U1: Linienteilung wegen Sanierungsarbeiten von 17.07.2026 bis 13.09.2026",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/459283e4-a1ee-441d-9941-41b6dd8089c6_-1749931959",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U2",
+                    "symbol": "010U2.svg",
+                    "direction": "Feldmoching",
+                    "stateless": "swm:010U2:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Feldmoching",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U2/8 Gleis 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:18",
+                "departureLive": "11:20",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U1",
+                    "symbol": "010U1.svg",
+                    "direction": "Gern",
+                    "stateless": "swm:010U1:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Gern",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U1/7 Gleis 3",
+                "departureDate": "20260719",
+                "departurePlanned": "11:21",
+                "departureLive": "11:21",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U1: Linienteilung wegen Sanierungsarbeiten von 17.07.2026 bis 13.09.2026",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/459283e4-a1ee-441d-9941-41b6dd8089c6_-1749931959",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U4",
+                    "symbol": "010U4.svg",
+                    "direction": "Arabellapark",
+                    "stateless": "swm:010U4:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Arabellapark",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:21",
+                "departureLive": "11:21",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "18",
+                    "symbol": "02018.svg",
+                    "direction": "Gondrellplatz",
+                    "stateless": "swm:02018:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Gondrellplatz",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:21",
+                "departureLive": "11:21",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 18: Hauptbahnhof <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung (06.07.-31.07.26)",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U2",
+                    "symbol": "010U2.svg",
+                    "direction": "Messestadt Ost",
+                    "stateless": "swm:010U2:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Messestadt Ost",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U2/8 Gleis 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:22",
+                "departureLive": "11:22",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "20",
+                    "symbol": "02020.svg",
+                    "direction": "Moosach Bf.",
+                    "stateless": "swm:02020:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Moosach Bf.",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:23",
+                "departureLive": "11:23",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U4",
+                    "symbol": "010U4.svg",
+                    "direction": "Theresienwiese",
+                    "stateless": "swm:010U4:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Theresienwiese",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:23",
+                "departureLive": "11:23",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Neuperlach Süd",
+                    "stateless": "swm:010U5:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Neuperlach Süd",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:24",
+                "departureLive": "11:24",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "19",
+                    "symbol": "02019.svg",
+                    "direction": "Berg am Laim Bf.",
+                    "stateless": "swm:02019:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "Berg am Laim Bf.",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:24",
+                "departureLive": "11:24",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "18",
+                    "symbol": "02018.svg",
+                    "direction": "Hochschule München",
+                    "stateless": "swm:02018:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "Hochschule München",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:26",
+                "departureLive": "11:26",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 18: Hauptbahnhof <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung (06.07.-31.07.26)",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Laimer Platz",
+                    "stateless": "swm:010U5:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Laimer Platz",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:26",
+                "departureLive": "11:26",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "19",
+                    "symbol": "02019.svg",
+                    "direction": "Pasing Bf.",
+                    "stateless": "swm:02019:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Pasing Bf.",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:27",
+                "departureLive": "11:27",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U1",
+                    "symbol": "010U1.svg",
+                    "direction": "Mangfallplatz",
+                    "stateless": "swm:010U1:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Mangfallplatz",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U1/7 Gleis 4",
+                "departureDate": "20260719",
+                "departurePlanned": "11:27",
+                "departureLive": "11:27",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U1: Linienteilung wegen Sanierungsarbeiten von 17.07.2026 bis 13.09.2026",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/459283e4-a1ee-441d-9941-41b6dd8089c6_-1749931959",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U2",
+                    "symbol": "010U2.svg",
+                    "direction": "Feldmoching",
+                    "stateless": "swm:010U2:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Feldmoching",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U2/8 Gleis 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:28",
+                "departureLive": "11:28",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U4",
+                    "symbol": "010U4.svg",
+                    "direction": "Arabellapark",
+                    "stateless": "swm:010U4:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Arabellapark",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:31",
+                "departureLive": "11:31",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "18",
+                    "symbol": "02018.svg",
+                    "direction": "Gondrellplatz",
+                    "stateless": "swm:02018:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Gondrellplatz",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:31",
+                "departureLive": "11:31",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 18: Hauptbahnhof <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung (06.07.-31.07.26)",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U1",
+                    "symbol": "010U1.svg",
+                    "direction": "Gern",
+                    "stateless": "swm:010U1:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Gern",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U1/7 Gleis 3",
+                "departureDate": "20260719",
+                "departurePlanned": "11:31",
+                "departureLive": "11:31",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U1: Linienteilung wegen Sanierungsarbeiten von 17.07.2026 bis 13.09.2026",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/459283e4-a1ee-441d-9941-41b6dd8089c6_-1749931959",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U2",
+                    "symbol": "010U2.svg",
+                    "direction": "Messestadt Ost",
+                    "stateless": "swm:010U2:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Messestadt Ost",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U2/8 Gleis 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:32",
+                "departureLive": "11:32",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "20",
+                    "symbol": "02020.svg",
+                    "direction": "Moosach Bf.",
+                    "stateless": "swm:02020:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Moosach Bf.",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:33",
+                "departureLive": "11:33",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U4",
+                    "symbol": "010U4.svg",
+                    "direction": "Theresienwiese",
+                    "stateless": "swm:010U4:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Theresienwiese",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:33",
+                "departureLive": "11:32",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "19",
+                    "symbol": "02019.svg",
+                    "direction": "Berg am Laim Bf.",
+                    "stateless": "swm:02019:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "Berg am Laim Bf.",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:34",
+                "departureLive": "11:34",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Neuperlach Süd",
+                    "stateless": "swm:010U5:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Neuperlach Süd",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:34",
+                "departureLive": "11:34",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Laimer Platz",
+                    "stateless": "swm:010U5:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Laimer Platz",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:36",
+                "departureLive": "11:36",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "18",
+                    "symbol": "02018.svg",
+                    "direction": "Hochschule München",
+                    "stateless": "swm:02018:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "Hochschule München",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:36",
+                "departureLive": "11:37",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "Tram 18: Hauptbahnhof <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung (06.07.-31.07.26)",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "19",
+                    "symbol": "02019.svg",
+                    "direction": "Pasing Bf.",
+                    "stateless": "swm:02019:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Pasing Bf.",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:37",
+                "departureLive": "11:37",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U1",
+                    "symbol": "010U1.svg",
+                    "direction": "Mangfallplatz",
+                    "stateless": "swm:010U1:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Mangfallplatz",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U1/7 Gleis 4",
+                "departureDate": "20260719",
+                "departurePlanned": "11:37",
+                "departureLive": "11:37",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U1: Linienteilung wegen Sanierungsarbeiten von 17.07.2026 bis 13.09.2026",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/459283e4-a1ee-441d-9941-41b6dd8089c6_-1749931959",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U2",
+                    "symbol": "010U2.svg",
+                    "direction": "Feldmoching",
+                    "stateless": "swm:010U2:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Feldmoching",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U2/8 Gleis 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:38",
+                "departureLive": "11:38",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U1",
+                    "symbol": "010U1.svg",
+                    "direction": "Gern",
+                    "stateless": "swm:010U1:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Gern",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U1/7 Gleis 3",
+                "departureDate": "20260719",
+                "departurePlanned": "11:41",
+                "departureLive": "11:41",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "U1: Linienteilung wegen Sanierungsarbeiten von 17.07.2026 bis 13.09.2026",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/459283e4-a1ee-441d-9941-41b6dd8089c6_-1749931959",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U4",
+                    "symbol": "010U4.svg",
+                    "direction": "Arabellapark",
+                    "stateless": "swm:010U4:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Arabellapark",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:41",
+                "departureLive": "11:41",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "18",
+                    "symbol": "02018.svg",
+                    "direction": "Gondrellplatz",
+                    "stateless": "swm:02018:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Gondrellplatz",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:41",
+                "departureLive": "11:41",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 18: Hauptbahnhof <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung (06.07.-31.07.26)",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U2",
+                    "symbol": "010U2.svg",
+                    "direction": "Messestadt Ost",
+                    "stateless": "swm:010U2:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Messestadt Ost",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U2/8 Gleis 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:42",
+                "departureLive": "11:42",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "20",
+                    "symbol": "02020.svg",
+                    "direction": "Moosach Bf.",
+                    "stateless": "swm:02020:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Moosach Bf.",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:43",
+                "departureLive": "11:43",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U4",
+                    "symbol": "010U4.svg",
+                    "direction": "Theresienwiese",
+                    "stateless": "swm:010U4:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Theresienwiese",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:43",
+                "departureLive": "11:43",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "19",
+                    "symbol": "02019.svg",
+                    "direction": "Berg am Laim Bf.",
+                    "stateless": "swm:02019:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "Berg am Laim Bf.",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:44",
+                "departureLive": "11:44",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Neuperlach Süd",
+                    "stateless": "swm:010U5:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Neuperlach Süd",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:44",
+                "departureLive": "11:44",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "18",
+                    "symbol": "02018.svg",
+                    "direction": "Hochschule München",
+                    "stateless": "swm:02018:G:H:016",
+                    "name": "Tram"
+                },
+                "direction": "Hochschule München",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:46",
+                "departureLive": "11:46",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "Tram 18: Hauptbahnhof <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung (06.07.-31.07.26)",
+                        "link": "https://www.mvg.de/verbindungen/trambau.html",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U5",
+                    "symbol": "010U5.svg",
+                    "direction": "Laimer Platz",
+                    "stateless": "swm:010U5:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Laimer Platz",
+                "station": {
+                    "id": "91000006",
+                    "name": "München, Hauptbahnhof  (U, Tram)"
+                },
+                "track": "U4/5 Gleis 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:46",
+                "departureLive": "11:46",
+                "inTime": true,
+                "notifications": []
+            }
+        ],
+        "notifications": [
+            {
+                "text": "Tram 18: Hauptbahnhof <> Sendlinger Tor: Unterbrechung wegen Weichenerneuerung (06.07.-31.07.26)",
+                "link": "https://www.mvg.de/verbindungen/trambau.html",
+                "type": "line"
+            },
+            {
+                "text": "U1: Linienteilung wegen Sanierungsarbeiten von 17.07.2026 bis 13.09.2026",
+                "link": "https://www.mvg.de/api/ems/tickers/file/459283e4-a1ee-441d-9941-41b6dd8089c6_-1749931959",
+                "type": "line"
+            }
+        ]
+    }
+}

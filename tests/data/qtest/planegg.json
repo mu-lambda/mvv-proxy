@@ -1,0 +1,866 @@
+{
+    "available_lines|de:09184:2600": {
+        "error": "",
+        "lines": [
+            {
+                "number": "S6",
+                "symbol": "92M06.svg",
+                "direction": "Ebersberg",
+                "stateless": "ddb:92M06: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S6",
+                "symbol": "92M06.svg",
+                "direction": "Tutzing",
+                "stateless": "ddb:92M06: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "258",
+                "symbol": "19258.svg",
+                "direction": "Gräfelfing (S)",
+                "stateless": "mvv:19258: :H:s26",
+                "name": "RegionalBus"
+            },
+            {
+                "number": "258",
+                "symbol": "19258.svg",
+                "direction": "Lochham, Starnberger Straße ü. Lochham (S)",
+                "stateless": "mvv:19258: :R:s26",
+                "name": "RegionalBus"
+            },
+            {
+                "number": "265",
+                "symbol": "19265.svg",
+                "direction": "Pasing (S)",
+                "stateless": "mvv:19265: :R:s26",
+                "name": "RegionalBus"
+            },
+            {
+                "number": "266",
+                "symbol": "19266.svg",
+                "direction": "Klinikum Großhadern (U)",
+                "stateless": "mvv:19266: :H:s26",
+                "name": "RegionalBus"
+            },
+            {
+                "number": "967",
+                "symbol": "19967.svg",
+                "direction": "Krailling, Sperberweg",
+                "stateless": "mvv:19967: :H:s26",
+                "name": "RegionalBus"
+            }
+        ],
+        "icons": {
+            "S-Bahn": "/fileadmin/Lines/92M06.svg.svg",
+            "RegionalBus": "/fileadmin/Lines/19967.svg.svg"
+        }
+    },
+    "get_departures|de:09184:2600|1784453170": {
+        "error": "",
+        "departures": [
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:28",
+                "departureLive": "11:30",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:32",
+                "departureLive": "11:32",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "265",
+                    "symbol": "19265.svg",
+                    "direction": "Pasing (S)",
+                    "stateless": "mvv:19265: :R:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Pasing (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:41",
+                "departureLive": "11:41",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "967",
+                    "symbol": "19967.svg",
+                    "direction": "Krailling, Muggenthalerstraße",
+                    "stateless": "mvv:19967: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Krailling, Muggenthalerstraße",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "11:43",
+                "departureLive": "11:43",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:48",
+                "departureLive": "11:50",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:52",
+                "departureLive": "11:57",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "258",
+                    "symbol": "19258.svg",
+                    "direction": "Lochham, Starnberger Straße ü. Lochham (S)",
+                    "stateless": "mvv:19258: :R:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Lochham, Starnberger Straße ü. Lochham (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "11:57",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "266",
+                    "symbol": "19266.svg",
+                    "direction": "Klinikum Großhadern (U)",
+                    "stateless": "mvv:19266: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Klinikum Großhadern (U)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:59",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "258",
+                    "symbol": "19258.svg",
+                    "direction": "Gräfelfing (S)",
+                    "stateless": "mvv:19258: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Gräfelfing (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "12:02",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "12:08",
+                "departureLive": "12:08",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "12:12",
+                "departureLive": "12:22",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "967",
+                    "symbol": "19967.svg",
+                    "direction": "Krailling, Sperberweg",
+                    "stateless": "mvv:19967: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Krailling, Sperberweg",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "12:18",
+                "departureLive": "12:18",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "266",
+                    "symbol": "19266.svg",
+                    "direction": "Klinikum Großhadern (U)",
+                    "stateless": "mvv:19266: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Klinikum Großhadern (U)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 1",
+                "departureDate": "20260719",
+                "departurePlanned": "12:19",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "265",
+                    "symbol": "19265.svg",
+                    "direction": "Pasing (S)",
+                    "stateless": "mvv:19265: :R:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Pasing (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 2",
+                "departureDate": "20260719",
+                "departurePlanned": "12:21",
+                "departureLive": "12:21",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "12:28",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "12:32",
+                "departureLive": "12:42",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "258",
+                    "symbol": "19258.svg",
+                    "direction": "Lochham, Starnberger Straße ü. Lochham (S)",
+                    "stateless": "mvv:19258: :R:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Lochham, Starnberger Straße ü. Lochham (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "12:37",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "967",
+                    "symbol": "19967.svg",
+                    "direction": "Krailling, Altenheim Maria Eich",
+                    "stateless": "mvv:19967: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Krailling, Altenheim Maria Eich",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "12:38",
+                "departureLive": "12:38",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "258",
+                    "symbol": "19258.svg",
+                    "direction": "Gräfelfing (S)",
+                    "stateless": "mvv:19258: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Gräfelfing (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "12:42",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "12:48",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "12:52",
+                "departureLive": "13:02",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "967",
+                    "symbol": "19967.svg",
+                    "direction": "Krailling, Muggenthalerstraße",
+                    "stateless": "mvv:19967: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Krailling, Muggenthalerstraße",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "12:58",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "266",
+                    "symbol": "19266.svg",
+                    "direction": "Klinikum Großhadern (U)",
+                    "stateless": "mvv:19266: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Klinikum Großhadern (U)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 1",
+                "departureDate": "20260719",
+                "departurePlanned": "12:59",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "265",
+                    "symbol": "19265.svg",
+                    "direction": "Pasing (S)",
+                    "stateless": "mvv:19265: :R:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Pasing (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 2",
+                "departureDate": "20260719",
+                "departurePlanned": "13:01",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "13:08",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "13:12",
+                "departureLive": "13:22",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "258",
+                    "symbol": "19258.svg",
+                    "direction": "Lochham, Starnberger Straße ü. Lochham (S)",
+                    "stateless": "mvv:19258: :R:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Lochham, Starnberger Straße ü. Lochham (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "13:17",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "967",
+                    "symbol": "19967.svg",
+                    "direction": "Krailling, Sperberweg",
+                    "stateless": "mvv:19967: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Krailling, Sperberweg",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "13:18",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "266",
+                    "symbol": "19266.svg",
+                    "direction": "Klinikum Großhadern (U)",
+                    "stateless": "mvv:19266: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Klinikum Großhadern (U)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 1",
+                "departureDate": "20260719",
+                "departurePlanned": "13:19",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "258",
+                    "symbol": "19258.svg",
+                    "direction": "Gräfelfing (S)",
+                    "stateless": "mvv:19258: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Gräfelfing (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "13:22",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "13:28",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "13:32",
+                "departureLive": "13:42",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "967",
+                    "symbol": "19967.svg",
+                    "direction": "Krailling, Altenheim Maria Eich",
+                    "stateless": "mvv:19967: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Krailling, Altenheim Maria Eich",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "13:38",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "265",
+                    "symbol": "19265.svg",
+                    "direction": "Pasing (S)",
+                    "stateless": "mvv:19265: :R:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Pasing (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 2",
+                "departureDate": "20260719",
+                "departurePlanned": "13:41",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "13:48",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "13:52",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "258",
+                    "symbol": "19258.svg",
+                    "direction": "Lochham, Starnberger Straße ü. Lochham (S)",
+                    "stateless": "mvv:19258: :R:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Lochham, Starnberger Straße ü. Lochham (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "13:57",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "967",
+                    "symbol": "19967.svg",
+                    "direction": "Krailling, Muggenthalerstraße",
+                    "stateless": "mvv:19967: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Krailling, Muggenthalerstraße",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "13:58",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "266",
+                    "symbol": "19266.svg",
+                    "direction": "Klinikum Großhadern (U)",
+                    "stateless": "mvv:19266: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Klinikum Großhadern (U)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 1",
+                "departureDate": "20260719",
+                "departurePlanned": "13:59",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "258",
+                    "symbol": "19258.svg",
+                    "direction": "Gräfelfing (S)",
+                    "stateless": "mvv:19258: :H:s26",
+                    "name": "RegionalBus"
+                },
+                "direction": "Gräfelfing (S)",
+                "station": {
+                    "id": "1002600",
+                    "name": "Planegg"
+                },
+                "track": "Bstg. 3",
+                "departureDate": "20260719",
+                "departurePlanned": "14:02",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            }
+        ],
+        "notifications": []
+    }
+}

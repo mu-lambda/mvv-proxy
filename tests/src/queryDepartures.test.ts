@@ -11,6 +11,9 @@ import { test as urlDiscovery } from "./urlDiscovery.test";
 import { test as urlMidnight } from "./urlMidnight.test";
 import { test as karlsplatz } from "./karlsplatz.test";
 import { test as mulitstopReal } from "./multistopReal.test";
+import { test as hbf } from "./hbf.test";
+import { test as hbfReal } from "./hbf_real.test";
+import { test as planegg } from "./planegg.test";
 
 // Each *.test.ts exports a single Test (the result of a testAsync call); this
 // combines them into one suite.
@@ -27,6 +30,9 @@ async function main() {
         urlMidnight,
         karlsplatz,
         mulitstopReal,
+        hbf,
+        hbfReal,
+        planegg,
     );
     if (!ok) process.exitCode = 1;
 }

@@ -1,0 +1,1059 @@
+{
+    "available_lines|de:09162:100": {
+        "error": "",
+        "lines": [
+            {
+                "number": "S1",
+                "symbol": "92M01.svg",
+                "direction": "Ostbahnhof",
+                "stateless": "ddb:92M01: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S1",
+                "symbol": "92M01.svg",
+                "direction": "Flughafen München",
+                "stateless": "ddb:92M01: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S2",
+                "symbol": "92M02.svg",
+                "direction": "Erding",
+                "stateless": "ddb:92M02: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S2",
+                "symbol": "92M02.svg",
+                "direction": "Petershausen",
+                "stateless": "ddb:92M02: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S3",
+                "symbol": "92M03.svg",
+                "direction": "Holzkirchen",
+                "stateless": "ddb:92M03: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S3",
+                "symbol": "92M03.svg",
+                "direction": "Maisach",
+                "stateless": "ddb:92M03: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S4",
+                "symbol": "92M04.svg",
+                "direction": "Trudering",
+                "stateless": "ddb:92M04: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S4",
+                "symbol": "92M04.svg",
+                "direction": "Geltendorf",
+                "stateless": "ddb:92M04: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S5",
+                "symbol": "92M05.svg",
+                "direction": "Höhenkirchen-Siegertsbrunn",
+                "stateless": "ddb:92M05: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S5",
+                "symbol": "92M05.svg",
+                "direction": "Pasing",
+                "stateless": "ddb:92M05:P:R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S6",
+                "symbol": "92M06.svg",
+                "direction": "Ebersberg",
+                "stateless": "ddb:92M06: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S6",
+                "symbol": "92M06.svg",
+                "direction": "Tutzing",
+                "stateless": "ddb:92M06: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S7",
+                "symbol": "92M07.svg",
+                "direction": "Wolfratshausen",
+                "stateless": "ddb:92M07: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S8",
+                "symbol": "92M08.svg",
+                "direction": "Leuchtenbergring",
+                "stateless": "ddb:92M08: :H:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "S8",
+                "symbol": "92M08.svg",
+                "direction": "Herrsching",
+                "stateless": "ddb:92M08: :R:j26",
+                "name": "S-Bahn"
+            },
+            {
+                "number": "Lufthansa Express Bus",
+                "symbol": "150LH.svg",
+                "direction": "Flughafen, Terminalbereich D/E",
+                "stateless": "mvv:150LH: :H:s26",
+                "name": "ExpressBus"
+            }
+        ],
+        "icons": {
+            "S-Bahn": "/fileadmin/Lines/92M08.svg.svg",
+            "ExpressBus": "/fileadmin/Lines/150LH.svg.svg"
+        }
+    },
+    "get_departures|de:09162:100|1784453004": {
+        "error": "",
+        "departures": [
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Flughafen München",
+                    "stateless": "ddb:92M01: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Flughafen München",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:22",
+                "departureLive": "11:24",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    },
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Freising",
+                    "stateless": "ddb:92M01: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Freising",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:22",
+                "departureLive": "11:24",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    },
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S8",
+                    "symbol": "92M08.svg",
+                    "direction": "Herrsching",
+                    "stateless": "ddb:92M08: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Herrsching",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:24",
+                "departureLive": "11:26",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S5",
+                    "symbol": "92M05.svg",
+                    "direction": "Höhenkirchen-Siegertsbrunn",
+                    "stateless": "ddb:92M05: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Höhenkirchen-Siegertsbrunn",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:25",
+                "departureLive": "11:25",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Grafing-Bahnhof",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Grafing-Bahnhof",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:27",
+                "departureLive": "11:30",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Petershausen",
+                    "stateless": "ddb:92M02: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Petershausen",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:28",
+                "departureLive": "11:28",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Markt Schwaben",
+                    "stateless": "ddb:92M02: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Markt Schwaben",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:29",
+                "departureLive": "11:32",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:30",
+                "departureLive": "11:37",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S5",
+                    "symbol": "92M05.svg",
+                    "direction": "Pasing",
+                    "stateless": "ddb:92M05:P:R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Pasing",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:32",
+                "departureLive": "11:35",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S8",
+                    "symbol": "92M08.svg",
+                    "direction": "Leuchtenbergring",
+                    "stateless": "ddb:92M08: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Leuchtenbergring",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:33",
+                "departureLive": "11:34",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S7",
+                    "symbol": "92M07.svg",
+                    "direction": "Wolfratshausen",
+                    "stateless": "ddb:92M07: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Wolfratshausen",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "36",
+                "departureDate": "20260719",
+                "departurePlanned": "11:34",
+                "departureLive": "11:34",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://assets-ri.extranet.deutschebahn.com/regio_sbahn_muenchen/2026-07-19/db242f42-e245-48a9-b94d-4ed19c5ec51ast%25C3%25B6rungskarte_20260719-080932.png",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Ostbahnhof",
+                    "stateless": "ddb:92M01: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ostbahnhof",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:35",
+                "departureLive": "11:41",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    },
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "Lufthansa Express Bus",
+                    "symbol": "150LH.svg",
+                    "direction": "Flughafen, Terminalbereich D/E",
+                    "stateless": "mvv:150LH: :H:s26",
+                    "name": "ExpressBus"
+                },
+                "direction": "Flughafen, Terminalbereich D/E",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:35",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S4",
+                    "symbol": "92M04.svg",
+                    "direction": "Trudering",
+                    "stateless": "ddb:92M04: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Trudering",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:37",
+                "departureLive": "11:43",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "92M03.svg",
+                    "direction": "Maisach",
+                    "stateless": "ddb:92M03: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Maisach",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:37",
+                "departureLive": "11:39",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "92M03.svg",
+                    "direction": "Holzkirchen",
+                    "stateless": "ddb:92M03: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Holzkirchen",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:39",
+                "departureLive": "11:43",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S4",
+                    "symbol": "92M04.svg",
+                    "direction": "Geltendorf",
+                    "stateless": "ddb:92M04: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Geltendorf",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:39",
+                "departureLive": "11:42",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Flughafen München",
+                    "stateless": "ddb:92M01: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Flughafen München",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:42",
+                "departureLive": "11:42",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    },
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S8",
+                    "symbol": "92M08.svg",
+                    "direction": "Herrsching",
+                    "stateless": "ddb:92M08: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Herrsching",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:44",
+                "departureLive": "11:45",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S5",
+                    "symbol": "92M05.svg",
+                    "direction": "Kreuzstraße",
+                    "stateless": "ddb:92M05: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Kreuzstraße",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:45",
+                "departureLive": "11:45",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:47",
+                "departureLive": "11:50",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Petershausen",
+                    "stateless": "ddb:92M02: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Petershausen",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:48",
+                "departureLive": "11:50",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Erding",
+                    "stateless": "ddb:92M02: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Erding",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:49",
+                "departureLive": "11:52",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Tutzing",
+                    "stateless": "ddb:92M06: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Tutzing",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:50",
+                "departureLive": "12:02",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S5",
+                    "symbol": "92M05.svg",
+                    "direction": "Pasing",
+                    "stateless": "ddb:92M05:P:R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Pasing",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:52",
+                "departureLive": "11:56",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S8",
+                    "symbol": "92M08.svg",
+                    "direction": "Leuchtenbergring",
+                    "stateless": "ddb:92M08: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Leuchtenbergring",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:53",
+                "departureLive": "11:53",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S7",
+                    "symbol": "92M07.svg",
+                    "direction": "Wolfratshausen",
+                    "stateless": "ddb:92M07: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Wolfratshausen",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "36",
+                "departureDate": "20260719",
+                "departurePlanned": "11:54",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://assets-ri.extranet.deutschebahn.com/regio_sbahn_muenchen/2026-07-19/db242f42-e245-48a9-b94d-4ed19c5ec51ast%25C3%25B6rungskarte_20260719-080932.png",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Ostbahnhof",
+                    "stateless": "ddb:92M01: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ostbahnhof",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:55",
+                "departureLive": "11:55",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    },
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "Lufthansa Express Bus",
+                    "symbol": "150LH.svg",
+                    "direction": "Flughafen, Terminalbereich D/E",
+                    "stateless": "mvv:150LH: :H:s26",
+                    "name": "ExpressBus"
+                },
+                "direction": "Flughafen, Terminalbereich D/E",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "",
+                "departureDate": "20260719",
+                "departurePlanned": "11:55",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "92M03.svg",
+                    "direction": "Mammendorf",
+                    "stateless": "ddb:92M03: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Mammendorf",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:57",
+                "departureLive": "11:59",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S4",
+                    "symbol": "92M04.svg",
+                    "direction": "Trudering",
+                    "stateless": "ddb:92M04: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Trudering",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:57",
+                "departureLive": "11:57",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S4",
+                    "symbol": "92M04.svg",
+                    "direction": "Geltendorf",
+                    "stateless": "ddb:92M04: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Geltendorf",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "11:59",
+                "departureLive": "12:02",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S3",
+                    "symbol": "92M03.svg",
+                    "direction": "Holzkirchen",
+                    "stateless": "ddb:92M03: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Holzkirchen",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "11:59",
+                "departureLive": "12:01",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Freising",
+                    "stateless": "ddb:92M01: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Freising",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "12:02",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    },
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S1",
+                    "symbol": "92M01.svg",
+                    "direction": "Flughafen München",
+                    "stateless": "ddb:92M01: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Flughafen München",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "12:02",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    },
+                    {
+                        "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S8",
+                    "symbol": "92M08.svg",
+                    "direction": "Herrsching",
+                    "stateless": "ddb:92M08: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Herrsching",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "12:04",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                        "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "S5",
+                    "symbol": "92M05.svg",
+                    "direction": "Aying",
+                    "stateless": "ddb:92M05: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Aying",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "12:05",
+                "departureLive": "",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S6",
+                    "symbol": "92M06.svg",
+                    "direction": "Ebersberg",
+                    "stateless": "ddb:92M06: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Ebersberg",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "12:07",
+                "departureLive": "12:10",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Altomünster",
+                    "stateless": "ddb:92M02: :R:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Altomünster",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "2",
+                "departureDate": "20260719",
+                "departurePlanned": "12:08",
+                "departureLive": "12:09",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "S2",
+                    "symbol": "92M02.svg",
+                    "direction": "Erding",
+                    "stateless": "ddb:92M02: :H:j26",
+                    "name": "S-Bahn"
+                },
+                "direction": "Erding",
+                "station": {
+                    "id": "91000100",
+                    "name": "München Hbf"
+                },
+                "track": "1",
+                "departureDate": "20260719",
+                "departurePlanned": "12:09",
+                "departureLive": "12:12",
+                "inTime": false,
+                "notifications": []
+            }
+        ],
+        "notifications": [
+            {
+                "text": "S1/S8 - Haltausfall und Ersatzverkehr zwischen Ostbahnhof und Flughafen/Airport (11., 12., 18. und 19.07.2026)",
+                "link": "https://assets.static-bahn.de/dam/jcr:2490e05f-c50c-439d-be67-302038c240df/Fpl%20S8%20EV%20MOP-MJK%2011.+12.+18.+19.07.2026.pdf",
+                "type": "line"
+            },
+            {
+                "text": "S1 - Komplettausfall zwischen Leuchtenbergring und Ostbahnhof (27. Juni bis 13. September)",
+                "link": "http://",
+                "type": "line"
+            }
+        ]
+    }
+}

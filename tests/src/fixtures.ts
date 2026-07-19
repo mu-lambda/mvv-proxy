@@ -25,6 +25,27 @@ const STOPS: info.Stop[] = [
         gid: "de:09162:2",
         location: undefined,
     },
+    {
+        id: 6,
+        name: "Munich Hbf (no trains)",
+        town: "Munich",
+        gid: "de:09162:6",
+        location: undefined,
+    },
+    {
+        id: 100,
+        name: "Munich Hbf (trains)",
+        town: "Munich",
+        gid: "de:09162:100",
+        location: undefined,
+    },
+    {
+        id: 2600,
+        name: "Planegg",
+        town: "Planegg",
+        gid: "de:09184:2600",
+        location: undefined,
+    },
 ];
 
 // One fixtures file per test, under data/qtest/. chdir is the tests package
