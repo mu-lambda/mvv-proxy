@@ -1,5 +1,5 @@
 load("@aspect_bazel_lib//lib:copy_file.bzl", "copy_file")
-load("@aspect_rules_js//js:defs.bzl", "js_library")
+load("@aspect_rules_js//js:defs.bzl", "js_library", "js_run_binary")
 
 # Copied here (rather than referenced directly from //client) so the runfiles
 # path is "www/out/*-bundle.js", matching what index.html/timetable.html
@@ -17,6 +17,26 @@ copy_file(
     out = "out/timetable-bundle.js",
 )
 
+# Numbered bus-stop signs (Bussteig-1.svg .. Bussteig-20.svg), generated at
+# build time from Hst.svg's disk+ring artwork rather than checked in. Outputs
+# land in this package's bindir ($(RULEDIR)), so runfiles paths are
+# "www/Bussteig-N.svg" and they serve at /Bussteig-N.svg alongside the other
+# static assets.
+js_run_binary(
+    name = "stop_signs",
+    srcs = ["//fonts:publicsans_extrabold"],
+    # The font lives in //fonts; don't copy_to_bin (which requires same-package).
+    copy_srcs_to_bin = False,
+    args = [
+        "--font",
+        "$(execpath //fonts:publicsans_extrabold)",
+        "--out-dir",
+        "$(RULEDIR)",
+    ],
+    outs = ["Bussteig-%d.svg" % n for n in range(1, 21)],
+    tool = "//:gen_stop_signs",
+)
+
 # js_library (not filegroup): rules_js requires source files consumed as
 # `data` by a js_binary/js_test in another package to be wrapped in a
 # JsInfo-providing target declared in their own package.
@@ -26,7 +46,7 @@ js_library(
         "*.html",
         "*.css",
         "*.svg",
-    ]),
+    ]) + [":stop_signs"],
 )
 
 js_library(

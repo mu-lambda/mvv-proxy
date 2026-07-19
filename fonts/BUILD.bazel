@@ -8,3 +8,12 @@ js_library(
     srcs = glob(["publicsans/**"]),
     visibility = ["//visibility:public"],
 )
+
+# Public Sans ExtraBold (weight 800), the weight the bus-stop-sign generator
+# (//:gen_stop_signs) outlines its digits from. See publicsans.css for the
+# hashed-filename -> weight mapping.
+filegroup(
+    name = "publicsans_extrabold",
+    srcs = ["publicsans/ijwGs572Xtc6ZYQws9YVwllKVG8qX1oyOymulp65ww.ttf"],
+    visibility = ["//visibility:public"],
+)

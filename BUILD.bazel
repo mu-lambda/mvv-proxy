@@ -1,3 +1,14 @@
+load("@aspect_rules_js//js:defs.bzl", "js_binary")
 load("@npm//:defs.bzl", "npm_link_all_packages")
 
 npm_link_all_packages(name = "node_modules")
+
+# Build-time generator for the numbered bus-stop signs. Run as an action by
+# //www:stop_signs (which passes --font and --out-dir); also runnable by hand
+# with `bazel run //:gen_stop_signs`.
+js_binary(
+    name = "gen_stop_signs",
+    data = [":node_modules/opentype.js"],
+    entry_point = "tools/gen-stop-signs.js",
+    visibility = ["//visibility:public"],
+)
