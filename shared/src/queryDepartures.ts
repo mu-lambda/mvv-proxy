@@ -25,14 +25,17 @@ function parseDeparturePoint(
     return { kind: departurePointKind(track), designation };
 }
 
-function departurePointKind(track: string): "Gleis" | "Steig" {
+function departurePointKind(track: string): "Gleis" | "UBahnGleis" | "Steig" {
     // Trams report "Pos. N" (position) and buses "Bstg. N" (Bussteig): a Steig.
     if (/steig|bstg|pos/i.test(track)) {
         return "Steig";
     }
-    // U-Bahn/S-Bahn report "... Gleis N" or a bare platform number ("1", "36"):
-    // a Gleis. The bare-number case has no marker, so anything else is assumed
-    // to be a Gleis.
+    // U-Bahn platforms are written as a "U" line/label followed by the word
+    // "Gleis" ("U-Bahn Gleis 1", "U1/7 Gleis 3"). A plain "Gleis N" or a bare
+    // number ("1", "36") is an S-Bahn/train Gleis.
+    if (/u.*gleis/i.test(track)) {
+        return "UBahnGleis";
+    }
     return "Gleis";
 }
 

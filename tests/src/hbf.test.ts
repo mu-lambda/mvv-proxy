@@ -43,7 +43,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[2]!.departure.planned).toBe("11:17");
     expect(departures[2]!.departure.live).toBe("11:18");
     expect(departures[2]!.departure.inTime).toBe(false);
-    expect(departures[2]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[2]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[2]!.departurePoint?.designation).toBe(4);
 
     expect(departures[3]!.stop.gid).toBe("de:09162:6");
@@ -55,7 +55,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[3]!.departure.planned).toBe("11:18");
     expect(departures[3]!.departure.live).toBe("11:20");
     expect(departures[3]!.departure.inTime).toBe(false);
-    expect(departures[3]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[3]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[3]!.departurePoint?.designation).toBe(1);
 
     expect(departures[4]!.stop.gid).toBe("de:09162:6");
@@ -67,7 +67,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[4]!.departure.planned).toBe("11:21");
     expect(departures[4]!.departure.live).toBe("11:21");
     expect(departures[4]!.departure.inTime).toBe(true);
-    expect(departures[4]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[4]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[4]!.departurePoint?.designation).toBe(3);
 
     expect(departures[5]!.stop.gid).toBe("de:09162:6");
@@ -79,7 +79,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[5]!.departure.planned).toBe("11:21");
     expect(departures[5]!.departure.live).toBe("11:21");
     expect(departures[5]!.departure.inTime).toBe(true);
-    expect(departures[5]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[5]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[5]!.departurePoint?.designation).toBe(2);
 
     expect(departures[6]!.stop.gid).toBe("de:09162:6");
@@ -102,7 +102,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[7]!.departure.planned).toBe("11:22");
     expect(departures[7]!.departure.live).toBe("11:22");
     expect(departures[7]!.departure.inTime).toBe(true);
-    expect(departures[7]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[7]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[7]!.departurePoint?.designation).toBe(2);
 
     expect(departures[8]!.stop.gid).toBe("de:09162:6");
@@ -125,7 +125,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[9]!.departure.planned).toBe("11:23");
     expect(departures[9]!.departure.live).toBe("11:23");
     expect(departures[9]!.departure.inTime).toBe(true);
-    expect(departures[9]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[9]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[9]!.departurePoint?.designation).toBe(1);
 
     expect(departures[10]!.stop.gid).toBe("de:09162:6");
@@ -137,7 +137,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[10]!.departure.planned).toBe("11:24");
     expect(departures[10]!.departure.live).toBe("11:24");
     expect(departures[10]!.departure.inTime).toBe(true);
-    expect(departures[10]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[10]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[10]!.departurePoint?.designation).toBe(2);
 
     expect(departures[11]!.stop.gid).toBe("de:09162:6");
@@ -171,7 +171,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[13]!.departure.planned).toBe("11:26");
     expect(departures[13]!.departure.live).toBe("11:26");
     expect(departures[13]!.departure.inTime).toBe(true);
-    expect(departures[13]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[13]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[13]!.departurePoint?.designation).toBe(1);
 
     expect(departures[14]!.stop.gid).toBe("de:09162:6");
@@ -194,7 +194,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[15]!.departure.planned).toBe("11:27");
     expect(departures[15]!.departure.live).toBe("11:27");
     expect(departures[15]!.departure.inTime).toBe(true);
-    expect(departures[15]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[15]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[15]!.departurePoint?.designation).toBe(4);
 
     expect(departures[16]!.stop.gid).toBe("de:09162:6");
@@ -206,7 +206,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[16]!.departure.planned).toBe("11:28");
     expect(departures[16]!.departure.live).toBe("11:28");
     expect(departures[16]!.departure.inTime).toBe(true);
-    expect(departures[16]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[16]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[16]!.departurePoint?.designation).toBe(1);
 
     expect(departures[17]!.stop.gid).toBe("de:09162:6");
@@ -218,7 +218,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[17]!.departure.planned).toBe("11:31");
     expect(departures[17]!.departure.live).toBe("11:31");
     expect(departures[17]!.departure.inTime).toBe(true);
-    expect(departures[17]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[17]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[17]!.departurePoint?.designation).toBe(2);
 
     expect(departures[18]!.stop.gid).toBe("de:09162:6");
@@ -241,7 +241,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[19]!.departure.planned).toBe("11:31");
     expect(departures[19]!.departure.live).toBe("11:31");
     expect(departures[19]!.departure.inTime).toBe(true);
-    expect(departures[19]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[19]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[19]!.departurePoint?.designation).toBe(3);
 
     expect(departures[20]!.stop.gid).toBe("de:09162:6");
@@ -253,7 +253,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[20]!.departure.planned).toBe("11:32");
     expect(departures[20]!.departure.live).toBe("11:32");
     expect(departures[20]!.departure.inTime).toBe(true);
-    expect(departures[20]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[20]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[20]!.departurePoint?.designation).toBe(2);
 
     expect(departures[21]!.stop.gid).toBe("de:09162:6");
@@ -276,7 +276,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[22]!.departure.planned).toBe("11:33");
     expect(departures[22]!.departure.live).toBe("11:32");
     expect(departures[22]!.departure.inTime).toBe(false);
-    expect(departures[22]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[22]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[22]!.departurePoint?.designation).toBe(1);
 
     expect(departures[23]!.stop.gid).toBe("de:09162:6");
@@ -299,7 +299,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[24]!.departure.planned).toBe("11:34");
     expect(departures[24]!.departure.live).toBe("11:34");
     expect(departures[24]!.departure.inTime).toBe(true);
-    expect(departures[24]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[24]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[24]!.departurePoint?.designation).toBe(2);
 
     expect(departures[25]!.stop.gid).toBe("de:09162:6");
@@ -311,7 +311,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[25]!.departure.planned).toBe("11:36");
     expect(departures[25]!.departure.live).toBe("11:36");
     expect(departures[25]!.departure.inTime).toBe(true);
-    expect(departures[25]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[25]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[25]!.departurePoint?.designation).toBe(1);
 
     expect(departures[26]!.stop.gid).toBe("de:09162:6");
@@ -345,7 +345,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[28]!.departure.planned).toBe("11:37");
     expect(departures[28]!.departure.live).toBe("11:37");
     expect(departures[28]!.departure.inTime).toBe(true);
-    expect(departures[28]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[28]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[28]!.departurePoint?.designation).toBe(4);
 
     expect(departures[29]!.stop.gid).toBe("de:09162:6");
@@ -357,7 +357,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[29]!.departure.planned).toBe("11:38");
     expect(departures[29]!.departure.live).toBe("11:38");
     expect(departures[29]!.departure.inTime).toBe(true);
-    expect(departures[29]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[29]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[29]!.departurePoint?.designation).toBe(1);
 
     expect(departures[30]!.stop.gid).toBe("de:09162:6");
@@ -369,7 +369,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[30]!.departure.planned).toBe("11:41");
     expect(departures[30]!.departure.live).toBe("11:41");
     expect(departures[30]!.departure.inTime).toBe(true);
-    expect(departures[30]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[30]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[30]!.departurePoint?.designation).toBe(3);
 
     expect(departures[31]!.stop.gid).toBe("de:09162:6");
@@ -381,7 +381,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[31]!.departure.planned).toBe("11:41");
     expect(departures[31]!.departure.live).toBe("11:41");
     expect(departures[31]!.departure.inTime).toBe(true);
-    expect(departures[31]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[31]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[31]!.departurePoint?.designation).toBe(2);
 
     expect(departures[32]!.stop.gid).toBe("de:09162:6");
@@ -404,7 +404,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[33]!.departure.planned).toBe("11:42");
     expect(departures[33]!.departure.live).toBe("11:42");
     expect(departures[33]!.departure.inTime).toBe(true);
-    expect(departures[33]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[33]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[33]!.departurePoint?.designation).toBe(2);
 
     expect(departures[34]!.stop.gid).toBe("de:09162:6");
@@ -427,7 +427,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[35]!.departure.planned).toBe("11:43");
     expect(departures[35]!.departure.live).toBe("11:43");
     expect(departures[35]!.departure.inTime).toBe(true);
-    expect(departures[35]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[35]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[35]!.departurePoint?.designation).toBe(1);
 
     expect(departures[36]!.stop.gid).toBe("de:09162:6");
@@ -450,7 +450,7 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[37]!.departure.planned).toBe("11:44");
     expect(departures[37]!.departure.live).toBe("11:44");
     expect(departures[37]!.departure.inTime).toBe(true);
-    expect(departures[37]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[37]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[37]!.departurePoint?.designation).toBe(2);
 
     expect(departures[38]!.stop.gid).toBe("de:09162:6");
@@ -473,6 +473,6 @@ export const test = testAsync("Hbf with tracks", async () => {
     expect(departures[39]!.departure.planned).toBe("11:46");
     expect(departures[39]!.departure.live).toBe("11:46");
     expect(departures[39]!.departure.inTime).toBe(true);
-    expect(departures[39]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[39]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[39]!.departurePoint?.designation).toBe(1);
 });

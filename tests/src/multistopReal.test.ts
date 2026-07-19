@@ -50,7 +50,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[2]!.departure.planned).toBe("11:52");
     expect(departures[2]!.departure.live).toBe("11:52");
     expect(departures[2]!.departure.inTime).toBe(true);
-    expect(departures[2]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[2]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[2]!.departurePoint?.designation).toBe(2);
 
     expect(departures[3]!.stop.gid).toBe("de:09162:2");
@@ -62,7 +62,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[3]!.departure.planned).toBe("11:52");
     expect(departures[3]!.departure.live).toBe("11:52");
     expect(departures[3]!.departure.inTime).toBe(true);
-    expect(departures[3]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[3]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[3]!.departurePoint?.designation).toBe(1);
 
     expect(departures[4]!.stop.gid).toBe("de:09162:2");
@@ -74,7 +74,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[4]!.departure.planned).toBe("11:54");
     expect(departures[4]!.departure.live).toBe("11:54");
     expect(departures[4]!.departure.inTime).toBe(true);
-    expect(departures[4]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[4]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[4]!.departurePoint?.designation).toBe(1);
 
     expect(departures[5]!.stop.gid).toBe("de:09162:2");
@@ -121,7 +121,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[8]!.departure.planned).toBe("11:54");
     expect(departures[8]!.departure.live).toBe("11:57");
     expect(departures[8]!.departure.inTime).toBe(false);
-    expect(departures[8]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[8]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[8]!.departurePoint?.designation).toBe(2);
 
     expect(departures[9]!.stop.gid).toBe("de:09162:2");
@@ -133,7 +133,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[9]!.departure.planned).toBe("11:58");
     expect(departures[9]!.departure.live).toBe("11:58");
     expect(departures[9]!.departure.inTime).toBe(true);
-    expect(departures[9]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[9]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[9]!.departurePoint?.designation).toBe(2);
 
     expect(departures[10]!.stop.gid).toBe("de:09162:2");
@@ -205,7 +205,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[15]!.departure.planned).toBe("12:02");
     expect(departures[15]!.departure.live).toBe("12:02");
     expect(departures[15]!.departure.inTime).toBe(true);
-    expect(departures[15]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[15]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[15]!.departurePoint?.designation).toBe(2);
 
     expect(departures[16]!.stop.gid).toBe("de:09162:2");
@@ -219,7 +219,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[16]!.departure.planned).toBe("12:02");
     expect(departures[16]!.departure.live).toBe("12:02");
     expect(departures[16]!.departure.inTime).toBe(true);
-    expect(departures[16]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[16]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[16]!.departurePoint?.designation).toBe(1);
 
     expect(departures[17]!.stop.gid).toBe("de:09162:2");
@@ -279,7 +279,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[21]!.departure.planned).toBe("12:04");
     expect(departures[21]!.departure.live).toBe("12:04");
     expect(departures[21]!.departure.inTime).toBe(true);
-    expect(departures[21]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[21]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[21]!.departurePoint?.designation).toBe(2);
 
     expect(departures[22]!.stop.gid).toBe("de:09162:2");
@@ -291,7 +291,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[22]!.departure.planned).toBe("12:04");
     expect(departures[22]!.departure.live).toBe("12:04");
     expect(departures[22]!.departure.inTime).toBe(true);
-    expect(departures[22]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[22]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[22]!.departurePoint?.designation).toBe(1);
 
     expect(departures[23]!.stop.gid).toBe("de:09162:2");
@@ -314,7 +314,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[24]!.departure.planned).toBe("12:06");
     expect(departures[24]!.departure.live).toBe("12:06");
     expect(departures[24]!.departure.inTime).toBe(true);
-    expect(departures[24]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[24]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[24]!.departurePoint?.designation).toBe(1);
 
     expect(departures[25]!.stop.gid).toBe("de:09162:2");
@@ -338,7 +338,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[26]!.departure.planned).toBe("12:08");
     expect(departures[26]!.departure.live).toBe("12:08");
     expect(departures[26]!.departure.inTime).toBe(true);
-    expect(departures[26]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[26]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[26]!.departurePoint?.designation).toBe(2);
 
     expect(departures[27]!.stop.gid).toBe("de:09162:2");
@@ -410,7 +410,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[32]!.departure.planned).toBe("12:12");
     expect(departures[32]!.departure.live).toBe("12:12");
     expect(departures[32]!.departure.inTime).toBe(true);
-    expect(departures[32]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[32]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[32]!.departurePoint?.designation).toBe(2);
 
     expect(departures[33]!.stop.gid).toBe("de:09162:2");
@@ -424,7 +424,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[33]!.departure.planned).toBe("12:12");
     expect(departures[33]!.departure.live).toBe("12:12");
     expect(departures[33]!.departure.inTime).toBe(true);
-    expect(departures[33]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[33]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[33]!.departurePoint?.designation).toBe(1);
 
     expect(departures[34]!.stop.gid).toBe("de:09162:2");
@@ -436,7 +436,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[34]!.departure.planned).toBe("12:14");
     expect(departures[34]!.departure.live).toBe("12:14");
     expect(departures[34]!.departure.inTime).toBe(true);
-    expect(departures[34]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[34]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[34]!.departurePoint?.designation).toBe(2);
 
     expect(departures[35]!.stop.gid).toBe("de:09162:2");
@@ -448,7 +448,7 @@ export const test = testAsync("TODO: describe this case", async () => {
     expect(departures[35]!.departure.planned).toBe("12:14");
     expect(departures[35]!.departure.live).toBe("12:14");
     expect(departures[35]!.departure.inTime).toBe(true);
-    expect(departures[35]!.departurePoint?.kind).toBe("Gleis");
+    expect(departures[35]!.departurePoint?.kind).toBe("UBahnGleis");
     expect(departures[35]!.departurePoint?.designation).toBe(1);
 
     expect(departures[36]!.stop.gid).toBe("de:09162:2");

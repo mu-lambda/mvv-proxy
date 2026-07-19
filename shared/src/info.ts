@@ -37,9 +37,11 @@ export type StopWithDistance = {
 
 /**
  * Where at a stop a vehicle departs from, normalized from MVV's mode-specific
- * `track` field. Two kinds:
- * - `Gleis`: a rail platform/track — U-Bahn and S-Bahn/trains
- *   (raw MVV e.g. "1", "36", "U1/7 Gleis 3").
+ * `track` field. Three kinds:
+ * - `Gleis`: an S-Bahn / train platform — a bare track number
+ *   (raw MVV e.g. "1", "36").
+ * - `UBahnGleis`: a U-Bahn platform — MVV writes these with the word "Gleis"
+ *   (raw MVV e.g. "U-Bahn Gleis 1", "U1/7 Gleis 3").
  * - `Steig`: a street-level boarding point — Trams and Buses
  *   (raw MVV e.g. "Bstg. 2" (Bussteig), "Pos. 6" (tram position)).
  *
@@ -47,7 +49,7 @@ export type StopWithDistance = {
  * be extracted the departure point is omitted entirely (shown as nothing).
  */
 export type DeparturePoint = {
-    kind: "Gleis" | "Steig";
+    kind: "Gleis" | "UBahnGleis" | "Steig";
     designation: number;
 };
 
