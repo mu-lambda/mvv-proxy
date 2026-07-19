@@ -10,10 +10,12 @@ const ImageWithFallback = ({
     src,
     alt,
     fallbackText,
+    className = "line-icon",
 }: {
     src: string;
     alt: string;
     fallbackText: string;
+    className?: string;
 }) => {
     // State to track if the image has failed to load
     const [hasError, setHasError] = useState(false);
@@ -27,7 +29,7 @@ const ImageWithFallback = ({
     return (
         <img
             src={src}
-            className="line-icon"
+            className={className}
             alt={alt}
             onError={() => setHasError(true)}
         />
@@ -93,6 +95,28 @@ export class Renderer {
         }
     }
 
+    /**
+     * A bus-stop-sign icon (Bussteig-N.svg) for departures that leave from a
+     * Steig (trams/buses). Gleis (rail) and departures without a departure point
+     * render nothing.
+     */
+    renderDeparturePoint(d: Departure): ReactElement | null {
+        const dp = d.departurePoint;
+        if (dp === undefined || dp.kind !== "Steig") {
+            return null;
+        }
+        const src = `/Bussteig-${dp.designation}.svg`;
+        return (
+            <ImageWithFallback
+                key={src}
+                src={src}
+                className="steig-icon"
+                alt={`Steig ${dp.designation}`}
+                fallbackText={`${dp.designation}`}
+            />
+        );
+    }
+
     renderDeparture(d: Departure): ReactElement {
         const [time, isLive] =
             d.departure.live != null
@@ -116,6 +140,7 @@ export class Renderer {
                         ),
                     }}
                 ></td>
+                <td className="steig-column">{this.renderDeparturePoint(d)}</td>
                 <td
                     className="stop-name"
                     dangerouslySetInnerHTML={{ __html: this.renderStop(d) }}
