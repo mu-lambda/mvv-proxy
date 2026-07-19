@@ -1,10 +1,4 @@
-import React, {
-    ReactElement,
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
-} from "react";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { stringCache, request, info, queryDepartures, fetcher } from "shared";
 
@@ -57,7 +51,7 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
     }
     const cache = stringCacheRef.current;
 
-    const update = useCallback(async () => {
+    async function update() {
         setState({ status: "loading" });
         let c: { coords: info.LatLong };
         if (lat && long) {
@@ -116,7 +110,7 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
                 message: "message" in e ? (e.message as string) : "Try again",
             });
         }
-    }, [lat, long, d]);
+    }
 
     // Mount-only, mirroring componentDidMount: kick off the first load when the
     // initial state was "loading". Later loads come from the buttons.
