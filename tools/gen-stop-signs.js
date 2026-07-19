@@ -55,10 +55,13 @@ function bboxSize(bb) {
 }
 
 function digitPath(font, text, fill, maxW, maxH) {
-    // Measure at REF_SIZE, then scale so the glyph fits maxW × maxH.
+    // Measure at REF_SIZE, then scale so the glyph fits maxW × maxH. Round to an
+    // integer font size: opentype.js's path generation emits NaN coordinates at
+    // some pathological fractional sizes (e.g. "3" at ~806.45), and integer
+    // sizes avoid it (the sub-pixel difference is negligible on a 1000 em).
     const ref = font.getPath(text, 0, 0, REF_SIZE);
     const { w, h } = bboxSize(ref.getBoundingBox());
-    const fontSize = REF_SIZE * Math.min(maxW / w, maxH / h);
+    const fontSize = Math.floor(REF_SIZE * Math.min(maxW / w, maxH / h));
 
     // Re-render at the fitted size and translate the bbox center onto CENTER.
     const p = font.getPath(text, 0, 0, fontSize);
@@ -66,6 +69,9 @@ function digitPath(font, text, fill, maxW, maxH) {
     const dx = CENTER - (bb.x1 + bb.x2) / 2;
     const dy = CENTER - (bb.y1 + bb.y2) / 2;
     const d = p.toPathData(2);
+    if (d.includes("NaN")) {
+        throw new Error(`Path for "${text}" at size ${fontSize} contains NaN`);
+    }
     return `  <g transform="translate(${dx.toFixed(2)},${dy.toFixed(2)})"><path style="fill:${fill};fill-opacity:1;stroke:none" d="${d}" /></g>`;
 }
 
