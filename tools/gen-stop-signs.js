@@ -1,9 +1,9 @@
 // Generates numbered departure-point sign SVGs for the kiosk:
-//   Bussteig-1.svg .. Bussteig-20.svg  — the yellow disk + green ring from
-//       Hst.svg with the central letter "H" replaced by a green number (Steig).
-//   Gleis-1.svg .. Gleis-20.svg        — a dark blue rounded rectangle with a
-//       white number (Gleis).
-// Both share the same 883x883 canvas so they render at the same size. Digits are
+//   Bussteig-N.svg    — the yellow disk + green ring from Hst.svg with the
+//                       central letter "H" replaced by a green number (Steig).
+//   Gleis-N.svg       — a dark blue rounded rectangle with a white number (Gleis).
+//   UBahnGleis-N.svg  — a dark blue circle with a white number (UBahnGleis).
+// All share the same 883x883 canvas so they render at the same size. Digits are
 // emitted as outlined <path>s (via Public Sans, the kiosk UI font) so each file
 // is self-contained and font-independent at render time.
 //
@@ -41,6 +41,11 @@ const BLUE = "#002d72";
 const GLEIS_RADIUS = 110; // corner radius of the blue rectangle
 const GLEIS_MAX_H = 600; // taller than Steig — the rectangle has more room
 const GLEIS_MAX_W = 640;
+
+// UBahnGleis: white number on a dark blue circle (same blue as Gleis). Smaller
+// max than Gleis so 2-digit numbers stay inside the circle without clipping.
+const UBAHN_MAX_H = 520;
+const UBAHN_MAX_W = 560;
 // ----------------------------------------------------------------------------
 
 // Kept artwork from Hst.svg, verbatim: yellow disk + green ring. Lives inside
@@ -96,6 +101,13 @@ function gleisSvgFor(font, n) {
     return svg(`${rect}\n${digit}`);
 }
 
+/** UBahnGleis: white number on a dark blue circle. */
+function ubahnGleisSvgFor(font, n) {
+    const circle = `  <circle cx="${CENTER}" cy="${CENTER}" r="${CENTER}" style="fill:${BLUE};stroke:none" />`;
+    const digit = digitPath(font, String(n), "#ffffff", UBAHN_MAX_W, UBAHN_MAX_H);
+    return svg(`${circle}\n${digit}`);
+}
+
 function parseArgs(argv) {
     let font = DEFAULT_FONT;
     let outDir = DEFAULT_OUT_DIR;
@@ -135,10 +147,14 @@ function main() {
             path.join(outDir, `Gleis-${n}.svg`),
             gleisSvgFor(font, n),
         );
+        fs.writeFileSync(
+            path.join(outDir, `UBahnGleis-${n}.svg`),
+            ubahnGleisSvgFor(font, n),
+        );
     }
     const last = NUMBERS[NUMBERS.length - 1];
     console.log(
-        `Wrote ${NUMBERS.length * 2} signs (Bussteig-/Gleis-${NUMBERS[0]}..${last}.svg) to ${outDir}`,
+        `Wrote ${NUMBERS.length * 3} signs (Bussteig-/Gleis-/UBahnGleis-${NUMBERS[0]}..${last}.svg) to ${outDir}`,
     );
 }
 

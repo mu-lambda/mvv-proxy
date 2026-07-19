@@ -105,7 +105,9 @@ export class Renderer {
         if (dp === undefined) {
             return null;
         }
-        const prefix = dp.kind === "Steig" ? "Bussteig" : "Gleis";
+        // Gleis/UBahnGleis sign files are named after the kind; Steig uses the
+        // Bussteig sign.
+        const prefix = dp.kind === "Steig" ? "Bussteig" : dp.kind;
         const src = `/${prefix}-${dp.designation}.svg`;
         return (
             <ImageWithFallback
