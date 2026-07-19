@@ -17,11 +17,10 @@ copy_file(
     out = "out/timetable-bundle.js",
 )
 
-# Numbered bus-stop signs (Bussteig-1.svg .. Bussteig-20.svg), generated at
-# build time from Hst.svg's disk+ring artwork rather than checked in. Outputs
-# land in this package's bindir ($(RULEDIR)), so runfiles paths are
-# "www/Bussteig-N.svg" and they serve at /Bussteig-N.svg alongside the other
-# static assets.
+# Numbered departure-point signs (Bussteig-N.svg / Gleis-N.svg, N in 1..40),
+# generated at build time rather than checked in. Outputs land in this package's
+# bindir ($(RULEDIR)), so runfiles paths are "www/<name>.svg" and they serve at
+# /<name>.svg alongside the other static assets.
 js_run_binary(
     name = "stop_signs",
     srcs = ["//fonts:publicsans_extrabold"],
@@ -33,7 +32,8 @@ js_run_binary(
         "--out-dir",
         "$(RULEDIR)",
     ],
-    outs = ["Bussteig-%d.svg" % n for n in range(1, 21)],
+    outs = ["Bussteig-%d.svg" % n for n in range(1, 41)] +
+           ["Gleis-%d.svg" % n for n in range(1, 41)],
     tool = "//:gen_stop_signs",
 )
 

@@ -1,8 +1,11 @@
-// Generates numbered MVV bus-stop sign SVGs (Bussteig-1.svg .. Bussteig-20.svg): the
-// yellow disk + green ring from Hst.svg with the central letter "H" replaced by
-// a number. Digits are emitted as outlined <path>s (via Public Sans, the kiosk
-// UI font) so each file is self-contained and font-independent at render time,
-// matching www/U-Bahn.svg and the original H.
+// Generates numbered departure-point sign SVGs for the kiosk:
+//   Bussteig-1.svg .. Bussteig-20.svg  — the yellow disk + green ring from
+//       Hst.svg with the central letter "H" replaced by a green number (Steig).
+//   Gleis-1.svg .. Gleis-20.svg        — a dark blue rounded rectangle with a
+//       white number (Gleis).
+// Both share the same 883x883 canvas so they render at the same size. Digits are
+// emitted as outlined <path>s (via Public Sans, the kiosk UI font) so each file
+// is self-contained and font-independent at render time.
 //
 // Invoked as a build action by //www:stop_signs (see www/BUILD.bazel), which
 // passes --font and --out-dir. Also runnable by hand from the repo root:
@@ -23,12 +26,21 @@ const DEFAULT_FONT = path.join(
     "fonts/publicsans/ijwGs572Xtc6ZYQws9YVwllKVG8qX1oyOymulp65ww.ttf",
 );
 const DEFAULT_OUT_DIR = path.join(REPO_ROOT, "www");
-const NUMBERS = Array.from({ length: 20 }, (_, i) => i + 1); // 1..20
-const GREEN = "#008754";
-const CENTER = 441.67; // viewBox center (883.34 / 2)
-const MAX_H = 457; // ≈ the original H's height in root px (height-limits 1 digit)
-const MAX_W = 500; // keeps 2-digit numbers inside the green ring without clipping
+const NUMBERS = Array.from({ length: 40 }, (_, i) => i + 1); // 1..40
+const CANVAS = 883.34003; // shared viewBox for both sign kinds
+const CENTER = CANVAS / 2; // 441.67
 const REF_SIZE = 1000; // font size used only to measure, then scaled to fit
+
+// Steig (Bussteig): green number on the yellow disk + green ring.
+const GREEN = "#008754";
+const STEIG_MAX_H = 457; // ≈ the original H's height (height-limits 1 digit)
+const STEIG_MAX_W = 500; // keeps 2-digit numbers inside the green ring
+
+// Gleis: white number on a dark blue rounded rectangle.
+const BLUE = "#002d72";
+const GLEIS_RADIUS = 110; // corner radius of the blue rectangle
+const GLEIS_MAX_H = 600; // taller than Steig — the rectangle has more room
+const GLEIS_MAX_W = 640;
 // ----------------------------------------------------------------------------
 
 // Kept artwork from Hst.svg, verbatim: yellow disk + green ring. Lives inside
@@ -42,11 +54,11 @@ function bboxSize(bb) {
     return { w: bb.x2 - bb.x1, h: bb.y2 - bb.y1 };
 }
 
-function digitPath(font, text) {
-    // Measure at REF_SIZE, then scale so the glyph fits MAX_W × MAX_H.
+function digitPath(font, text, fill, maxW, maxH) {
+    // Measure at REF_SIZE, then scale so the glyph fits maxW × maxH.
     const ref = font.getPath(text, 0, 0, REF_SIZE);
     const { w, h } = bboxSize(ref.getBoundingBox());
-    const fontSize = REF_SIZE * Math.min(MAX_W / w, MAX_H / h);
+    const fontSize = REF_SIZE * Math.min(maxW / w, maxH / h);
 
     // Re-render at the fitted size and translate the bbox center onto CENTER.
     const p = font.getPath(text, 0, 0, fontSize);
@@ -54,16 +66,28 @@ function digitPath(font, text) {
     const dx = CENTER - (bb.x1 + bb.x2) / 2;
     const dy = CENTER - (bb.y1 + bb.y2) / 2;
     const d = p.toPathData(2);
-    return `  <g transform="translate(${dx.toFixed(2)},${dy.toFixed(2)})"><path style="fill:${GREEN};fill-opacity:1;stroke:none" d="${d}" /></g>`;
+    return `  <g transform="translate(${dx.toFixed(2)},${dy.toFixed(2)})"><path style="fill:${fill};fill-opacity:1;stroke:none" d="${d}" /></g>`;
 }
 
-function svgFor(font, n) {
+function svg(body) {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 883.34003 883.34003" width="883.34003" height="883.34003">
-${ARTWORK}
-${digitPath(font, String(n))}
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 ${CANVAS} ${CANVAS}" width="${CANVAS}" height="${CANVAS}">
+${body}
 </svg>
 `;
+}
+
+/** Bussteig (Steig): green number on the yellow disk + green ring. */
+function steigSvgFor(font, n) {
+    const digit = digitPath(font, String(n), GREEN, STEIG_MAX_W, STEIG_MAX_H);
+    return svg(`${ARTWORK}\n${digit}`);
+}
+
+/** Gleis: white number on a dark blue rounded rectangle. */
+function gleisSvgFor(font, n) {
+    const rect = `  <rect x="0" y="0" width="${CANVAS}" height="${CANVAS}" rx="${GLEIS_RADIUS}" ry="${GLEIS_RADIUS}" style="fill:${BLUE};stroke:none" />`;
+    const digit = digitPath(font, String(n), "#ffffff", GLEIS_MAX_W, GLEIS_MAX_H);
+    return svg(`${rect}\n${digit}`);
 }
 
 function parseArgs(argv) {
@@ -97,10 +121,18 @@ function main() {
     const font = opentype.parse(fs.readFileSync(fontPath).buffer);
     fs.mkdirSync(outDir, { recursive: true });
     for (const n of NUMBERS) {
-        fs.writeFileSync(path.join(outDir, `Bussteig-${n}.svg`), svgFor(font, n));
+        fs.writeFileSync(
+            path.join(outDir, `Bussteig-${n}.svg`),
+            steigSvgFor(font, n),
+        );
+        fs.writeFileSync(
+            path.join(outDir, `Gleis-${n}.svg`),
+            gleisSvgFor(font, n),
+        );
     }
+    const last = NUMBERS[NUMBERS.length - 1];
     console.log(
-        `Wrote ${NUMBERS.length} signs (Bussteig-${NUMBERS[0]}.svg .. Bussteig-${NUMBERS[NUMBERS.length - 1]}.svg) to ${outDir}`,
+        `Wrote ${NUMBERS.length * 2} signs (Bussteig-/Gleis-${NUMBERS[0]}..${last}.svg) to ${outDir}`,
     );
 }
 

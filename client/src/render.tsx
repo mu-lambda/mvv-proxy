@@ -96,22 +96,23 @@ export class Renderer {
     }
 
     /**
-     * A bus-stop-sign icon (Bussteig-N.svg) for departures that leave from a
-     * Steig (trams/buses). Gleis (rail) and departures without a departure point
-     * render nothing.
+     * A departure-point sign: a bus-stop sign (Bussteig-N.svg) for a Steig
+     * (trams/buses) or a track sign (Gleis-N.svg) for a Gleis (rail). Departures
+     * without a departure point render nothing.
      */
     renderDeparturePoint(d: Departure): ReactElement | null {
         const dp = d.departurePoint;
-        if (dp === undefined || dp.kind !== "Steig") {
+        if (dp === undefined) {
             return null;
         }
-        const src = `/Bussteig-${dp.designation}.svg`;
+        const prefix = dp.kind === "Steig" ? "Bussteig" : "Gleis";
+        const src = `/${prefix}-${dp.designation}.svg`;
         return (
             <ImageWithFallback
                 key={src}
                 src={src}
-                className="steig-icon"
-                alt={`Steig ${dp.designation}`}
+                className="departure-point-icon"
+                alt={`${dp.kind} ${dp.designation}`}
                 fallbackText={`${dp.designation}`}
             />
         );
@@ -140,7 +141,9 @@ export class Renderer {
                         ),
                     }}
                 ></td>
-                <td className="steig-column">{this.renderDeparturePoint(d)}</td>
+                <td className="departure-point-column">
+                    {this.renderDeparturePoint(d)}
+                </td>
                 <td
                     className="stop-name"
                     dangerouslySetInnerHTML={{ __html: this.renderStop(d) }}
