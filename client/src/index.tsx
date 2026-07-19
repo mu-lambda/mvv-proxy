@@ -1,4 +1,10 @@
-import React, { ReactElement } from "react";
+import React, {
+    ReactElement,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+} from "react";
 import { createRoot } from "react-dom/client";
 import { stringCache, request, info, queryDepartures, fetcher } from "shared";
 
@@ -37,43 +43,105 @@ type Props = {
     canQuery: boolean;
 };
 
-class GeoDepsTable extends React.Component<Props, State> {
-    #stringCache = new stringCache.StringCache();
-    d: number;
-    constructor(props: Props) {
-        super(props);
-        if (props.canQuery || (props.lat && props.long)) {
-            this.state = { status: "loading" };
+function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
+    const d = dProp ? dProp : 500;
+    const autoLoad = canQuery || !!(lat && long);
+
+    const [state, setState] = useState<State>(() =>
+        autoLoad ? { status: "loading" } : { status: "initial" },
+    );
+
+    const stringCacheRef = useRef<stringCache.StringCache | null>(null);
+    if (stringCacheRef.current === null) {
+        stringCacheRef.current = new stringCache.StringCache();
+    }
+    const cache = stringCacheRef.current;
+
+    const update = useCallback(async () => {
+        setState({ status: "loading" });
+        let c: { coords: info.LatLong };
+        if (lat && long) {
+            c = {
+                coords: {
+                    latitude: lat,
+                    longitude: long,
+                },
+            };
         } else {
-            this.state = { status: "initial" };
+            try {
+                c = await getPosition();
+            } catch (e: any) {
+                setState({
+                    status: "error",
+                    message:
+                        "message" in e
+                            ? (e.message as string)
+                            : "Geolocation failed",
+                });
+                return;
+            }
         }
-        this.d = this.props.d ? this.props.d : 500;
-    }
-
-    override componentDidMount?() {
-        if (this.state.status === "loading") {
-            this.update();
+        const r = await fetch(
+            `/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}&d=${d}`,
+        );
+        if (!r.ok) {
+            setState({
+                status: "error",
+                message: `Fetching stops nearby failed: ${await r.text()}`,
+            });
+            return;
         }
-    }
+        const resp: request.NearbyStopsResponse = await r.json();
+        const q = new queryDepartures.Q(
+            [],
+            resp.stops.map((s) => s.stop),
+            new WebFetcher(),
+        );
+        const now = new Date();
+        try {
+            const departures = await q.getDeparturesForMultipleStops(
+                resp.request,
+                now,
+            );
+            setState({
+                status: "ready",
+                date: now,
+                location: c.coords,
+                nearbyStops: resp,
+                departures,
+            });
+        } catch (e: any) {
+            setState({
+                status: "error",
+                message: "message" in e ? (e.message as string) : "Try again",
+            });
+        }
+    }, [lat, long, d]);
 
-    override componentWillUnmount() {}
+    // Mount-only, mirroring componentDidMount: kick off the first load when the
+    // initial state was "loading". Later loads come from the buttons.
+    useEffect(() => {
+        if (autoLoad) {
+            update();
+        }
+    }, []);
 
-    renderHeader(): ReactElement {
+    function renderHeader(): ReactElement {
         let top: ReactElement;
-        switch (this.state.status) {
+        switch (state.status) {
             case "initial":
             case "loading":
             case "error":
                 top = <div>MVV Departures</div>;
                 break;
             case "ready": {
-                const date = this.state.date;
+                const date = state.date;
                 const h = date.getHours();
                 const m =
                     date.getMinutes() < 10
-                        ? "0" + this.state.date.getMinutes()
+                        ? "0" + date.getMinutes()
                         : date.getMinutes().toString();
-                const href = this.#stringCache.locationUrl(this.state.location);
+                const href = cache.locationUrl(state.location);
                 top = (
                     <div>
                         MVV Departures around{" "}
@@ -103,14 +171,14 @@ class GeoDepsTable extends React.Component<Props, State> {
         );
     }
 
-    private renderNonReadyState(
+    function renderNonReadyState(
         e: ReactElement,
         button?: ReactElement,
     ): ReactElement {
         const b = button ? button : "";
         return (
             <div className="box">
-                {this.renderHeader()}
+                {renderHeader()}
                 <div className="spacer" />
                 <div className="loading-box">{e}</div>
                 <div className="spacer" />
@@ -118,12 +186,13 @@ class GeoDepsTable extends React.Component<Props, State> {
             </div>
         );
     }
-    private reloadButton(): ReactElement {
+
+    function reloadButton(): ReactElement {
         return (
             <button
                 className="floating-button"
                 onClick={() => {
-                    this.update();
+                    update();
                 }}
             >
                 <img src="/map-pin-alt-svgrepo-com.svg" />
@@ -131,137 +200,75 @@ class GeoDepsTable extends React.Component<Props, State> {
         );
     }
 
-    private startButton(): ReactElement {
+    function startButton(): ReactElement {
         return (
             <button
                 className="floating-button start"
                 onClick={() => {
-                    this.update();
+                    update();
                 }}
             >
                 <img src="/map-pin-alt-svgrepo-com.svg" />
             </button>
         );
     }
-    override render(): ReactElement {
-        switch (this.state.status) {
-            case "initial":
-                return this.renderNonReadyState(
-                    <div className="loading">
-                        Press <img src="/map-pin-alt-svgrepo-com.svg" /> to see
-                        departures around you.
-                    </div>,
-                    this.startButton(),
-                );
 
-            case "loading":
-                return this.renderNonReadyState(
-                    <div className="loading">
-                        Loading...
-                        <span className="loader" />
-                    </div>,
-                );
-
-            case "ready": {
-                if (this.state.nearbyStops.stops.length == 0) {
-                    return this.renderNonReadyState(
-                        <div className="loading">
-                            No stops within {this.d} m from here
-                        </div>,
-                        this.reloadButton(),
-                    );
-                }
-                if (this.state.departures.length == 0) {
-                    return this.renderNonReadyState(
-                        <div className="loading">
-                            No departures within{" "}
-                            {this.state.nearbyStops.request.limit} minutes
-                        </div>,
-                        this.reloadButton(),
-                    );
-                }
-                const r = new GeoRenderer(
-                    this.#stringCache,
-                    new Date(this.state.date),
-                    this.state.nearbyStops.request,
-                    this.state.nearbyStops.stops,
-                );
-                const table = r.renderTable(this.state.departures);
-                return (
-                    <div className="box">
-                        {this.renderHeader()}
-                        <div className="table-container">{table}</div>
-                        {this.reloadButton()}
-                    </div>
-                );
-            }
-            case "error":
-                return this.renderNonReadyState(
-                    <div className="loading">{this.state.message}</div>,
-                    this.reloadButton(),
-                );
-        }
-    }
-
-    async update() {
-        this.setState({ status: "loading" });
-        let c: { coords: info.LatLong };
-        if (this.props.lat && this.props.long) {
-            c = {
-                coords: {
-                    latitude: this.props.lat,
-                    longitude: this.props.long,
-                },
-            };
-        } else {
-            try {
-                c = await getPosition();
-            } catch (e: any) {
-                this.setState({
-                    status: "error",
-                    message:
-                        "message" in e
-                            ? (e.message as string)
-                            : "Geolocation failed",
-                });
-                return;
-            }
-        }
-        const r = await fetch(
-            `/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}&d=${this.d}`,
-        );
-        if (!r.ok) {
-            this.setState({
-                status: "error",
-                message: `Fetching stops nearby failed: ${await r.text()}`,
-            });
-            return;
-        }
-        const resp: request.NearbyStopsResponse = await r.json();
-        const q = new queryDepartures.Q(
-            [],
-            resp.stops.map((s) => s.stop),
-            new WebFetcher(),
-        );
-        const now = new Date();
-        try {
-            const departures = await q.getDeparturesForMultipleStops(
-                resp.request,
-                now,
+    switch (state.status) {
+        case "initial":
+            return renderNonReadyState(
+                <div className="loading">
+                    Press <img src="/map-pin-alt-svgrepo-com.svg" /> to see
+                    departures around you.
+                </div>,
+                startButton(),
             );
-            this.setState({
-                status: "ready",
-                date: now,
-                location: c.coords,
-                nearbyStops: resp,
-                departures,
-            });
-        } catch (e: any) {
-            this.setState({
-                status: "error",
-                message: "message" in e ? (e.message as string) : "Try again",
-            });
+
+        case "loading":
+            return renderNonReadyState(
+                <div className="loading">
+                    Loading...
+                    <span className="loader" />
+                </div>,
+            );
+
+        case "ready": {
+            if (state.nearbyStops.stops.length == 0) {
+                return renderNonReadyState(
+                    <div className="loading">
+                        No stops within {d} m from here
+                    </div>,
+                    reloadButton(),
+                );
+            }
+            if (state.departures.length == 0) {
+                return renderNonReadyState(
+                    <div className="loading">
+                        No departures within {state.nearbyStops.request.limit}{" "}
+                        minutes
+                    </div>,
+                    reloadButton(),
+                );
+            }
+            const r = new GeoRenderer(
+                cache,
+                new Date(state.date),
+                state.nearbyStops.request,
+                state.nearbyStops.stops,
+            );
+            const table = r.renderTable(state.departures);
+            return (
+                <div className="box">
+                    {renderHeader()}
+                    <div className="table-container">{table}</div>
+                    {reloadButton()}
+                </div>
+            );
         }
+        case "error":
+            return renderNonReadyState(
+                <div className="loading">{state.message}</div>,
+                reloadButton(),
+            );
     }
 }
 

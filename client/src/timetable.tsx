@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { stringCache, request } from "shared";
 
@@ -17,81 +17,83 @@ function sleep(msec: number): Promise<void> {
     return new Promise((r) => setTimeout(r, msec));
 }
 
-class DepsTable extends React.Component<Props, State> {
-    #stringCache = new stringCache.StringCache();
-    #update: number | undefined;
-    #stopUpdating = false;
-
-    constructor(props: Props) {
-        super(props);
-        this.state = { status: "loading" };
-        this.#update = props.update;
+function DepsTable({ update }: Props): ReactElement {
+    const [state, setState] = useState<State>({ status: "loading" });
+    const stringCacheRef = useRef<stringCache.StringCache | null>(null);
+    if (stringCacheRef.current === null) {
+        stringCacheRef.current = new stringCache.StringCache();
     }
+    const cache = stringCacheRef.current;
 
-    override componentDidMount?() {
-        this.updateLoop();
-    }
+    useEffect(() => {
+        let stopUpdating = false;
 
-    override componentWillUnmount() {
-        this.#stopUpdating = true;
-    }
-
-    override render(): ReactElement {
-        switch (this.state.status) {
-            case "ready": {
-                if (this.state.timetable.departures.length == 0) {
-                    return (
-                        <div className="loading-box">
-                            <div className="loading">
-                                No departures within{" "}
-                                {this.state.timetable.request.limit} minutes.
-                            </div>
-                        </div>
-                    );
+        async function updateLoop() {
+            while (!stopUpdating) {
+                console.log("Updating");
+                const now = Math.floor(new Date().getTime() / 1000);
+                try {
+                    const r = await fetch(`/api/v1/timetable?timestamp=${now}`);
+                    if (!r.ok) {
+                        throw new Error(`${r.status}: ${await r.text()}`);
+                    }
+                    const timetable = await r.json();
+                    if (!stopUpdating) {
+                        setState({ status: "ready", timetable });
+                    }
+                } catch (e) {
+                    if (!stopUpdating) {
+                        setState({ status: "error", message: `${e}` });
+                    }
                 }
-                const r = new Renderer(
-                    this.#stringCache,
-                    new Date(this.state.timetable.date),
-                    this.state.timetable.request,
-                );
-                const table = r.renderTable(this.state.timetable.departures);
-                return <div className="box">{table}</div>;
+                if (!update) return;
+                await sleep(update);
             }
-            case "loading": {
+        }
+
+        updateLoop();
+
+        return () => {
+            stopUpdating = true;
+        };
+    }, [update]);
+
+    switch (state.status) {
+        case "ready": {
+            if (state.timetable.departures.length == 0) {
                 return (
                     <div className="loading-box">
                         <div className="loading">
-                            Loading...
-                            <span className="loader" />
+                            No departures within {state.timetable.request.limit}{" "}
+                            minutes.
                         </div>
                     </div>
                 );
             }
-            case "error": {
-                return (
-                    <div className="loading-box">
-                        <div className="loading">{this.state.message}</div>
-                    </div>
-                );
-            }
+            const r = new Renderer(
+                cache,
+                new Date(state.timetable.date),
+                state.timetable.request,
+            );
+            const table = r.renderTable(state.timetable.departures);
+            return <div className="box">{table}</div>;
         }
-    }
-
-    async updateLoop() {
-        while (!this.#stopUpdating) {
-            console.log("Updating");
-            const now = Math.floor(new Date().getTime() / 1000);
-            try {
-                const r = await fetch(`/api/v1/timetable?timestamp=${now}`);
-                if (!r.ok) {
-                    throw new Error(`${r.status}: ${await r.text()}`);
-                }
-                this.setState({ status: "ready", timetable: await r.json() });
-            } catch (e) {
-                this.setState({ status: "error", message: `${e}` });
-            }
-            if (!this.#update) return;
-            await sleep(this.#update);
+        case "loading": {
+            return (
+                <div className="loading-box">
+                    <div className="loading">
+                        Loading...
+                        <span className="loader" />
+                    </div>
+                </div>
+            );
+        }
+        case "error": {
+            return (
+                <div className="loading-box">
+                    <div className="loading">{state.message}</div>
+                </div>
+            );
         }
     }
 }
