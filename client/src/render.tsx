@@ -113,7 +113,7 @@ export class Renderer {
             <ImageWithFallback
                 key={src}
                 src={src}
-                className="departure-point-icon"
+                className={`departure-point-icon departure-point-${prefix.toLowerCase()}`}
                 alt={`${dp.kind} ${dp.designation}`}
                 fallbackText={`${dp.designation}`}
             />

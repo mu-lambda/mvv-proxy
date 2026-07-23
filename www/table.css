@@ -18,8 +18,16 @@
     vertical-align: middle;
 }
 
-* .departure-point-column {
+/* The Bussteig sign spends its outer ~20% on the green ring, so its numeral
+   comes out ~15% shorter than the Gleis one at an equal width. Render the disk
+   wider to bring the two numerals to the same height — this also gives the
+   circle the slight size bump it needs to look as heavy as the square. */
+* .departure-point-bussteig {
     width: 1.4em;
+}
+
+* .departure-point-column {
+    width: 1.6em;
     text-align: center;
     vertical-align: middle;
 }
