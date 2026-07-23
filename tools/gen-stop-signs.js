@@ -32,9 +32,15 @@ const CENTER = CANVAS / 2; // 441.67
 const REF_SIZE = 1000; // font size used only to measure, then scaled to fit
 
 // Steig (Bussteig): green number on the yellow disk + green ring.
-const GREEN = "#008754";
-const STEIG_MAX_H = 457; // ≈ the original H's height (height-limits 1 digit)
-const STEIG_MAX_W = 500; // keeps 2-digit numbers inside the green ring
+const YELLOW = "#f0c900";
+const GREEN = "#21D13F";
+const RING_OUTER_R = 420; // outer edge of the green ring
+const RING_INNER_R = 350; // inner edge — the yellow disk shows through here
+// Grown with the ring's hole: these are the original 457/500 (sized for an
+// inner radius of 309.79) scaled by the ratio of the new RING_INNER_R, so the
+// digits keep the same margin inside the yellow area as before.
+const STEIG_MAX_H = 516; // height-limits 1 digit
+const STEIG_MAX_W = 565; // keeps 2-digit numbers inside the green ring
 
 // Gleis: white number on a dark blue rounded rectangle.
 const BLUE = "#002d72";
@@ -48,12 +54,17 @@ const UBAHN_MAX_H = 520;
 const UBAHN_MAX_W = 560;
 // ----------------------------------------------------------------------------
 
-// Kept artwork from Hst.svg, verbatim: yellow disk + green ring. Lives inside
-// the Y-flipping group (matrix(1.25,0,0,-1.25,0,883.34)); the H path is dropped.
-const ARTWORK = `  <g transform="matrix(1.25,0,0,-1.25,0,883.34)">
-    <path style="fill:#f0c900;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 0,353.324 c 0,194.84 158.508,353.348 353.348,353.348 194.836,0 353.324,-158.508 353.324,-353.348 C 706.672,158.508 548.184,0 353.348,0 158.508,0 0,158.508 0,353.324" />
-    <path style="fill:${GREEN};fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 353.344,689.66 c -185.746,0 -336.332,-150.566 -336.332,-336.332 0,-185.75 150.586,-336.336 336.332,-336.336 185.75,0 336.336,150.586 336.336,336.336 0,185.766 -150.586,336.332 -336.336,336.332 z m 0,-88.504 c 136.883,0 247.832,-110.949 247.832,-247.828 0,-136.863 -110.949,-247.812 -247.832,-247.812 -136.86,0 -247.828,110.949 -247.828,247.812 0,136.879 110.968,247.828 247.828,247.828 z" />
-  </g>`;
+// Artwork from Hst.svg (the H path is dropped): yellow disk + green ring. The
+// original was a pair of Bézier paths inside a Y-flipping group
+// (matrix(1.25,0,0,-1.25,0,883.34)); both are exact circles about the canvas
+// centre, so they are written here as plain <circle>s in the unflipped canvas:
+// the yellow disk fills the viewBox, and the ring is a green disk with a
+// yellow one punched back out of it (as in the original, the ring's inside is
+// just the yellow disk showing through). The two ring radii are the original's
+// 336.33 and 247.83, scaled by the 1.25 the flipping group applied.
+const ARTWORK = `  <circle cx="${CENTER}" cy="${CENTER}" r="${CENTER}" style="fill:${YELLOW};stroke:none" />
+  <circle cx="${CENTER}" cy="${CENTER}" r="${RING_OUTER_R}" style="fill:${GREEN};stroke:none" />
+  <circle cx="${CENTER}" cy="${CENTER}" r="${RING_INNER_R}" style="fill:${YELLOW};stroke:none" />`;
 
 function bboxSize(bb) {
     return { w: bb.x2 - bb.x1, h: bb.y2 - bb.y1 };
