@@ -33,7 +33,7 @@ const REF_SIZE = 1000; // font size used only to measure, then scaled to fit
 
 // Steig (Bussteig): green number on the yellow disk + green ring.
 const YELLOW = "#f0c900";
-const GREEN = "#21D13F";
+const GREEN = "#158829";
 const RING_OUTER_R = 420; // outer edge of the green ring
 const RING_INNER_R = 350; // inner edge — the yellow disk shows through here
 // Grown with the ring's hole: these are the original 457/500 (sized for an
