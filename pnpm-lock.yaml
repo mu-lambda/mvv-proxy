@@ -7,6 +7,12 @@ settings:
 importers:
     .:
         devDependencies:
+            "@types/node":
+                specifier: ^22.10.2
+                version: 22.20.0
+            "@types/opentype.js":
+                specifier: ^1.3.8
+                version: 1.3.10
             opentype.js:
                 specifier: ^2.0.0
                 version: 2.0.0
@@ -195,6 +201,12 @@ packages:
         resolution:
             {
                 integrity: sha512-QWlFW2wf3nTjC13/DqRnBpR4ZO36VJH/JVBkA/vcnmbTBNQIlnObqyqZE1tUR7+Ni23Lda8R1BxMfbXRpCUx5g==,
+            }
+
+    "@types/opentype.js@1.3.10":
+        resolution:
+            {
+                integrity: sha512-F67EFyk6j02okHz5JCgata3ZRAcZi9GLnzmkHw/rzJq3OCc8/ZVdoKrxMTYjcQP6IYHGBz2cav1cpzkOkPiPCQ==,
             }
 
     "@types/qs@6.15.1":
@@ -1010,6 +1022,8 @@ snapshots:
     "@types/node@22.20.0":
         dependencies:
             undici-types: 6.21.0
+
+    "@types/opentype.js@1.3.10": {}
 
     "@types/qs@6.15.1": {}
 

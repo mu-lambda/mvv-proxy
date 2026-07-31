@@ -1,14 +1,39 @@
 load("@aspect_rules_js//js:defs.bzl", "js_binary")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_config", "ts_project")
 load("@npm//:defs.bzl", "npm_link_all_packages")
 
 npm_link_all_packages(name = "node_modules")
+
+ts_config(
+    name = "tsconfig",
+    src = "tsconfig.json",
+)
+
+# Type-checks + compiles the build-time tools (currently just the sign
+# generator) to out/. opentype.js has no bundled types; @types/opentype.js
+# supplies them.
+ts_project(
+    name = "tools",
+    srcs = ["tools/gen-stop-signs.ts"],
+    out_dir = "out",
+    root_dir = "tools",
+    tsconfig = ":tsconfig",
+    deps = [
+        ":node_modules/@types/node",
+        ":node_modules/@types/opentype.js",
+        ":node_modules/opentype.js",
+    ],
+)
 
 # Build-time generator for the numbered bus-stop signs. Run as an action by
 # //www:stop_signs (which passes --font and --out-dir); also runnable by hand
 # with `bazel run //:gen_stop_signs`.
 js_binary(
     name = "gen_stop_signs",
-    data = [":node_modules/opentype.js"],
-    entry_point = "tools/gen-stop-signs.js",
+    data = [
+        ":node_modules/opentype.js",
+        ":tools",
+    ],
+    entry_point = "out/gen-stop-signs.js",
     visibility = ["//visibility:public"],
 )

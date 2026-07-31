@@ -12,9 +12,9 @@
 //   node tools/gen-stop-signs.js                 (writes into www/)
 //   node tools/gen-stop-signs.js --out-dir /tmp  (writes elsewhere)
 
-const fs = require("node:fs");
-const path = require("node:path");
-const opentype = require("opentype.js");
+import * as fs from "node:fs";
+import * as path from "node:path";
+import * as opentype from "opentype.js";
 
 const REPO_ROOT = path.resolve(__dirname, "..");
 
@@ -66,11 +66,17 @@ const ARTWORK = `  <circle cx="${CENTER}" cy="${CENTER}" r="${CENTER}" style="fi
   <circle cx="${CENTER}" cy="${CENTER}" r="${RING_OUTER_R}" style="fill:${GREEN};stroke:none" />
   <circle cx="${CENTER}" cy="${CENTER}" r="${RING_INNER_R}" style="fill:${YELLOW};stroke:none" />`;
 
-function bboxSize(bb) {
+function bboxSize(bb: opentype.BoundingBox): { w: number; h: number } {
     return { w: bb.x2 - bb.x1, h: bb.y2 - bb.y1 };
 }
 
-function digitPath(font, text, fill, maxW, maxH) {
+function digitPath(
+    font: opentype.Font,
+    text: string,
+    fill: string,
+    maxW: number,
+    maxH: number,
+): string {
     // Measure at REF_SIZE, then scale so the glyph fits maxW × maxH. Round to an
     // integer font size: opentype.js's path generation emits NaN coordinates at
     // some pathological fractional sizes (e.g. "3" at ~806.45), and integer
@@ -91,7 +97,7 @@ function digitPath(font, text, fill, maxW, maxH) {
     return `  <g transform="translate(${dx.toFixed(2)},${dy.toFixed(2)})"><path style="fill:${fill};fill-opacity:1;stroke:none" d="${d}" /></g>`;
 }
 
-function svg(body) {
+function svg(body: string): string {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 ${CANVAS} ${CANVAS}" width="${CANVAS}" height="${CANVAS}">
 ${body}
@@ -100,35 +106,49 @@ ${body}
 }
 
 /** Bussteig (Steig): green number on the yellow disk + green ring. */
-function steigSvgFor(font, n) {
+function steigSvgFor(font: opentype.Font, n: number): string {
     const digit = digitPath(font, String(n), GREEN, STEIG_MAX_W, STEIG_MAX_H);
     return svg(`${ARTWORK}\n${digit}`);
 }
 
 /** Gleis: white number on a dark blue rounded rectangle. */
-function gleisSvgFor(font, n) {
+function gleisSvgFor(font: opentype.Font, n: number): string {
     const rect = `  <rect x="0" y="0" width="${CANVAS}" height="${CANVAS}" rx="${GLEIS_RADIUS}" ry="${GLEIS_RADIUS}" style="fill:${BLUE};stroke:none" />`;
-    const digit = digitPath(font, String(n), "#ffffff", GLEIS_MAX_W, GLEIS_MAX_H);
+    const digit = digitPath(
+        font,
+        String(n),
+        "#ffffff",
+        GLEIS_MAX_W,
+        GLEIS_MAX_H,
+    );
     return svg(`${rect}\n${digit}`);
 }
 
 /** UBahnGleis: white number on a dark blue circle. */
-function ubahnGleisSvgFor(font, n) {
+function ubahnGleisSvgFor(font: opentype.Font, n: number): string {
     const circle = `  <circle cx="${CENTER}" cy="${CENTER}" r="${CENTER}" style="fill:${BLUE};stroke:none" />`;
-    const digit = digitPath(font, String(n), "#ffffff", UBAHN_MAX_W, UBAHN_MAX_H);
+    const digit = digitPath(
+        font,
+        String(n),
+        "#ffffff",
+        UBAHN_MAX_W,
+        UBAHN_MAX_H,
+    );
     return svg(`${circle}\n${digit}`);
 }
 
-function parseArgs(argv) {
-    let font = DEFAULT_FONT;
-    let outDir = DEFAULT_OUT_DIR;
+function parseArgs(argv: string[]): { font: string; outDir: string } {
+    let font: string | undefined = DEFAULT_FONT;
+    let outDir: string | undefined = DEFAULT_OUT_DIR;
     for (let i = 0; i < argv.length; i++) {
         if (argv[i] === "--font") font = argv[++i];
         else if (argv[i] === "--out-dir") outDir = argv[++i];
         else throw new Error(`Unexpected argument: ${argv[i]}`);
     }
     if (font === undefined || outDir === undefined) {
-        throw new Error("Usage: gen-stop-signs.js [--font <ttf>] [--out-dir <dir>]");
+        throw new Error(
+            "Usage: gen-stop-signs.js [--font <ttf>] [--out-dir <dir>]",
+        );
     }
     return { font, outDir };
 }
@@ -136,7 +156,7 @@ function parseArgs(argv) {
 // Under a Bazel action the tool runs with cwd = BAZEL_BINDIR, while the
 // --font / --out-dir args ($(execpath)/$(RULEDIR)) are execroot-relative. Chdir
 // to the execroot so those relative paths resolve. (No-op outside Bazel.)
-function chdirToExecrootUnderBazel() {
+function chdirToExecrootUnderBazel(): void {
     const bindir = process.env.BAZEL_BINDIR;
     const cwd = process.cwd();
     if (bindir && cwd.endsWith(path.sep + bindir)) {
@@ -144,7 +164,7 @@ function chdirToExecrootUnderBazel() {
     }
 }
 
-function main() {
+function main(): void {
     chdirToExecrootUnderBazel();
     const { font: fontPath, outDir } = parseArgs(process.argv.slice(2));
     const font = opentype.parse(fs.readFileSync(fontPath).buffer);
