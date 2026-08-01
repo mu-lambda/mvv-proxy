@@ -5,4 +5,10 @@ packages:
     - "server"
     - "tests"
 
+minimumReleaseAgeExclude:
+    - body-parser@1.20.6
+
 onlyBuiltDependencies: []
+
+overrides:
+    body-parser@<1.20.6: ^1.20.6
