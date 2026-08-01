@@ -101,8 +101,9 @@ js_image_layer(
 
 oci_image(
     name = "image",
-    # js_binary's launcher is a bash script, so the base needs bash (node's
-    # full image has it; matches the Dockerfile's `FROM node:23.5.0`).
+    # js_binary's launcher is a bash script, so the base needs bash. bash is
+    # an Essential package in Debian, so node:24-bookworm-slim still ships it
+    # at /usr/bin/bash (see @node_base in MODULE.bazel).
     base = "@node_base",
     # `/[js_image_layer root]/[package of the binary target]/[binary name]`
     cmd = ["/app/server/server_bin"],

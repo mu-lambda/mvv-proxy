@@ -28,12 +28,12 @@ rules_ts_ext = use_extension(
 rules_ts_ext.deps(ts_version_from = "//:package.json")
 use_repo(rules_ts_ext, "npm_typescript")
 
-# rules_oci: base image for the server container, mirrors the Dockerfile's `FROM node:23.5.0`.
+# rules_oci: base image for the server container (node:24-bookworm-slim, LTS).
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci", dev_dependency = True)
 oci.pull(
     name = "node_base",
     image = "node",
-    digest = "sha256:1745a99b66da41b5ccd6f7be3810f74ddab16eb4579de10de378adb50d2e6e6f",  # node:23.5.0
+    digest = "sha256:235600a8101ab264e117b1768e925532262668dc9b581ef1dd7d96ced463b8e7",  # node:24-bookworm-slim
     platforms = [
         "linux/amd64",
         "linux/arm64/v8",
