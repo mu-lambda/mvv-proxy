@@ -108,6 +108,9 @@ oci_image(
     # `/[js_image_layer root]/[package of the binary target]/[binary name]`
     cmd = ["/app/server/server_bin"],
     entrypoint = ["/usr/bin/bash"],
+    # The server listens on 3000; declaring it here adds EXPOSE metadata so
+    # tools (e.g. Docker Desktop's Run dialog) can offer a host-port mapping.
+    exposed_ports = ["3000/tcp"],
     tars = [":server_layer"],
     # `cmd` + `.runfiles/[workspace name]`
     workdir = "/app/server/server_bin.runfiles/_main",
