@@ -236,4 +236,19 @@ export const lines: info.Line[] = [
         name: "S8/6",
         destination: "Flughafen München",
     },
+
+    // SEV S6-i
+    {
+        mvvApiId: "mvv:01006:E:H:s26",
+        id: "SEV S6-i",
+        name: "SEV S6",
+        destination: "Pasing Bf. Nordt ",
+    },
+    // SEV S6-a
+    {
+        mvvApiId: "mvv:01006:E:R:s26",
+        id: "SEV S6-a",
+        name: "SEV S6",
+        destination: "Gauting",
+    },
 ];
