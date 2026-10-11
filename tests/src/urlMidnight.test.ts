@@ -15,14 +15,14 @@ export const test = testAsync(
             "https://www.mvv-muenchen.de/?eID=departuresFinder" +
                 "&action=get_departures&stop_id=de:09162:1" +
                 "&requested_timestamp=1783372800" +
-                "&lines=JmxpbmU9ZGRiJTNBOTJNMDYlM0ElMjAlM0FIJTNBajI1",
+                "&lines=JmxpbmU9ZGRiJTNBOTIwUzYlM0ElMjAlM0FIJTNBajI2",
         );
         // Second request: next hour rounded to :00 (00:00 the next day).
         expect(f.requested[1]!).toBe(
             "https://www.mvv-muenchen.de/?eID=departuresFinder" +
                 "&action=get_departures&stop_id=de:09162:1" +
                 "&requested_timestamp=1783375200" +
-                "&lines=JmxpbmU9ZGRiJTNBOTJNMDYlM0ElMjAlM0FIJTNBajI1",
+                "&lines=JmxpbmU9ZGRiJTNBOTIwUzYlM0ElMjAlM0FIJTNBajI2",
         );
     },
 );

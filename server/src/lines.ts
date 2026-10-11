@@ -196,13 +196,13 @@ export const lines: info.Line[] = [
 
     // S6
     {
-        mvvApiId: "ddb:92M06: :H:j25",
+        mvvApiId: "ddb:920S6: :H:j26",
         id: "S6-i",
         name: "S6",
         destination: "Ebersberg",
     },
     {
-        mvvApiId: "ddb:92M06: :R:j25",
+        mvvApiId: "ddb:920S6: :R:j26",
         id: "S6-a",
         name: "S6",
         destination: "Tutzing",
