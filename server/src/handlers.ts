@@ -107,6 +107,13 @@ export class Handlers {
         return result;
     }
 
+    getFallback(filename: string): string | undefined {
+        if (filename.match(/920S?/)) {
+            return `92M0${filename[4]}.svg`;
+        }
+        return undefined;
+    }
+
     svg = async (req: express.Request, res: express.Response) => {
         const filename = path.basename(req.path);
         if (!filename.endsWith(".svg")) {
@@ -121,9 +128,24 @@ export class Handlers {
             return;
         }
         try {
-            const r = await this.#fetcher.fetch(
-                `https://www.mvv-muenchen.de/fileadmin/lines/${filename}`,
-            );
+            const fetchWithFallback = async () => {
+                try {
+                    return await this.#fetcher.fetch(
+                        `https://www.mvv-muenchen.de/fileadmin/lines/${filename}`,
+                    );
+                } catch (e) {
+                    const fallbackFilename = this.getFallback(filename);
+                    if (fallbackFilename !== undefined) {
+                        return await this.#fetcher.fetch(
+                            `https://www.mvv-muenchen.de/fileadmin/lines/${fallbackFilename}`,
+                        );
+                    } else {
+                        throw e;
+                    }
+                }
+            };
+
+            const r = await fetchWithFallback();
             res.setHeader("Content-Type", "image/svg+xml");
             res.setHeader("Cache-Control", "max-age=864000");
             const text = await r.text();
