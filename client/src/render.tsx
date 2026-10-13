@@ -210,10 +210,6 @@ export class GeoRenderer extends Renderer {
         return super.renderTable(this.filterDeparturesWithClosestStops(ds));
     }
 
-    protected override svgUrl(filename: string): string {
-        return `https://www.mvv-muenchen.de/fileadmin/lines/${filename}`;
-    }
-
     public *filterDeparturesWithClosestStops(
         ds: Iterable<Departure>,
     ): Iterable<Departure> {
