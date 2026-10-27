@@ -242,12 +242,26 @@ export const lines: info.Line[] = [
         mvvApiId: "mvv:01006:E:H:s26",
         id: "SEV S6-i",
         name: "SEV S6",
-        destination: "Pasing Bf. Nordt ",
+        destination: "Pasing Bf. Nord",
     },
     // SEV S6-a
     {
         mvvApiId: "mvv:01006:E:R:s26",
         id: "SEV S6-a",
+        name: "SEV S6",
+        destination: "Gauting",
+    },
+    // SEV S6-i(DB)
+    {
+        mvvApiId: "ddb:870S6:A:H:j26",
+        id: "SEV S6-i(DB)",
+        name: "SEV S6",
+        destination: "Pasing Bf. Nord ",
+    },
+    // SEV S6-a(DB)
+    {
+        mvvApiId: "ddb:870S6:A:R:j26",
+        id: "SEV S6-a(DB)",
         name: "SEV S6",
         destination: "Gauting",
     },
