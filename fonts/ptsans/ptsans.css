@@ -1,0 +1,18 @@
+/* Served from /fonts/ptsans/ by the express.static("../fonts") mount, so the
+   stylesheets in www/ can @import this rather than carry the @font-face rules
+   themselves -- the same arrangement publicsans.css has next door. */
+@font-face {
+    font-family: "PT Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/ptsans/PT_Sans-Web-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "PT Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/fonts/ptsans/PT_Sans-Web-Bold.ttf") format("truetype");
+}

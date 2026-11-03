@@ -1,3 +1,5 @@
+@import url("/fonts/ptsans/ptsans.css");
+
 .loading-box {
     flex: 0 0 auto;
 
@@ -19,6 +21,10 @@
 
     display: inline-block;
     font-size: 4vw;
+    /* Loading, errors and "no departures" all land here, and timetable.html
+       loads no page-wide stylesheet, so without this they come out in the
+       browser's default serif. */
+    font-family: "PT Sans", sans-serif;
 }
 
 /* HTML: <div class="loader"></div> */

@@ -5,7 +5,10 @@ load("@aspect_rules_js//js:defs.bzl", "js_library")
 # JsInfo-providing target declared in their own package.
 js_library(
     name = "fonts",
-    srcs = glob(["publicsans/**"]),
+    srcs = glob([
+        "ptsans/**",
+        "publicsans/**",
+    ]),
     visibility = ["//visibility:public"],
 )
 

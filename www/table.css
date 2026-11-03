@@ -1,4 +1,4 @@
-@import url("/fonts/publicsans/publicsans.css");
+@import url("/fonts/ptsans/ptsans.css");
 
 * .line-icon {
     width: 2em;
@@ -42,7 +42,7 @@ table.departure-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 3.2vw;
-    font-family: "Public Sans", sans-serif;
+    font-family: "PT Sans", sans-serif;
 }
 
 * tr {

@@ -1,4 +1,4 @@
-@import url("/fonts/publicsans/publicsans.css");
+@import url("/fonts/ptsans/ptsans.css");
 html,
 body {
     height: 100%;
@@ -6,7 +6,7 @@ body {
     padding: 0;
 
     overflow: hidden;
-    font-family: "Public Sans", sans-serif;
+    font-family: "PT Sans", sans-serif;
 }
 
 .box {
@@ -70,7 +70,7 @@ body {
 
 .floating-button img {
     width: min(18vw, 9vh);
-    height: min(18vw, 9vh);;
+    height: min(18vw, 9vh);
 }
 
 .floating-button.start {
