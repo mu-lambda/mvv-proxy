@@ -7,8 +7,24 @@ bazel_dep(name = "aspect_rules_js", version = "3.2.2")
 bazel_dep(name = "aspect_rules_ts", version = "3.8.11")
 bazel_dep(name = "aspect_rules_esbuild", version = "0.26.0")
 bazel_dep(name = "aspect_bazel_lib", version = "2.22.5")
+bazel_dep(name = "rules_nodejs", version = "6.7.3")
 bazel_dep(name = "rules_oci", version = "2.3.0")
 bazel_dep(name = "platforms", version = "1.1.0")
+
+# The Node that builds, tests and runs the server: js_binary carries it into the
+# container image, so this is the production version too, not the base image's.
+# rules_nodejs only knows releases up to its own date, so a newer one comes with
+# its archives and checksums, from nodejs.org/dist/v<version>/SHASUMS256.txt.
+node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node", dev_dependency = True)
+node.toolchain(
+    node_repositories = {
+        "26.13.0-darwin_amd64": ("node-v26.13.0-darwin-x64.tar.gz", "node-v26.13.0-darwin-x64", "525c9b29bb0263d687de60a4cec0e2a6db876a8eb032369e5795eca71e7c358e"),
+        "26.13.0-darwin_arm64": ("node-v26.13.0-darwin-arm64.tar.gz", "node-v26.13.0-darwin-arm64", "d38bd5e5a2ddce6bbb5ce45e46e208337da4d51fffe611e567fd32073d6439f6"),
+        "26.13.0-linux_amd64": ("node-v26.13.0-linux-x64.tar.xz", "node-v26.13.0-linux-x64", "d28a96af6c38596f6d9d97c0ee531c13d238d757742387d1928de822d959e997"),
+        "26.13.0-linux_arm64": ("node-v26.13.0-linux-arm64.tar.xz", "node-v26.13.0-linux-arm64", "406fe3fbde1c054adff8b297c16fdb5af6659db327c1ac8acd46b56ef1af9a92"),
+    },
+    node_version = "26.13.0",
+)
 
 # rules_js: translate the pnpm workspace lockfile into Bazel npm_import targets.
 npm = use_extension("@aspect_rules_js//npm:extensions.bzl", "npm", dev_dependency = True)
@@ -28,12 +44,16 @@ rules_ts_ext = use_extension(
 rules_ts_ext.deps(ts_version_from = "//:package.json")
 use_repo(rules_ts_ext, "npm_typescript")
 
-# rules_oci: base image for the server container (node:24-bookworm-slim, LTS).
+# rules_oci: base image for the server container. The server brings its own Node
+# (see node.toolchain above), but that Node needs libatomic, which plain
+# debian:trixie-slim lacks and this image has, so keep its major version in step.
+# The digest is pinned, so the base gets no security fixes until it is moved:
+# refresh it now and then.
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci", dev_dependency = True)
 oci.pull(
     name = "node_base",
     image = "node",
-    digest = "sha256:235600a8101ab264e117b1768e925532262668dc9b581ef1dd7d96ced463b8e7",  # node:24-bookworm-slim
+    digest = "sha256:5adad64f9a1fca2d51972caa65983634c8a774eb300d72b20f7f2a0f60368072",  # node:26-trixie-slim
     platforms = [
         "linux/amd64",
         "linux/arm64/v8",
