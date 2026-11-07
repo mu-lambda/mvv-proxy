@@ -125,8 +125,6 @@ container image.
 
 ## Known loose ends
 
-- All tsconfigs target `es2016`, so `async`/`await` compiles to helpers.
-  `es2022` would keep it native.
 - `queryDepartures.ts` checks `jsonArray === null`, which can never be true.
   If MVV omits `departures`, the spread before it fails with an unhelpful
   `TypeError`.
