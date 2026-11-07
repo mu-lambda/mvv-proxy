@@ -6,9 +6,12 @@ npm_link_all_packages(name = "node_modules")
 
 ts_config(
     name = "tsconfig",
-    src = "tsconfig.json",
-    # module = nodenext picks ESM from "type" in here.
-    deps = ["package.json"],
+    src = "tsconfig.bazel.json",
+    # module = nodenext picks ESM from "type" in package.json.
+    deps = [
+        "package.json",
+        "tsconfig.json",
+    ],
 )
 
 ts_project(

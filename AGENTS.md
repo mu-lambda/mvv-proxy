@@ -70,6 +70,15 @@ container image.
   quietly becomes CommonJS, or Node falls back to guessing.
 - `server/` has `verbatimModuleSyntax`: types must be imported with
   `import type`, because Node can run `src/` directly.
+- TypeScript is 7 (the native compiler); rules_ts takes its version from the
+  root `package.json` and fetches the per-platform compiler package. TS 7
+  loads no `@types` packages unless they are listed, so tsconfigs that need
+  Node list `"types": ["node"]`.
+- `server`, `client` and `tests` map `shared` (and `mvv-proxy`) to their
+  sources in `tsconfig.json` for editors, which needs `rootDir: ".."`. Bazel
+  rejects that, so it builds with `tsconfig.bazel.json`, which extends
+  `tsconfig.json` and only sets `rootDir` back to `./src`. Put compiler
+  options in `tsconfig.json`.
 - CommonJS libraries: a library that compiles fine can still fail at
   runtime. `opentype.js` needs a default import; `import * as` compiled but
   failed with `opentype.parse is not a function`. Run the real entry point

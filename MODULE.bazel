@@ -4,7 +4,7 @@ module(
 )
 
 bazel_dep(name = "aspect_rules_js", version = "3.2.2")
-bazel_dep(name = "aspect_rules_ts", version = "3.8.11")
+bazel_dep(name = "aspect_rules_ts", version = "3.10.1")
 bazel_dep(name = "aspect_rules_esbuild", version = "0.26.0")
 bazel_dep(name = "aspect_bazel_lib", version = "2.22.5")
 bazel_dep(name = "rules_nodejs", version = "6.7.3")
@@ -36,13 +36,15 @@ npm.npm_translate_lock(
 use_repo(npm, "npm")
 
 # rules_ts: use the typescript version declared in the root package.json.
-rules_ts_ext = use_extension(
+# TypeScript 7 is the native compiler; rules_ts (>= 3.9) fetches the
+# per-platform binary package that goes with it.
+typescript = use_extension(
     "@aspect_rules_ts//ts:extensions.bzl",
-    "ext",
+    "typescript",
     dev_dependency = True,
 )
-rules_ts_ext.deps(ts_version_from = "//:package.json")
-use_repo(rules_ts_ext, "npm_typescript")
+typescript.deps(version_from = "//:package.json")
+use_repo(typescript, "npm_typescript")
 
 # rules_oci: base image for the server container. The server brings its own Node
 # (see node.toolchain above), but that Node needs libatomic, which plain

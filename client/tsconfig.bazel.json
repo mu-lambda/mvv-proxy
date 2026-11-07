@@ -1,0 +1,9 @@
+{
+  // tsconfig.json's rootDir covers the repository for editors, which resolve
+  // shared to its sources. ts_project wants it inside the package; Bazel
+  // finds shared's built output instead.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src"
+  }
+}
