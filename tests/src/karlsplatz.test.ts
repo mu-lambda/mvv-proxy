@@ -22,6 +22,7 @@ export const test = testAsync(
         expect(departures[0]!.line.symbol).toBe("02023.svg");
         expect(departures[0]!.line.destination).toBe("Einsteinstraße");
         expect(departures[0]!.line.mvvApiId).toBe("swm:02023:G:R:016");
+        expect(departures[0]!.line.product).toBe("Tram");
         expect(departures[0]!.departure.date).toBe("20260706");
         expect(departures[0]!.departure.planned).toBe("19:46");
         expect(departures[0]!.departure.live).toBe("19:54");
@@ -34,6 +35,7 @@ export const test = testAsync(
         expect(departures[1]!.line.symbol).toBe("92M02.svg");
         expect(departures[1]!.line.destination).toBe("Petershausen");
         expect(departures[1]!.line.mvvApiId).toBe("ddb:92M02: :R:j26");
+        expect(departures[1]!.line.product).toBe("S-Bahn");
         expect(departures[1]!.departure.date).toBe("20260706");
         expect(departures[1]!.departure.planned).toBe("19:46");
         expect(departures[1]!.departure.live).toBe("19:53");

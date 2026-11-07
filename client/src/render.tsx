@@ -66,8 +66,17 @@ export class Renderer {
         return diff < timeToStop + closeDepartureGap;
     }
 
-    protected svgUrl(filename: string): string {
-        return `/svg/${filename}`;
+    /**
+     * The line's icon. The line goes along, so the server can draw an icon
+     * when MVV has none.
+     */
+    protected svgUrl(filename: string, d: Departure): string {
+        const line = new URLSearchParams({
+            name: d.line.name,
+            product: d.line.product,
+            id: d.line.mvvApiId,
+        });
+        return `/svg/${filename}?${line}`;
     }
     renderSymbolTag(d: Departure): ReactElement {
         const textOnError =
@@ -75,13 +84,11 @@ export class Renderer {
                 ? d.line.name
                 : `${d.line.name.substring(0, 3)}...`;
         if (d.line.symbol !== null) {
-            // Temproary hack for 208 Express Bus.
-            const s =
-                d.line.symbol === "20208.svg" ? "19208.svg" : d.line.symbol;
+            const s = d.line.symbol;
             if (!s.endsWith(".svg")) {
                 return <span>{textOnError}</span>;
             }
-            const src = this.svgUrl(s);
+            const src = this.svgUrl(s, d);
             return (
                 <ImageWithFallback
                     key={src}

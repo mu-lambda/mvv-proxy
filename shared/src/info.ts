@@ -100,6 +100,11 @@ export type Departure = {
         destination: string;
         /** Id (as in lines.lines)*/
         mvvApiId: string;
+        /**
+         * MVV's product, e.g. "Bus", "ExpressBus", "SEV". The server draws
+         * an icon from it when MVV has none.
+         */
+        product: string;
     };
 
     departure: {

@@ -123,8 +123,16 @@ container image.
   stop, matching `number` and the `H`/`R` field, and keeps that list for
   24 hours. A named line MVV doesn't list at the stop is skipped and logged
   once per list.
-- `/svg/*filename` proxies MVV's line icons. It caches icons it got, and
-  remembers icons MVV answered 4xx for until restart.
+- `/svg/*filename` serves MVV's line icons. mvv-proxy also runs on the
+  internet (mvv.mulambda.de), so it asks MVV as little as it can, to avoid
+  being rate-limited: it keeps MVV's answer for each icon (the icon, or 404
+  or 410 for none) for a day, shares one request among clients asking at the
+  same time, and refuses names that can't be MVV's (five capitals or digits
+  plus `.svg`) without asking. Other 4xx, such as 429, are not kept. For
+  icons MVV lacks,
+  it uses MVV's icon under another name, or draws one from the line the
+  client passes as query parameters (`server/src/icons.ts`). `MVV-ICONS.md`
+  has the classes of missing icons and the decisions behind each drawing.
 
 ## Container image
 

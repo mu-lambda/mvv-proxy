@@ -228,6 +228,7 @@ function fieldAssertions(departures: info.Departure[]): string {
                 `    expect(${p}.line.symbol).toBe(${lit(d.line.symbol)});`,
                 `    expect(${p}.line.destination).toBe(${lit(d.line.destination)});`,
                 `    expect(${p}.line.mvvApiId).toBe(${lit(d.line.mvvApiId)});`,
+                `    expect(${p}.line.product).toBe(${lit(d.line.product)});`,
                 `    expect(${p}.departure.date).toBe(${lit(d.departure.date)});`,
                 `    expect(${p}.departure.planned).toBe(${lit(d.departure.planned)});`,
                 `    expect(${p}.departure.live).toBe(${lit(d.departure.live)});`,

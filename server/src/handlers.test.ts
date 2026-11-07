@@ -8,6 +8,7 @@ const { suite, testAsync, expect } = harness;
 type FakeResponse = {
     statusCode: number;
     body: unknown;
+    headers: Record<string, string>;
     status(code: number): FakeResponse;
     sendStatus(code: number): FakeResponse;
     send(body: unknown): FakeResponse;
@@ -18,6 +19,7 @@ function fakeResponse(): FakeResponse {
     const r: FakeResponse = {
         statusCode: 200,
         body: undefined,
+        headers: {},
         status: (code) => {
             r.statusCode = code;
             return r;
@@ -30,7 +32,10 @@ function fakeResponse(): FakeResponse {
             r.body = body;
             return r;
         },
-        setHeader: () => r,
+        setHeader: (name, value) => {
+            r.headers[name] = value;
+            return r;
+        },
     };
     return r;
 }
@@ -47,9 +52,34 @@ function failingFetcher(failure: Error) {
     return f;
 }
 
-function handlers(f: fetcher.IFetcher): Handlers {
-    return new Handlers(new queryDepartures.Q([], [], f), f, undefined);
+/**
+ * MVV's icon directory: serves the given files and answers 404 for the
+ * rest, recording which files were asked for.
+ */
+function iconFetcher(files: Record<string, string>) {
+    const f = {
+        requested: [] as string[],
+        fetch: async (url: string): Promise<fetcher.IFetchResult> => {
+            const name = url.substring(url.lastIndexOf("/") + 1);
+            f.requested.push(name);
+            const body = files[name];
+            if (body === undefined) {
+                throw new fetcher.MVVRequestFailure(
+                    new Error("Not Found"),
+                    404,
+                );
+            }
+            return { json: async () => body, text: async () => body };
+        },
+    };
+    return f;
 }
+
+function handlers(f: fetcher.IFetcher, now?: () => number): Handlers {
+    return new Handlers(new queryDepartures.Q([], [], f), f, undefined, now);
+}
+
+const DAY = 24 * 60 * 60 * 1000;
 
 async function call(
     handler: (req: express.Request, res: express.Response) => unknown,
@@ -73,8 +103,8 @@ const tests = [
             new fetcher.MVVRequestFailure(new Error("Not Found"), 404),
         );
         const h = handlers(f);
-        const first = await call(h.svg, { path: "/svg/U1.svg" });
-        const second = await call(h.svg, { path: "/svg/U1.svg" });
+        const first = await call(h.svg, { path: "/svg/99999.svg", query: {} });
+        const second = await call(h.svg, { path: "/svg/99999.svg", query: {} });
         expect(first.statusCode).toBe(404);
         expect(second.statusCode).toBe(404);
         expect(f.calls).toBe(1);
@@ -85,9 +115,147 @@ const tests = [
             new fetcher.MVVRequestFailure(new Error("socket hang up")),
         );
         const h = handlers(f);
-        await call(h.svg, { path: "/svg/U1.svg" });
-        await call(h.svg, { path: "/svg/U1.svg" });
+        await call(h.svg, { path: "/svg/99999.svg", query: {} });
+        await call(h.svg, { path: "/svg/99999.svg", query: {} });
         expect(f.calls).toBe(2);
+    }),
+
+    testAsync("MVV's icon is served and kept", async () => {
+        const f = iconFetcher({ "010U1.svg": "<svg>U1</svg>" });
+        const h = handlers(f);
+        const req = { path: "/svg/010U1.svg", query: {} };
+        const first = await call(h.svg, req);
+        const second = await call(h.svg, req);
+        expect(first.body).toBe("<svg>U1</svg>");
+        expect(second.body).toBe("<svg>U1</svg>");
+        expect(first.headers["Cache-Control"]).toBe("max-age=864000");
+        expect(f.requested.join(" ")).toBe("010U1.svg");
+    }),
+
+    testAsync("an icon MVV has under another name is served", async () => {
+        const f = iconFetcher({ "92M06.svg": "<svg>S6</svg>" });
+        const h = handlers(f);
+        const req = { path: "/svg/920S6.svg", query: {} };
+        expect((await call(h.svg, req)).body).toBe("<svg>S6</svg>");
+        expect((await call(h.svg, req)).body).toBe("<svg>S6</svg>");
+        expect(f.requested.join(" ")).toBe("920S6.svg 92M06.svg");
+    }),
+
+    testAsync("a missing icon is drawn from the line", async () => {
+        const f = iconFetcher({});
+        const h = handlers(f);
+        const req = (name: string) => ({
+            path: "/svg/87RB6.svg",
+            query: { name, product: "Ersatzverkehr", id: "ddb:87RB6:5" },
+        });
+        // RB65 and RB67 share an icon file; the label comes from the line.
+        const rb65 = await call(h.svg, req("SEV RB65"));
+        const rb67 = await call(h.svg, req("SEV RB67"));
+        expect(rb65.headers["Content-Type"]).toBe("image/svg+xml");
+        expect(rb65.headers["Cache-Control"]).toBe("max-age=86400");
+        expect(String(rb65.body).includes(">RB65</text>")).toBe(true);
+        expect(String(rb67.body).includes(">RB67</text>")).toBe(true);
+        // MVV was asked once; the second time it was known to be missing.
+        expect(f.requested.join(" ")).toBe("87RB6.svg");
+    }),
+
+    testAsync("a missing icon without its line is a 404", async () => {
+        const h = handlers(iconFetcher({}));
+        const res = await call(h.svg, {
+            path: "/svg/20208.svg",
+            query: { name: "X208" },
+        });
+        expect(res.statusCode).toBe(404);
+    }),
+
+    testAsync("an icon lost in transit is not drawn", async () => {
+        const h = handlers(
+            failingFetcher(
+                new fetcher.MVVRequestFailure(new Error("503"), 503),
+            ),
+        );
+        const res = await call(h.svg, {
+            path: "/svg/20208.svg",
+            query: { name: "X208", product: "ExpressBus" },
+        });
+        expect(res.statusCode).toBe(404);
+        expect(res.body).toBe(undefined);
+    }),
+
+    testAsync("MVV's answer is kept for a day", async () => {
+        const f = iconFetcher({ "010U1.svg": "<svg>U1</svg>" });
+        let now = 1783324800 * 1000;
+        const h = handlers(f, () => now);
+        const ask = (name: string) =>
+            call(h.svg, { path: `/svg/${name}`, query: {} });
+        await ask("010U1.svg");
+        await ask("99999.svg");
+        now += DAY - 1;
+        await ask("010U1.svg");
+        await ask("99999.svg");
+        expect(f.requested.join(" ")).toBe("010U1.svg 99999.svg");
+        // A day on, both are asked for again: MVV may have changed either.
+        now += 1;
+        expect((await ask("010U1.svg")).body).toBe("<svg>U1</svg>");
+        expect((await ask("99999.svg")).statusCode).toBe(404);
+        expect(f.requested.join(" ")).toBe(
+            "010U1.svg 99999.svg 010U1.svg 99999.svg",
+        );
+    }),
+
+    testAsync(
+        "requests at the same time share one request to MVV",
+        async () => {
+            const f = iconFetcher({ "010U1.svg": "<svg>U1</svg>" });
+            const h = handlers(f);
+            const req = { path: "/svg/010U1.svg", query: {} };
+            const both = await Promise.all([
+                call(h.svg, req),
+                call(h.svg, req),
+            ]);
+            expect(both[0]!.body).toBe("<svg>U1</svg>");
+            expect(both[1]!.body).toBe("<svg>U1</svg>");
+            expect(f.requested.length).toBe(1);
+        },
+    ),
+
+    testAsync("rate limiting is not taken for a missing icon", async () => {
+        const f = failingFetcher(
+            new fetcher.MVVRequestFailure(new Error("Too Many Requests"), 429),
+        );
+        const h = handlers(f);
+        const req = {
+            path: "/svg/20208.svg",
+            query: { name: "X208", product: "ExpressBus" },
+        };
+        const first = await call(h.svg, req);
+        await call(h.svg, req);
+        expect(first.statusCode).toBe(404);
+        expect(first.body).toBe(undefined);
+        expect(f.calls).toBe(2);
+    }),
+
+    testAsync("names that can't be MVV's icons are not asked for", async () => {
+        const f = iconFetcher({});
+        const h = handlers(f);
+        for (const path of [
+            "/svg/U1.svg",
+            "/svg/abcde.svg",
+            "/svg/02019.png",
+        ]) {
+            expect((await call(h.svg, { path, query: {} })).statusCode).toBe(
+                404,
+            );
+        }
+        expect(f.requested.length).toBe(0);
+    }),
+
+    testAsync("bus 438's wrong icon is replaced", async () => {
+        const f = iconFetcher({ "12438.svg": "<svg>9441</svg>" });
+        const h = handlers(f);
+        const res = await call(h.svg, { path: "/svg/12438.svg", query: {} });
+        expect(String(res.body).includes(">438</text>")).toBe(true);
+        expect(f.requested.length).toBe(0);
     }),
 ];
 

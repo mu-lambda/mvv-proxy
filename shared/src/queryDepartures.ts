@@ -295,6 +295,7 @@ export class Q {
                     symbol: obj.line?.symbol,
                     destination: obj.line?.direction,
                     mvvApiId: obj.line?.stateless,
+                    product: obj.line?.name ?? "",
                 },
                 departure: {
                     date: obj.departureDate,
