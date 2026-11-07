@@ -75,24 +75,24 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
                 return;
             }
         }
-        const r = await fetch(
-            `/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}&d=${d}`,
-        );
-        if (!r.ok) {
-            setState({
-                status: "error",
-                message: `Fetching stops nearby failed: ${await r.text()}`,
-            });
-            return;
-        }
-        const resp: request.NearbyStopsResponse = await r.json();
-        const q = new queryDepartures.Q(
-            [],
-            resp.stops.map((s) => s.stop),
-            new WebFetcher(),
-        );
-        const now = new Date();
         try {
+            const r = await fetch(
+                `/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}&d=${d}`,
+            );
+            if (!r.ok) {
+                setState({
+                    status: "error",
+                    message: `Fetching stops nearby failed: ${await r.text()}`,
+                });
+                return;
+            }
+            const resp: request.NearbyStopsResponse = await r.json();
+            const q = new queryDepartures.Q(
+                [],
+                resp.stops.map((s) => s.stop),
+                new WebFetcher(),
+            );
+            const now = new Date();
             const departures = await q.getDeparturesForMultipleStops(
                 resp.request,
                 now,

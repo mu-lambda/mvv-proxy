@@ -74,6 +74,27 @@ js_test(
     size = "small",
 )
 
+js_test(
+    name = "handlers_test",
+    data = [
+        "package.json",
+        ":tsc",
+    ],
+    entry_point = "out/handlers.test.js",
+    size = "small",
+)
+
+# Talks to a local HTTP server standing in for MVV.
+js_test(
+    name = "proxy_fetcher_test",
+    data = [
+        "package.json",
+        ":tsc",
+    ],
+    entry_point = "out/proxyFetcher.test.js",
+    size = "small",
+)
+
 # --- Container image, replacing Dockerfile / docker-build / docker-push ---
 
 platform(
@@ -113,6 +134,9 @@ oci_image(
     # `/[js_image_layer root]/[package of the binary target]/[binary name]`
     cmd = ["/app/server/server_bin"],
     entrypoint = ["/usr/bin/bash"],
+    # Departures near midnight depend on local time (see queryDepartures.ts),
+    # and the image would otherwise run on UTC.
+    env = {"TZ": "Europe/Berlin"},
     # The server listens on 3000; declaring it here adds EXPOSE metadata so
     # tools (e.g. Docker Desktop's Run dialog) can offer a host-port mapping.
     exposed_ports = ["3000/tcp"],

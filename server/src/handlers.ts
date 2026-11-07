@@ -15,6 +15,8 @@ export class Handlers {
     #locator: geo.Locator;
     readonly #fetcher: fetcher.IFetcher;
     readonly #svgCache = new Map<string, string>();
+    /** Icons MVV answered 4xx for: asking again would get the same answer. */
+    readonly #missingSvgs = new Set<string>();
 
     constructor(
         q: queryDepartures.Q,
@@ -78,9 +80,8 @@ export class Handlers {
         };
         const distance: number = req.query.d ? +req.query.d : 500;
         if (isNaN(p.latitude) || isNaN(p.longitude) || isNaN(distance)) {
-            throw new Error(
-                "lat, long, d, or timestamp are missing or not numbers",
-            );
+            res.status(400).send("lat, long or d are missing or not numbers");
+            return;
         }
         console.log(`stops nearby: ${p.latitude} ${p.longitude} ${distance}`);
         const stops = this.#locator.findStops(p, distance);
@@ -127,6 +128,10 @@ export class Handlers {
             res.send(this.#svgCache.get(filename));
             return;
         }
+        if (this.#missingSvgs.has(filename)) {
+            res.sendStatus(404);
+            return;
+        }
         try {
             const fetchWithFallback = async () => {
                 try {
@@ -153,6 +158,10 @@ export class Handlers {
             res.send(text);
             return;
         } catch (e) {
+            const status = (e as fetcher.MVVRequestFailure).status;
+            if (status !== undefined && status < 500) {
+                this.#missingSvgs.add(filename);
+            }
             res.sendStatus(404);
         }
     };

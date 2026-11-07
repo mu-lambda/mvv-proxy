@@ -16,26 +16,32 @@ export class ProxyFetcher implements fetcher.IFetcher {
 
     async fetch(url: string): Promise<fetcher.IFetchResult> {
         let error: any;
+        let status: number | undefined;
         const reqId = this.#reqCount++;
         console.log(`${reqId}: ${url}`);
         for (let t = 0; t < retries; t++) {
             try {
                 const x = await fetch(url, { agent: this.#agent, timeout });
-                if (!x.ok) {
-                    throw new Error(
-                        `MVV Fetch failed: ${x.status} ${x.statusText}`,
-                    );
+                if (x.ok) {
+                    console.log(`${reqId}: success`);
+                    return x;
                 }
-                console.log(`${reqId}: success`);
-                return x;
+                status = x.status;
+                error = new Error(
+                    `MVV Fetch failed: ${x.status} ${x.statusText}`,
+                );
             } catch (e) {
-                const m = e instanceof Error ? e.message : `${e}`;
-                console.log(`${reqId}: try ${t}, failure: ${m}`);
+                status = undefined;
                 error = e;
             }
+            const m = error instanceof Error ? error.message : `${error}`;
+            console.log(`${reqId}: try ${t}, failure: ${m}`);
+            // A refusal that arrived is an answer and will be the same next
+            // time; only a server error or a lost connection may go away.
+            if (status !== undefined && status < 500) break;
             await sleep(Math.random() * 1000);
         }
         console.log(`${reqId}: failure, giving up`);
-        throw new fetcher.MVVRequestFailure(error);
+        throw new fetcher.MVVRequestFailure(error, status);
     }
 }
