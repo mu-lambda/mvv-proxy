@@ -131,6 +131,8 @@ container image.
 - The owner commits. Prepare a commit by staging, running
   `./pre-commit.sh`, and writing the message to a file for
   `git commit -e -F <file>`; do not commit yourself.
+- Prepare that commit unprompted whenever a change is finished, rather than
+  asking whether to. The owner reviews it and asks for changes if needed.
 - The owner tests on the Pi before calling a change done. Say what you could
   not test locally: the proxy, the image, the browser.
 
