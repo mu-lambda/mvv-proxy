@@ -29,7 +29,7 @@ container image.
 - `./pre-commit.sh` runs prettier on staged files, then the full build and
   tests. Run it before handing over a commit.
 - Runnable targets: `//server:server_bin`, `//tests:record_departures`,
-  `//:gen_stop_signs`.
+  `//:gen_stop_signs`, `//server:icon_samples` (redraws `docs/icons`).
 - Tests use the harness in `shared/src/testing.ts`. A test file runs its
   suite and must set `process.exitCode = 1` on failure, or a failing test
   counts as a pass.

@@ -64,6 +64,16 @@ js_binary(
     visibility = ["//visibility:public"],
 )
 
+# Redraws the sample icons in docs/icons (see MVV-ICONS.md).
+js_binary(
+    name = "icon_samples",
+    data = [
+        "package.json",
+        ":tsc",
+    ],
+    entry_point = "out/iconSamples.js",
+)
+
 js_test(
     name = "geo_test",
     chdir = package_name(),

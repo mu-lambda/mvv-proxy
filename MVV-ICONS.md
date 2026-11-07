@@ -13,7 +13,9 @@ This file records which icons are missing and what we serve instead.
 
 ![Sample icons, with some of MVV's own for comparison](docs/icons/preview.png)
 
-The samples are in `docs/icons/`. The top row is MVV's own icons.
+The samples are in `docs/icons/`; `bazel run //server:icon_samples` redraws
+them from the server's code. The preview above is a screenshot, so retake it
+by hand after a change. Its top row is MVV's own icons.
 
 ## Survey
 

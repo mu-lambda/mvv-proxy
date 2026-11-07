@@ -12,6 +12,23 @@ function getPosition(
     );
 }
 
+/**
+ * The error's message, or `fallback` if it has none. Anything can be thrown,
+ * including strings, where `"message" in e` would itself throw.
+ */
+function messageOf(e: unknown, fallback: string): string {
+    if (
+        typeof e === "object" &&
+        e !== null &&
+        "message" in e &&
+        typeof e.message === "string" &&
+        e.message !== ""
+    ) {
+        return e.message;
+    }
+    return fallback;
+}
+
 class WebFetcher implements fetcher.IFetcher {
     fetch(url: string): Promise<fetcher.IFetchResult> {
         return fetch(url);
@@ -64,13 +81,10 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
         } else {
             try {
                 c = await getPosition();
-            } catch (e: any) {
+            } catch (e) {
                 setState({
                     status: "error",
-                    message:
-                        "message" in e
-                            ? (e.message as string)
-                            : "Geolocation failed",
+                    message: messageOf(e, "Geolocation failed"),
                 });
                 return;
             }
@@ -104,11 +118,8 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
                 nearbyStops: resp,
                 departures,
             });
-        } catch (e: any) {
-            setState({
-                status: "error",
-                message: "message" in e ? (e.message as string) : "Try again",
-            });
+        } catch (e) {
+            setState({ status: "error", message: messageOf(e, "Try again") });
         }
     }
 
