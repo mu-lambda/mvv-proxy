@@ -14,7 +14,7 @@
   "description": "MVV proxy for simple departure table.",
   "dependencies": {
     "d3-quadtree": "^3.0.1",
-    "express": "^4.21.2",
+    "express": "^5.3.0",
     "node-fetch": "^2.7.0",
     "shared": "workspace:*",
     "socks-proxy-agent": "^8.0.5",

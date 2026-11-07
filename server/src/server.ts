@@ -52,12 +52,14 @@ export async function server(onReady: () => void) {
     app.get("/api/v1/lines", handlers.lines);
     app.get("/api/v1/stops", handlers.stops);
 
-    app.get("/svg/*", handlers.svg);
+    app.get("/svg/*filename", handlers.svg);
 
     app.use("/", express.static("../www/"));
     app.use("/fonts", express.static("../fonts"));
 
-    app.listen(port, () => {
+    app.listen(port, (e) => {
+        // Express 5 calls this on failure too, such as a port already in use.
+        if (e) throw e;
         console.log("The application is listening on port " + port + "!");
         onReady();
     });
