@@ -15,7 +15,7 @@ class LatLongCache {
             longitudeMap = new Map<number, string>();
             this.#map.set(p.latitude, longitudeMap);
         }
-        const result = longitudeMap.get(p.latitude);
+        const result = longitudeMap.get(p.longitude);
         if (result) return result;
         const newValue = this.#f(p);
         longitudeMap.set(p.longitude, newValue);

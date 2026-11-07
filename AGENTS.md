@@ -47,7 +47,12 @@ container image.
 - pnpm rewrites `pnpm-lock.yaml` with 2-space indentation. The repository
   keeps prettier's 4-space format, so run `npx prettier -w pnpm-lock.yaml`
   afterwards. Otherwise the diff is the whole file.
-- Check `pnpm audit` after dependency changes.
+- pnpm settings go in `pnpm-workspace.yaml`; pnpm no longer reads them from
+  `.npmrc`. `hoist: false` keeps each package to what it declares, as under
+  Bazel, so a missing dependency fails locally too.
+- Check `pnpm audit` after dependency changes. If it finds something that
+  needs an override, put it under `overrides:` in `pnpm-workspace.yaml`, and
+  remove it once a fresh resolve no longer needs it.
 - `node-fetch` 2 looks old but stays: Node's built-in `fetch` does not accept
   the `SocksProxyAgent` the proxy needs.
 - Express is version 5. Routes use path-to-regexp 8 syntax, so a wildcard

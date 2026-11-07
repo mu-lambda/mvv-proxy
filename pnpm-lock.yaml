@@ -4,12 +4,6 @@ settings:
     autoInstallPeers: true
     excludeLinksFromLockfile: false
 
-overrides:
-    ip-address@<=10.7.3: ^10.7.4
-    proxy-addr@>=1.1.0 <2.0.8: ^2.0.8
-    qs@>=2.2.5 <6.16.0: ^6.16.0
-    qs@>=6.7.0 <=6.16.0: ^6.16.1
-
 importers:
     .:
         devDependencies:
