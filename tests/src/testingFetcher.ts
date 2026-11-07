@@ -69,3 +69,45 @@ export class RecordingFetcher implements IFetcher {
         };
     }
 }
+
+/** A line as a fake MVV lists it for a stop. */
+export type FakeLine = { number: string; stateless: string };
+
+/**
+ * A stand-in for MVV: lists the given lines for every stop, answers
+ * departures with none, and records which lines each departures request
+ * asked for. Set {@link failLineLists} to make line lists fail.
+ */
+export class FakeMvv implements IFetcher {
+    lineListRequests = 0;
+    failLineLists = false;
+    /** The MVV line ids each get_departures request asked for, in order. */
+    readonly departureLines: string[][] = [];
+
+    constructor(private readonly lines: FakeLine[]) {}
+
+    async fetch(url: string): Promise<IFetchResult> {
+        const params = new URL(url).searchParams;
+        let body: unknown;
+        if (params.get("action") === "available_lines") {
+            this.lineListRequests++;
+            if (this.failLineLists) {
+                throw new fetcher.MVVRequestFailure("MVV is down", 503);
+            }
+            body = { lines: this.lines };
+        } else {
+            const decoded = atob(params.get("lines") ?? "");
+            this.departureLines.push(
+                decoded
+                    .split("&line=")
+                    .slice(1)
+                    .map((l) => decodeURIComponent(l)),
+            );
+            body = { departures: [] };
+        }
+        return {
+            json: async () => body,
+            text: async () => JSON.stringify(body),
+        };
+    }
+}

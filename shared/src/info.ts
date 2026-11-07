@@ -6,15 +6,47 @@ export type Line = {
      */
     id: string;
     /**
-     * Readable line name, same in both directions.
+     * Readable line name, same in both directions. Matches the `number` MVV
+     * lists for the line.
      */
     name: string;
 
     /** Representative destination */
     destination: string;
 
-    /** MVV API id, reengineered */
-    mvvApiId: string;
+    /**
+     * MVV's direction for the line: the H or R in its line ids. Q looks the
+     * id itself up from MVV when querying, because the rest of it changes.
+     *
+     * The ids are EFA line ids (MVV's journey planner runs on EFA):
+     *
+     *     ddb:920S6: :H:j26
+     *     operator : line code : variant : direction : timetable period
+     *
+     * - operator: ddb (DB, the S-Bahn), swm (MVG: city U-Bahn, tram, bus),
+     *   mvv (regional buses).
+     * - line code: can change, even within a timetable year (S6 went from
+     *   92M06 to 920S6 in 2026).
+     * - variant: blank, or a letter such as P, A, E or G for a branch or
+     *   special service.
+     * - direction: H (Hinrichtung, outbound) or R (Rückrichtung, return).
+     * - timetable period: j26 (DB's 2026 annual timetable), s26 (regional
+     *   buses), 016 (MVG). Changes every December.
+     *
+     * Which end is H is set per line in MVV's planning data, not derived from
+     * geography; MVV documents no rule. Observed in 2025 and 2026:
+     * - S-Bahn: H runs east (Ebersberg, Holzkirchen, Trudering, Flughafen,
+     *   Kreuzstraße), R west (Pasing, Mammendorf, Geltendorf, Tutzing). This
+     *   fits H following the line's own numbering, but that is a guess.
+     * - Buses follow no common pattern: 56 runs H to Fürstenried West, X208
+     *   H to Germering, while 260, 266 and 962 run R westwards.
+     * - H and R stayed the same from the 2025 timetable to 2026 for every line
+     *   checked, while the period and sometimes the line code changed. A line
+     *   that is redefined (merged, split, extended) could still flip.
+     * - A line can have several branches in one direction: S5-a and S5-i are
+     *   both H (Kreuzstraße and Höhenkirchen-Siegertsbrunn).
+     */
+    direction: "H" | "R";
 };
 
 export type LatLong = {

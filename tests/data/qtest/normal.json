@@ -1,4 +1,26 @@
 {
+    "available_lines|de:09162:1": {
+        "lines": [
+            {
+                "number": "S6",
+                "symbol": "S6.svg",
+                "direction": "Ebersberg",
+                "stateless": "ddb:92M06: :H:j25"
+            },
+            {
+                "number": "S6",
+                "symbol": "S6.svg",
+                "direction": "Tutzing",
+                "stateless": "ddb:92M06: :R:j25"
+            },
+            {
+                "number": "S8",
+                "symbol": "S8.svg",
+                "direction": "Flughafen München",
+                "stateless": "ddb:92M08: :H:j25"
+            }
+        ]
+    },
     "get_departures|de:09162:1|1783324980": {
         "departures": [
             {

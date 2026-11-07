@@ -15,6 +15,9 @@ import { test as hbf } from "./hbf.test.ts";
 import { test as hbfReal } from "./hbf_real.test.ts";
 import { test as planegg } from "./planegg.test.ts";
 import { test as missingDepartures } from "./missingDepartures.test.ts";
+import { test as lineLookup } from "./lineLookup.test.ts";
+import { test as lineMissing } from "./lineMissing.test.ts";
+import { test as lineCache } from "./lineCache.test.ts";
 
 // Each *.test.ts exports a single Test (the result of a testAsync call); this
 // combines them into one suite.
@@ -35,6 +38,9 @@ async function main() {
         hbfReal,
         planegg,
         missingDepartures,
+        lineLookup,
+        lineMissing,
+        lineCache,
     );
     if (!ok) process.exitCode = 1;
 }

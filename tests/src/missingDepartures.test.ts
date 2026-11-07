@@ -10,9 +10,17 @@ const STOP: info.Stop = {
     location: undefined,
 };
 
-/** Answers every request with a JSON object that has no departures. */
+/** Lists S6 for the stop, then answers departures with an empty object. */
 const emptyReplies: fetcher.IFetcher = {
-    fetch: async () => ({ json: async () => ({}), text: async () => "{}" }),
+    fetch: async (url) => {
+        const body = url.includes("action=available_lines")
+            ? { lines: [{ number: "S6", stateless: "ddb:920S6: :H:j26" }] }
+            : {};
+        return {
+            json: async () => body,
+            text: async () => JSON.stringify(body),
+        };
+    },
 };
 
 export const test = testAsync(

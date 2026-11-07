@@ -1,4 +1,4 @@
-import { testAsync, expect, newQ } from "./fixtures.ts";
+import { testAsync, expect, newQ, departuresRequests } from "./fixtures.ts";
 
 export const test = testAsync(
     "builds the get_departures URL with base64 lines",
@@ -10,13 +10,15 @@ export const test = testAsync(
         );
 
         // requested_timestamp = base + timeToStop*60 (unix seconds); lines is
-        // btoa("&line=" + encodeURIComponent("ddb:92M06: :H:j25")).
-        expect(f.requested.length).toBe(1);
-        expect(f.requested[0]!).toBe(
+        // btoa("&line=" + encodeURIComponent("ddb:92M06: :H:j25")), the id
+        // the stop's available_lines gives S6 in direction H.
+        const requested = departuresRequests(f);
+        expect(requested.length).toBe(1);
+        expect(requested[0]!).toBe(
             "https://www.mvv-muenchen.de/?eID=departuresFinder" +
                 "&action=get_departures&stop_id=de:09162:1" +
                 "&requested_timestamp=1783324980" +
-                "&lines=JmxpbmU9ZGRiJTNBOTIwUzYlM0ElMjAlM0FIJTNBajI2",
+                "&lines=JmxpbmU9ZGRiJTNBOTJNMDYlM0ElMjAlM0FIJTNBajI1",
         );
     },
 );

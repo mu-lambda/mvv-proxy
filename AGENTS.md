@@ -116,6 +116,13 @@ container image.
 - `ProxyFetcher` retries lost connections and 5xx replies (4 tries), but not
   4xx: a refusal will be the same next time. `MVVRequestFailure.status`
   carries the HTTP status.
+- A request names lines by the ids in `server/src/lines.ts` (`S6-i`). Each
+  is a name and direction (`H` or `R`), not an MVV line id: those change
+  every December and sometimes in between (S6 went from `92M06` to `920S6`
+  within 2026). `Q` looks the ids up in MVV's `available_lines` for the
+  stop, matching `number` and the `H`/`R` field, and keeps that list for
+  24 hours. A named line MVV doesn't list at the stop is skipped and logged
+  once per list.
 - `/svg/*filename` proxies MVV's line icons. It caches icons it got, and
   remembers icons MVV answered 4xx for until restart.
 
@@ -146,3 +153,6 @@ container image.
 - When a timetable update fails, `timetable.tsx` switches to its error state
   until the next successful update. That is intended: the owner prefers a
   visible error to stale departures.
+- Line lookup trusts MVV to keep `H` and `R` the same way round. If MVV ever
+  flips them, a stop shows the opposite direction and nothing is logged,
+  because both directions are still listed.

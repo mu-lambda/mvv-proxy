@@ -3,16 +3,20 @@ import { info } from "shared";
 export const lines: info.Line[] = [
     // ./deps-from-stop.sh | sort | uniq  and manual editing.
     // -s/-n: Süd/Nord, -e/-w: East/West, -i/-a: stadtinwarts/stadtauswarts
+    //
+    // A line is its name (MVV's line number) and direction (H or R). Its MVV
+    // id changes with the timetable, and sometimes in between, so Q looks it
+    // up from the lines MVV lists for the stop.
 
     // Bus 258
     {
-        mvvApiId: "mvv:19258: :H:s25",
+        direction: "H",
         id: "258-s",
         name: "258",
         destination: "Gräfelfing (S) ü. Planegg (S)",
     },
     {
-        mvvApiId: "mvv:19258: :R:s25",
+        direction: "R",
         id: "258-n",
         name: "258",
         destination: "Lochham, Starnberger Straße ü. Lochham (S)",
@@ -20,13 +24,13 @@ export const lines: info.Line[] = [
 
     // Bus 259
     {
-        mvvApiId: "mvv:19259: :H:s25",
+        direction: "H",
         id: "259-s",
         name: "259",
         destination: "Martinsried",
     },
     {
-        mvvApiId: "mvv:19259: :R:s25",
+        direction: "R",
         id: "259-n",
         name: "259",
         destination: "Pasing Bf.",
@@ -34,13 +38,13 @@ export const lines: info.Line[] = [
 
     // Bus 260
     {
-        mvvApiId: "mvv:19260: :H:s25",
+        direction: "H",
         id: "260-e",
         name: "260",
         destination: "Fürstenried West (U)",
     },
     {
-        mvvApiId: "mvv:19260: :R:s25",
+        direction: "R",
         id: "260-w",
         name: "260",
         destination: "Germering-Unterpfaffenhofen (S) ü. Planegg (S) West",
@@ -48,13 +52,13 @@ export const lines: info.Line[] = [
 
     // Bus 265
     {
-        mvvApiId: "mvv:19265: :H:s25",
+        direction: "H",
         id: "265-s",
         name: "265",
         destination: "Planegg (S)",
     },
     {
-        mvvApiId: "mvv:19265: :R:s25",
+        direction: "R",
         id: "265-n",
         name: "265",
         destination: "Pasing (S)",
@@ -62,13 +66,13 @@ export const lines: info.Line[] = [
 
     // Bus 266
     {
-        mvvApiId: "mvv:19266: :H:s25",
+        direction: "H",
         id: "266-e",
         name: "266",
         destination: "Klinikum Großhadern (U)",
     },
     {
-        mvvApiId: "mvv:19266: :R:s25",
+        direction: "R",
         id: "266-w",
         name: "266",
         destination: "Planegg (S)",
@@ -76,7 +80,7 @@ export const lines: info.Line[] = [
 
     // Bus 906
     {
-        mvvApiId: "mvv:19906: :H:s25",
+        direction: "H",
         id: "906-s",
         name: "906",
         destination: "Krailling, KIM/Konrad-Zuse-Bogen",
@@ -84,13 +88,13 @@ export const lines: info.Line[] = [
 
     // Bus 962
     {
-        mvvApiId: "mvv:19962: :H:s25",
+        direction: "H",
         id: "962-e",
         name: "962",
         destination: "Fürstenried West (U)",
     },
     {
-        mvvApiId: "mvv:19962: :R:s25",
+        direction: "R",
         id: "962-w",
         name: "962",
         destination: "Gauting (S)",
@@ -98,13 +102,13 @@ export const lines: info.Line[] = [
 
     // Bus 967
     {
-        mvvApiId: "mvv:19967: :H:s25",
+        direction: "H",
         id: "967-s",
         name: "967",
         destination: "Krailling, Muggenthalerstraße",
     },
     {
-        mvvApiId: "mvv:19967: :R:s25",
+        direction: "R",
         id: "967-n",
         name: "967",
         destination: "Planegg (S)",
@@ -112,13 +116,13 @@ export const lines: info.Line[] = [
 
     // Express-bus 208
     {
-        mvvApiId: "mvv:20208: :H:s25",
+        direction: "H",
         id: "X208-e",
         name: "X208",
         destination: "Germering-Unterpfaffenhofen (S)",
     },
     {
-        mvvApiId: "mvv:20208: :R:s25",
+        direction: "R",
         id: "X208-w",
         name: "X208",
         destination: "Klinikum Großhadern (U)",
@@ -126,13 +130,13 @@ export const lines: info.Line[] = [
 
     // Bus 56
     {
-        mvvApiId: "swm:03056:G:H:015",
+        direction: "H",
         id: "56-s",
         name: "56",
         destination: "Fürstenried West",
     },
     {
-        mvvApiId: "swm:03056:G:R:015",
+        direction: "R",
         id: "56-n",
         name: "56",
         destination: "Schloss Blutenburg",
@@ -140,13 +144,13 @@ export const lines: info.Line[] = [
 
     // Bus 57
     {
-        mvvApiId: "swm:03057:G:H:015",
+        direction: "H",
         id: "57-e",
         name: "57",
         destination: "Laimer Platz",
     },
     {
-        mvvApiId: "swm:03057:G:R:015",
+        direction: "R",
         id: "57-w",
         name: "57",
         destination: "Freiham Bf.",
@@ -154,13 +158,13 @@ export const lines: info.Line[] = [
 
     // S3
     {
-        mvvApiId: "ddb:92M03: :H:j25",
+        direction: "H",
         id: "S3-i",
         name: "S3",
         destination: "Holzkirchen",
     },
     {
-        mvvApiId: "ddb:92M03: :R:j25",
+        direction: "R",
         id: "S3-a",
         name: "S3",
         destination: "Mammendorf",
@@ -168,13 +172,13 @@ export const lines: info.Line[] = [
 
     // S4
     {
-        mvvApiId: "ddb:92M04: :H:j25",
+        direction: "H",
         id: "S4-i",
         name: "S4",
         destination: "Trudering",
     },
     {
-        mvvApiId: "ddb:92M04: :R:j25",
+        direction: "R",
         id: "S4-a",
         name: "S4",
         destination: "Geltendorf",
@@ -182,13 +186,13 @@ export const lines: info.Line[] = [
 
     // S5
     {
-        mvvApiId: "ddb:92M05: :H:j25",
+        direction: "H",
         id: "S5-a",
         name: "S5",
         destination: "Höhenkirchen-Siegertsbrunn",
     },
     {
-        mvvApiId: "ddb:92M05: :H:j25",
+        direction: "H",
         id: "S5-i",
         name: "S5",
         destination: "Kreuzstraße",
@@ -196,13 +200,13 @@ export const lines: info.Line[] = [
 
     // S6
     {
-        mvvApiId: "ddb:920S6: :H:j26",
+        direction: "H",
         id: "S6-i",
         name: "S6",
         destination: "Ebersberg",
     },
     {
-        mvvApiId: "ddb:920S6: :R:j26",
+        direction: "R",
         id: "S6-a",
         name: "S6",
         destination: "Tutzing",
@@ -210,13 +214,13 @@ export const lines: info.Line[] = [
 
     // S8
     {
-        mvvApiId: "ddb:92M08: :H:j25",
+        direction: "H",
         id: "S8-i",
         name: "S8",
         destination: "Flughafen München",
     },
     {
-        mvvApiId: "ddb:92M08: :R:j25",
+        direction: "R",
         id: "S8-a",
         name: "S8",
         destination: "Herrsching",
@@ -224,14 +228,14 @@ export const lines: info.Line[] = [
 
     // S6/8
     {
-        mvvApiId: "ddb:92M68:P:R:j25",
+        direction: "R",
         id: "S6/8",
         name: "S6/8",
         destination: "Flughafen München",
     },
     // S8/6
     {
-        mvvApiId: "ddb:92M86:P:R:j25",
+        direction: "R",
         id: "S8/6",
         name: "S8/6",
         destination: "Flughafen München",
@@ -239,28 +243,28 @@ export const lines: info.Line[] = [
 
     // SEV S6-i
     {
-        mvvApiId: "mvv:01006:E:H:s26",
+        direction: "H",
         id: "SEV S6-i",
         name: "SEV S6",
         destination: "Pasing Bf. Nord",
     },
     // SEV S6-a
     {
-        mvvApiId: "mvv:01006:E:R:s26",
+        direction: "R",
         id: "SEV S6-a",
         name: "SEV S6",
         destination: "Gauting",
     },
     // SEV S6-i(DB)
     {
-        mvvApiId: "ddb:870S6:A:H:j26",
+        direction: "H",
         id: "SEV S6-i(DB)",
         name: "SEV S6",
         destination: "Pasing Bf. Nord ",
     },
     // SEV S6-a(DB)
     {
-        mvvApiId: "ddb:870S6:A:R:j26",
+        direction: "R",
         id: "SEV S6-a(DB)",
         name: "SEV S6",
         destination: "Gauting",
