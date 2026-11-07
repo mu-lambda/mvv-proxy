@@ -4,10 +4,10 @@ import * as yaml from "yaml";
 
 import { info, request, queryDepartures } from "shared";
 
-import { ProxyFetcher } from "./proxyFetcher";
-import { loadStops } from "./data";
-import { lines } from "./lines";
-import { Handlers } from "./handlers";
+import { ProxyFetcher } from "./proxyFetcher.ts";
+import { loadStops } from "./data.ts";
+import { lines } from "./lines.ts";
+import { Handlers } from "./handlers.ts";
 
 const app = express();
 const port = process.env.MVV_PROXY_PORT || 3000;

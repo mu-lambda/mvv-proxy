@@ -1,8 +1,8 @@
 import * as d3 from "d3-quadtree";
 import { info, testing as harness } from "shared";
 
-import { distance, buildQuadtree, Locator } from "./geo";
-import { loadStops } from "./data";
+import { distance, buildQuadtree, Locator } from "./geo.ts";
+import { loadStops } from "./data.ts";
 
 const { suite, test, testAsync, expect } = harness;
 

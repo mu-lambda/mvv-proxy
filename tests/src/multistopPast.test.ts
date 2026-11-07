@@ -1,5 +1,5 @@
 import { request } from "shared";
-import { testAsync, expect, newQ } from "./fixtures";
+import { testAsync, expect, newQ } from "./fixtures.ts";
 
 // No limit at 10:00 -> drop only past departures (stop 1's 09:50, stop 2's
 // 09:30). Both stops have a 10:15; at equal times the sort tiebreaks on line

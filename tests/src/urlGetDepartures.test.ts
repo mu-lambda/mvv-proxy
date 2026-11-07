@@ -1,4 +1,4 @@
-import { testAsync, expect, newQ } from "./fixtures";
+import { testAsync, expect, newQ } from "./fixtures.ts";
 
 export const test = testAsync(
     "builds the get_departures URL with base64 lines",

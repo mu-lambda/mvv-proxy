@@ -1,4 +1,4 @@
-import { testAsync, expect, newQ } from "./fixtures";
+import { testAsync, expect, newQ } from "./fixtures.ts";
 
 export const test = testAsync(
     "near midnight requests both hours by timestamp",

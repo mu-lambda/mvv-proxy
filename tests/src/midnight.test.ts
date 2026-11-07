@@ -1,5 +1,5 @@
 import { request } from "shared";
-import { testAsync, expect, newQ, departuresRequests } from "./fixtures";
+import { testAsync, expect, newQ, departuresRequests } from "./fixtures.ts";
 
 export const test = testAsync(
     "makes a second request near midnight and dedupes",

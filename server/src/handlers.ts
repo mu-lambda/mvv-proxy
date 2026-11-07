@@ -2,8 +2,8 @@ import * as express from "express";
 import * as path from "path";
 import { info, request, fetcher, queryDepartures } from "shared";
 
-import { lines } from "./lines";
-import * as geo from "./geo";
+import { lines } from "./lines.ts";
+import * as geo from "./geo.ts";
 
 type Stop = info.Stop;
 type LatLong = info.LatLong;

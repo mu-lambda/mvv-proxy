@@ -7,6 +7,8 @@ npm_link_all_packages(name = "node_modules")
 ts_config(
     name = "tsconfig",
     src = "tsconfig.json",
+    # module = nodenext picks ESM from "type" in here.
+    deps = ["package.json"],
 )
 
 ts_project(
@@ -28,6 +30,7 @@ js_test(
     name = "query_departures_test",
     chdir = package_name(),
     data = [
+        "package.json",
         ":tsc",
         "//tests/data:departures_fixtures",
     ],
@@ -56,6 +59,7 @@ js_binary(
     name = "record_departures",
     chdir = "server",
     data = [
+        "package.json",
         ":tsc",
         "//server/data:stops",
     ],

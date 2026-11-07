@@ -1,6 +1,6 @@
-export * as info from "./info";
-export * as stringCache from "./stringCache";
-export * as request from "./request";
-export * as fetcher from "./fetcher";
-export * as queryDepartures from "./queryDepartures";
-export * as testing from "./testing";
+export * as info from "./info.ts";
+export * as stringCache from "./stringCache.ts";
+export * as request from "./request.ts";
+export * as fetcher from "./fetcher.ts";
+export * as queryDepartures from "./queryDepartures.ts";
+export * as testing from "./testing.ts";

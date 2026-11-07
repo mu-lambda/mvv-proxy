@@ -1,6 +1,7 @@
 {
   "name": "mvv-proxy-monorepo",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "license": "GPL-3.0-or-later",
   "devDependencies": {

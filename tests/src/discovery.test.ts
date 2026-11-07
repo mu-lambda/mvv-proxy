@@ -1,5 +1,5 @@
 import { request } from "shared";
-import { testAsync, expect, newQ } from "./fixtures";
+import { testAsync, expect, newQ } from "./fixtures.ts";
 
 export const test = testAsync(
     "discovers lines when none are requested",

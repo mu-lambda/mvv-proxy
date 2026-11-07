@@ -7,6 +7,8 @@ npm_link_all_packages(name = "node_modules")
 ts_config(
     name = "tsconfig",
     src = "tsconfig.json",
+    # module = nodenext picks ESM from "type" in here.
+    deps = ["package.json"],
 )
 
 # Type-checks + compiles the build-time tools (currently just the sign
@@ -31,6 +33,7 @@ ts_project(
 js_binary(
     name = "gen_stop_signs",
     data = [
+        "package.json",
         ":node_modules/opentype.js",
         ":tools",
     ],

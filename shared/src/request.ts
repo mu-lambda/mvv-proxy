@@ -1,4 +1,4 @@
-import * as info from "./info";
+import * as info from "./info.ts";
 export type SingleStop = {
     /** Stop global identifier */
     stopGid: string;

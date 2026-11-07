@@ -1,4 +1,4 @@
-import { type Stop, type LatLong } from "./info";
+import { type Stop, type LatLong } from "./info.ts";
 
 class LatLongCache {
     #map: Map<number, Map<number, string>>;

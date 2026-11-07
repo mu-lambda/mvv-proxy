@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { stringCache, request, info, queryDepartures, fetcher } from "shared";
 
-import { GeoRenderer } from "./render";
+import { GeoRenderer } from "./render.tsx";
 
 function getPosition(
     options?: PositionOptions,

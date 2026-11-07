@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { stringCache, request } from "shared";
 
-import { Renderer } from "./render";
+import { Renderer } from "./render.tsx";
 
 type Props = {
     update: number | undefined;

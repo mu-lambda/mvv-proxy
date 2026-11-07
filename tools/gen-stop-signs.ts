@@ -14,9 +14,9 @@
 
 import * as fs from "node:fs";
 import * as path from "node:path";
-import * as opentype from "opentype.js";
+import opentype from "opentype.js";
 
-const REPO_ROOT = path.resolve(__dirname, "..");
+const REPO_ROOT = path.resolve(import.meta.dirname, "..");
 
 // --- Tunables ---------------------------------------------------------------
 // Public Sans ExtraBold (weight 800) — closest to the heavy stroke of the

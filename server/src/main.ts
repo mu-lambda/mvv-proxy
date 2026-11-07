@@ -1,5 +1,5 @@
 import { exec } from "child_process";
-import { server } from "./server";
+import { server } from "./server.ts";
 
 async function notifyReady() {
     if (process.env.NOTIFY_SOCKET === undefined) return;

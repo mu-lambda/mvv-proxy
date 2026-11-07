@@ -1,5 +1,5 @@
 import { request } from "shared";
-import { testAsync, expect, newQ } from "./fixtures";
+import { testAsync, expect, newQ } from "./fixtures.ts";
 
 // limit = 30 minutes at 10:00 -> keep departures in [10:00, 10:30]. Stop 1's
 // 09:55 (past) and 10:45 (past cutoff) drop; stop 2's 10:50 drops. What's left,

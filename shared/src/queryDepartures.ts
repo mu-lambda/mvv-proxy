@@ -1,6 +1,6 @@
-import * as info from "./info";
-import * as request from "./request";
-import * as fetcher from "./fetcher";
+import * as info from "./info.ts";
+import * as request from "./request.ts";
+import * as fetcher from "./fetcher.ts";
 
 type Line = info.Line;
 type Stop = info.Stop;

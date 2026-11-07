@@ -6,6 +6,8 @@
     /* Modules */
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    // Sources import ./foo.ts; the output needs ./foo.js.
+    "rewriteRelativeImportExtensions": true,
     // rootDir intentionally unset: Bazel supplies root_dir via the ts_project
     // rule instead.
 

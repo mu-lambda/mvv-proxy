@@ -6,7 +6,7 @@ import { lines } from "mvv-proxy";
 import { ProxyFetcher } from "mvv-proxy";
 import { data } from "mvv-proxy";
 
-import { RecordingFetcher } from "./testingFetcher";
+import { RecordingFetcher } from "./testingFetcher.ts";
 
 // Captures real MVV responses into a per-test fixtures file (one file per test,
 // under tests/data/qtest/) that the //tests package replays offline via
@@ -263,7 +263,7 @@ function singleStopStub(
     // Destructure only `q` (noUnusedLocals is on); add `fetcher: f` and
     // `departuresRequests` from ./fixtures when you want to assert on requests.
     return `import { request } from "shared";
-import { testAsync, expect, newQ } from "./fixtures";
+import { testAsync, expect, newQ } from "./fixtures.ts";
 
 export const test = testAsync("TODO: describe this case", async () => {
     const { q } = await newQ(${lit(fixtureFile)});
@@ -296,7 +296,7 @@ function multiStopStub(
         )
         .join("\n");
     return `import { request } from "shared";
-import { testAsync, expect, newQ } from "./fixtures";
+import { testAsync, expect, newQ } from "./fixtures.ts";
 
 export const test = testAsync("TODO: describe this case", async () => {
     const { q } = await newQ(${lit(fixtureFile)});

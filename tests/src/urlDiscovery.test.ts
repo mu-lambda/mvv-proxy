@@ -1,4 +1,4 @@
-import { testAsync, expect, newQ } from "./fixtures";
+import { testAsync, expect, newQ } from "./fixtures.ts";
 
 export const test = testAsync(
     "queries available_lines before get_departures",

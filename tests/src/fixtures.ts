@@ -1,7 +1,7 @@
 import * as fs from "node:fs/promises";
 import { info, queryDepartures, testing } from "shared";
 import { lines } from "mvv-proxy";
-import { Fixtures, FixtureFetcher } from "./testingFetcher";
+import { Fixtures, FixtureFetcher } from "./testingFetcher.ts";
 
 // The test harness, re-exported so each *.test.ts imports it from one place.
 export const testAsync = testing.testAsync;
