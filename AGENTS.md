@@ -29,8 +29,7 @@ container image.
 - `./pre-commit.sh` runs prettier on staged files, then the full build and
   tests. Run it before handing over a commit.
 - Runnable targets: `//server:server_bin`, `//tests:record_departures`,
-  `//:gen_stop_signs`. The comment in `tests/BUILD.bazel` says
-  `//server:record_departures`, but the target lives in `//tests`.
+  `//:gen_stop_signs`.
 - Tests use the harness in `shared/src/testing.ts`. A test file runs its
   suite and must set `process.exitCode = 1` on failure, or a failing test
   counts as a pass.
@@ -97,6 +96,9 @@ container image.
   (`lat=48.13743&long=11.57549&d=400`) returns a `request` you can save as a
   request file to drive `/api/v1/timetable`. Don't use the owner's own
   request file or home stops in tests or fixtures.
+- `server.ts` sets Express's `env` to `production`, so error pages carry no
+  stack trace however the server was started. The stack still goes to the
+  log.
 - `ProxyFetcher` retries lost connections and 5xx replies (4 tries), but not
   4xx: a refusal will be the same next time. `MVVRequestFailure.status`
   carries the HTTP status.
@@ -125,9 +127,6 @@ container image.
 
 ## Known loose ends
 
-- `queryDepartures.ts` checks `jsonArray === null`, which can never be true.
-  If MVV omits `departures`, the spread before it fails with an unhelpful
-  `TypeError`.
 - When a timetable update fails, `timetable.tsx` switches to its error state
-  until the next successful update, rather than keeping the last
-  departures.
+  until the next successful update. That is intended: the owner prefers a
+  visible error to stale departures.

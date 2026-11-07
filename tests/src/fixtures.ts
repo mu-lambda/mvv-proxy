@@ -49,7 +49,7 @@ const STOPS: info.Stop[] = [
 ];
 
 // One fixtures file per test, under data/qtest/. chdir is the tests package
-// (see BUILD.bazel). New files are produced by //server:record_departures.
+// (see BUILD.bazel). New files are produced by //tests:record_departures.
 export async function loadFixtures(file: string): Promise<Fixtures> {
     const raw = await fs.readFile(`data/qtest/${file}`, {
         encoding: "utf-8",

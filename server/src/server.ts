@@ -10,6 +10,9 @@ import { lines } from "./lines.ts";
 import { Handlers } from "./handlers.ts";
 
 const app = express();
+// Error pages without stack traces, however the server was started. Express
+// still logs the stack.
+app.set("env", "production");
 const port = process.env.MVV_PROXY_PORT || 3000;
 const stopsFile = process.env.MVV_PROXY_STOPS_FILE || "./data/stops.csv";
 const requestFile = process.env.MVV_PROXY_REQUEST_FILE || "./data/request.yaml";

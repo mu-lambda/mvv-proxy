@@ -44,11 +44,11 @@ js_test(
 
 # Tool for capturing real MVV responses into a per-test fixtures file (see
 # tests/data/qtest/). Run e.g.:
-#   bazel run //server:record_departures -- \
+#   bazel run //tests:record_departures -- \
 #       tests/data/qtest/karlsplatz.json de:09162:1 now
 # Pass `--test <file.test.ts>` to write the generated test straight to a file
 # instead of stdout, e.g.:
-#   bazel run //server:record_departures -- \
+#   bazel run //tests:record_departures -- \
 #       tests/data/qtest/karlsplatz.json --test tests/src/karlsplatz.test.ts \
 #       de:09162:1 now
 # chdir = "server" (not this package) so the tool's default ./data/stops.csv

@@ -183,14 +183,12 @@ export class Q {
                 this.fetchJson(this.getUrl(new URLSearchParams(p))),
             ),
         );
-        const jsonArrays = resp.map((r) => r.departures as Array<any>);
-        let jsonArray = [];
-        for (const as of jsonArrays) {
-            jsonArray.push(...as);
-        }
-
-        if (jsonArray === null) {
-            throw new Error("Result is not an array");
+        let jsonArray: any[] = [];
+        for (const r of resp) {
+            if (!Array.isArray(r.departures)) {
+                throw new Error("MVV reply has no departures");
+            }
+            jsonArray.push(...r.departures);
         }
         if (params.length > 1) {
             jsonArray = this.dedupe(jsonArray);
