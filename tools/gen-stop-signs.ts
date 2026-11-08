@@ -4,7 +4,7 @@
 //   Gleis-N.svg       — a dark blue rounded rectangle with a white number (Gleis).
 //   UBahnGleis-N.svg  — a dark blue circle with a white number (UBahnGleis).
 // All share the same 883x883 canvas so they render at the same size. Digits are
-// emitted as outlined <path>s (via Public Sans, the kiosk UI font) so each file
+// emitted as outlined <path>s (via Public Sans) so each file
 // is self-contained and font-independent at render time.
 //
 // Invoked as a build action by //www:stop_signs (see www/BUILD.bazel), which

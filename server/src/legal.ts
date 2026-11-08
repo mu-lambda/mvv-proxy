@@ -112,9 +112,9 @@ function page(title: string, german: string, english: string): string {
 <meta name="robots" content="noindex" />
 <title>${title} – mvv.mulambda.de</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="/fonts/ptsans/ptsans.css" />
+<link rel="stylesheet" href="/fonts/librefranklin/librefranklin.css" />
 <style>
-body { font-family: "PT Sans", sans-serif; line-height: 1.5; margin: 0; }
+body { font-family: "Libre Franklin", sans-serif; line-height: 1.5; margin: 0; }
 header { background: #c0d101; padding: 12px 16px; }
 header a { color: black; }
 main { max-width: 40em; padding: 0 16px 32px; margin: 0 auto; }

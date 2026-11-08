@@ -1,4 +1,4 @@
-@import url("/fonts/ptsans/ptsans.css");
+@import url("/fonts/librefranklin/librefranklin.css");
 
 .loading-box {
     flex: 0 0 auto;
@@ -24,7 +24,7 @@
     /* Loading, errors and "no departures" all land here, and timetable.html
        loads no page-wide stylesheet, so without this they come out in the
        browser's default serif. */
-    font-family: "PT Sans", sans-serif;
+    font-family: "Libre Franklin", sans-serif;
 }
 
 /* HTML: <div class="loader"></div> */

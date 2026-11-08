@@ -1,4 +1,4 @@
-@import url("/fonts/ptsans/ptsans.css");
+@import url("/fonts/librefranklin/librefranklin.css");
 
 * .line-icon {
     width: 2em;
@@ -33,7 +33,8 @@
 }
 
 * .departure-time {
-    padding-left: 0;
+    /* Keeps the time off a stop name that fills its column. */
+    padding-left: 0.5em;
     padding-right: 0.5em;
     font-style: bold;
 }
@@ -42,7 +43,7 @@ table.departure-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 3.2vw;
-    font-family: "PT Sans", sans-serif;
+    font-family: "Libre Franklin", sans-serif;
 }
 
 * tr {

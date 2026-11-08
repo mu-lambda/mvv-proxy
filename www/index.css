@@ -1,4 +1,4 @@
-@import url("/fonts/ptsans/ptsans.css");
+@import url("/fonts/librefranklin/librefranklin.css");
 html,
 body {
     height: 100%;
@@ -6,7 +6,7 @@ body {
     padding: 0;
 
     overflow: hidden;
-    font-family: "PT Sans", sans-serif;
+    font-family: "Libre Franklin", sans-serif;
 }
 
 .box {
