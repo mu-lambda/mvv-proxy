@@ -6,6 +6,7 @@ import { test as midnight } from "./midnight.test.ts";
 import { test as multistop } from "./multistop.test.ts";
 import { test as multistopLimit } from "./multistopLimit.test.ts";
 import { test as multistopPast } from "./multistopPast.test.ts";
+import { test as multistopProgress } from "./multistopProgress.test.ts";
 import { test as urlGetDepartures } from "./urlGetDepartures.test.ts";
 import { test as urlDiscovery } from "./urlDiscovery.test.ts";
 import { test as urlMidnight } from "./urlMidnight.test.ts";
@@ -29,6 +30,7 @@ async function main() {
         multistop,
         multistopLimit,
         multistopPast,
+        multistopProgress,
         urlGetDepartures,
         urlDiscovery,
         urlMidnight,

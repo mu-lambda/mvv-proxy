@@ -39,6 +39,13 @@ type State =
     | { status: "initial" }
     | { status: "loading" }
     | {
+          // The nearby stops are known; `done[i]` says whether stops[i]'s
+          // departures are in.
+          status: "fetching";
+          stops: info.StopWithDistance[];
+          done: boolean[];
+      }
+    | {
           status: "ready";
           date: Date;
           location: info.LatLong;
@@ -68,7 +75,12 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
     }
     const cache = stringCacheRef.current;
 
+    // Counts loads, so that a stop reported by an older load cannot tick off a
+    // stop in a newer one.
+    const loadRef = useRef(0);
+
     async function update() {
+        const load = ++loadRef.current;
         setState({ status: "loading" });
         let c: { coords: info.LatLong };
         if (lat && long) {
@@ -107,9 +119,32 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
                 new WebFetcher(),
             );
             const now = new Date();
+            // With no stops, there is nothing to tick off: "ready" says so.
+            if (resp.stops.length > 0) {
+                setState({
+                    status: "fetching",
+                    stops: resp.stops,
+                    done: resp.stops.map(() => false),
+                });
+            }
+            // resp.request.stops are resp.stops, in the same order, so an
+            // index into one is an index into the other.
             const departures = await q.getDeparturesForMultipleStops(
                 resp.request,
                 now,
+                (i) => {
+                    if (load !== loadRef.current) {
+                        return;
+                    }
+                    setState((prev) =>
+                        prev.status === "fetching"
+                            ? {
+                                  ...prev,
+                                  done: prev.done.map((d, j) => d || j === i),
+                              }
+                            : prev,
+                    );
+                },
             );
             setState({
                 status: "ready",
@@ -136,6 +171,7 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
         switch (state.status) {
             case "initial":
             case "loading":
+            case "fetching":
             case "error":
                 top = <div>MVV Departures</div>;
                 break;
@@ -234,6 +270,30 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
                 <div className="loading">
                     Loading...
                     <span className="loader" />
+                </div>,
+            );
+
+        case "fetching":
+            return renderNonReadyState(
+                <div className="loading">
+                    Fetching departures from {state.stops.length}{" "}
+                    {state.stops.length === 1 ? "stop" : "stops"}
+                    <ul className="stop-progress">
+                        {state.stops
+                            .map((s, i) => ({ s, i }))
+                            .sort((a, b) => a.s.distance - b.s.distance)
+                            .map(({ s, i }) => (
+                                <li key={i}>
+                                    {state.done[i] ? (
+                                        <span className="stop-done">✓</span>
+                                    ) : (
+                                        <span className="loader stop-pending" />
+                                    )}
+                                    {s.stop.name} ·{" "}
+                                    {Math.floor(s.distance / 10) * 10} m
+                                </li>
+                            ))}
+                    </ul>
                 </div>,
             );
 

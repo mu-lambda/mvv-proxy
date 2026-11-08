@@ -313,12 +313,22 @@ export class Q {
         return result;
     }
 
+    /**
+     * Departures from all of `r.stops`, merged and sorted. `onStopDone` is
+     * called with a stop's index in `r.stops` as soon as that stop's
+     * departures are in, before the merged result is ready.
+     */
     public async getDeparturesForMultipleStops(
         r: request.MultiStop,
         timestamp: Date,
+        onStopDone?: (index: number) => void,
     ): Promise<Departure[]> {
         const allDepartures: Departure[][] = await Promise.all(
-            r.stops.map((s) => this.getDepartures(s, timestamp)),
+            r.stops.map(async (s, i) => {
+                const departures = await this.getDepartures(s, timestamp);
+                onStopDone?.(i);
+                return departures;
+            }),
         );
         let filter: (d: Departure) => boolean;
         if (r.limit) {

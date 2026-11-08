@@ -98,3 +98,55 @@ body {
 table.departure-table {
     font-size: 4vw !important;
 }
+
+/* While departures are fetched: one row per nearby stop, nearest first, a
+   spinner until its departures are in, then a green check mark. The list
+   scrolls when there are more stops than fit. */
+.box .loading-box {
+    flex: 0 1 auto;
+    min-height: 0;
+    height: auto;
+    overflow-y: auto;
+    /* Centred with auto margins rather than justify-content, which would push
+       the top of a list that overflows out of reach. */
+    justify-content: flex-start;
+}
+
+.box .loading-box > .loading {
+    margin: auto 0;
+}
+
+.stop-progress {
+    list-style: none;
+    margin: 1em 0 0 0;
+    padding: 0;
+    font-size: 0.75em;
+}
+
+.stop-progress li {
+    display: flex;
+    align-items: center;
+    margin: 0.3em 0;
+}
+
+/* Spinner and check mark take the same space, so the name stays put when
+   one replaces the other. Two classes each, to win over .loader in
+   loading.css, which is loaded after this file. */
+.stop-progress .stop-pending,
+.stop-progress .stop-done {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    width: 0.8em;
+    margin: 0 0.6em 0 0;
+}
+
+.stop-progress .stop-pending {
+    outline-width: 3px;
+}
+
+.stop-progress .stop-done {
+    color: #2e9e3e;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+}

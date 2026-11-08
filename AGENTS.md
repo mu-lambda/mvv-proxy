@@ -143,6 +143,24 @@ container image.
   (`server/src/icons.ts`). `MVV-ICONS.md` has the classes of missing icons
   and the decisions behind each drawing.
 
+## The nearby page
+
+- While departures are fetched, `client/src/index.tsx` (state `fetching`)
+  lists the stops it found, nearest first, each with a spinner that turns
+  into a green check mark as soon as that stop is done.
+  `getDeparturesForMultipleStops` reports each stop to its `onStopDone`
+  callback by its index in the request. The timetable page has no such list.
+- The owner's choices: a check mark, not a green dot; and the departure
+  board replaces the list as soon as the last stop is in, without a pause
+  on the finished list.
+- A stop that fails still sends the whole page to its error state, so the
+  list shows no failed stops.
+- The list's styles are in `www/index.css`, which only this page loads.
+  `loading.css` is shared with the timetable and loaded after
+  `index.css`, so rules that change `.loader` need a second class to win.
+- To see the list change in a browser, fetches have to be slower than they
+  are: add a temporary delay to `WebFetcher.fetch`, and take it out again.
+
 ## Container image
 
 - `//server:image` is built with rules_oci; `image_push` pushes it to
