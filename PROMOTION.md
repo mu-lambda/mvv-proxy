@@ -53,10 +53,10 @@ Ranked by effect for effort.
       description, no language and no favicon, so search results, tabs and
       bookmarks showed a bare URL, and links shared in chats showed no
       preview.
-    - [x] `<title>`: "Abfahrten in der Nähe – MVV Departures nearby"
-    - [x] meta description, in English with one German sentence until the
-          site speaks German
-    - [x] `lang="en"` on `<html>`; changes with the German item below
+    - [x] `<title>`: "Abfahrten in der Nähe – MVV" in German, "MVV
+          Departures nearby" in English
+    - [x] meta description, in each language
+    - [x] `lang` on `<html>`: `de` or `en`, with the German item below
     - [x] favicon: a German bus-stop sign, green H on yellow
           (`favicon.svg`, and `favicon.ico` for browsers that ask for it)
     - [x] Open Graph tags, with `og-image.png`: departures at Marienplatz.
@@ -71,9 +71,10 @@ Ranked by effect for effort.
       around you", what that covers, and why the browser will ask for the
       location, with a "Show departures near me" button in place of the
       corner pin.
-- [ ] **German.** Most people in Munich search in German ("Abfahrten in der
-      Nähe", "Abfahrtsmonitor München"). Pick the language from
-      `navigator.language`: no setting, no cookie.
+- [x] **German.** Most people in Munich search in German ("Abfahrten in der
+      Nähe", "Abfahrtsmonitor München"). `/` picks the language from the
+      browser, with no setting and no cookie; `/de` and `/en` fix it, so
+      search engines can index the German page too. German says "du".
 - [ ] **Add to Home Screen.** A web app manifest and icons make the site
       installable. The browser remembers the location permission, so the
       installed site shows departures straight away: one tap.

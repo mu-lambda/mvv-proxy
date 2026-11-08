@@ -120,6 +120,16 @@ js_test(
 )
 
 js_test(
+    name = "page_test",
+    data = [
+        "package.json",
+        ":tsc",
+    ],
+    entry_point = "out/page.test.js",
+    size = "small",
+)
+
+js_test(
     name = "limits_test",
     data = [
         "package.json",

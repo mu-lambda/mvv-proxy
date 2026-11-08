@@ -2,8 +2,8 @@ load("@aspect_bazel_lib//lib:copy_file.bzl", "copy_file")
 load("@aspect_rules_js//js:defs.bzl", "js_library", "js_run_binary")
 
 # Copied here (rather than referenced directly from //client) so the runfiles
-# path is "www/out/*-bundle.js", matching what index.html/timetable.html
-# hardcode in their <script src="out/...-bundle.js"> tags and what
+# path is "www/out/*-bundle.js", matching what the nearby page
+# (server/src/page.ts) and timetable.html hardcode in their <script src="out/...-bundle.js"> tags and what
 # express.static("../www/") in server.ts expects to find.
 copy_file(
     name = "index_bundle",

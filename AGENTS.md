@@ -156,6 +156,17 @@ container image.
 
 ## The nearby page
 
+- The server writes its HTML (`server/src/page.ts`) in German or English:
+  `/de` and `/en` fix the language, and `/` picks it from the browser's
+  Accept-Language (German if preferred over English, else English), with
+  `Vary: Accept-Language`. Each version links the others with `hreflang`,
+  so search engines index both. There is no `www/index.html`.
+- All of the page's text, the HTML head's and the client's, is in
+  `shared/src/strings.ts`, with the language choice (`pickLang`, `langOf`).
+  Add new text there in both languages. The client takes the language
+  from `<html lang>`. German speaks to the visitor as "du"; the legal pages
+  use "Sie".
+- The kiosk only loads `timetable.html`, which stays English.
 - While departures are fetched, `client/src/index.tsx` (state `fetching`)
   lists the stops it found, nearest first, each with a spinner that turns
   into a green check mark as soon as that stop is done.

@@ -2,13 +2,14 @@ import * as fs from "node:fs/promises";
 import express from "express";
 import * as yaml from "yaml";
 
-import { info, request, queryDepartures } from "shared";
+import { info, request, queryDepartures, strings } from "shared";
 
 import { ProxyFetcher } from "./proxyFetcher.ts";
 import { loadStops } from "./data.ts";
 import { lines } from "./lines.ts";
 import { Handlers } from "./handlers.ts";
 import * as legal from "./legal.ts";
+import * as page from "./page.ts";
 
 const app = express();
 // Error pages without stack traces, however the server was started. Express
@@ -83,6 +84,28 @@ export async function server(onReady: () => void) {
         app.get("/impressum", send(legal.impressumPage(operator)));
         app.get("/datenschutz", send(legal.privacyPage(operator)));
     }
+
+    // The nearby page, in German or English (page.ts). Before the static
+    // files, which no longer have an index.html.
+    // At / the page is in whichever language the browser prefers.
+    const atRoot = {
+        de: page.nearbyPage("de", "auto"),
+        en: page.nearbyPage("en", "auto"),
+    };
+    const sendPage = (html: string, res: express.Response) => {
+        res.setHeader("Cache-Control", "max-age=0");
+        res.type("html").send(html);
+    };
+    app.get(["/", "/index.html"], (req, res) => {
+        const lang = strings.pickLang(req.acceptsLanguages("en", "de"));
+        // Caches must keep one copy per language.
+        res.setHeader("Vary", "Accept-Language");
+        sendPage(atRoot[lang], res);
+    });
+    const german = page.nearbyPage("de", "de");
+    const english = page.nearbyPage("en", "en");
+    app.get("/de", (_, res) => sendPage(german, res));
+    app.get("/en", (_, res) => sendPage(english, res));
 
     app.use("/", express.static("../www/"));
     app.use("/fonts", express.static("../fonts"));

@@ -1,8 +1,17 @@
 import React, { ReactElement, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { stringCache, request, info, queryDepartures, fetcher } from "shared";
+import {
+    stringCache,
+    strings,
+    request,
+    info,
+    queryDepartures,
+    fetcher,
+} from "shared";
 
 import { GeoRenderer } from "./render.tsx";
+/** The page's text, in the language the server wrote into <html lang>. */
+const t = strings.forLang(strings.langOf(document.documentElement.lang));
 
 function getPosition(
     options?: PositionOptions,
@@ -96,7 +105,7 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
             } catch (e) {
                 setState({
                     status: "error",
-                    message: messageOf(e, "Geolocation failed"),
+                    message: messageOf(e, t.geolocationFailed),
                 });
                 return;
             }
@@ -108,7 +117,7 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
             if (!r.ok) {
                 setState({
                     status: "error",
-                    message: `Fetching stops nearby failed: ${await r.text()}`,
+                    message: t.stopsFailed(await r.text()),
                 });
                 return;
             }
@@ -154,7 +163,7 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
                 departures,
             });
         } catch (e) {
-            setState({ status: "error", message: messageOf(e, "Try again") });
+            setState({ status: "error", message: messageOf(e, t.tryAgain) });
         }
     }
 
@@ -173,7 +182,7 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
             case "loading":
             case "fetching":
             case "error":
-                top = <div>MVV Departures</div>;
+                top = <div>{t.title}</div>;
                 break;
             case "ready": {
                 const date = state.date;
@@ -185,11 +194,12 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
                 const href = cache.locationUrl(state.location);
                 top = (
                     <div>
-                        MVV Departures around{" "}
+                        {t.header.before}
                         <a href={href} target="_blank">
-                            you
-                        </a>{" "}
-                        at {h}:{m}
+                            {t.header.link}
+                        </a>
+                        {t.header.at}
+                        {h}:{m}
                     </div>
                 );
             }
@@ -199,16 +209,15 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
             <div className="departures-header">
                 {top}
                 <span className="disclaimer">
-                    Not an official service of MVV ·{" "}
-                    <a href="/impressum">Impressum</a> ·{" "}
-                    <a href="/datenschutz">Datenschutz</a>
+                    {t.notOfficial} · <a href="/impressum">{t.legalNotice}</a> ·{" "}
+                    <a href="/datenschutz">{t.privacy}</a>
                     <a
                         href="https://www.paypal.com/donate?hosted_button_id=SVH3NYCAR3UAN"
                         className="donate"
                         target="_blank"
                     >
                         {/* Served from here, so visiting tells PayPal nothing. */}
-                        <img src="paypal-donate.gif" alt="Donate with PayPal" />
+                        <img src={t.donateImage} alt={t.donateAlt} />
                     </a>
                 </span>
             </div>
@@ -249,19 +258,14 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
             // What the site is, before the browser asks for the location.
             return renderNonReadyState(
                 <div className="intro">
-                    <h1>Every departure around you</h1>
-                    <p>
-                        U-Bahn, S-Bahn, tram and bus from all the stops within a
-                        few minutes' walk, in one list.
-                    </p>
+                    <h1>{t.introHeading}</h1>
+                    <p>{t.introText}</p>
                     <button className="intro-start" onClick={() => update()}>
                         <img src="/map-pin-alt-svgrepo-com.svg" alt="" />
-                        Show departures near me
+                        {t.introButton}
                     </button>
                     <p className="intro-privacy">
-                        Your browser will ask for your location. It is only used
-                        to find the stops near you.{" "}
-                        <a href="/datenschutz">Privacy</a>
+                        {t.introLocation} <a href="/datenschutz">{t.privacy}</a>
                     </p>
                 </div>,
             );
@@ -269,7 +273,7 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
         case "loading":
             return renderNonReadyState(
                 <div className="loading">
-                    Loading...
+                    {t.loading}
                     <span className="loader" />
                 </div>,
             );
@@ -277,8 +281,7 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
         case "fetching":
             return renderNonReadyState(
                 <div className="loading">
-                    Fetching departures from {state.stops.length}{" "}
-                    {state.stops.length === 1 ? "stop" : "stops"}
+                    {t.fetching(state.stops.length)}
                     <ul className="stop-progress">
                         {state.stops
                             .map((s, i) => ({ s, i }))
@@ -301,17 +304,14 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
         case "ready": {
             if (state.nearbyStops.stops.length == 0) {
                 return renderNonReadyState(
-                    <div className="loading">
-                        No stops within {d} m from here
-                    </div>,
+                    <div className="loading">{t.noStops(d)}</div>,
                     reloadButton(),
                 );
             }
             if (state.departures.length == 0) {
                 return renderNonReadyState(
                     <div className="loading">
-                        No departures within {state.nearbyStops.request.limit}{" "}
-                        minutes
+                        {t.noDepartures(state.nearbyStops.request.limit)}
                     </div>,
                     reloadButton(),
                 );
