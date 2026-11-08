@@ -92,7 +92,9 @@ Ranked by effect for effort.
 
 ## Promotion
 
-- [ ] r/Munich (English, expats)
+- [ ] r/Munich (English, expats). Its rules forbid self-promotion of
+      websites and apps, and AI-generated posts. Only with the mods'
+      permission (ask in modmail), and in the owner's own words.
 - [ ] r/muenchen (German)
 - [ ] Toytown Germany
 - [ ] Expat groups: Facebook, InterNations
