@@ -6,6 +6,10 @@ browser client. It runs on a Raspberry Pi kiosk (see the pi-kiosk repository,
 which checks this one out under `projects/mvv-proxy`) and can also ship as a
 container image.
 
+`docs/OVERVIEW.md` describes the architecture for people. These notes are
+the details for working on the code; when a change alters the architecture,
+update both.
+
 ## Layout
 
 - `server/`: the Express server (`src/main.ts` is the entry point) and the
@@ -151,8 +155,8 @@ container image.
   4,000 a day), run at most 8 at a time, and are tried once
   (`ICON_LIMITS`). For icons MVV lacks, it uses MVV's icon under another
   name, or draws one from the line the client passes as query parameters
-  (`server/src/icons.ts`). `MVV-ICONS.md` has the classes of missing icons
-  and the decisions behind each drawing.
+  (`server/src/icons.ts`). `docs/MVV-ICONS.md` has the classes of missing
+  icons and the decisions behind each drawing.
 
 ## The nearby page
 

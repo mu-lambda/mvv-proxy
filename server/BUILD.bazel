@@ -64,7 +64,7 @@ js_binary(
     visibility = ["//visibility:public"],
 )
 
-# Redraws the sample icons in docs/icons (see MVV-ICONS.md).
+# Redraws the sample icons in docs/icons (see docs/MVV-ICONS.md).
 js_binary(
     name = "icon_samples",
     data = [
