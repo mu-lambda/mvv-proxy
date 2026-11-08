@@ -139,11 +139,14 @@ export class Renderer {
             : "time-planned";
         const lateClass = this.isCloseDeparture(d) ? "time-close" : "";
         const className = `time ${timeClass} ${lateClass}`;
+        // The names are German whatever the page's language, which matters
+        // for hyphenation (index.css) and for screen readers.
         return (
             <tr className="departure-row">
                 <td className="line-icon-column">{this.renderSymbolTag(d)}</td>
                 <td
                     className="line-name"
+                    lang="de"
                     dangerouslySetInnerHTML={{
                         __html: this.stringCache.destinationRender(
                             d.line.destination,
@@ -155,6 +158,7 @@ export class Renderer {
                 </td>
                 <td
                     className="stop-name"
+                    lang="de"
                     dangerouslySetInnerHTML={{ __html: this.renderStop(d) }}
                 ></td>
                 <td className="departure-time">
