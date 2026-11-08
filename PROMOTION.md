@@ -65,10 +65,12 @@ Ranked by effect for effort.
           phones show the same layout as before; the donate button is now
           big enough to tap.
     - [x] canonical link, since `?lat=…&long=…` links show the same page
-- [ ] **A sentence before the location prompt.** Say what the site does
-      before the browser asks for the location, e.g. "Every departure around
-      you, U-Bahn, S-Bahn, tram and bus, in one list. No app, no account, no
-      cookies." It helps visitors decide and gives search engines text.
+- [x] **A sentence before the location prompt.** Say what the site does
+      before the browser asks for the location. It helps visitors decide and
+      gives search engines text. The first screen now says "Every departure
+      around you", what that covers, and why the browser will ask for the
+      location, with a "Show departures near me" button in place of the
+      corner pin.
 - [ ] **German.** Most people in Munich search in German ("Abfahrten in der
       Nähe", "Abfahrtsmonitor München"). Pick the language from
       `navigator.language`: no setting, no cookie.

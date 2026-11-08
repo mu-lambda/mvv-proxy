@@ -79,18 +79,10 @@ body {
     height: min(18vw, 9vh);
 }
 
-.floating-button.start {
-    opacity: 1;
-    background-color: red;
-}
-
 .floating-button:hover {
     opacity: 1;
 }
 
-.floating-button.start:hover {
-    background-color: orangered;
-}
 .floating-button:active {
     opacity: 1;
     background-color: white;
@@ -154,4 +146,48 @@ table.departure-table {
     font-weight: bold;
     text-align: center;
     line-height: 1;
+}
+
+/* The first screen, before the location is asked for. */
+.intro {
+    max-width: 90vw;
+    text-align: center;
+}
+.intro h1 {
+    font-size: 7vw;
+    margin: 0 0 3vw;
+}
+.intro p {
+    font-size: 4.5vw;
+    margin: 0 0 3vw;
+}
+.intro-start {
+    display: inline-flex;
+    align-items: center;
+    gap: 2vw;
+    margin: 3vw 0 6vw;
+    padding: 3vw 5vw;
+    font-size: 5vw;
+    font-weight: bold;
+    /* Buttons don't take the page's font by themselves. */
+    font-family: inherit;
+    /* The header's colour. White on it is hard to read (1.7:1); black
+       is 12:1. */
+    color: black;
+    background-color: #c0d101;
+    border: 3px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.intro-start:hover {
+    background-color: #a9b800;
+}
+.intro-start img {
+    width: 8vw;
+    height: 8vw;
+}
+.intro .intro-privacy,
+.intro-privacy a {
+    font-size: 3.5vw;
+    color: #474847;
 }

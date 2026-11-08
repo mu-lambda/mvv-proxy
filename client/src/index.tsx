@@ -244,27 +244,26 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
         );
     }
 
-    function startButton(): ReactElement {
-        return (
-            <button
-                className="floating-button start"
-                onClick={() => {
-                    update();
-                }}
-            >
-                <img src="/map-pin-alt-svgrepo-com.svg" />
-            </button>
-        );
-    }
-
     switch (state.status) {
         case "initial":
+            // What the site is, before the browser asks for the location.
             return renderNonReadyState(
-                <div className="loading">
-                    Press <img src="/map-pin-alt-svgrepo-com.svg" /> to see
-                    departures around you.
+                <div className="intro">
+                    <h1>Every departure around you</h1>
+                    <p>
+                        U-Bahn, S-Bahn, tram and bus from all the stops within a
+                        few minutes' walk, in one list.
+                    </p>
+                    <button className="intro-start" onClick={() => update()}>
+                        <img src="/map-pin-alt-svgrepo-com.svg" alt="" />
+                        Show departures near me
+                    </button>
+                    <p className="intro-privacy">
+                        Your browser will ask for your location. It is only used
+                        to find the stops near you.{" "}
+                        <a href="/datenschutz">Privacy</a>
+                    </p>
                 </div>,
-                startButton(),
             );
 
         case "loading":
