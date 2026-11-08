@@ -234,3 +234,12 @@ update both.
 - Line lookup trusts MVV to keep `H` and `R` the same way round. If MVV ever
   flips them, a stop shows the opposite direction and nothing is logged,
   because both directions are still listed.
+- `/api/v1/stopsNearby` takes any `d`, and the nearby page passes `?d=`
+  from its URL through. A large one costs the visitor's browser two
+  requests to MVV per stop, all at once: `d=10000` at Marienplatz finds
+  1,258 stops, about 2,500 requests. One failed stop sends the page to
+  its error state, and MVV may throttle the visitor. Stops more than 30
+  minutes' walk away (1,800 m at 60 m a minute) can't show anything
+  anyway: their departures are asked for from when you'd arrive, after
+  the 30-minute window ends. That is intended. A cap on `d` of about
+  2,000 m on the server would cost nothing visible.
