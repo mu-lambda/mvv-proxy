@@ -120,6 +120,14 @@ update both.
   request file or home stops in tests or fixtures.
 - `/api/v1/stopsNearby` gets the visitor's location. Log it rounded to two
   decimals (about 1 km) at most, never in full.
+- `/api/v1/stopsNearby` takes `d` (metres, default 500) and `minutes`
+  (of departures, default `NEARBY_MINUTES`, 30); the nearby page
+  passes `?d=` and `?minutes=` through from its own address. Walking time is
+  the straight-line distance at `WALKING_METRES_PER_MINUTE` (60: slow for
+  walking, but real routes are longer than the straight line). Departures
+  are asked for from when you'd arrive, so a stop further than `minutes`
+  minutes' walk can't show anything; the server leaves those out, which
+  also bounds how many stops the browser asks MVV about, whatever `d` is.
 - `/impressum` and `/datenschutz` (`server/src/legal.ts`) are rendered from
   the operator file: name, address, email and hosting provider, in the
   format of `server/data/operator.example.yaml`. The real file lives on the
@@ -234,12 +242,9 @@ update both.
 - Line lookup trusts MVV to keep `H` and `R` the same way round. If MVV ever
   flips them, a stop shows the opposite direction and nothing is logged,
   because both directions are still listed.
-- `/api/v1/stopsNearby` takes any `d`, and the nearby page passes `?d=`
-  from its URL through. A large one costs the visitor's browser two
-  requests to MVV per stop, all at once: `d=10000` at Marienplatz finds
-  1,258 stops, about 2,500 requests. One failed stop sends the page to
-  its error state, and MVV may throttle the visitor. Stops more than 30
-  minutes' walk away (1,800 m at 60 m a minute) can't show anything
-  anyway: their departures are asked for from when you'd arrive, after
-  the 30-minute window ends. That is intended. A cap on `d` of about
-  2,000 m on the server would cost nothing visible.
+- `minutes` has no upper bound, and the stops searched grow with its
+  square. Each stop costs the visitor's browser two requests to MVV, all
+  at once: at Marienplatz the default 30 minutes finds 88 stops, `minutes=60`
+  266 (about 530 requests). One failed stop sends the page to its error
+  state, and MVV may throttle the visitor. A cap on `minutes` would bound
+  it, if that becomes a problem.

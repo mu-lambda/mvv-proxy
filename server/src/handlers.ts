@@ -53,6 +53,20 @@ type IconEntry = {
     icon: Promise<string | undefined>;
 };
 
+/**
+ * The nearby page's window: departures in the next this many minutes, unless
+ * the request says `minutes`.
+ */
+export const NEARBY_MINUTES = 30;
+
+/**
+ * Walking pace for the nearby page, in metres a minute, along the straight
+ * line to the stop. People walk faster, about 80 m a minute, but routes in a
+ * city are 20-40% longer than the straight line, and getting down to a
+ * platform takes time too, so 60 comes out about right.
+ */
+export const WALKING_METRES_PER_MINUTE = 60;
+
 export class Handlers {
     #q: queryDepartures.Q;
     #stops: Stop[];
@@ -145,18 +159,31 @@ export class Handlers {
             longitude: req.query.long ? +req.query.long : NaN,
         };
         const distance: number = req.query.d ? +req.query.d : 500;
+        // Minutes from now: the departures shown.
+        const minutes: number = req.query.minutes
+            ? +req.query.minutes
+            : NEARBY_MINUTES;
         if (isNaN(p.latitude) || isNaN(p.longitude) || isNaN(distance)) {
             res.status(400).send("lat, long or d are missing or not numbers");
+            return;
+        }
+        if (!(minutes > 0)) {
+            res.status(400).send("minutes should be a positive number");
             return;
         }
         // The visitor's location, so only to about a kilometre: enough to
         // see where the site is used, not where anyone is.
         console.log(
             `stops nearby: ${p.latitude.toFixed(2)} ` +
-                `${p.longitude.toFixed(2)} ${distance}`,
+                `${p.longitude.toFixed(2)} ${distance} ${minutes}`,
         );
-        const stops = this.#locator.findStops(p, distance);
-        const multistop = this.stopsWithDistanceToRequests(stops);
+        // Stops further than you can walk in the window can't show anything:
+        // their departures are asked for from when you'd arrive. Leaving them
+        // out also bounds how many stops the browser asks MVV about, however
+        // large `d` is.
+        const reach = minutes * WALKING_METRES_PER_MINUTE;
+        const stops = this.#locator.findStops(p, Math.min(distance, reach));
+        const multistop = this.stopsWithDistanceToRequests(stops, minutes);
         const result: request.NearbyStopsResponse = {
             stops,
             request: multistop,
@@ -166,14 +193,14 @@ export class Handlers {
 
     private stopsWithDistanceToRequests(
         ss: info.StopWithDistance[],
+        minutes: number,
     ): request.MultiStop {
-        const predestrianSpeed = 60; // meter/min
-        let result: request.MultiStop = { stops: [], limit: 30 };
+        let result: request.MultiStop = { stops: [], limit: minutes };
         for (const s of ss) {
             result.stops.push({
                 stopGid: s.stop.gid,
                 lines: [],
-                timeToStop: s.distance / predestrianSpeed,
+                timeToStop: s.distance / WALKING_METRES_PER_MINUTE,
             });
         }
         return result;

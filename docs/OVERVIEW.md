@@ -71,7 +71,8 @@ once in Node.
    is reported as soon as its departures arrive, which the nearby page
    shows as a check mark next to the stop.
 3. **Merging.** It merges the stops' departures into one list sorted by
-   time, cut off at the request's limit (30 minutes for the nearby page).
+   time, cut off at the request's limit (for the nearby page, 30 minutes
+   unless its address says `?minutes=`).
 
 The departure table then shows each line only at its closest stop, so a
 bus that passes three nearby stops appears once. A departure blinks when
@@ -83,17 +84,17 @@ four minutes.
 An Express 5 server (`server/src/server.ts`), started by
 `server/src/main.ts`:
 
-| Address | What it is |
-| --- | --- |
-| `/`, `/de`, `/en` | The nearby page. `/de` and `/en` fix the language; `/` picks it from the browser's preferred languages. |
-| `/de.webmanifest`, `/en.webmanifest` | Manifests that let the page be installed to a phone's home screen. |
-| `/timetable.html` | The kiosk's timetable page. |
-| `/api/v1/stopsNearby?lat=…&long=…&d=…` | The stops within `d` metres (default 500), and a ready-made request for their departures. |
-| `/api/v1/timetable?timestamp=…` | Departures for the configured stops (404 if none are configured). |
-| `/api/v1/stops`, `/api/v1/lines` | The stop list and the known lines. |
-| `/svg/<file>` | Line icons (see below). |
-| `/impressum`, `/datenschutz` | Legal notice and privacy notice, from the operator file (404 without one). |
-| everything else | Static files from `www/` and `fonts/`. |
+| Address                                          | What it is                                                                                                                                                  |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`, `/de`, `/en`                                | The nearby page. `/de` and `/en` fix the language; `/` picks it from the browser's preferred languages.                                                     |
+| `/de.webmanifest`, `/en.webmanifest`             | Manifests that let the page be installed to a phone's home screen.                                                                                          |
+| `/timetable.html`                                | The kiosk's timetable page.                                                                                                                                 |
+| `/api/v1/stopsNearby?lat=…&long=…&d=…&minutes=…` | The stops within `d` metres (default 500) that you can walk to within `minutes` (default 30), and a ready-made request for the departures in those minutes. |
+| `/api/v1/timetable?timestamp=…`                  | Departures for the configured stops (404 if none are configured).                                                                                           |
+| `/api/v1/stops`, `/api/v1/lines`                 | The stop list and the known lines.                                                                                                                          |
+| `/svg/<file>`                                    | Line icons (see below).                                                                                                                                     |
+| `/impressum`, `/datenschutz`                     | Legal notice and privacy notice, from the operator file (404 without one).                                                                                  |
+| everything else                                  | Static files from `www/` and `fonts/`.                                                                                                                      |
 
 **Stops** come from MVV's open data: `server/data/stops.csv` has every
 stop's name, town, global id and position. The server loads it at start
@@ -180,16 +181,16 @@ are described in [AGENTS.md](../AGENTS.md).
 
 ## The repository
 
-| Directory | What's in it |
-| --- | --- |
-| `server/` | The server, its stop data (`data/`) and its tests. |
-| `shared/` | Code for both server and browser: querying MVV, types, the page's text. |
-| `client/` | The two React pages and the departure table. |
-| `www/` | Static files: CSS, the timetable's HTML, icons and images. |
-| `fonts/` | The fonts the pages use. |
-| `tools/` | The stop-sign generator. |
-| `tests/` | Tests of the departure queries against recorded MVV answers, and a tool to record new ones. |
-| `docs/` | This overview, the icon notes and sample icons. |
+| Directory | What's in it                                                                                |
+| --------- | ------------------------------------------------------------------------------------------- |
+| `server/` | The server, its stop data (`data/`) and its tests.                                          |
+| `shared/` | Code for both server and browser: querying MVV, types, the page's text.                     |
+| `client/` | The two React pages and the departure table.                                                |
+| `www/`    | Static files: CSS, the timetable's HTML, icons and images.                                  |
+| `fonts/`  | The fonts the pages use.                                                                    |
+| `tools/`  | The stop-sign generator.                                                                    |
+| `tests/`  | Tests of the departure queries against recorded MVV answers, and a tool to record new ones. |
+| `docs/`   | This overview, the icon notes and sample icons.                                             |
 
 Everything is TypeScript, built and tested with Bazel (`bazel build //...`,
 `bazel test //...`), with pnpm for the JavaScript packages.
