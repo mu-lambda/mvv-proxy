@@ -159,6 +159,8 @@ container image.
   `git commit -e -F <file>`; do not commit yourself.
 - Prepare that commit unprompted whenever a change is finished, rather than
   asking whether to. The owner reviews it and asks for changes if needed.
+- `PROMOTION.md` is the plan for the public site. When a change does one
+  of its items, tick the box in the same commit.
 - The owner tests on the Pi before calling a change done. Say what you could
   not test locally: the proxy, the image, the browser.
 
