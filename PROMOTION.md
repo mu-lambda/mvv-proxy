@@ -30,7 +30,7 @@ Every change below has to fit these.
     - [x] Check that nothing in front of the server (a reverse proxy, the
           host's own logs) keeps IP addresses, as the notice says it
           doesn't.
-    - [ ] Check that Cloudflare's data processing addendum covers its part.
+    - [x] Check that Cloudflare's data processing addendum covers its part.
           As far as we know it is part of Cloudflare's terms on every plan,
           so there is nothing to sign.
 - [x] **Host the PayPal button image ourselves.** It loaded from
