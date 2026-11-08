@@ -149,7 +149,12 @@ export class Handlers {
             res.status(400).send("lat, long or d are missing or not numbers");
             return;
         }
-        console.log(`stops nearby: ${p.latitude} ${p.longitude} ${distance}`);
+        // The visitor's location, so only to about a kilometre: enough to
+        // see where the site is used, not where anyone is.
+        console.log(
+            `stops nearby: ${p.latitude.toFixed(2)} ` +
+                `${p.longitude.toFixed(2)} ${distance}`,
+        );
         const stops = this.#locator.findStops(p, distance);
         const multistop = this.stopsWithDistanceToRequests(stops);
         const result: request.NearbyStopsResponse = {

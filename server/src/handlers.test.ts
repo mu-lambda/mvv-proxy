@@ -109,6 +109,22 @@ const tests = [
         expect(typeof res.body).toBe("string");
     }),
 
+    testAsync("stopsNearby logs the location only roughly", async () => {
+        const h = handlers(failingFetcher(new Error("unused")));
+        const logged: string[] = [];
+        const log = console.log;
+        console.log = (...args: unknown[]) => logged.push(args.join(" "));
+        try {
+            const res = await call(h.stopsNearby, {
+                query: { lat: "48.137431", long: "11.575492", d: "400" },
+            });
+            expect(res.statusCode).toBe(200);
+        } finally {
+            console.log = log;
+        }
+        expect(logged.join("\n")).toBe("stops nearby: 48.14 11.58 400");
+    }),
+
     testAsync("an icon MVV does not have is asked for once", async () => {
         const f = failingFetcher(
             new fetcher.MVVRequestFailure(new Error("Not Found"), 404),

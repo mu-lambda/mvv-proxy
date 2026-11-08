@@ -110,6 +110,8 @@ container image.
   (`lat=48.13743&long=11.57549&d=400`) returns a `request` you can save as a
   request file to drive `/api/v1/timetable`. Don't use the owner's own
   request file or home stops in tests or fixtures.
+- `/api/v1/stopsNearby` gets the visitor's location. Log it rounded to two
+  decimals (about 1 km) at most, never in full.
 - `server.ts` sets Express's `env` to `production`, so error pages carry no
   stack trace however the server was started. The stack still goes to the
   log.
