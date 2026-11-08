@@ -23,11 +23,11 @@ Every change below has to fit these.
       by whom (this server, Cloudflare, and MVV, since the browser fetches
       departures from MVV directly), and that only rounded locations are
       kept, in the logs. German with English, linked from the header.
-    - [ ] Put the operator file on the public server and set
+    - [x] Put the operator file on the public server and set
           `MVV_PROXY_OPERATOR_FILE`; until then both pages are 404.
-    - [ ] Make the public server delete its logs after 14 days, as the
+    - [x] Make the public server delete its logs after 14 days, as the
           notice says.
-    - [ ] Check that nothing in front of the server (a reverse proxy, the
+    - [x] Check that nothing in front of the server (a reverse proxy, the
           host's own logs) keeps IP addresses, as the notice says it
           doesn't.
     - [ ] Check that Cloudflare's data processing addendum covers its part.
