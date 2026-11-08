@@ -1,0 +1,10 @@
+# Who runs the site, for /impressum and /datenschutz (see server/src/legal.ts).
+# Copy this file outside the repository, fill it in, and point
+# MVV_PROXY_OPERATOR_FILE at it. Without that variable, both pages are 404.
+name: Erika Mustermann
+address:
+    - Musterstraße 1
+    - 12345 Musterstadt
+email: kontakt@example.org
+# The hosting provider: name and address.
+hosting: Example Hosting GmbH, Beispielweg 2, 12345 Musterstadt

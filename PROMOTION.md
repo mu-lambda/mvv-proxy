@@ -14,15 +14,25 @@ Every change below has to fit these.
 
 ## Before promoting it
 
-- [ ] **Impressum.** A public German site with a donate button very likely
+- [x] **Impressum.** A public German site with a donate button very likely
       needs one (§5 DDG), and a missing one is a common reason for an
-      Abmahnung. Needs the name and address to show. `/impressum` is a 404
-      today. (Our reading, not legal advice.)
-- [ ] **Privacy notice** (`/datenschutz`). The site processes the visitor's
-      location and IP address, so GDPR asks for one. Short is fine: what is
-      processed and by whom (this server, Cloudflare, and MVV, since the
-      browser fetches departures from MVV directly), and that only rounded
-      locations are kept, in the logs.
+      Abmahnung. (Our reading, not legal advice.) `/impressum`, in German
+      with English, linked from the page's header.
+- [x] **Privacy notice** (`/datenschutz`). The site processes the visitor's
+      location and IP address, so GDPR asks for one: what is processed and
+      by whom (this server, Cloudflare, and MVV, since the browser fetches
+      departures from MVV directly), and that only rounded locations are
+      kept, in the logs. German with English, linked from the header.
+    - [ ] Put the operator file on the public server and set
+          `MVV_PROXY_OPERATOR_FILE`; until then both pages are 404.
+    - [ ] Make the public server delete its logs after 14 days, as the
+          notice says.
+    - [ ] Check that nothing in front of the server (a reverse proxy, the
+          host's own logs) keeps IP addresses, as the notice says it
+          doesn't.
+    - [ ] Check that Cloudflare's data processing addendum covers its part.
+          As far as we know it is part of Cloudflare's terms on every plan,
+          so there is nothing to sign.
 - [x] **Host the PayPal button image ourselves.** It loaded from
       `paypalobjects.com`, so every visit told PayPal the visitor's IP
       address. It was the page's only third-party request; now the page

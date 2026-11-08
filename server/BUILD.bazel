@@ -108,6 +108,18 @@ js_test(
 )
 
 js_test(
+    name = "legal_test",
+    chdir = package_name(),
+    data = [
+        "package.json",
+        ":tsc",
+        "//server/data:operator_example",
+    ],
+    entry_point = "out/legal.test.js",
+    size = "small",
+)
+
+js_test(
     name = "limits_test",
     data = [
         "package.json",

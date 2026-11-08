@@ -29,6 +29,11 @@ body {
     font-weight: normal;
     color: black;
 }
+.disclaimer a {
+    color: inherit;
+    /* Not the 4vw that "*" gives every element. */
+    font-size: inherit;
+}
 .donate {
     float: right;
 }

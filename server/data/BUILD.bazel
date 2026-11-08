@@ -14,3 +14,11 @@ js_library(
     srcs = ["stops-for-testing.csv"],
     visibility = ["//visibility:public"],
 )
+
+# The format of the operator file (MVV_PROXY_OPERATOR_FILE); the real one
+# lives on the server, outside the repository.
+js_library(
+    name = "operator_example",
+    srcs = ["operator.example.yaml"],
+    visibility = ["//visibility:public"],
+)

@@ -8,6 +8,7 @@ import { ProxyFetcher } from "./proxyFetcher.ts";
 import { loadStops } from "./data.ts";
 import { lines } from "./lines.ts";
 import { Handlers } from "./handlers.ts";
+import * as legal from "./legal.ts";
 
 const app = express();
 // Error pages without stack traces, however the server was started. Express
@@ -16,6 +17,19 @@ app.set("env", "production");
 const port = process.env.MVV_PROXY_PORT || 3000;
 const stopsFile = process.env.MVV_PROXY_STOPS_FILE || "./data/stops.csv";
 const requestFile = process.env.MVV_PROXY_REQUEST_FILE || "./data/request.yaml";
+/** Who runs the site, for the Impressum and privacy notice. */
+const operatorFile = process.env.MVV_PROXY_OPERATOR_FILE;
+
+/** The operator file, checked; a broken one stops the server. */
+async function loadOperator(filename: string): Promise<legal.Operator> {
+    const o = legal.parseOperator(
+        await fs.readFile(filename, { encoding: "utf-8" }),
+    );
+    if (Array.isArray(o)) {
+        throw Error(`Error loading ${filename}: ${o.join("; ")}`);
+    }
+    return o;
+}
 
 async function loadAndValidateRequest(
     filename: string,
@@ -58,6 +72,17 @@ export async function server(onReady: () => void) {
     app.get("/api/v1/stops", handlers.stops);
 
     app.get("/svg/*filename", handlers.svg);
+
+    // Without an operator file, as on the kiosk, both pages are 404.
+    if (operatorFile) {
+        const operator = await loadOperator(operatorFile);
+        const send = (html: string) => (_: unknown, res: express.Response) => {
+            res.setHeader("Cache-Control", "max-age=3600");
+            res.type("html").send(html);
+        };
+        app.get("/impressum", send(legal.impressumPage(operator)));
+        app.get("/datenschutz", send(legal.privacyPage(operator)));
+    }
 
     app.use("/", express.static("../www/"));
     app.use("/fonts", express.static("../fonts"));

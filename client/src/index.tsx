@@ -199,7 +199,9 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
             <div className="departures-header">
                 {top}
                 <span className="disclaimer">
-                    Not an official service of MVV
+                    Not an official service of MVV ·{" "}
+                    <a href="/impressum">Impressum</a> ·{" "}
+                    <a href="/datenschutz">Datenschutz</a>
                     <a
                         href="https://www.paypal.com/donate?hosted_button_id=SVH3NYCAR3UAN"
                         className="donate"

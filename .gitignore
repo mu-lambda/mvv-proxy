@@ -5,3 +5,5 @@ node_modules
 Session.vim
 .DS_Store
 bazel-*
+# Who runs the public site: lives on the server only (see AGENTS.md).
+server/data/operator.yaml

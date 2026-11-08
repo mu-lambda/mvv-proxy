@@ -97,7 +97,8 @@ container image.
 
 - Environment: `MVV_PROXY_PORT` (default 3000), `MVV_PROXY_STOPS_FILE`,
   `MVV_PROXY_REQUEST_FILE` (the kiosk's stops for `/api/v1/timetable`),
-  `SOCKS_PROXY`. Paths such as `../www/` and `./data/stops.csv` are relative
+  `MVV_PROXY_OPERATOR_FILE` (who runs the site, for `/impressum` and
+  `/datenschutz`), `SOCKS_PROXY`. Paths such as `../www/` and `./data/stops.csv` are relative
   to the working directory, which must be `server/`. The Bazel targets
   `chdir` there.
 - On the Pi, pi-kiosk's `services/mvv-proxy.sh` runs the `server_bin`
@@ -115,6 +116,16 @@ container image.
   request file or home stops in tests or fixtures.
 - `/api/v1/stopsNearby` gets the visitor's location. Log it rounded to two
   decimals (about 1 km) at most, never in full.
+- `/impressum` and `/datenschutz` (`server/src/legal.ts`) are rendered from
+  the operator file: name, address, email and hosting provider, in the
+  format of `server/data/operator.example.yaml`. The real file lives on the
+  public server, never in the repository. Without the variable both pages
+  are 404, as on the kiosk; a broken file stops the server.
+- The privacy notice describes what the site does. Update it with any
+  change that sends visitor data somewhere new, logs personal data, or
+  stores anything in the browser. It promises the server's logs are
+  deleted after `LOG_DAYS` (14) days, so the public server's log rotation
+  has to match.
 - `server.ts` sets Express's `env` to `production`, so error pages carry no
   stack trace however the server was started. The stack still goes to the
   log.
