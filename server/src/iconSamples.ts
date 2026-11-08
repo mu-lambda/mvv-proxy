@@ -1,6 +1,6 @@
 /**
  * Writes the sample icons in docs/icons from the real drawing code, one per
- * class in MVV-ICONS.md. Run with `bazel run //server:icon_samples`.
+ * class in docs/MVV-ICONS.md. Run with `bazel run //server:icon_samples`.
  * docs/icons/preview.png is a screenshot and is not redrawn.
  */
 import * as fs from "node:fs";

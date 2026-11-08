@@ -1,6 +1,7 @@
 /**
  * Line icons MVV doesn't have: names it has them under instead, and icons
- * drawn in MVV's own template. MVV-ICONS.md has the survey and decisions.
+ * drawn in MVV's own template. docs/MVV-ICONS.md has the survey and
+ * decisions.
  */
 
 /** What an icon is drawn from: the line as a departure describes it. */

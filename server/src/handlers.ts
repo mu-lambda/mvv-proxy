@@ -276,8 +276,9 @@ export class Handlers {
 
     /**
      * A line icon: MVV's, under its own name or another, or one drawn in
-     * MVV's template when MVV has none (see MVV-ICONS.md). Drawing needs the
-     * line, so the client passes name, product and id as query parameters.
+     * MVV's template when MVV has none (see docs/MVV-ICONS.md). Drawing
+     * needs the line, so the client passes name, product and id as query
+     * parameters.
      */
     svg = async (req: express.Request, res: express.Response) => {
         const filename = path.basename(req.path);
