@@ -67,10 +67,18 @@ type Props = {
     lat: number | undefined;
     long: number | undefined;
     d: number | undefined;
+    /** Minutes of departures to show; the server's default if undefined. */
+    minutes: number | undefined;
     canQuery: boolean;
 };
 
-function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
+function GeoDepsTable({
+    lat,
+    long,
+    d: dProp,
+    minutes,
+    canQuery,
+}: Props): ReactElement {
     const d = dProp ? dProp : 500;
     const autoLoad = canQuery || !!(lat && long);
 
@@ -112,7 +120,8 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
         }
         try {
             const r = await fetch(
-                `/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}&d=${d}`,
+                `/api/v1/stopsNearby?lat=${c.coords.latitude}&long=${c.coords.longitude}&d=${d}` +
+                    (minutes ? `&minutes=${minutes}` : ""),
             );
             if (!r.ok) {
                 setState({
@@ -343,10 +352,12 @@ const p = new URLSearchParams(window.location.search);
 let lat = p.get("lat") != null ? +p.get("lat")! : undefined;
 let long = p.get("long") != null ? +p.get("long")! : undefined;
 let d = p.get("d") != null ? +p.get("d")! : undefined;
+let minutes = p.get("minutes") != null ? +p.get("minutes")! : undefined;
 
 lat = lat && isNaN(lat) ? undefined : lat;
 long = long && isNaN(long) ? undefined : long;
 d = d && isNaN(d) ? undefined : d;
+minutes = minutes && isNaN(minutes) ? undefined : minutes;
 
 async function setup() {
     let canQuery: boolean;
@@ -364,6 +375,7 @@ async function setup() {
             lat={lat}
             long={long}
             d={d}
+            minutes={minutes}
             canQuery={canQuery}
         ></GeoDepsTable>,
     );

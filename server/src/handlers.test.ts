@@ -1,5 +1,11 @@
 import type * as express from "express";
-import { fetcher, queryDepartures, testing as harness } from "shared";
+import {
+    fetcher,
+    info,
+    queryDepartures,
+    request,
+    testing as harness,
+} from "shared";
 
 import { Handlers, ICON_LIMITS } from "./handlers.ts";
 import type { IconLimits } from "./handlers.ts";
@@ -92,6 +98,40 @@ function handlers(
 
 const DAY = 24 * 60 * 60 * 1000;
 
+/** A stop `metres` north of Marienplatz. */
+function stopNorth(gid: string, metres: number): info.Stop {
+    return {
+        id: 0,
+        name: gid,
+        town: "München",
+        gid,
+        // A degree of latitude is about 111 km.
+        location: {
+            latitude: 48.13743 + metres / 111_000,
+            longitude: 11.57549,
+        },
+    };
+}
+
+/** Handlers that know only `stops`. */
+function nearbyHandlers(stops: info.Stop[]): Handlers {
+    const f = failingFetcher(new Error("unused"));
+    return new Handlers(new queryDepartures.Q([], stops, f), f, undefined);
+}
+
+/** The gids stopsNearby returns, and the request it builds. */
+async function nearby(
+    h: Handlers,
+    query: Record<string, string>,
+): Promise<{ gids: string[]; request: request.MultiStop }> {
+    const res = await call(h.stopsNearby, {
+        query: { lat: "48.13743", long: "11.57549", ...query },
+    });
+    expect(res.statusCode).toBe(200);
+    const body = res.body as request.NearbyStopsResponse;
+    return { gids: body.stops.map((s) => s.stop.gid), request: body.request };
+}
+
 async function call(
     handler: (req: express.Request, res: express.Response) => unknown,
     req: object,
@@ -122,8 +162,52 @@ const tests = [
         } finally {
             console.log = log;
         }
-        expect(logged.join("\n")).toBe("stops nearby: 48.14 11.58 400");
+        expect(logged.join("\n")).toBe("stops nearby: 48.14 11.58 400 30");
     }),
+
+    testAsync("stopsNearby answers bad minutes with a 400", async () => {
+        const h = handlers(failingFetcher(new Error("unused")));
+        for (const minutes of ["0", "-5", "soon"]) {
+            const res = await call(h.stopsNearby, {
+                query: { lat: "48.13743", long: "11.57549", minutes },
+            });
+            expect(res.statusCode).toBe(400);
+        }
+    }),
+
+    testAsync(
+        "stopsNearby leaves out stops too far to walk to in the window",
+        async () => {
+            const h = nearbyHandlers([
+                stopNorth("near", 300),
+                stopNorth("mid", 1500),
+                stopNorth("far", 3000),
+            ]);
+            const log = console.log;
+            console.log = () => {};
+            try {
+                // 30 minutes by default: 1,800 m at 60 m a minute.
+                const byDefault = await nearby(h, { d: "10000" });
+                expect(byDefault.gids.sort().join()).toBe("mid,near");
+                expect(byDefault.request.limit).toBe(30);
+                expect(Math.round(byDefault.request.stops[0]!.timeToStop)).toBe(
+                    5,
+                );
+
+                // 10 minutes: 600 m.
+                const short = await nearby(h, { d: "10000", minutes: "10" });
+                expect(short.gids.join()).toBe("near");
+                expect(short.request.limit).toBe(10);
+
+                // 60 minutes: 3,600 m, but d is smaller.
+                const long = await nearby(h, { d: "2000", minutes: "60" });
+                expect(long.gids.sort().join()).toBe("mid,near");
+                expect(long.request.limit).toBe(60);
+            } finally {
+                console.log = log;
+            }
+        },
+    ),
 
     testAsync("an icon MVV does not have is asked for once", async () => {
         const f = failingFetcher(
