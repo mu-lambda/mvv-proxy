@@ -62,9 +62,9 @@ container image.
 ## Node and modules
 
 - The Node toolchain is pinned in `MODULE.bazel` (26.13.0, with archives and
-  checksums because rules_nodejs predates it). Keep it equal to
-  `NODE_VERSION` in pi-kiosk's `services/mvv-proxy.sh`, which is what the Pi
-  runs.
+  checksums because rules_nodejs predates it). The Pi runs this Node too,
+  through `//server:server_bin` (see Running the server). pi-kiosk pins its
+  own in its `MODULE.bazel`; keep the two equal.
 - Every package is an ES module (`"type": "module"`, `module: nodenext`).
   Import local files as `./foo.ts` or `./foo.tsx`, never `./foo.js` and never
   without an extension; `rewriteRelativeImportExtensions` turns them into
@@ -100,9 +100,12 @@ container image.
   `SOCKS_PROXY`. Paths such as `../www/` and `./data/stops.csv` are relative
   to the working directory, which must be `server/`. The Bazel targets
   `chdir` there.
-- On the Pi, `services/mvv-proxy.sh` runs `node out/main.js` from
-  `bazel-bin/server`, after `update-projects.sh` builds
-  `//server:server_bin`.
+- On the Pi, pi-kiosk's `services/mvv-proxy.sh` runs the `server_bin`
+  launcher (`bazel-bin/server/server_bin_/server_bin`) from its runfiles
+  tree, as `bazel run` does, after `update-projects.sh` builds
+  `//server:server_bin`. The launcher brings Bazel's Node and changes into
+  `server/` itself, so a file the server reads at runtime must be in the
+  binary's `data`.
 - The SOCKS proxy URL contains credentials. Never print it, and keep it out
   of logs; the service script turns off xtrace around it.
 - MVV works without the proxy, so you can test live by leaving `SOCKS_PROXY`
