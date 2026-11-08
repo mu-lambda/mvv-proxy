@@ -18,14 +18,19 @@ The samples are in `docs/icons/`; `bazel run //server:icon_samples` redraws
 them from the server's code. The preview above is a screenshot, so retake it
 by hand after a change. Its top row is MVV's own icons.
 
-## Which icons MVV lacks
+## Survey
 
 On 2026-11-07 we fetched `available_lines` for 1,487 of the 11,062 stops in
 `server/data/stops.csv` (denser in Munich and Landkreis München), and checked
 every icon they name: 420 distinct lines, 53 icons missing. Departures at
 137 of those stops (4,503 departures) name the same icons as
-`available_lines`, and no lines that it doesn't list. The missing icons fall
-into these classes:
+`available_lines`, and no lines that it doesn't list. All 417 icon names
+were five capitals or digits plus `.svg`, which is why the server refuses
+other names without asking MVV.
+
+## Which icons MVV lacks
+
+The survey's missing icons fall into these classes:
 
 | # | Class | Examples (MVV's file) | What the server serves |
 | --- | --- | --- | --- |
@@ -62,7 +67,7 @@ Tram 28 is an outline: an orange frame, orange number and no fill.
 For `/svg/<file>`, in this order:
 
 1. **Names that can't be MVV's** are refused (404) without asking MVV:
-   MVV's names are five capitals or digits plus `.svg`.
+   MVV's names are five capitals or digits plus `.svg` (see the survey).
 2. **Overrides,** MVV files that exist but are wrong, are drawn instead
    (`icons.overrides`: `12438.svg`, bus 438).
 3. **MVV's file,** sent with a 10-day max-age. If MVV answers 404 or 410,
