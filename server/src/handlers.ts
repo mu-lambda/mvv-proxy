@@ -163,12 +163,19 @@ export class Handlers {
         const minutes: number = req.query.minutes
             ? +req.query.minutes
             : NEARBY_MINUTES;
-        if (isNaN(p.latitude) || isNaN(p.longitude) || isNaN(distance)) {
-            res.status(400).send("lat, long or d are missing or not numbers");
+        if (
+            isNaN(p.latitude) ||
+            isNaN(p.longitude) ||
+            isNaN(distance) ||
+            isNaN(minutes)
+        ) {
+            res.status(400).send(
+                "lat, long, d or minutes are missing or not numbers",
+            );
             return;
         }
-        if (!(minutes > 0)) {
-            res.status(400).send("minutes should be a positive number");
+        if (distance <= 0 || minutes <= 0) {
+            res.status(400).send("d and minutes should be positive");
             return;
         }
         // The visitor's location, so only to about a kilometre: enough to
