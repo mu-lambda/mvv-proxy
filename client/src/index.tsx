@@ -169,7 +169,8 @@ function GeoDepsTable({ lat, long, d: dProp, canQuery }: Props): ReactElement {
                         className="donate"
                         target="_blank"
                     >
-                        <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" />
+                        {/* Served from here, so visiting tells PayPal nothing. */}
+                        <img src="paypal-donate.gif" alt="Donate with PayPal" />
                     </a>
                 </span>
             </div>

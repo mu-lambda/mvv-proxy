@@ -46,6 +46,9 @@ js_library(
     srcs = glob([
         "*.html",
         "*.css",
+        "*.gif",
+        "*.ico",
+        "*.png",
         "*.svg",
     ]) + [":stop_signs"],
 )

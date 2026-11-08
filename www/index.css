@@ -18,7 +18,8 @@ body {
 .departures-header {
     flex: 0 0;
     font-weight: bold;
-    padding: 20px;
+    /* In vw like the rest, so it stays the same share of a phone's width. */
+    padding: 2vw;
     background-color: #c0d101;
     color: white;
 }

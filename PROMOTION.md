@@ -23,10 +23,11 @@ Every change below has to fit these.
       processed and by whom (this server, Cloudflare, and MVV, since the
       browser fetches departures from MVV directly), and that only rounded
       locations are kept, in the logs.
-- [ ] **Host the PayPal button image ourselves.** It loads from
-      `paypalobjects.com`, so every visit tells PayPal the visitor's IP
-      address. It is the page's only third-party request; without it, "no
-      tracking, no third parties" is true and can be advertised.
+- [x] **Host the PayPal button image ourselves.** It loaded from
+      `paypalobjects.com`, so every visit told PayPal the visitor's IP
+      address. It was the page's only third-party request; now the page
+      loads only from this site and MVV, so "no tracking, no third parties"
+      is true and can be advertised. (`www/paypal-donate.gif`)
 - [ ] **Consider writing to MVV before a big push.** More visitors means
       more traffic on MVV's unofficial departures interface, and the name
       and icons are MVV's. The load comes from visitors' browsers, so no
@@ -38,16 +39,22 @@ Every change below has to fit these.
 
 Ranked by effect for effort.
 
-- [ ] **Let a link look like something.** The page has no `<title>`, no
+- [x] **Let a link look like something.** The page had no `<title>`, no
       description, no language and no favicon, so search results, tabs and
-      bookmarks show a bare URL, and links shared in chats show no preview.
-    - [ ] `<title>`, e.g. "Abfahrten in der Nähe – MVV Departures nearby"
-    - [ ] meta description
-    - [ ] `lang` on `<html>`
-    - [ ] favicon
-    - [ ] Open Graph tags with a screenshot, for link previews
-    - [ ] viewport meta tag. The layout already scales (the CSS uses `vw`),
-          but without it Google treats the page as not mobile-friendly.
+      bookmarks showed a bare URL, and links shared in chats showed no
+      preview.
+    - [x] `<title>`: "Abfahrten in der Nähe – MVV Departures nearby"
+    - [x] meta description, in English with one German sentence until the
+          site speaks German
+    - [x] `lang="en"` on `<html>`; changes with the German item below
+    - [x] favicon: a German bus-stop sign, green H on yellow
+          (`favicon.svg`, and `favicon.ico` for browsers that ask for it)
+    - [x] Open Graph tags, with `og-image.png`: departures at Marienplatz.
+          Retake it after a visible change to the page.
+    - [x] viewport meta tag. The header's padding is now in `vw` too, so
+          phones show the same layout as before; the donate button is now
+          big enough to tap.
+    - [x] canonical link, since `?lat=…&long=…` links show the same page
 - [ ] **A sentence before the location prompt.** Say what the site does
       before the browser asks for the location, e.g. "Every departure around
       you, U-Bahn, S-Bahn, tram and bus, in one list. No app, no account, no
