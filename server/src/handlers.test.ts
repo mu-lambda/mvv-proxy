@@ -175,6 +175,16 @@ const tests = [
         }
     }),
 
+    testAsync("stopsNearby answers a bad d with a 400", async () => {
+        const h = handlers(failingFetcher(new Error("unused")));
+        for (const d of ["0", "-100", "far"]) {
+            const res = await call(h.stopsNearby, {
+                query: { lat: "48.13743", long: "11.57549", d },
+            });
+            expect(res.statusCode).toBe(400);
+        }
+    }),
+
     testAsync(
         "stopsNearby leaves out stops too far to walk to in the window",
         async () => {
