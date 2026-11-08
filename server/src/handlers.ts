@@ -5,16 +5,47 @@ import { info, request, fetcher, queryDepartures } from "shared";
 import { lines } from "./lines.ts";
 import * as geo from "./geo.ts";
 import * as icons from "./icons.ts";
+import { Budget, Concurrency } from "./limits.ts";
 
 type Stop = info.Stop;
 type LatLong = info.LatLong;
 
 /** How long MVV's answer for an icon is kept: the icon, or that it has none. */
 const ICON_TTL_MS = 24 * 60 * 60 * 1000;
-/** At most this many answers are kept; the oldest go first. */
-const MAX_ICONS = 2000;
+/**
+ * At most this many answers are kept; the oldest go first. More than a day's
+ * budget, so names nobody uses can't push out the icons people see.
+ */
+const MAX_ICONS = 10000;
 /** MVV's icon names: five capitals or digits ("02019.svg", "920S6.svg"). */
 const MVV_ICON_NAME = /^[0-9A-Z]{5}\.svg$/;
+
+/**
+ * Requests to MVV for icons: how many may be made, and how many at once.
+ * Only cache misses count. Without a limit, anyone could make the server ask
+ * MVV for one made-up name after another.
+ */
+export type IconLimits = {
+    /** Requests that may be made at once, such as for a page of new icons. */
+    burst: number;
+    /** After the burst, one more request every this many milliseconds. */
+    refillMs: number;
+    /** Requests in flight at once; the rest wait. */
+    concurrent: number;
+};
+
+/**
+ * Burst 1,500, enough for a restart's empty cache, then about 4,000 a day,
+ * 8 at a time.
+ */
+export const ICON_LIMITS: IconLimits = {
+    burst: 1500,
+    refillMs: ICON_TTL_MS / 4000,
+    concurrent: 8,
+};
+
+/** The icon budget is spent, so MVV wasn't asked. */
+class OutOfBudget extends Error {}
 
 type IconEntry = {
     fetchedAt: number;
@@ -35,17 +66,31 @@ export class Handlers {
      * internet, where asking MVV for every request could get us rate-limited.
      */
     readonly #icons = new Map<string, IconEntry>();
+    readonly #iconBudget: Budget;
+    readonly #iconConcurrency: Concurrency;
+    /** Whether running out of budget has been logged since it last had some. */
+    #outOfBudgetLogged = false;
 
-    /** `now` gives the time in milliseconds; tests replace it. */
+    /**
+     * `f` fetches icons. `now` gives the time in milliseconds; tests replace
+     * it, and the limits.
+     */
     constructor(
         q: queryDepartures.Q,
         f: fetcher.IFetcher,
         defaultRequest: request.MultiStop | undefined,
         now: () => number = Date.now,
+        iconLimits: IconLimits = ICON_LIMITS,
     ) {
         this.#q = q;
         this.#fetcher = f;
         this.#now = now;
+        this.#iconBudget = new Budget(
+            iconLimits.burst,
+            iconLimits.refillMs,
+            now,
+        );
+        this.#iconConcurrency = new Concurrency(iconLimits.concurrent);
         this.#defaultRequest = defaultRequest;
         this.#stops = q.stops();
         this.#locator = new geo.Locator(this.#stops);
@@ -147,15 +192,30 @@ export class Handlers {
 
     /**
      * MVV's icon, or the one it has under another name (icons.renamedIcon).
-     * Undefined if MVV has neither; throws if MVV couldn't say.
+     * Undefined if MVV has neither; throws if MVV couldn't say, or if the
+     * budget is spent. Each request to MVV spends one.
      */
     private async fetchIcon(filename: string): Promise<string | undefined> {
-        const fetchText = async (f: string) =>
-            (
-                await this.#fetcher.fetch(
-                    `https://www.mvv-muenchen.de/fileadmin/lines/${f}`,
-                )
-            ).text();
+        const fetchText = async (f: string) => {
+            if (!this.#iconBudget.take()) {
+                if (!this.#outOfBudgetLogged) {
+                    console.log(
+                        "Icon budget spent: new icons are not asked for " +
+                            "until it refills",
+                    );
+                    this.#outOfBudgetLogged = true;
+                }
+                throw new OutOfBudget();
+            }
+            this.#outOfBudgetLogged = false;
+            return this.#iconConcurrency.run(async () =>
+                (
+                    await this.#fetcher.fetch(
+                        `https://www.mvv-muenchen.de/fileadmin/lines/${f}`,
+                    )
+                ).text(),
+            );
+        };
         try {
             return await fetchText(filename);
         } catch (e) {
@@ -236,8 +296,10 @@ export class Handlers {
         try {
             icon = await this.mvvIcon(filename);
         } catch {
-            // MVV couldn't say: the client shows the line's name, and the
-            // next request asks MVV again.
+            // MVV couldn't say, or wasn't asked: the client shows the line's
+            // name, and the next request asks MVV again. Not to be cached:
+            // Cloudflare would otherwise keep the 404 for hours.
+            res.setHeader("Cache-Control", "no-store");
             res.sendStatus(404);
             return;
         }

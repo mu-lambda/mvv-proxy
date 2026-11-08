@@ -49,7 +49,9 @@ export async function server(onReady: () => void) {
     const request = await loadAndValidateRequest(requestFile, q);
 
     // Routing to handlers.
-    const handlers = new Handlers(q, fetcher, request);
+    // Icons are tried once: a missing icon only means the line's name shows
+    // as text for a while, and each try spends the icon budget.
+    const handlers = new Handlers(q, new ProxyFetcher(1), request);
     app.get("/api/v1/timetable", handlers.timetableApi);
     app.get("/api/v1/stopsNearby", handlers.stopsNearby);
     app.get("/api/v1/lines", handlers.lines);

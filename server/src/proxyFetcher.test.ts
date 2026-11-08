@@ -61,6 +61,14 @@ const tests = [
             expect(hits.get("/503")).toBe(4);
         }),
     ),
+
+    testAsync("a fetcher that tries once doesn't retry a 5xx", () =>
+        withMvv(async (url, hits) => {
+            const e = await failure(new ProxyFetcher(1).fetch(`${url}/503`));
+            expect((e as fetcher.MVVRequestFailure).status).toBe(503);
+            expect(hits.get("/503")).toBe(1);
+        }),
+    ),
 ];
 
 async function run() {

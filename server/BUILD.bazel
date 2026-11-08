@@ -107,6 +107,16 @@ js_test(
     size = "small",
 )
 
+js_test(
+    name = "limits_test",
+    data = [
+        "package.json",
+        ":tsc",
+    ],
+    entry_point = "out/limits.test.js",
+    size = "small",
+)
+
 # Talks to a local HTTP server standing in for MVV.
 js_test(
     name = "proxy_fetcher_test",

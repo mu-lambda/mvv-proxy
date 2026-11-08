@@ -113,8 +113,9 @@ container image.
 - `server.ts` sets Express's `env` to `production`, so error pages carry no
   stack trace however the server was started. The stack still goes to the
   log.
-- `ProxyFetcher` retries lost connections and 5xx replies (4 tries), but not
-  4xx: a refusal will be the same next time. `MVVRequestFailure.status`
+- `ProxyFetcher` retries lost connections and 5xx replies (4 tries, or as
+  many as its constructor says), but not 4xx: a refusal will be the same
+  next time. `MVVRequestFailure.status`
   carries the HTTP status.
 - A request names lines by the ids in `server/src/lines.ts` (`S6-i`). Each
   is a name and direction (`H` or `R`), not an MVV line id: those change
@@ -128,11 +129,14 @@ container image.
   being rate-limited: it keeps MVV's answer for each icon (the icon, or 404
   or 410 for none) for a day, shares one request among clients asking at the
   same time, and refuses names that can't be MVV's (five capitals or digits
-  plus `.svg`) without asking. Other 4xx, such as 429, are not kept. For
-  icons MVV lacks,
-  it uses MVV's icon under another name, or draws one from the line the
-  client passes as query parameters (`server/src/icons.ts`). `MVV-ICONS.md`
-  has the classes of missing icons and the decisions behind each drawing.
+  plus `.svg`) without asking. Other 4xx, such as 429, are not kept, and
+  their 404 says `no-store`: Cloudflare would cache it for 4 hours.
+  Requests to MVV for icons also have a budget (1,500 at once, then about
+  4,000 a day), run at most 8 at a time, and are tried once
+  (`ICON_LIMITS`). For icons MVV lacks, it uses MVV's icon under another
+  name, or draws one from the line the client passes as query parameters
+  (`server/src/icons.ts`). `MVV-ICONS.md` has the classes of missing icons
+  and the decisions behind each drawing.
 
 ## Container image
 

@@ -1,7 +1,8 @@
 import type * as express from "express";
 import { fetcher, queryDepartures, testing as harness } from "shared";
 
-import { Handlers } from "./handlers.ts";
+import { Handlers, ICON_LIMITS } from "./handlers.ts";
+import type { IconLimits } from "./handlers.ts";
 
 const { suite, testAsync, expect } = harness;
 
@@ -75,8 +76,18 @@ function iconFetcher(files: Record<string, string>) {
     return f;
 }
 
-function handlers(f: fetcher.IFetcher, now?: () => number): Handlers {
-    return new Handlers(new queryDepartures.Q([], [], f), f, undefined, now);
+function handlers(
+    f: fetcher.IFetcher,
+    now?: () => number,
+    limits: IconLimits = ICON_LIMITS,
+): Handlers {
+    return new Handlers(
+        new queryDepartures.Q([], [], f),
+        f,
+        undefined,
+        now,
+        limits,
+    );
 }
 
 const DAY = 24 * 60 * 60 * 1000;
@@ -107,6 +118,8 @@ const tests = [
         const second = await call(h.svg, { path: "/svg/99999.svg", query: {} });
         expect(first.statusCode).toBe(404);
         expect(second.statusCode).toBe(404);
+        // A real answer, so it may be cached.
+        expect(first.headers["Cache-Control"]).toBe(undefined);
         expect(f.calls).toBe(1);
     }),
 
@@ -180,6 +193,7 @@ const tests = [
         });
         expect(res.statusCode).toBe(404);
         expect(res.body).toBe(undefined);
+        expect(res.headers["Cache-Control"]).toBe("no-store");
     }),
 
     testAsync("MVV's answer is kept for a day", async () => {
@@ -232,6 +246,7 @@ const tests = [
         await call(h.svg, req);
         expect(first.statusCode).toBe(404);
         expect(first.body).toBe(undefined);
+        expect(first.headers["Cache-Control"]).toBe("no-store");
         expect(f.calls).toBe(2);
     }),
 
@@ -248,6 +263,60 @@ const tests = [
             );
         }
         expect(f.requested.length).toBe(0);
+    }),
+
+    testAsync("MVV isn't asked once the icon budget is spent", async () => {
+        const f = iconFetcher({ "010U1.svg": "<svg>U1</svg>" });
+        let now = 0;
+        const h = handlers(f, () => now, {
+            burst: 2,
+            refillMs: 1000,
+            concurrent: 8,
+        });
+        const ask = (name: string) =>
+            call(h.svg, {
+                path: `/svg/${name}`,
+                query: { name: "X208", product: "ExpressBus" },
+            });
+        // A rename is a second request: 920S6 and then 92M06.
+        await ask("920S6.svg");
+        expect(f.requested.join(" ")).toBe("920S6.svg 92M06.svg");
+        // Spent: not asked, not drawn (MVV might have it), and not kept.
+        const spent = await ask("010U1.svg");
+        expect(spent.statusCode).toBe(404);
+        expect(spent.body).toBe(undefined);
+        expect(spent.headers["Cache-Control"]).toBe("no-store");
+        expect(f.requested.length).toBe(2);
+        // Answers already kept still count: 920S6 is missing, so drawn.
+        const kept = await ask("920S6.svg");
+        expect(String(kept.body).includes(">X208</text>")).toBe(true);
+        expect(f.requested.length).toBe(2);
+        // Refilled: asked again.
+        now += 1000;
+        expect((await ask("010U1.svg")).body).toBe("<svg>U1</svg>");
+        expect(f.requested.length).toBe(3);
+    }),
+
+    testAsync("MVV is asked for a few icons at a time", async () => {
+        let inFlight = 0;
+        let most = 0;
+        const f = {
+            fetch: async (_: string): Promise<fetcher.IFetchResult> => {
+                inFlight++;
+                most = Math.max(most, inFlight);
+                await new Promise((r) => setTimeout(r, 5));
+                inFlight--;
+                const body = "<svg/>";
+                return { json: async () => body, text: async () => body };
+            },
+        };
+        const h = handlers(f, Date.now, { ...ICON_LIMITS, concurrent: 3 });
+        const names = Array.from({ length: 10 }, (_, i) => `1000${i}.svg`);
+        const all = await Promise.all(
+            names.map((n) => call(h.svg, { path: `/svg/${n}`, query: {} })),
+        );
+        expect(all.every((r) => r.body === "<svg/>")).toBe(true);
+        expect(most).toBe(3);
     }),
 
     testAsync("bus 438's wrong icon is replaced", async () => {

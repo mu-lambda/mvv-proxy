@@ -91,9 +91,30 @@ for a day, and requests arriving while MVV is being asked share that one
 request. mvv-proxy also runs on the internet, so this keeps it from getting
 rate-limited by MVV.
 
+The cache doesn't stop someone asking for one made-up name after another,
+so requests to MVV for icons are limited too (`ICON_LIMITS` in
+`server/src/handlers.ts`):
+
+- A budget: 1,500 at once, enough for a restart's empty cache, then about
+  4,000 a day (one every 21.6 seconds).
+  Only requests that reach MVV count, renames included. Normal use costs at
+  most a few thousand a day, since each icon is asked for once a day; a
+  busy stop's 50 icons are a burst, and mostly cached. When the budget is
+  spent, the server answers 404 without asking MVV or keeping the answer
+  (see below), logs it once, and the client shows the line's name.
+- At most 8 requests to MVV at once. Over HTTP/2 a page asks for all its
+  icons together.
+- No retries: a missing icon only means text for a while.
+- 10,000 answers kept, more than a day's budget, so made-up names can't
+  push out the icons people see.
+
 If MVV fails with 5xx or another 4xx (such as 429), or the connection
 drops, nothing is drawn and nothing is kept: the client shows the line's
-name, and the next request asks MVV again.
+name, and the next request asks MVV again. These 404s are sent with
+`Cache-Control: no-store`. Cloudflare, in front of mvv.mulambda.de, caches
+404s without one for 4 hours, which would show the name as text that long.
+A 404 for an icon MVV really lacks carries no such header and may be
+cached.
 
 Choosing the drawing, from the product and the operator (the first part of
 `line.stateless`):
