@@ -96,6 +96,21 @@ table.departure-table {
     font-size: 4vw !important;
 }
 
+/* A table can't be narrower than its longest words. At Marienplatz,
+   "Forschungszentrum" and "Reichenbachplatz" together pushed the times off
+   the screen. Hyphenating long names lets them break where they must. The
+   cells say lang="de" (render.tsx), so this uses German rules on /en too.
+   Only words of 12 letters or more, with 5 on each side, so "Münchner
+   Freiheit" breaks at the space and "Forschungs-zentrum" between its parts.
+   (Safari ignores the limit and hyphenates by its own rules.)
+   Only here: the kiosk's timetable doesn't load this file. */
+td.line-name,
+td.stop-name {
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    hyphenate-limit-chars: 12 5 5;
+}
+
 /* While departures are fetched: one row per nearby stop, nearest first, a
    spinner until its departures are in, then a green check mark. The list
    scrolls when there are more stops than fit. */
