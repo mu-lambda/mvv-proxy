@@ -69,6 +69,41 @@ const tests = [
         }
     }),
 
+    test("each language links its own manifest", () => {
+        const de = page.nearbyPage("de", "auto");
+        expect(
+            de.includes('<link rel="manifest" href="/de.webmanifest" />'),
+        ).toBe(true);
+        expect(
+            de.includes('apple-mobile-web-app-title" content="Abfahrten"'),
+        ).toBe(true);
+        const en = page.nearbyPage("en", "en");
+        expect(
+            en.includes('<link rel="manifest" href="/en.webmanifest" />'),
+        ).toBe(true);
+    }),
+
+    test("a manifest has what browsers need to install the site", () => {
+        for (const lang of ["de", "en"] as const) {
+            const m = JSON.parse(page.manifest(lang));
+            expect(m.lang).toBe(lang);
+            expect(m.start_url).toBe(`/${lang}`);
+            expect(m.display).toBe("standalone");
+            expect(typeof m.name).toBe("string");
+            expect(typeof m.short_name).toBe("string");
+            const sizes = m.icons.map((i: { sizes: string }) => i.sizes);
+            expect(sizes.includes("192x192")).toBe(true);
+            expect(sizes.includes("512x512")).toBe(true);
+            expect(
+                m.icons.some(
+                    (i: { purpose?: string }) => i.purpose === "maskable",
+                ),
+            ).toBe(true);
+        }
+        expect(JSON.parse(page.manifest("de")).short_name).toBe("Abfahrten");
+        expect(JSON.parse(page.manifest("en")).short_name).toBe("Departures");
+    }),
+
     test("styles and script load from the root, also under /de/", () => {
         const html = page.nearbyPage("de", "de");
         expect(html.includes('href="/index.css"')).toBe(true);

@@ -106,6 +106,13 @@ export async function server(onReady: () => void) {
     const english = page.nearbyPage("en", "en");
     app.get("/de", (_, res) => sendPage(german, res));
     app.get("/en", (_, res) => sendPage(english, res));
+    for (const lang of ["de", "en"] as const) {
+        const json = page.manifest(lang);
+        app.get(`/${lang}.webmanifest`, (_, res) => {
+            res.setHeader("Cache-Control", "max-age=86400");
+            res.type("application/manifest+json").send(json);
+        });
+    }
 
     app.use("/", express.static("../www/"));
     app.use("/fonts", express.static("../fonts"));

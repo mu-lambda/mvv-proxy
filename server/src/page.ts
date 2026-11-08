@@ -10,6 +10,9 @@ type Lang = strings.Lang;
 
 const SITE = "https://mvv.mulambda.de";
 
+/** The header's colour, for the browser's and the installed app's bars. */
+const THEME_COLOUR = "#c0d101";
+
 /** The address of each version, for canonical and hreflang links. */
 const URLS: Record<Lang | "auto", string> = {
     auto: `${SITE}/`,
@@ -40,6 +43,12 @@ export function nearbyPage(lang: Lang, at: Lang | "auto"): string {
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
 
+        <!-- Add to Home Screen. An app installed from here opens /${lang}. -->
+        <link rel="manifest" href="/${lang}.webmanifest" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="apple-mobile-web-app-title" content="${attr(t.appShortName)}" />
+        <meta name="theme-color" content="${THEME_COLOUR}" />
+
         <!-- Link previews in chats and social networks. -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="${URLS[at]}" />
@@ -64,4 +73,42 @@ export function nearbyPage(lang: Lang, at: Lang | "auto"): string {
     </body>
 </html>
 `;
+}
+
+/**
+ * The web app manifest for `lang`, which makes the site installable ("Add
+ * to Home Screen"). There is no service worker: browsers no longer need
+ * one to install a site, and it would store files in the browser, which
+ * the privacy notice says the site doesn't do.
+ */
+export function manifest(lang: Lang): string {
+    const t = strings.forLang(lang).page;
+    return JSON.stringify(
+        {
+            name: t.appName,
+            short_name: t.appShortName,
+            description: t.ogDescription,
+            lang,
+            // Opens in the language it was installed in; the location is
+            // asked for as on the site.
+            start_url: `/${lang}`,
+            id: `/${lang}`,
+            scope: "/",
+            display: "standalone",
+            background_color: "#ffffff",
+            theme_color: THEME_COLOUR,
+            icons: [
+                { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
+                { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
+                {
+                    src: "/icon-maskable-512.png",
+                    sizes: "512x512",
+                    type: "image/png",
+                    purpose: "maskable",
+                },
+            ],
+        },
+        null,
+        2,
+    );
 }

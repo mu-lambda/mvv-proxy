@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <!-- The app icon (Add to Home Screen): favicon.svg's bus-stop sign, with
+         a mulambda badge. make-app-icons.sh makes the PNGs from it. -->
+    <rect width="512" height="512" fill="#ffffff" />
+    <g transform="translate(41.4 41.4) scale(6.2069)">
+        <circle cx="32" cy="32" r="29" fill="#f1dd38" stroke="#008351" stroke-width="5" />
+        <path fill="#008351" d="M20 16h8v12h8V16h8v32h-8V35h-8v13h-8z" />
+    </g>
+    <circle cx="390" cy="390" r="92" fill="#008351" stroke="#ffffff" stroke-width="14" />
+    <!-- μλ, drawn as strokes, so no font is needed. -->
+    <path
+        d="M345 362V433.8M345 388C345 418.2 377.2 418.2 377.2 388M377.2 362V414 M393.9 338.6L434.4 414M412.9 373.4L393.9 414"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="10.4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+</svg>

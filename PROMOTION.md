@@ -75,12 +75,16 @@ Ranked by effect for effort.
       Nähe", "Abfahrtsmonitor München"). `/` picks the language from the
       browser, with no setting and no cookie; `/de` and `/en` fix it, so
       search engines can index the German page too. German says "du".
-- [ ] **Add to Home Screen.** A web app manifest and icons make the site
+- [x] **Add to Home Screen.** A web app manifest and icons make the site
       installable. The browser remembers the location permission, so the
-      installed site shows departures straight away: one tap.
-- [ ] **Refresh by itself.** Today the page only updates when reload is
-      pressed. Refresh every 30 to 60 seconds while the page is visible.
-      This adds load on MVV.
+      installed site shows departures straight away: one tap. One manifest
+      per language (`/de.webmanifest`, `/en.webmanifest`), so the app opens
+      in the language it was installed in. The icon is the bus-stop sign
+      with a μλ badge (`www/app-icon.svg`). No
+      service worker: it isn't needed, and it would store files in the
+      browser, which the privacy notice says the site doesn't do.
+- **Refresh by itself:** decided against. The page updates when the
+  reload button is pressed, as before.
 - [ ] **"Departures from here" links and QR codes.** The page already takes
       `?lat=…&long=…`. Make it easy to get such a link, for cafés, hostels,
       hotels, coworking spaces and offices: a QR code at the door, or a

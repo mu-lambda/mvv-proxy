@@ -167,6 +167,14 @@ container image.
   from `<html lang>`. German speaks to the visitor as "du"; the legal pages
   use "Sie".
 - The kiosk only loads `timetable.html`, which stays English.
+- The site can be installed ("Add to Home Screen"): the server writes a
+  manifest per language (`/de.webmanifest`, `/en.webmanifest`,
+  `page.manifest`), whose names are in `strings.ts`. The icons are drawn in
+  `www/app-icon.svg` (the favicon's bus-stop sign with a μλ badge, the
+  letters as strokes so no font is needed) and made into PNGs by
+  `www/make-app-icons.sh` (ImageMagick); commit the PNGs after a change.
+  They are on white, since iOS fills transparent corners black. Don't add a service worker without changing the privacy
+  notice: it would store files in the browser.
 - While departures are fetched, `client/src/index.tsx` (state `fetching`)
   lists the stops it found, nearest first, each with a spinner that turns
   into a green check mark as soon as that stop is done.

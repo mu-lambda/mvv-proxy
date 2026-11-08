@@ -18,6 +18,9 @@ export type PageText = {
     ogDescription: string;
     ogLocale: string;
     ogImageAlt: string;
+    /** The installed app's name, and the shorter one under its icon. */
+    appName: string;
+    appShortName: string;
 };
 
 export type Strings = {
@@ -65,6 +68,8 @@ const en: Strings = {
         ogImageAlt:
             "Departures around Marienplatz: tram 21, bus 52 and U6, each " +
             "with its stop, distance and time.",
+        appName: "MVV Departures nearby",
+        appShortName: "Departures",
     },
 
     title: "MVV Departures",
@@ -113,6 +118,8 @@ const de: Strings = {
         ogImageAlt:
             "Abfahrten am Marienplatz: Tram 21, Bus 52 und U6, jeweils mit " +
             "Haltestelle, Entfernung und Uhrzeit.",
+        appName: "MVV-Abfahrten in deiner Nähe",
+        appShortName: "Abfahrten",
     },
 
     title: "MVV-Abfahrten",
