@@ -86,8 +86,16 @@ update both.
 - `server`, `client` and `tests` map `shared` (and `mvv-proxy`) to their
   sources in `tsconfig.json` for editors, which needs `rootDir: ".."`. Bazel
   rejects that, so it builds with `tsconfig.bazel.json`, which extends
-  `tsconfig.json` and only sets `rootDir` back to `./src`. Put compiler
-  options in `tsconfig.json`.
+  `tsconfig.json` and sets `rootDir` back to `./src`. Put compiler options
+  in `tsconfig.json`.
+- `server/src` is split into `ts_project`s by what uses the files:
+  `server_tsc` (the server and the `index.ts` that `//tests` imports),
+  `tests_tsc` and `icon_samples_tsc`. The image holds only `server_tsc`, so
+  a test or a tool neither ships in it nor changes it. Add a new file to
+  the `*_SRCS` list of the part that uses it (tests named `*.test.ts` go
+  to `TEST_SRCS` by themselves); the build fails on a file in none of
+  them. A part imports `server_tsc`'s output: for that,
+  `server/tsconfig.bazel.json` adds `out` to `rootDirs`.
 - CommonJS libraries: a library that compiles fine can still fail at
   runtime. `opentype.js` needs a default import; `import * as` compiled but
   failed with `opentype.parse is not a function`. Run the real entry point
