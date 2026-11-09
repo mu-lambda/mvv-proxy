@@ -15,11 +15,43 @@ ts_config(
     ],
 )
 
+# src/ is split by what uses it: the image holds only SERVER_SRCS, and a
+# change to a test or a tool leaves it alone. tsconfig.bazel.json lets a
+# part import another's output.
+
+# The server, and the library surface (index.ts) that //tests imports.
+SERVER_SRCS = [
+    "src/data.ts",
+    "src/geo.ts",
+    "src/handlers.ts",
+    "src/icons.ts",
+    "src/index.ts",
+    "src/legal.ts",
+    "src/limits.ts",
+    "src/lines.ts",
+    "src/main.ts",
+    "src/page.ts",
+    "src/proxyFetcher.ts",
+    "src/server.ts",
+]
+
+TEST_SRCS = glob(["src/**/*.test.ts"])
+
+ICON_SAMPLES_SRCS = ["src/iconSamples.ts"]
+
+# A file in none of the parts would be left out of the build without a word.
+[
+    fail("%s is in none of the *_SRCS lists" % f)
+    for f in glob(["src/**/*.ts"])
+    if f not in SERVER_SRCS + TEST_SRCS + ICON_SAMPLES_SRCS
+]
+
 ts_project(
-    name = "tsc",
-    srcs = glob(["src/**/*.ts"]),
+    name = "server_tsc",
+    srcs = SERVER_SRCS,
     # declaration = True so //server:pkg exposes .d.ts for the "mvv-proxy"
-    # library surface (src/index.ts) consumed by the //tests package.
+    # library surface (src/index.ts) consumed by the //tests package, and so
+    # the other parts here can import it.
     declaration = True,
     out_dir = "out",
     root_dir = "src",
@@ -38,13 +70,44 @@ ts_project(
     ],
 )
 
+ts_project(
+    name = "tests_tsc",
+    srcs = TEST_SRCS,
+    declaration = True,
+    out_dir = "out",
+    root_dir = "src",
+    tsconfig = ":tsconfig",
+    deps = [
+        ":node_modules/@types/d3-quadtree",
+        ":node_modules/@types/express",
+        ":node_modules/@types/node",
+        ":node_modules/d3-quadtree",
+        ":node_modules/express",
+        ":node_modules/shared",
+        ":server_tsc",
+    ],
+)
+
+ts_project(
+    name = "icon_samples_tsc",
+    srcs = ICON_SAMPLES_SRCS,
+    declaration = True,
+    out_dir = "out",
+    root_dir = "src",
+    tsconfig = ":tsconfig",
+    deps = [
+        ":node_modules/@types/node",
+        ":server_tsc",
+    ],
+)
+
 # Target name "pkg" is the npm_package_target_name convention rules_js uses to
 # link first-party workspace packages; lets //tests import "mvv-proxy".
 js_library(
     name = "pkg",
     srcs = ["package.json"],
     visibility = ["//visibility:public"],
-    deps = [":tsc"],
+    deps = [":server_tsc"],
 )
 
 # chdir = "server" (this package) so that server.ts's cwd-relative paths
@@ -55,7 +118,7 @@ js_binary(
     chdir = package_name(),
     data = [
         "package.json",
-        ":tsc",
+        ":server_tsc",
         "//fonts",
         "//server/data:stops",
         "//www",
@@ -69,7 +132,7 @@ js_binary(
     name = "icon_samples",
     data = [
         "package.json",
-        ":tsc",
+        ":icon_samples_tsc",
     ],
     entry_point = "out/iconSamples.js",
 )
@@ -79,7 +142,7 @@ js_test(
     chdir = package_name(),
     data = [
         "package.json",
-        ":tsc",
+        ":tests_tsc",
         "//server/data:stops",
         "//server/data:stops_for_testing",
     ],
@@ -91,7 +154,7 @@ js_test(
     name = "handlers_test",
     data = [
         "package.json",
-        ":tsc",
+        ":tests_tsc",
     ],
     entry_point = "out/handlers.test.js",
     size = "small",
@@ -101,7 +164,7 @@ js_test(
     name = "icons_test",
     data = [
         "package.json",
-        ":tsc",
+        ":tests_tsc",
     ],
     entry_point = "out/icons.test.js",
     size = "small",
@@ -112,7 +175,7 @@ js_test(
     chdir = package_name(),
     data = [
         "package.json",
-        ":tsc",
+        ":tests_tsc",
         "//server/data:operator_example",
     ],
     entry_point = "out/legal.test.js",
@@ -123,7 +186,7 @@ js_test(
     name = "page_test",
     data = [
         "package.json",
-        ":tsc",
+        ":tests_tsc",
     ],
     entry_point = "out/page.test.js",
     size = "small",
@@ -133,7 +196,7 @@ js_test(
     name = "limits_test",
     data = [
         "package.json",
-        ":tsc",
+        ":tests_tsc",
     ],
     entry_point = "out/limits.test.js",
     size = "small",
@@ -144,7 +207,7 @@ js_test(
     name = "proxy_fetcher_test",
     data = [
         "package.json",
-        ":tsc",
+        ":tests_tsc",
     ],
     entry_point = "out/proxyFetcher.test.js",
     size = "small",
