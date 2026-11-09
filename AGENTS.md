@@ -92,10 +92,9 @@ update both.
   `server_tsc` (the server and the `index.ts` that `//tests` imports),
   `tests_tsc` and `icon_samples_tsc`. The image holds only `server_tsc`, so
   a test or a tool neither ships in it nor changes it. Add a new file to
-  the `*_SRCS` list of the part that uses it (tests named `*.test.ts` go
-  to `TEST_SRCS` by themselves); the build fails on a file in none of
-  them. A part imports `server_tsc`'s output: for that,
-  `server/tsconfig.bazel.json` adds `out` to `rootDirs`.
+  the `*_SRCS` list of the part that uses it, a test to `TEST_SRCS`; the
+  build fails on a file in none of them. A part imports `server_tsc`'s
+  output: for that, `server/tsconfig.bazel.json` adds `out` to `rootDirs`.
 - CommonJS libraries: a library that compiles fine can still fail at
   runtime. `opentype.js` needs a default import; `import * as` compiled but
   failed with `opentype.parse is not a function`. Run the real entry point

@@ -35,7 +35,15 @@ SERVER_SRCS = [
     "src/server.ts",
 ]
 
-TEST_SRCS = glob(["src/**/*.test.ts"])
+TEST_SRCS = [
+    "src/geo.test.ts",
+    "src/handlers.test.ts",
+    "src/icons.test.ts",
+    "src/legal.test.ts",
+    "src/limits.test.ts",
+    "src/page.test.ts",
+    "src/proxyFetcher.test.ts",
+]
 
 ICON_SAMPLES_SRCS = ["src/iconSamples.ts"]
 
