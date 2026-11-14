@@ -174,12 +174,13 @@ function ruPlural(n: number, one: string, few: string, many: string): string {
 
 const ru: Strings = {
     page: {
-        title: "Отправления рядом – MVV",
+        // The site's Russian name, in every title.
+        title: "MVV: Что Где Куда",
         description:
             "Все отправления с остановок рядом с вами в Мюнхене: U-Bahn, " +
             "S-Bahn, трамвай и автобус, одним списком. Без приложения, без " +
             "регистрации, без cookies.",
-        ogTitle: "Отправления MVV рядом с вами",
+        ogTitle: "MVV: Что Где Куда",
         ogDescription:
             "Все отправления рядом с вами в Мюнхене, одним списком. Без " +
             "приложения, без регистрации, без cookies.",
@@ -187,12 +188,13 @@ const ru: Strings = {
         ogImageAlt:
             "Отправления у Мариенплац: трамвай 21, автобус 52 и U6, у " +
             "каждого остановка, расстояние и время.",
-        appName: "Отправления MVV рядом",
-        appShortName: "Отправления",
+        appName: "MVV: Что Где Куда",
+        appShortName: "Что Где Куда",
     },
 
-    title: "Отправления MVV",
-    header: { before: "Отправления MVV ", link: "рядом с вами", at: " в " },
+    title: "MVV: Что Где Куда",
+    // "MVV: Что Где Куда [рядом с вами] в 13:05"
+    header: { before: "MVV: Что Где Куда ", link: "рядом с вами", at: " в " },
     notOfficial: "Неофициальный сервис, не от MVV",
     // The pages themselves are in German and English.
     legalNotice: "Impressum",

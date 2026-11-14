@@ -46,9 +46,7 @@ const tests = [
 
         const ru = page.nearbyPage("ru", "ru", HOST);
         expect(ru.includes('<html lang="ru">')).toBe(true);
-        expect(ru.includes("<title>Отправления рядом – MVV</title>")).toBe(
-            true,
-        );
+        expect(ru.includes("<title>MVV: Что Где Куда</title>")).toBe(true);
         expect(ru.includes('og:locale" content="ru_RU"')).toBe(true);
         expect(ru.includes(`rel="canonical" href="https://${HOST}/ru"`)).toBe(
             true,
@@ -129,7 +127,7 @@ const tests = [
         }
         expect(JSON.parse(page.manifest("de")).short_name).toBe("Abfahrten");
         expect(JSON.parse(page.manifest("en")).short_name).toBe("Departures");
-        expect(JSON.parse(page.manifest("ru")).short_name).toBe("Отправления");
+        expect(JSON.parse(page.manifest("ru")).short_name).toBe("Что Где Куда");
     }),
 
     test("Russian counts stops with the right ending", () => {
