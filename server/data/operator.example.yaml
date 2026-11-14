@@ -8,3 +8,6 @@ address:
 email: kontakt@example.org
 # The hosting provider: name and address.
 hosting: Example Hosting GmbH, Beispielweg 2, 12345 Musterstadt
+# The host name the site is public at: the pages call the site by it, and
+# the nearby page links to it. Just the name, not a URL.
+host: mvv.example.org

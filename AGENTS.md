@@ -109,9 +109,10 @@ update both.
 - Environment: `MVV_PROXY_PORT` (default 3000), `MVV_PROXY_STOPS_FILE`,
   `MVV_PROXY_REQUEST_FILE` (the kiosk's stops for `/api/v1/timetable`),
   `MVV_PROXY_OPERATOR_FILE` (who runs the site, for `/impressum` and
-  `/datenschutz`), `SOCKS_PROXY`. Paths such as `../www/` and `./data/stops.csv` are relative
-  to the working directory, which must be `server/`. The Bazel targets
-  `chdir` there.
+  `/datenschutz`, and the host the site is public at), `SOCKS_PROXY`.
+  Paths such as `../www/` and `./data/stops.csv` are relative to the
+  working directory, which must be `server/`. The Bazel targets `chdir`
+  there.
 - On the Pi, pi-kiosk's `services/mvv-proxy.sh` runs the `server_bin`
   launcher (`bazel-bin/server/server_bin_/server_bin`) from its runfiles
   tree, as `bazel run` does, after `update-projects.sh` builds
@@ -136,10 +137,15 @@ update both.
   minutes' walk can't show anything; the server leaves those out, which
   also bounds how many stops the browser asks MVV about, whatever `d` is.
 - `/impressum` and `/datenschutz` (`server/src/legal.ts`) are rendered from
-  the operator file: name, address, email and hosting provider, in the
-  format of `server/data/operator.example.yaml`. The real file lives on the
-  public server, never in the repository. Without the variable both pages
-  are 404, as on the kiosk; a broken file stops the server.
+  the operator file: name, address, email, hosting provider and host, in
+  the format of `server/data/operator.example.yaml`. The real file lives on
+  the public server, never in the repository. Without the variable both
+  pages are 404, as on the kiosk; a broken file stops the server.
+- The operator's `host` (`mvv.mulambda.de`, just the name) is what the
+  legal pages call the site, and what the nearby page's canonical, hreflang
+  and link preview tags point at (`page.ts`). Without an operator file the
+  page has none of those tags. Tests use `mvv.example.org`, from the
+  example file.
 - The privacy notice describes what the site does. Update it with any
   change that sends visitor data somewhere new, logs personal data, or
   stores anything in the browser. It promises the server's logs are

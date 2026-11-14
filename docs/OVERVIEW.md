@@ -162,7 +162,8 @@ The privacy notice (`/datenschutz`, `server/src/legal.ts`) describes this,
 and any change to what the site does with visitor data has to update it.
 The operator's name and address, for the legal pages, come from a file on
 the public server and are never in this repository
-(`server/data/operator.example.yaml` shows its format).
+(`server/data/operator.example.yaml` shows its format). The same file names
+the host the site is public at, which the pages link to.
 
 ## Where it runs
 

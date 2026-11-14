@@ -74,9 +74,13 @@ export async function server(onReady: () => void) {
 
     app.get("/svg/*filename", handlers.svg);
 
-    // Without an operator file, as on the kiosk, both pages are 404.
-    if (operatorFile) {
-        const operator = await loadOperator(operatorFile);
+    // Without an operator file, as on the kiosk, both pages are 404, and the
+    // nearby page has no host to link to.
+    const operator = operatorFile
+        ? await loadOperator(operatorFile)
+        : undefined;
+    const host = operator?.host;
+    if (operator) {
         const send = (html: string) => (_: unknown, res: express.Response) => {
             res.setHeader("Cache-Control", "max-age=3600");
             res.type("html").send(html);
@@ -89,8 +93,8 @@ export async function server(onReady: () => void) {
     // files, which no longer have an index.html.
     // At / the page is in whichever language the browser prefers.
     const atRoot = {
-        de: page.nearbyPage("de", "auto"),
-        en: page.nearbyPage("en", "auto"),
+        de: page.nearbyPage("de", "auto", host),
+        en: page.nearbyPage("en", "auto", host),
     };
     const sendPage = (html: string, res: express.Response) => {
         res.setHeader("Cache-Control", "max-age=0");
@@ -102,8 +106,8 @@ export async function server(onReady: () => void) {
         res.setHeader("Vary", "Accept-Language");
         sendPage(atRoot[lang], res);
     });
-    const german = page.nearbyPage("de", "de");
-    const english = page.nearbyPage("en", "en");
+    const german = page.nearbyPage("de", "de", host);
+    const english = page.nearbyPage("en", "en", host);
     app.get("/de", (_, res) => sendPage(german, res));
     app.get("/en", (_, res) => sendPage(english, res));
     for (const lang of ["de", "en"] as const) {

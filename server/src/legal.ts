@@ -2,6 +2,8 @@
  * The Impressum and the privacy notice. Who runs the site comes from a file
  * on the server (MVV_PROXY_OPERATOR_FILE), so the address stays out of the
  * repository and the image. `data/operator.example.yaml` shows the format.
+ * The file also names the host the site is public at; the pages call the
+ * site by it, and the nearby page links to it.
  *
  * The privacy notice describes what the site does. Change it with the code:
  * a new request to another host, a new log line with personal data, or
@@ -17,7 +19,13 @@ export type Operator = {
     email: string;
     /** The hosting provider: name and address. */
     hosting: string;
+    /** The host name the site is public at, such as mvv.mulambda.de. */
+    host: string;
 };
+
+/** A host name: dot-separated labels of letters, digits and inner hyphens. */
+const LABEL = "[a-z0-9]([a-z0-9-]*[a-z0-9])?";
+const HOST_NAME = new RegExp(`^${LABEL}(\\.${LABEL})*$`);
 
 /** How long the server's logs are kept. The server must be set up to match. */
 export const LOG_DAYS = 14;
@@ -35,7 +43,7 @@ export function parseOperator(text: string): Operator | string[] {
         return [`not YAML: ${(e as Error).message}`];
     }
     if (typeof o !== "object" || o === null) {
-        return ["expected name, address, email and hosting"];
+        return ["expected name, address, email, hosting and host"];
     }
     const r = o as Record<string, unknown>;
     const field = (key: string): string => {
@@ -49,8 +57,12 @@ export function parseOperator(text: string): Operator | string[] {
     const name = field("name");
     const email = field("email");
     const hosting = field("hosting");
+    const host = field("host");
     if (email !== "" && !/^[^\s@]+@[^\s@]+$/.test(email)) {
         errors.push("email: not an address");
+    }
+    if (host !== "" && !HOST_NAME.test(host)) {
+        errors.push("host: expected a host name such as mvv.example.org");
     }
     const a = r.address;
     let address: string[] = [];
@@ -66,7 +78,7 @@ export function parseOperator(text: string): Operator | string[] {
     if (errors.length > 0) {
         return errors;
     }
-    return { name, address, email, hosting };
+    return { name, address, email, hosting, host };
 }
 
 function escapeHtml(s: string): string {
@@ -103,14 +115,19 @@ function contact(o: Operator, emailLabel: string): string {
     return `<p>${lines}</p>\n<p>${emailLabel}: ${emailLink(o)}</p>`;
 }
 
-function page(title: string, german: string, english: string): string {
+function page(
+    title: string,
+    host: string,
+    german: string,
+    english: string,
+): string {
     return `<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex" />
-<title>${title} – mvv.mulambda.de</title>
+<title>${title} – ${escapeHtml(host)}</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="/fonts/librefranklin/librefranklin.css" />
 <style>
@@ -138,23 +155,25 @@ ${english}
 }
 
 export function impressumPage(o: Operator): string {
+    const site = escapeHtml(o.host);
     const german = `<h1>Impressum</h1>
 <p>Angaben gemäß § 5 DDG</p>
 ${contact(o, "E-Mail")}
-<p>mvv.mulambda.de ist kein offizielles Angebot des MVV. Die Abfahrten und
+<p>${site} ist kein offizielles Angebot des MVV. Die Abfahrten und
 die meisten Liniensymbole stammen von der Münchner Verkehrs- und
 Tarifverbund GmbH (MVV); alle Angaben ohne Gewähr.</p>`;
     const english = `<h1>Legal notice</h1>
 <p>Information under § 5 DDG (German Digital Services Act). If in doubt,
 the German version applies.</p>
 ${contact(o, "Email")}
-<p>mvv.mulambda.de is not an official service of MVV. Departures and most
+<p>${site} is not an official service of MVV. Departures and most
 line icons come from Münchner Verkehrs- und Tarifverbund GmbH (MVV); no
 guarantee that they are correct.</p>`;
-    return page("Impressum", german, english);
+    return page("Impressum", o.host, german, english);
 }
 
 export function privacyPage(o: Operator): string {
+    const site = escapeHtml(o.host);
     const hosting = escapeHtml(o.hosting);
     const mail = emailLink(o);
     const german = `<h1>Datenschutzerklärung</h1>
@@ -164,7 +183,7 @@ export function privacyPage(o: Operator): string {
 ${contact(o, "E-Mail")}
 
 <h2>Kurz gesagt</h2>
-<p>mvv.mulambda.de zeigt die Abfahrten an den Haltestellen in Ihrer Nähe.
+<p>${site} zeigt die Abfahrten an den Haltestellen in Ihrer Nähe.
 Es gibt keine Anmeldung, keine Cookies, kein Tracking und keine
 Analysewerkzeuge. Ihren Standort brauchen wir nur, um die Haltestellen in
 Ihrer Nähe zu finden.</p>
@@ -229,7 +248,7 @@ ${mail}.</p>`;
 ${contact(o, "Email")}
 
 <h2>In short</h2>
-<p>mvv.mulambda.de shows the departures from the stops near you. There is
+<p>${site} shows the departures from the stops near you. There is
 no login, no cookies, no tracking and no analytics. We need your location
 only to find the stops near you.</p>
 
@@ -281,5 +300,5 @@ legitimate interests (Art. 21). You can withdraw consent at any time for
 the future. You can also complain to a data protection supervisory
 authority (Art. 77 GDPR). As we store nothing but rounded locations, we
 usually cannot link any data to you. Write to us at ${mail}.</p>`;
-    return page("Datenschutz", german, english);
+    return page("Datenschutz", o.host, german, english);
 }

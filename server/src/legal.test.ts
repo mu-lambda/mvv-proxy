@@ -6,6 +6,7 @@ import * as legal from "./legal.ts";
 const { suite, test, expect } = harness;
 
 const EXAMPLE = fs.readFileSync("data/operator.example.yaml", "utf-8");
+const HOST = "mvv.example.org";
 
 function operator(): legal.Operator {
     const o = legal.parseOperator(EXAMPLE);
@@ -23,6 +24,7 @@ const tests = [
             "Musterstraße 1 / 12345 Musterstadt",
         );
         expect(o.email).toBe("kontakt@example.org");
+        expect(o.host).toBe(HOST);
     }),
 
     test("a broken operator file says what is wrong", () => {
@@ -32,8 +34,24 @@ const tests = [
         expect(Array.isArray(errors)).toBe(true);
         expect((errors as string[]).join("; ")).toBe(
             "name: expected text; hosting: expected text; " +
-                "email: not an address; address: expected a list of lines",
+                "host: expected text; email: not an address; " +
+                "address: expected a list of lines",
         );
+        for (const host of [
+            "https://mvv.example.org",
+            "mvv.example.org/",
+            "mvv.example.org:3000",
+            "MVV.example.org",
+            "-mvv.example.org",
+            "mvv..example.org",
+            'mvv.example.org"><script>',
+        ]) {
+            const text = EXAMPLE.replace(/^host: .*$/m, `host: '${host}'`);
+            const errors = legal.parseOperator(text);
+            expect(Array.isArray(errors) ? errors.join("; ") : "").toBe(
+                "host: expected a host name such as mvv.example.org",
+            );
+        }
         expect(Array.isArray(legal.parseOperator("just text"))).toBe(true);
         expect(Array.isArray(legal.parseOperator("a: [unclosed"))).toBe(true);
     }),
@@ -67,6 +85,24 @@ const tests = [
             true,
         );
         expect(html.includes(`after ${legal.LOG_DAYS} days`)).toBe(true);
+    }),
+
+    test("both pages call the site by its host name", () => {
+        const o = operator();
+        const impressum = legal.impressumPage(o);
+        expect(impressum.includes(`<title>Impressum – ${HOST}</title>`)).toBe(
+            true,
+        );
+        expect(impressum.includes(`<p>${HOST} ist kein offizielles`)).toBe(
+            true,
+        );
+        expect(impressum.includes(`<p>${HOST} is not an official`)).toBe(true);
+        const privacy = legal.privacyPage(o);
+        expect(privacy.includes(`<p>${HOST} zeigt die Abfahrten`)).toBe(true);
+        expect(privacy.includes(`<p>${HOST} shows the departures`)).toBe(true);
+        for (const html of [impressum, privacy]) {
+            expect(html.includes("mulambda")).toBe(false);
+        }
     }),
 
     test("Cloudflare is told to leave every email address alone", () => {
