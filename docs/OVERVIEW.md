@@ -108,6 +108,14 @@ the MVV area.
 description and link preview for each. The page's text, both what the
 server writes and what the browser shows, is in `shared/src/strings.ts`.
 
+**Caching.** The page is checked on every load, and it links its script and
+styles with a version, the start of their content's hash
+(`/out/index-bundle.js?v=3f9a1c2b4d5e`), which browsers keep for a year. A
+deploy changes the hash and so the address, and visitors get the new files
+on their next load. `server/src/staticFiles.ts` hashes the static files when
+the server starts and gives each that hash as its ETag; other code is
+checked on every use, and pictures and fonts are kept for a day.
+
 ### Line icons
 
 Each departure names an icon file on MVV's site for its line. The server

@@ -58,12 +58,14 @@ function siteLinks(
 /**
  * The page in `lang`. `at` is which address it is served at: its own
  * language's, or `auto` for `/`. `host` is the operator file's; without
- * one, as on the kiosk, it is undefined.
+ * one, as on the kiosk, it is undefined. `url` gives the address of the
+ * script and styles, with their version (`StaticFiles.url`).
  */
 export function nearbyPage(
     lang: Lang,
     at: Lang | "auto",
     host: string | undefined,
+    url: (path: string) => string = (path) => path,
 ): string {
     const t = strings.forLang(lang).page;
     return `<!doctype html>
@@ -82,14 +84,17 @@ export function nearbyPage(
         <meta name="apple-mobile-web-app-title" content="${attr(t.appShortName)}" />
         <meta name="theme-color" content="${THEME_COLOUR}" />
 
-        <!-- Absolute, so they also load under /de/ with a slash. -->
-        <link rel="stylesheet" href="/index.css" />
-        <link rel="stylesheet" href="/loading.css" />
-        <link rel="stylesheet" href="/table.css" />
+        <!-- Absolute, so they also load under /de/ with a slash. Linked
+             here rather than @imported by the others, so it is versioned
+             too, and loads alongside them. -->
+        <link rel="stylesheet" href="${url("/fonts/librefranklin/librefranklin.css")}" />
+        <link rel="stylesheet" href="${url("/index.css")}" />
+        <link rel="stylesheet" href="${url("/loading.css")}" />
+        <link rel="stylesheet" href="${url("/table.css")}" />
     </head>
     <body>
         <div id="root"></div>
-        <script src="/out/index-bundle.js"></script>
+        <script src="${url("/out/index-bundle.js")}"></script>
     </body>
 </html>
 `;

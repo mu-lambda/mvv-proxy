@@ -177,6 +177,20 @@ update both.
   same time, and refuses names that can't be MVV's (five capitals or digits
   plus `.svg`) without asking. Other 4xx, such as 429, are not kept, and
   their 404 says `no-store`: Cloudflare would cache it for 4 hours.
+- Static files (`server/src/staticFiles.ts`) are hashed when the server
+  starts. The hash is each file's ETag, because Express's own is the size
+  and modification time, and the image's files are all dated 1970: a
+  changed file of the same size would look unchanged. `StaticFiles.url`
+  adds it as `?v=`, and with the right `v` a file is kept for a year
+  (`immutable`). The nearby page links its script and styles that way,
+  the font's stylesheet included; a file the page links must go through
+  `url`, or it's rechecked on every load. So no `@import` in the CSS: an
+  imported file has no version, and the browser finds it only after its
+  parent has loaded.
+  Unversioned HTML, CSS and JavaScript say `no-cache`, pictures and fonts a
+  day, and any 404 `no-store`. Cloudflare's "Browser Cache TTL" must be
+  "Respect Existing Headers", or it raises anything under 4 hours to 4
+  hours.
   Requests to MVV for icons also have a budget (1,500 at once, then about
   4,000 a day), run at most 8 at a time, and are tried once
   (`ICON_LIMITS`). For icons MVV lacks, it uses MVV's icon under another

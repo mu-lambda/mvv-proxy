@@ -1,7 +1,6 @@
-/* Served from /fonts/librefranklin/ by the express.static("../fonts") mount,
-   so the stylesheets in www/ can @import this rather than carry the
-   @font-face rule themselves -- the same arrangement publicsans.css has next
-   door. */
+/* Served at /fonts/librefranklin/librefranklin.css. The nearby page
+   (server/src/page.ts) and timetable.html link it next to their own
+   stylesheets; the page with a version, so browsers keep it for a year. */
 @font-face {
     font-family: "Libre Franklin";
     font-style: normal;

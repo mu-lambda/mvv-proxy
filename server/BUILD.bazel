@@ -33,6 +33,7 @@ SERVER_SRCS = [
     "src/page.ts",
     "src/proxyFetcher.ts",
     "src/server.ts",
+    "src/staticFiles.ts",
 ]
 
 TEST_SRCS = [
@@ -43,6 +44,7 @@ TEST_SRCS = [
     "src/limits.test.ts",
     "src/page.test.ts",
     "src/proxyFetcher.test.ts",
+    "src/staticFiles.test.ts",
 ]
 
 ICON_SAMPLES_SRCS = ["src/iconSamples.ts"]
@@ -207,6 +209,17 @@ js_test(
         ":tests_tsc",
     ],
     entry_point = "out/limits.test.js",
+    size = "small",
+)
+
+# Serves files from a temporary directory on a local port.
+js_test(
+    name = "static_files_test",
+    data = [
+        "package.json",
+        ":tests_tsc",
+    ],
+    entry_point = "out/staticFiles.test.js",
     size = "small",
 )
 
