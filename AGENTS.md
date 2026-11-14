@@ -194,19 +194,24 @@ update both.
   (`pre-commit.sh` refuses it): an imported file has no version, and the
   browser finds it only after its parent has loaded.
   Unversioned HTML, CSS and JavaScript say `no-cache`, pictures and fonts a
-  day, and any 404 `no-store`. Cloudflare's "Browser Cache TTL" must be
-  "Respect Existing Headers", or it raises anything under 4 hours to 4
-  hours.
+  day, and any 404 `no-store`. Cloudflare must pass these on as they are
+  (Browser TTL "Respect origin TTL" in a Cache Rule for the host, or the
+  zone's "Respect Existing Headers"); its default raises anything under 4
+  hours to 4 hours.
 
 ## The nearby page
 
 - The server writes its HTML (`server/src/page.ts`) in German, English or
   Russian: `/de`, `/en` and `/ru` fix the language, and `/` picks it from
   the browser's Accept-Language (whichever of the three it prefers,
-  English if none), with `Vary: Accept-Language`. Each version links the
-  others with `hreflang`, so search engines index each. There is no
-  `www/index.html`. `strings.LANGS` lists the languages; the routes,
-  manifests and `hreflang` links follow it.
+  English if none), with `Vary: Accept-Language`. Cloudflare keeps a
+  copy of the page but ignores `Vary`, so `/` is right only because the
+  page says `max-age=0`: Cloudflare fetches it again for every visitor,
+  and the server picks the language. Keep it at 0; with any longer,
+  visitors to `/` get whichever language was fetched last. Each version
+  links the others with `hreflang`, so search engines index each. There
+  is no `www/index.html`. `strings.LANGS` lists the languages; the
+  routes, manifests and `hreflang` links follow it.
 - All of the page's text, the HTML head's and the client's, is in
   `shared/src/strings.ts`, with the language choice (`pickLang`, `langOf`).
   Add new text there in every language. The client takes the language

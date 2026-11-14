@@ -101,6 +101,8 @@ export async function server(onReady: () => void) {
     const atRoot = Object.fromEntries(
         strings.LANGS.map((l) => [l, page.nearbyPage(l, "auto", host, url)]),
     ) as Record<strings.Lang, string>;
+    // max-age=0 keeps deploys instant, and keeps / right: Cloudflare
+    // keeps a copy but ignores Vary, so it must fetch / again every time.
     const sendPage = (html: string, res: express.Response) => {
         res.setHeader("Cache-Control", "max-age=0");
         res.type("html").send(html);
