@@ -53,10 +53,25 @@ export function buildQuadtree(
 export class Locator {
     #qt: d3.Quadtree<info.Stop>;
     #stops: Iterable<info.Stop>;
+    /** The stops' bounding box; empty (south > north) without stops. */
+    #bounds = {
+        south: Infinity,
+        north: -Infinity,
+        west: Infinity,
+        east: -Infinity,
+    };
 
     constructor(stops: Iterable<info.Stop>) {
         this.#qt = buildQuadtree(stops);
         this.#stops = stops;
+        const b = this.#bounds;
+        for (const s of this.#qt.data()) {
+            const { latitude, longitude } = s.location!;
+            b.south = Math.min(b.south, latitude);
+            b.north = Math.max(b.north, latitude);
+            b.west = Math.min(b.west, longitude);
+            b.east = Math.max(b.east, longitude);
+        }
     }
 
     numberOfStopsWithLocations() {
@@ -80,18 +95,18 @@ export class Locator {
         }
     }
 
-    /** The stop nearest to `p`, however far, or undefined if there are none. */
-    nearestStop(p: info.LatLong): info.StopWithDistance | undefined {
-        // The quadtree's nearest is nearest in degrees, which aren't the same
-        // length north and east. The real nearest is no further than it, so
-        // look within that distance.
-        const candidate = this.#qt.find(p.latitude, p.longitude);
-        if (!candidate?.location) return undefined;
-        let nearest: info.StopWithDistance | undefined;
-        for (const s of this.findStops(p, distance(p, candidate.location))) {
-            if (!nearest || s.distance < nearest.distance) nearest = s;
-        }
-        return nearest;
+    /**
+     * Whether `p` is within the stops' bounding box: the area this server
+     * knows about. Outside it, finding no stops is no surprise.
+     */
+    covers(p: info.LatLong): boolean {
+        const b = this.#bounds;
+        return (
+            b.south <= p.latitude &&
+            p.latitude <= b.north &&
+            b.west <= p.longitude &&
+            p.longitude <= b.east
+        );
     }
 
     findStops(

@@ -129,28 +129,13 @@ const tests = [
         check(l, p, d);
     }),
 
-    testAsync("nearest stop", async () => {
+    testAsync("the stops cover MVV, not Berlin or New York", async () => {
         const l = await locator();
-        // Points among the stops, past their edges, and far away.
-        const points = [
-            ll(48.13743, 11.57549), // Marienplatz
-            ll(47.42, 10.98), // the Zugspitze
-            ll(47.0, 11.5), // south of the stops
-            ll(49.8, 11.0), // north of them
-            ll(52.52, 13.405), // Berlin
-            ll(48.0, 8.0), // west of them
-        ];
-        for (let i = 0; i < 100; i++) {
-            points.push(ll(47.2 + (i % 10) * 0.25, 9.5 + (i / 10) * 0.45));
-        }
-        for (const p of points) {
-            let expected = Infinity;
-            for (const s of l.findStopsBruteforce(p, Infinity)) {
-                expected = Math.min(expected, s.distance);
-            }
-            expect(l.nearestStop(p)?.distance).toBe(expected);
-        }
-        expect(new Locator([]).nearestStop(ll(48, 11))).toBe(undefined);
+        expect(l.covers(ll(48.13743, 11.57549))).toBe(true); // Marienplatz
+        expect(l.covers(ll(47.8571, 12.1181))).toBe(true); // Rosenheim
+        expect(l.covers(ll(52.52, 13.405))).toBe(false); // Berlin
+        expect(l.covers(ll(40.7128, -74.006))).toBe(false); // New York
+        expect(new Locator([]).covers(ll(48.13743, 11.57549))).toBe(false);
     }),
 
     testAsync("everyTenthsStop", async () => {

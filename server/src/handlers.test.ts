@@ -98,28 +98,27 @@ function handlers(
 
 const DAY = 24 * 60 * 60 * 1000;
 
-/** A stop `metres` north of Marienplatz. */
-function stopNorth(gid: string, metres: number): info.Stop {
+/** A stop at a point. */
+function stopAt(gid: string, latitude: number, longitude: number): info.Stop {
     return {
         id: 0,
         name: gid,
         town: "München",
         gid,
-        // A degree of latitude is about 111 km.
-        location: {
-            latitude: 48.13743 + metres / 111_000,
-            longitude: 11.57549,
-        },
+        location: { latitude, longitude },
     };
 }
 
-/** Handlers that know only `stops`, at `now`. */
-function nearbyHandlers(
-    stops: info.Stop[],
-    now: () => number = Date.now,
-): Handlers {
+/** A stop `metres` north of Marienplatz. */
+function stopNorth(gid: string, metres: number): info.Stop {
+    // A degree of latitude is about 111 km.
+    return stopAt(gid, 48.13743 + metres / 111_000, 11.57549);
+}
+
+/** Handlers that know only `stops`. */
+function nearbyHandlers(stops: info.Stop[]): Handlers {
     const f = failingFetcher(new Error("unused"));
-    return new Handlers(new queryDepartures.Q([], stops, f), f, undefined, now);
+    return new Handlers(new queryDepartures.Q([], stops, f), f, undefined);
 }
 
 /** The gids stopsNearby returns, the request it builds, and outsideArea. */
@@ -229,41 +228,26 @@ const tests = [
         },
     ),
 
-    testAsync("stopsNearby says when a place is outside MVV", async () => {
-        // The nearest stop, 5 km away, is in Traunstein.
-        const outside = await nearby(
-            nearbyHandlers([stopNorth("de:09189:1", 5000)]),
-            {},
-        );
-        expect(outside.gids.length).toBe(0);
-        expect(outside.outsideArea).toBe(true);
-
-        // In München: just no stops near enough.
-        const inside = await nearby(
-            nearbyHandlers([
-                stopNorth("de:09162:1", 5000),
-                stopNorth("de:09189:1", 9000),
-            ]),
-            {},
-        );
+    testAsync("stopsNearby says when a place is outside the area", async () => {
+        // Stops 5 km north and south of Marienplatz, 100 m apart east to
+        // west: Marienplatz is inside their box, with none of them near.
+        const h = nearbyHandlers([
+            stopAt("north", 48.18, 11.575),
+            stopAt("south", 48.09, 11.576),
+        ]);
+        const inside = await nearby(h, {});
         expect(inside.gids.length).toBe(0);
         expect(inside.outsideArea).toBe(undefined);
 
-        // Near enough to a stop beyond MVV: its departures are shown.
-        const near = await nearby(
-            nearbyHandlers([stopNorth("de:09189:1", 300)]),
-            {},
-        );
-        expect(near.gids.join()).toBe("de:09189:1");
-        expect(near.outsideArea).toBe(undefined);
+        // Berlin.
+        const berlin = await nearby(h, { lat: "52.52", long: "13.405" });
+        expect(berlin.gids.length).toBe(0);
+        expect(berlin.outsideArea).toBe(true);
 
-        // Ostallgäu joins MVV on 1 January 2027.
-        const ostallgaeu = [stopNorth("de:09777:1", 5000)];
-        const at = (day: string) => () => new Date(day).getTime();
-        const before = nearbyHandlers(ostallgaeu, at("2026-12-31T12:00Z"));
-        const after = nearbyHandlers(ostallgaeu, at("2027-01-01T12:00Z"));
-        expect((await nearby(before, {})).outsideArea).toBe(true);
-        expect((await nearby(after, {})).outsideArea).toBe(undefined);
+        // Just east of the box, but near enough to a stop: it's shown.
+        const near = await nearby(h, { lat: "48.18", long: "11.577" });
+        expect(near.gids.join()).toBe("north");
+        expect(near.outsideArea).toBe(undefined);
     }),
 
     testAsync("an icon MVV does not have is asked for once", async () => {

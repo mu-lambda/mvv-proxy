@@ -21,7 +21,6 @@ ts_config(
 
 # The server, and the library surface (index.ts) that //tests imports.
 SERVER_SRCS = [
-    "src/area.ts",
     "src/data.ts",
     "src/geo.ts",
     "src/handlers.ts",
@@ -37,7 +36,6 @@ SERVER_SRCS = [
 ]
 
 TEST_SRCS = [
-    "src/area.test.ts",
     "src/geo.test.ts",
     "src/handlers.test.ts",
     "src/icons.test.ts",
@@ -145,16 +143,6 @@ js_binary(
         ":icon_samples_tsc",
     ],
     entry_point = "out/iconSamples.js",
-)
-
-js_test(
-    name = "area_test",
-    data = [
-        "package.json",
-        ":tests_tsc",
-    ],
-    entry_point = "out/area.test.js",
-    size = "small",
 )
 
 js_test(

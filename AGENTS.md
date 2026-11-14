@@ -137,10 +137,10 @@ update both.
   minutes' walk can't show anything; the server leaves those out, which
   also bounds how many stops the browser asks MVV about, whatever `d` is.
 - With no stops to show, `/api/v1/stopsNearby` sets `outsideArea` if the
-  nearest stop, however far, is outside MVV, and the page says so instead
-  of "no stops within d m". `server/src/area.ts` lists MVV's districts by
-  the key in a stop's global id; add districts as MVV grows, with the day
-  they join (Ostallgäu and Kaufbeuren on 1 January 2027).
+  place is outside the bounding box of all the stops in `stops.csv`
+  (`Locator.covers`), and the page says it's outside the MVV area instead
+  of "no stops within d m". The box is rough on purpose: stops.csv reaches
+  past MVV, and the point is to answer Berlin or New York.
 - `/impressum` and `/datenschutz` (`server/src/legal.ts`) are rendered from
   the operator file: name, address, email, hosting provider and host, in
   the format of `server/data/operator.example.yaml`. The real file lives on

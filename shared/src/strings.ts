@@ -49,7 +49,7 @@ export type Strings = {
     loading: string;
     fetching: (stops: number) => string;
     noStops: (metres: number) => string;
-    /** No stops, and the place is beyond MVV. */
+    /** No stops, and the place is beyond all the stops the server knows. */
     outsideArea: string;
     /** Within the request's limit, or at all if it has none. */
     noDepartures: (minutes: number | undefined) => string;
