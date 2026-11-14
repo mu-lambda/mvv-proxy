@@ -37,6 +37,8 @@ export type Strings = {
     notOfficial: string;
     legalNotice: string;
     privacy: string;
+    /** The legal pages' section in this language ("" for German, on top). */
+    legalAnchor: string;
     donateAlt: string;
     /** PayPal's donate button image, in this language. */
     donateImage: string;
@@ -83,6 +85,7 @@ const en: Strings = {
     notOfficial: "Not an official service of MVV",
     legalNotice: "Legal notice",
     privacy: "Privacy",
+    legalAnchor: "#en",
     donateAlt: "Donate with PayPal",
     donateImage: "/paypal-donate.gif",
 
@@ -134,6 +137,7 @@ const de: Strings = {
     notOfficial: "Kein offizielles Angebot des MVV",
     legalNotice: "Impressum",
     privacy: "Datenschutz",
+    legalAnchor: "",
     donateAlt: "Mit PayPal spenden",
     donateImage: "/paypal-donate-de.gif",
 
@@ -167,7 +171,12 @@ const de: Strings = {
  * The Russian noun after a number, by its plural rule: `one` for 1, 21,
  * 31…, `few` for 2–4, 22–24…, `many` for the rest, 11–14 included.
  */
-function ruPlural(n: number, one: string, few: string, many: string): string {
+export function ruPlural(
+    n: number,
+    one: string,
+    few: string,
+    many: string,
+): string {
     const tens = n % 100;
     const ones = n % 10;
     if (tens >= 11 && tens <= 14) return many;
@@ -203,6 +212,7 @@ const ru: Strings = {
     // The pages themselves are in German and English.
     legalNotice: "Impressum",
     privacy: "Конфиденциальность",
+    legalAnchor: "#ru",
     donateAlt: "Пожертвовать через PayPal",
     // PayPal's button in English: there is no Russian one here.
     donateImage: "/paypal-donate.gif",

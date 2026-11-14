@@ -10,6 +10,7 @@
  * anything stored in the browser.
  */
 import * as yaml from "yaml";
+import { strings } from "shared";
 
 import { STOPS_SOURCE } from "./stopsSource.ts";
 
@@ -33,7 +34,11 @@ const HOST_NAME = new RegExp(`^${LABEL}(\\.${LABEL})*$`);
 export const LOG_DAYS = 14;
 
 /** The date the notices were last changed, as they show it. */
-const AS_OF = { de: "November 2026", en: "November 2026" };
+const AS_OF = {
+    de: "November 2026",
+    en: "November 2026",
+    ru: "ноябрь 2026 года",
+};
 
 /** The operator described by the YAML, or the problems with it. */
 export function parseOperator(text: string): Operator | string[] {
@@ -117,11 +122,18 @@ function contact(o: Operator, emailLabel: string): string {
     return `<p>${lines}</p>\n<p>${emailLabel}: ${emailLink(o)}</p>`;
 }
 
+/**
+ * The page, in German, English and Russian, one after the other. The
+ * German version applies; the others are there to be understood. The
+ * nearby page links to each language's section (`legalAnchor` in
+ * strings.ts).
+ */
 function page(
     title: string,
     host: string,
     german: string,
     english: string,
+    russian: string,
 ): string {
     return `<!doctype html>
 <html lang="de">
@@ -143,12 +155,17 @@ hr { margin: 2.5em 0; }
 </style>
 </head>
 <body>
-<header><a href="/">← Abfahrten in der Nähe / Departures nearby</a></header>
+<header><a href="/">← Abfahrten in der Nähe / Departures nearby /
+<span lang="ru">Отправления рядом</span></a></header>
 <main>
 ${german}
 <hr />
-<div lang="en">
+<div lang="en" id="en">
 ${english}
+</div>
+<hr />
+<div lang="ru" id="ru">
+${russian}
 </div>
 </main>
 </body>
@@ -159,8 +176,8 @@ ${english}
 /** The licence MVV links for its open data, which names no version. */
 const CC_BY = "https://opendefinition.org/licenses/cc-by/";
 
-/** "2026-01-07" → "07.01.2026" */
-function germanDate(iso: string): string {
+/** "2026-01-07" → "07.01.2026", as German and Russian write it. */
+function dottedDate(iso: string): string {
     const [y, m, d] = iso.split("-");
     return `${d}.${m}.${y}`;
 }
@@ -176,8 +193,8 @@ die meisten Liniensymbole stammen von der Münchner Verkehrs- und
 Tarifverbund GmbH (MVV); alle Angaben ohne Gewähr.</p>
 <p>Die Haltestellen stammen aus der
 <a href="${s.page}">Haltestellenliste</a> der Münchner Verkehrs- und
-Tarifverbund GmbH (MVV), Stand ${germanDate(s.stand)}, abgerufen am
-${germanDate(s.downloaded)}, unter der Lizenz
+Tarifverbund GmbH (MVV), Stand ${dottedDate(s.stand)}, abgerufen am
+${dottedDate(s.downloaded)}, unter der Lizenz
 <a href="${CC_BY}">Creative Commons Attribution (CC BY)</a>.</p>`;
     const english = `<h1>Legal notice</h1>
 <p>Information under § 5 DDG (German Digital Services Act). If in doubt,
@@ -190,7 +207,18 @@ guarantee that they are correct.</p>
 Münchner Verkehrs- und Tarifverbund GmbH (MVV), as of ${s.stand},
 downloaded on ${s.downloaded}, under the
 <a href="${CC_BY}">Creative Commons Attribution (CC BY)</a> licence.</p>`;
-    return page("Impressum", o.host, german, english);
+    const russian = `<h1>Impressum (выходные данные)</h1>
+<p>Сведения согласно § 5 DDG (германский Закон о цифровых услугах). В
+случае сомнений действует немецкая версия.</p>
+${contact(o, "Эл. почта")}
+<p>${site} — неофициальный сервис, не от MVV. Отправления и большинство
+значков линий получены от Münchner Verkehrs- und Tarifverbund GmbH (MVV);
+их правильность не гарантируется.</p>
+<p>Остановки взяты из <a href="${s.page}">списка остановок</a>
+Münchner Verkehrs- und Tarifverbund GmbH (MVV) по состоянию на
+${dottedDate(s.stand)}, загруженного ${dottedDate(s.downloaded)}, по
+лицензии <a href="${CC_BY}">Creative Commons Attribution (CC BY)</a>.</p>`;
+    return page("Impressum", o.host, german, english, russian);
 }
 
 export function privacyPage(o: Operator): string {
@@ -321,5 +349,70 @@ legitimate interests (Art. 21). You can withdraw consent at any time for
 the future. You can also complain to a data protection supervisory
 authority (Art. 77 GDPR). As we store nothing but rounded locations, we
 usually cannot link any data to you. Write to us at ${mail}.</p>`;
-    return page("Datenschutz", o.host, german, english);
+    const days = strings.ruPlural(LOG_DAYS, "день", "дня", "дней");
+    const russian = `<h1>Политика конфиденциальности</h1>
+<p>По состоянию на ${AS_OF.ru}. В случае сомнений действует немецкая
+версия.</p>
+
+<h2>Ответственный за обработку данных</h2>
+${contact(o, "Эл. почта")}
+
+<h2>Коротко</h2>
+<p>${site} показывает отправления с остановок рядом с вами. Здесь нет
+регистрации, cookie, отслеживания и инструментов аналитики. Ваше
+местоположение нужно нам только для того, чтобы найти остановки рядом с
+вами.</p>
+
+<h2>Посещение сайта</h2>
+<p>Сайт доставляется через Cloudflare (Cloudflare, Inc., 101 Townsend St.,
+San Francisco, CA 94107, USA). По нашему поручению Cloudflare обрабатывает
+ваш IP-адрес, запрошенный адрес, дату и время, а также сведения о вашем
+браузере, чтобы доставить сайт и защитить его от атак. При этом данные
+могут передаваться в США; Cloudflare сертифицирован по EU-US Data Privacy
+Framework. Правовое основание — наш законный интерес в безопасной и
+быстрой доставке сайта (ст. 6(1)(f) GDPR).</p>
+<p>Наш сервер размещён у ${hosting}. Он не сохраняет IP-адреса.</p>
+
+<h2>Ваше местоположение</h2>
+<p>Если вы разрешите это в браузере, страница отправит ваше
+местоположение на наш сервер, который по нему найдёт остановки рядом с
+вами. То же происходит, когда вы открываете ссылку с координатами
+(<code>?lat=…&amp;long=…</code>). Сервер не сохраняет местоположение. Он
+записывает его в свой журнал только округлённым до двух знаков после
+запятой (с точностью около 1 км), чтобы видеть, где пользуются сайтом, и
+для поиска ошибок. Журнал удаляется через ${LOG_DAYS} ${days}.</p>
+<p>Правовое основание — ваше согласие (ст. 6(1)(a) GDPR), которое вы
+даёте, разрешая доступ к местоположению, и можете в любой момент отозвать
+в настройках браузера; для округлённого журнала — наш законный интерес в
+работе сайта и поиске ошибок (ст. 6(1)(f) GDPR).</p>
+
+<h2>Отправления от MVV</h2>
+<p>Отправления ваш браузер получает напрямую от Münchner Verkehrs- und
+Tarifverbund GmbH (MVV), с www.mvv-muenchen.de. MVV при этом получает ваш
+IP-адрес и остановки рядом с вами, а значит, и ваше примерное
+местоположение. За это отвечает MVV, и действует его политика
+конфиденциальности. Без этого запроса страница не может показать
+отправления; правовое основание — наш законный интерес показать вам
+нужные отправления (ст. 6(1)(f) GDPR).</p>
+<p>Значки линий, напротив, наш сервер получает от MVV сам. MVV при этом
+ничего о вас не узнаёт.</p>
+
+<h2>Шрифты, cookie и ссылки</h2>
+<p>Шрифты и изображения загружаются с нашего сервера. Страница не
+устанавливает cookie и ничего не сохраняет в вашем браузере. Ссылки на
+PayPal (пожертвования) и Google Maps (места и маршруты) ведут к этим
+сервисам только при нажатии; тогда действуют их политики
+конфиденциальности. Ссылка на Google Maps содержит координаты места, на
+которое она указывает.</p>
+
+<h2>Ваши права</h2>
+<p>Вы имеете право на доступ к данным (ст. 15 GDPR), их исправление
+(ст. 16), удаление (ст. 17), ограничение обработки (ст. 18) и
+переносимость (ст. 20), а также можете возразить против обработки на
+основании законных интересов (ст. 21). Согласие можно в любой момент
+отозвать на будущее. Кроме того, вы можете подать жалобу в надзорный
+орган по защите данных (ст. 77 GDPR). Поскольку мы не храним ничего, кроме
+округлённых местоположений, мы, как правило, не можем связать с вами
+какие-либо данные. Пишите нам на ${mail}.</p>`;
+    return page("Datenschutz", o.host, german, english, russian);
 }

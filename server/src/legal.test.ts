@@ -1,5 +1,5 @@
 import * as fs from "node:fs";
-import { testing as harness } from "shared";
+import { strings, testing as harness } from "shared";
 
 import * as legal from "./legal.ts";
 import { STOPS_SOURCE } from "./stopsSource.ts";
@@ -71,21 +71,27 @@ const tests = [
         ).toBe(true);
         expect(
             html.includes(
+                `${german(stand)}, загруженного ${german(downloaded)}, по`,
+            ),
+        ).toBe(true);
+        expect(
+            html.includes(
                 '<a href="https://opendefinition.org/licenses/cc-by/">',
             ),
         ).toBe(true);
     }),
 
-    test("the Impressum shows the operator, in German and English", () => {
+    test("the Impressum shows the operator, in all three languages", () => {
         const html = legal.impressumPage(operator());
         expect(html.includes('<html lang="de">')).toBe(true);
         expect(html.includes("Angaben gemäß § 5 DDG")).toBe(true);
-        expect(html.includes('<div lang="en">')).toBe(true);
-        expect(
-            html.includes(
-                "Erika Mustermann<br />\nMusterstraße 1<br />\n12345 Musterstadt",
-            ),
-        ).toBe(true);
+        expect(html.includes('<div lang="en" id="en">')).toBe(true);
+        expect(html.includes("Information under § 5 DDG")).toBe(true);
+        expect(html.includes('<div lang="ru" id="ru">')).toBe(true);
+        expect(html.includes("Сведения согласно § 5 DDG")).toBe(true);
+        const address =
+            "Erika Mustermann<br />\nMusterstraße 1<br />\n12345 Musterstadt";
+        expect(html.split(address).length - 1).toBe(3);
         expect(
             html.includes(
                 '<a href="mailto:kontakt@example.org">kontakt@example.org</a>',
@@ -105,6 +111,26 @@ const tests = [
             true,
         );
         expect(html.includes(`after ${legal.LOG_DAYS} days`)).toBe(true);
+        expect(
+            html.includes("Наш сервер размещён у Example Hosting GmbH"),
+        ).toBe(true);
+        // 14 дней; 21 would be день, 22 дня.
+        expect(html.includes(`через ${legal.LOG_DAYS} дней`)).toBe(true);
+    }),
+
+    test("each language's section can be linked to", () => {
+        const o = operator();
+        for (const html of [legal.impressumPage(o), legal.privacyPage(o)]) {
+            for (const lang of strings.LANGS) {
+                const anchor = strings.forLang(lang).legalAnchor;
+                if (anchor === "") {
+                    // German, at the top.
+                    expect(lang).toBe("de");
+                } else {
+                    expect(html.includes(`id="${anchor.slice(1)}"`)).toBe(true);
+                }
+            }
+        }
     }),
 
     test("both pages call the site by its host name", () => {
@@ -117,9 +143,13 @@ const tests = [
             true,
         );
         expect(impressum.includes(`<p>${HOST} is not an official`)).toBe(true);
+        expect(impressum.includes(`<p>${HOST} — неофициальный`)).toBe(true);
         const privacy = legal.privacyPage(o);
         expect(privacy.includes(`<p>${HOST} zeigt die Abfahrten`)).toBe(true);
         expect(privacy.includes(`<p>${HOST} shows the departures`)).toBe(true);
+        expect(privacy.includes(`<p>${HOST} показывает отправления`)).toBe(
+            true,
+        );
         for (const html of [impressum, privacy]) {
             expect(html.includes("mulambda")).toBe(false);
         }

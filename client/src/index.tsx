@@ -218,8 +218,9 @@ function GeoDepsTable({
             <div className="departures-header">
                 {top}
                 <span className="disclaimer">
-                    {t.notOfficial} · <a href="/impressum">{t.legalNotice}</a> ·{" "}
-                    <a href="/datenschutz">{t.privacy}</a>
+                    {t.notOfficial} ·{" "}
+                    <a href={`/impressum${t.legalAnchor}`}>{t.legalNotice}</a> ·{" "}
+                    <a href={`/datenschutz${t.legalAnchor}`}>{t.privacy}</a>
                     <a
                         href="https://www.paypal.com/donate?hosted_button_id=SVH3NYCAR3UAN"
                         className="donate"
@@ -274,7 +275,8 @@ function GeoDepsTable({
                         {t.introButton}
                     </button>
                     <p className="intro-privacy">
-                        {t.introLocation} <a href="/datenschutz">{t.privacy}</a>
+                        {t.introLocation}{" "}
+                        <a href={`/datenschutz${t.legalAnchor}`}>{t.privacy}</a>
                     </p>
                 </div>,
             );

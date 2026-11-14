@@ -160,9 +160,9 @@ update both.
   and link preview tags point at (`page.ts`). Without an operator file the
   page has none of those tags. Tests use `mvv.example.org`, from the
   example file.
-- The privacy notice describes what the site does. Update it with any
-  change that sends visitor data somewhere new, logs personal data, or
-  stores anything in the browser. It promises the server's logs are
+- The privacy notice describes what the site does, in all three
+  languages. Update it with any change that sends visitor data somewhere
+  new, logs personal data, or stores anything in the browser. It promises the server's logs are
   deleted after `LOG_DAYS` (14) days, so the public server's log rotation
   has to match.
 - `server.ts` sets Express's `env` to `production`, so error pages carry no
@@ -228,9 +228,12 @@ update both.
   "вы"; the legal pages use "Sie". Line and stop names, U-Bahn and S-Bahn
   stay German in every language. Russian counts with `ruPlural` (1, 2–4,
   5 and up, 11–14 like 5).
-- The legal pages are German and English only, also from `/ru`; their
-  German version is the one that applies. The Russian page uses the English
-  PayPal button.
+- The legal pages are in German, English and Russian, one after the
+  other on the same page; the German version is the one that applies. The
+  English and Russian sections have ids, and the nearby page links to its
+  own language's (`legalAnchor` in `strings.ts`: `#en`, `#ru`, nothing for
+  German). A change to them goes into all three, `AS_OF` included. The
+  Russian page uses the English PayPal button.
 - The kiosk only loads `timetable.html`, which stays English.
 - Link previews (WhatsApp, Telegram…) show `www/og-image-<lang>.png`, the
   page in its own language. They are screenshots of departures at
