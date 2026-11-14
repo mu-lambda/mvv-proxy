@@ -89,28 +89,25 @@ export async function server(onReady: () => void) {
         app.get("/datenschutz", send(legal.privacyPage(operator)));
     }
 
-    // The nearby page, in German or English (page.ts). Before the static
-    // files, which no longer have an index.html.
+    // The nearby page, in each language (page.ts). Before the static files,
+    // which no longer have an index.html.
     // At / the page is in whichever language the browser prefers.
-    const atRoot = {
-        de: page.nearbyPage("de", "auto", host),
-        en: page.nearbyPage("en", "auto", host),
-    };
+    const atRoot = Object.fromEntries(
+        strings.LANGS.map((l) => [l, page.nearbyPage(l, "auto", host)]),
+    ) as Record<strings.Lang, string>;
     const sendPage = (html: string, res: express.Response) => {
         res.setHeader("Cache-Control", "max-age=0");
         res.type("html").send(html);
     };
     app.get(["/", "/index.html"], (req, res) => {
-        const lang = strings.pickLang(req.acceptsLanguages("en", "de"));
+        const lang = strings.pickLang(req.acceptsLanguages(...strings.LANGS));
         // Caches must keep one copy per language.
         res.setHeader("Vary", "Accept-Language");
         sendPage(atRoot[lang], res);
     });
-    const german = page.nearbyPage("de", "de", host);
-    const english = page.nearbyPage("en", "en", host);
-    app.get("/de", (_, res) => sendPage(german, res));
-    app.get("/en", (_, res) => sendPage(english, res));
-    for (const lang of ["de", "en"] as const) {
+    for (const lang of strings.LANGS) {
+        const html = page.nearbyPage(lang, lang, host);
+        app.get(`/${lang}`, (_, res) => sendPage(html, res));
         const json = page.manifest(lang);
         app.get(`/${lang}.webmanifest`, (_, res) => {
             res.setHeader("Cache-Control", "max-age=86400");

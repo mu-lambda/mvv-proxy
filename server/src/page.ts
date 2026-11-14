@@ -1,7 +1,7 @@
 /**
- * The nearby page's HTML, in German or English. `/de` and `/en` fix the
- * language, so search engines can find both; `/` picks it from the
- * browser's Accept-Language. The client reads `<html lang>` and shows its
+ * The nearby page's HTML, in German, English or Russian. `/de`, `/en` and
+ * `/ru` fix the language, so search engines can find each; `/` picks it
+ * from the browser's Accept-Language. The client reads `<html lang>` and shows its
  * text in the same language. All the text is in shared/src/strings.ts.
  */
 import { strings } from "shared";
@@ -30,20 +30,19 @@ function siteLinks(
 ): string {
     if (host === undefined) return "";
     const site = `https://${host}`;
-    const urls: Record<Lang | "auto", string> = {
-        auto: `${site}/`,
-        de: `${site}/de`,
-        en: `${site}/en`,
-    };
+    const url = (l: Lang | "auto") =>
+        l === "auto" ? `${site}/` : `${site}/${l}`;
+    const alternates = strings.LANGS.map(
+        (l) =>
+            `\n        <link rel="alternate" hreflang="${l}" href="${url(l)}" />`,
+    ).join("");
     return `
-        <link rel="canonical" href="${urls[at]}" />
-        <link rel="alternate" hreflang="de" href="${urls.de}" />
-        <link rel="alternate" hreflang="en" href="${urls.en}" />
-        <link rel="alternate" hreflang="x-default" href="${urls.auto}" />
+        <link rel="canonical" href="${url(at)}" />${alternates}
+        <link rel="alternate" hreflang="x-default" href="${url("auto")}" />
 
         <!-- Link previews in chats and social networks. -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="${urls[at]}" />
+        <meta property="og:url" content="${url(at)}" />
         <meta property="og:site_name" content="${host}" />
         <meta property="og:title" content="${attr(t.ogTitle)}" />
         <meta property="og:description" content="${attr(t.ogDescription)}" />

@@ -181,19 +181,27 @@ update both.
 
 ## The nearby page
 
-- The server writes its HTML (`server/src/page.ts`) in German or English:
-  `/de` and `/en` fix the language, and `/` picks it from the browser's
-  Accept-Language (German if preferred over English, else English), with
-  `Vary: Accept-Language`. Each version links the others with `hreflang`,
-  so search engines index both. There is no `www/index.html`.
+- The server writes its HTML (`server/src/page.ts`) in German, English or
+  Russian: `/de`, `/en` and `/ru` fix the language, and `/` picks it from
+  the browser's Accept-Language (whichever of the three it prefers,
+  English if none), with `Vary: Accept-Language`. Each version links the
+  others with `hreflang`, so search engines index each. There is no
+  `www/index.html`. `strings.LANGS` lists the languages; the routes,
+  manifests and `hreflang` links follow it.
 - All of the page's text, the HTML head's and the client's, is in
   `shared/src/strings.ts`, with the language choice (`pickLang`, `langOf`).
-  Add new text there in both languages. The client takes the language
-  from `<html lang>`. German speaks to the visitor as "du"; the legal pages
-  use "Sie".
+  Add new text there in every language. The client takes the language
+  from `<html lang>`. German speaks to the visitor as "du", Russian as
+  "вы"; the legal pages use "Sie". Line and stop names, U-Bahn and S-Bahn
+  stay German in every language. Russian counts with `ruPlural` (1, 2–4,
+  5 and up, 11–14 like 5).
+- The legal pages are German and English only, also from `/ru`; their
+  German version is the one that applies. The Russian page uses the English
+  PayPal button.
 - The kiosk only loads `timetable.html`, which stays English.
 - The site can be installed ("Add to Home Screen"): the server writes a
   manifest per language (`/de.webmanifest`, `/en.webmanifest`,
+  `/ru.webmanifest`,
   `page.manifest`), whose names are in `strings.ts`. The icons are drawn in
   `www/app-icon.svg` (the favicon's bus-stop sign with a μλ badge, the
   letters as strokes so no font is needed) and made into PNGs by
