@@ -245,11 +245,14 @@ update both.
   asking whether to. The owner reviews it and asks for changes if needed.
 - Sometimes the owner wants a pull request instead: prepare the commit the
   same way, but on a new branch off an up-to-date main. Still do not commit
-  or push; the owner runs `./make-pr.sh <message file>`, which commits
-  (signed), pushes and opens the pull request. pi-kiosk has its own copy
-  of the script. This repository is public, so a pushed branch is
-  published before anyone reviews it: check for keys and personal data
-  before handing it over.
+  or push; the owner runs `make-pr.sh <message file>`, which commits
+  (signed), pushes and opens the pull request. The script is the owner's,
+  on their `PATH`, not in this repository. To address review comments,
+  read them with `gh pr view --comments` (the line comments need
+  `gh api repos/<owner>/<repo>/pulls/<n>/comments`), change the branch,
+  and prepare another commit for the same script. This repository is
+  public, so a pushed branch is published before anyone reviews it: check
+  for keys and personal data before handing it over.
 - `PROMOTION.md` is the plan for the public site. When a change does one
   of its items, tick the box in the same commit.
 - The owner tests on the Pi before calling a change done. Say what you could
