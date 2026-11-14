@@ -183,6 +183,20 @@ update both.
   name, or draws one from the line the client passes as query parameters
   (`server/src/icons.ts`). `docs/MVV-ICONS.md` has the classes of missing
   icons and the decisions behind each drawing.
+- Static files (`server/src/staticFiles.ts`) are hashed when the server
+  starts. The hash is each file's ETag, because Express's own is the size
+  and modification time, and the image's files are all dated 1970: a
+  changed file of the same size would look unchanged. `StaticFiles.url`
+  adds it as `?v=`, and with the right `v` a file is kept for a year
+  (`immutable`). The nearby page links its script and styles that way,
+  the font's stylesheet included; a file the page links must go through
+  `url`, or it's rechecked on every load. So no `@import` in the CSS
+  (`pre-commit.sh` refuses it): an imported file has no version, and the
+  browser finds it only after its parent has loaded.
+  Unversioned HTML, CSS and JavaScript say `no-cache`, pictures and fonts a
+  day, and any 404 `no-store`. Cloudflare's "Browser Cache TTL" must be
+  "Respect Existing Headers", or it raises anything under 4 hours to 4
+  hours.
 
 ## The nearby page
 

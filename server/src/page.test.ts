@@ -100,6 +100,19 @@ const tests = [
         }
     }),
 
+    test("the script and styles are linked with their version", () => {
+        const html = page.nearbyPage("en", "en", HOST, (p) => `${p}?v=1`);
+        for (const tag of [
+            '<link rel="stylesheet" href="/fonts/librefranklin/librefranklin.css?v=1" />',
+            '<link rel="stylesheet" href="/index.css?v=1" />',
+            '<link rel="stylesheet" href="/loading.css?v=1" />',
+            '<link rel="stylesheet" href="/table.css?v=1" />',
+            '<script src="/out/index-bundle.js?v=1"></script>',
+        ]) {
+            expect(html.includes(tag)).toBe(true);
+        }
+    }),
+
     test("each language links its own manifest", () => {
         const de = page.nearbyPage("de", "auto", HOST);
         expect(

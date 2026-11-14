@@ -10,6 +10,7 @@ import { lines } from "./lines.ts";
 import { Handlers } from "./handlers.ts";
 import * as legal from "./legal.ts";
 import * as page from "./page.ts";
+import { StaticFiles, notFound } from "./staticFiles.ts";
 
 const app = express();
 // Error pages without stack traces, however the server was started. Express
@@ -80,6 +81,11 @@ export async function server(onReady: () => void) {
         ? await loadOperator(operatorFile)
         : undefined;
     const host = operator?.host;
+    const files = await StaticFiles.load({
+        "/": "../www",
+        "/fonts": "../fonts",
+    });
+    const url = (path: string) => files.url(path);
     if (operator) {
         const send = (html: string) => (_: unknown, res: express.Response) => {
             res.setHeader("Cache-Control", "max-age=3600");
@@ -93,7 +99,7 @@ export async function server(onReady: () => void) {
     // which no longer have an index.html.
     // At / the page is in whichever language the browser prefers.
     const atRoot = Object.fromEntries(
-        strings.LANGS.map((l) => [l, page.nearbyPage(l, "auto", host)]),
+        strings.LANGS.map((l) => [l, page.nearbyPage(l, "auto", host, url)]),
     ) as Record<strings.Lang, string>;
     const sendPage = (html: string, res: express.Response) => {
         res.setHeader("Cache-Control", "max-age=0");
@@ -106,7 +112,7 @@ export async function server(onReady: () => void) {
         sendPage(atRoot[lang], res);
     });
     for (const lang of strings.LANGS) {
-        const html = page.nearbyPage(lang, lang, host);
+        const html = page.nearbyPage(lang, lang, host, url);
         app.get(`/${lang}`, (_, res) => sendPage(html, res));
         const json = page.manifest(lang);
         app.get(`/${lang}.webmanifest`, (_, res) => {
@@ -115,8 +121,8 @@ export async function server(onReady: () => void) {
         });
     }
 
-    app.use("/", express.static("../www/"));
-    app.use("/fonts", express.static("../fonts"));
+    app.use(files.router());
+    app.use(notFound);
 
     app.listen(port, (e) => {
         // Express 5 calls this on failure too, such as a port already in use.
