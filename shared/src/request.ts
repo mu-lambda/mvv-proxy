@@ -23,4 +23,6 @@ export type TimetableResponse = {
 export type NearbyStopsResponse = {
     stops: info.StopWithDistance[];
     request: MultiStop;
+    /** True if there are no stops and the place is outside the stops' area. */
+    outsideArea?: boolean;
 };

@@ -53,10 +53,25 @@ export function buildQuadtree(
 export class Locator {
     #qt: d3.Quadtree<info.Stop>;
     #stops: Iterable<info.Stop>;
+    /** The stops' bounding box; empty (south > north) without stops. */
+    #bounds = {
+        south: Infinity,
+        north: -Infinity,
+        west: Infinity,
+        east: -Infinity,
+    };
 
     constructor(stops: Iterable<info.Stop>) {
         this.#qt = buildQuadtree(stops);
         this.#stops = stops;
+        const b = this.#bounds;
+        for (const s of this.#qt.data()) {
+            const { latitude, longitude } = s.location!;
+            b.south = Math.min(b.south, latitude);
+            b.north = Math.max(b.north, latitude);
+            b.west = Math.min(b.west, longitude);
+            b.east = Math.max(b.east, longitude);
+        }
     }
 
     numberOfStopsWithLocations() {
@@ -78,6 +93,20 @@ export class Locator {
                 yield { stop, distance: d };
             }
         }
+    }
+
+    /**
+     * Whether `p` is within the stops' bounding box: the area this server
+     * knows about. Outside it, finding no stops is no surprise.
+     */
+    covers(p: info.LatLong): boolean {
+        const b = this.#bounds;
+        return (
+            b.south <= p.latitude &&
+            p.latitude <= b.north &&
+            b.west <= p.longitude &&
+            p.longitude <= b.east
+        );
     }
 
     findStops(

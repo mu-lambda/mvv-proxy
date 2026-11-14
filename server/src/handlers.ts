@@ -195,6 +195,11 @@ export class Handlers {
             stops,
             request: multistop,
         };
+        // With no stops to show, say whether that's because this is beyond
+        // the stops this server knows.
+        if (stops.length == 0 && !this.#locator.covers(p)) {
+            result.outsideArea = true;
+        }
         res.send(result);
     };
 

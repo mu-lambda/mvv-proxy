@@ -313,7 +313,11 @@ function GeoDepsTable({
         case "ready": {
             if (state.nearbyStops.stops.length == 0) {
                 return renderNonReadyState(
-                    <div className="loading">{t.noStops(d)}</div>,
+                    <div className="loading">
+                        {state.nearbyStops.outsideArea
+                            ? t.outsideArea
+                            : t.noStops(d)}
+                    </div>,
                     reloadButton(),
                 );
             }

@@ -129,6 +129,15 @@ const tests = [
         check(l, p, d);
     }),
 
+    testAsync("the stops cover MVV, not Berlin or New York", async () => {
+        const l = await locator();
+        expect(l.covers(ll(48.13743, 11.57549))).toBe(true); // Marienplatz
+        expect(l.covers(ll(47.8571, 12.1181))).toBe(true); // Rosenheim
+        expect(l.covers(ll(52.52, 13.405))).toBe(false); // Berlin
+        expect(l.covers(ll(40.7128, -74.006))).toBe(false); // New York
+        expect(new Locator([]).covers(ll(48.13743, 11.57549))).toBe(false);
+    }),
+
     testAsync("everyTenthsStop", async () => {
         const l = await locator();
         let n = 0;

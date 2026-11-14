@@ -84,22 +84,24 @@ four minutes.
 An Express 5 server (`server/src/server.ts`), started by
 `server/src/main.ts`:
 
-| Address                                          | What it is                                                                                                                                                  |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/`, `/de`, `/en`, `/ru`                         | The nearby page. `/de`, `/en` and `/ru` fix the language; `/` picks it from the browser's preferred languages.                                              |
-| `/de.webmanifest`, `/en.webmanifest`, `/ru.webmanifest` | Manifests that let the page be installed to a phone's home screen.                                                                                   |
-| `/timetable.html`                                | The kiosk's timetable page.                                                                                                                                 |
-| `/api/v1/stopsNearby?lat=…&long=…&d=…&minutes=…` | The stops within `d` metres (default 500) that you can walk to within `minutes` (default 30), and a ready-made request for the departures in those minutes. |
-| `/api/v1/timetable?timestamp=…`                  | Departures for the configured stops (404 if none are configured).                                                                                           |
-| `/api/v1/stops`, `/api/v1/lines`                 | The stop list and the known lines.                                                                                                                          |
-| `/svg/<file>`                                    | Line icons (see below).                                                                                                                                     |
-| `/impressum`, `/datenschutz`                     | Legal notice and privacy notice, from the operator file (404 without one).                                                                                  |
-| everything else                                  | Static files from `www/` and `fonts/`.                                                                                                                      |
+| Address                                                 | What it is                                                                                                                                                  |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`, `/de`, `/en`, `/ru`                                | The nearby page. `/de`, `/en` and `/ru` fix the language; `/` picks it from the browser's preferred languages.                                              |
+| `/de.webmanifest`, `/en.webmanifest`, `/ru.webmanifest` | Manifests that let the page be installed to a phone's home screen.                                                                                          |
+| `/timetable.html`                                       | The kiosk's timetable page.                                                                                                                                 |
+| `/api/v1/stopsNearby?lat=…&long=…&d=…&minutes=…`        | The stops within `d` metres (default 500) that you can walk to within `minutes` (default 30), and a ready-made request for the departures in those minutes. |
+| `/api/v1/timetable?timestamp=…`                         | Departures for the configured stops (404 if none are configured).                                                                                           |
+| `/api/v1/stops`, `/api/v1/lines`                        | The stop list and the known lines.                                                                                                                          |
+| `/svg/<file>`                                           | Line icons (see below).                                                                                                                                     |
+| `/impressum`, `/datenschutz`                            | Legal notice and privacy notice, from the operator file (404 without one).                                                                                  |
+| everything else                                         | Static files from `www/` and `fonts/`.                                                                                                                      |
 
 **Stops** come from MVV's open data: `server/data/stops.csv` has every
 stop's name, town, global id and position. The server loads it at start
 and puts it in a quadtree (`server/src/geo.ts`) to find the stops near a
-point quickly.
+point quickly. When there are no stops near enough and the place is
+outside the stops' bounding box (Berlin, say), the page says it's outside
+the MVV area.
 
 **The HTML** of the nearby page is written by the server
 (`server/src/page.ts`), in German, English or Russian, with the right title,
