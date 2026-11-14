@@ -3,6 +3,7 @@ import * as path from "path";
 import { info, request, fetcher, queryDepartures } from "shared";
 
 import { lines } from "./lines.ts";
+import * as area from "./area.ts";
 import * as geo from "./geo.ts";
 import * as icons from "./icons.ts";
 import { Budget, Concurrency } from "./limits.ts";
@@ -195,6 +196,17 @@ export class Handlers {
             stops,
             request: multistop,
         };
+        // With no stops to show, say whether that's because this is beyond
+        // MVV, by the district of the nearest stop.
+        if (stops.length == 0) {
+            const nearest = this.#locator.nearestStop(p);
+            if (
+                nearest &&
+                !area.inMvvArea(nearest.stop.gid, new Date(this.#now()))
+            ) {
+                result.outsideArea = true;
+            }
+        }
         res.send(result);
     };
 

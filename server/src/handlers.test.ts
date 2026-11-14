@@ -113,23 +113,41 @@ function stopNorth(gid: string, metres: number): info.Stop {
     };
 }
 
-/** Handlers that know only `stops`. */
-function nearbyHandlers(stops: info.Stop[]): Handlers {
+/** Handlers that know only `stops`, at `now`. */
+function nearbyHandlers(
+    stops: info.Stop[],
+    now: () => number = Date.now,
+): Handlers {
     const f = failingFetcher(new Error("unused"));
-    return new Handlers(new queryDepartures.Q([], stops, f), f, undefined);
+    return new Handlers(new queryDepartures.Q([], stops, f), f, undefined, now);
 }
 
-/** The gids stopsNearby returns, and the request it builds. */
+/** The gids stopsNearby returns, the request it builds, and outsideArea. */
 async function nearby(
     h: Handlers,
     query: Record<string, string>,
-): Promise<{ gids: string[]; request: request.MultiStop }> {
-    const res = await call(h.stopsNearby, {
-        query: { lat: "48.13743", long: "11.57549", ...query },
-    });
+): Promise<{
+    gids: string[];
+    request: request.MultiStop;
+    outsideArea: boolean | undefined;
+}> {
+    const log = console.log;
+    console.log = () => {};
+    let res: FakeResponse;
+    try {
+        res = await call(h.stopsNearby, {
+            query: { lat: "48.13743", long: "11.57549", ...query },
+        });
+    } finally {
+        console.log = log;
+    }
     expect(res.statusCode).toBe(200);
     const body = res.body as request.NearbyStopsResponse;
-    return { gids: body.stops.map((s) => s.stop.gid), request: body.request };
+    return {
+        gids: body.stops.map((s) => s.stop.gid),
+        request: body.request,
+        outsideArea: body.outsideArea,
+    };
 }
 
 async function call(
@@ -193,31 +211,60 @@ const tests = [
                 stopNorth("mid", 1500),
                 stopNorth("far", 3000),
             ]);
-            const log = console.log;
-            console.log = () => {};
-            try {
-                // 30 minutes by default: 1,800 m at 60 m a minute.
-                const byDefault = await nearby(h, { d: "10000" });
-                expect(byDefault.gids.sort().join()).toBe("mid,near");
-                expect(byDefault.request.limit).toBe(30);
-                expect(Math.round(byDefault.request.stops[0]!.timeToStop)).toBe(
-                    5,
-                );
+            // 30 minutes by default: 1,800 m at 60 m a minute.
+            const byDefault = await nearby(h, { d: "10000" });
+            expect(byDefault.gids.sort().join()).toBe("mid,near");
+            expect(byDefault.request.limit).toBe(30);
+            expect(Math.round(byDefault.request.stops[0]!.timeToStop)).toBe(5);
 
-                // 10 minutes: 600 m.
-                const short = await nearby(h, { d: "10000", minutes: "10" });
-                expect(short.gids.join()).toBe("near");
-                expect(short.request.limit).toBe(10);
+            // 10 minutes: 600 m.
+            const short = await nearby(h, { d: "10000", minutes: "10" });
+            expect(short.gids.join()).toBe("near");
+            expect(short.request.limit).toBe(10);
 
-                // 60 minutes: 3,600 m, but d is smaller.
-                const long = await nearby(h, { d: "2000", minutes: "60" });
-                expect(long.gids.sort().join()).toBe("mid,near");
-                expect(long.request.limit).toBe(60);
-            } finally {
-                console.log = log;
-            }
+            // 60 minutes: 3,600 m, but d is smaller.
+            const long = await nearby(h, { d: "2000", minutes: "60" });
+            expect(long.gids.sort().join()).toBe("mid,near");
+            expect(long.request.limit).toBe(60);
         },
     ),
+
+    testAsync("stopsNearby says when a place is outside MVV", async () => {
+        // The nearest stop, 5 km away, is in Traunstein.
+        const outside = await nearby(
+            nearbyHandlers([stopNorth("de:09189:1", 5000)]),
+            {},
+        );
+        expect(outside.gids.length).toBe(0);
+        expect(outside.outsideArea).toBe(true);
+
+        // In München: just no stops near enough.
+        const inside = await nearby(
+            nearbyHandlers([
+                stopNorth("de:09162:1", 5000),
+                stopNorth("de:09189:1", 9000),
+            ]),
+            {},
+        );
+        expect(inside.gids.length).toBe(0);
+        expect(inside.outsideArea).toBe(undefined);
+
+        // Near enough to a stop beyond MVV: its departures are shown.
+        const near = await nearby(
+            nearbyHandlers([stopNorth("de:09189:1", 300)]),
+            {},
+        );
+        expect(near.gids.join()).toBe("de:09189:1");
+        expect(near.outsideArea).toBe(undefined);
+
+        // Ostallgäu joins MVV on 1 January 2027.
+        const ostallgaeu = [stopNorth("de:09777:1", 5000)];
+        const at = (day: string) => () => new Date(day).getTime();
+        const before = nearbyHandlers(ostallgaeu, at("2026-12-31T12:00Z"));
+        const after = nearbyHandlers(ostallgaeu, at("2027-01-01T12:00Z"));
+        expect((await nearby(before, {})).outsideArea).toBe(true);
+        expect((await nearby(after, {})).outsideArea).toBe(undefined);
+    }),
 
     testAsync("an icon MVV does not have is asked for once", async () => {
         const f = failingFetcher(

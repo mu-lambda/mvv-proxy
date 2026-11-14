@@ -99,7 +99,11 @@ An Express 5 server (`server/src/server.ts`), started by
 **Stops** come from MVV's open data: `server/data/stops.csv` has every
 stop's name, town, global id and position. The server loads it at start
 and puts it in a quadtree (`server/src/geo.ts`) to find the stops near a
-point quickly.
+point quickly. The file reaches past MVV (Traunstein, Augsburg, Tyrol), so
+when there are no stops near enough, the server tells whether the place is
+outside MVV by the district of the nearest stop: a global id such as
+`de:09162:1` names it (09162, München), and `server/src/area.ts` lists
+MVV's districts and the day each joined.
 
 **The HTML** of the nearby page is written by the server
 (`server/src/page.ts`), in German, English or Russian, with the right title,

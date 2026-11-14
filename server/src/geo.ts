@@ -80,6 +80,20 @@ export class Locator {
         }
     }
 
+    /** The stop nearest to `p`, however far, or undefined if there are none. */
+    nearestStop(p: info.LatLong): info.StopWithDistance | undefined {
+        // The quadtree's nearest is nearest in degrees, which aren't the same
+        // length north and east. The real nearest is no further than it, so
+        // look within that distance.
+        const candidate = this.#qt.find(p.latitude, p.longitude);
+        if (!candidate?.location) return undefined;
+        let nearest: info.StopWithDistance | undefined;
+        for (const s of this.findStops(p, distance(p, candidate.location))) {
+            if (!nearest || s.distance < nearest.distance) nearest = s;
+        }
+        return nearest;
+    }
+
     findStops(
         p: info.LatLong,
         maxDistance: number,

@@ -49,6 +49,8 @@ export type Strings = {
     loading: string;
     fetching: (stops: number) => string;
     noStops: (metres: number) => string;
+    /** No stops, and the place is beyond MVV. */
+    outsideArea: string;
     /** Within the request's limit, or at all if it has none. */
     noDepartures: (minutes: number | undefined) => string;
 
@@ -97,6 +99,7 @@ const en: Strings = {
     fetching: (n) =>
         `Fetching departures from ${n} ${n === 1 ? "stop" : "stops"}`,
     noStops: (m) => `No stops within ${m} m from here`,
+    outsideArea: "This place is outside the MVV area",
     noDepartures: (min) =>
         min === undefined
             ? "No departures"
@@ -148,6 +151,7 @@ const de: Strings = {
         `Abfahrten von ${n} ${n === 1 ? "Haltestelle" : "Haltestellen"} ` +
         `werden geladen`,
     noStops: (m) => `Keine Haltestelle im Umkreis von ${m} m`,
+    outsideArea: "Dieser Ort liegt außerhalb des MVV-Gebiets",
     noDepartures: (min) =>
         min === undefined
             ? "Keine Abfahrten"
@@ -218,6 +222,7 @@ const ru: Strings = {
         `Загружаем отправления с ${n} ` +
         ruPlural(n, "остановки", "остановок", "остановок"),
     noStops: (m) => `В радиусе ${m} м нет остановок`,
+    outsideArea: "Это место за пределами зоны MVV",
     // "мин" needs no plural.
     noDepartures: (min) =>
         min === undefined
