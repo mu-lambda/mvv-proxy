@@ -131,6 +131,7 @@ function contact(o: Operator, emailLabel: string): string {
 function page(
     title: string,
     host: string,
+    url: (path: string) => string,
     german: string,
     english: string,
     russian: string,
@@ -143,7 +144,7 @@ function page(
 <meta name="robots" content="noindex" />
 <title>${title} – ${escapeHtml(host)}</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="/fonts/librefranklin/librefranklin.css" />
+<link rel="stylesheet" href="${url("/fonts/librefranklin/librefranklin.css")}" />
 <style>
 body { font-family: "Libre Franklin", sans-serif; line-height: 1.5; margin: 0; }
 header { background: #c0d101; padding: 12px 16px; }
@@ -182,7 +183,14 @@ function dottedDate(iso: string): string {
     return `${d}.${m}.${y}`;
 }
 
-export function impressumPage(o: Operator): string {
+/**
+ * The Impressum. `url` gives the address of the font's stylesheet, with its
+ * version (`StaticFiles.url`).
+ */
+export function impressumPage(
+    o: Operator,
+    url: (path: string) => string = (path) => path,
+): string {
     const site = escapeHtml(o.host);
     const s = STOPS_SOURCE;
     const german = `<h1>Impressum</h1>
@@ -218,10 +226,14 @@ ${contact(o, "Эл. почта")}
 Münchner Verkehrs- und Tarifverbund GmbH (MVV) по состоянию на
 ${dottedDate(s.stand)}, загруженного ${dottedDate(s.downloaded)}, по
 лицензии <a href="${CC_BY}">Creative Commons Attribution (CC BY)</a>.</p>`;
-    return page("Impressum", o.host, german, english, russian);
+    return page("Impressum", o.host, url, german, english, russian);
 }
 
-export function privacyPage(o: Operator): string {
+/** The privacy notice; `url` as for the Impressum. */
+export function privacyPage(
+    o: Operator,
+    url: (path: string) => string = (path) => path,
+): string {
     const site = escapeHtml(o.host);
     const hosting = escapeHtml(o.hosting);
     const mail = emailLink(o);
@@ -414,5 +426,5 @@ PayPal (пожертвования) и Google Maps (места и маршрут
 орган по защите данных (ст. 77 GDPR). Поскольку мы не храним ничего, кроме
 округлённых местоположений, мы, как правило, не можем связать с вами
 какие-либо данные. Пишите нам на ${mail}.</p>`;
-    return page("Datenschutz", o.host, german, english, russian);
+    return page("Datenschutz", o.host, url, german, english, russian);
 }

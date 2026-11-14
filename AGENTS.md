@@ -192,10 +192,15 @@ update both.
   name, or draws one from the line the client passes as query parameters
   (`server/src/icons.ts`). `docs/MVV-ICONS.md` has the classes of missing
   icons and the decisions behind each drawing.
-- Static files (`server/src/staticFiles.ts`) are hashed when the server
-  starts. The hash is each file's ETag, because Express's own is the size
-  and modification time, and the image's files are all dated 1970: a
-  changed file of the same size would look unchanged. `StaticFiles.url`
+- Static files (`server/src/staticFiles.ts`) are read and hashed once,
+  when the server starts, and served from memory (about 2 MB), so a file
+  changed on disk shows only after a restart. The Impressum and the
+  privacy notice are added the same way (`StaticFiles.add`), and the
+  nearby page hands their versioned addresses to the client in
+  `data-impressum` and `data-datenschutz` on `#root`. The hash is each
+  file's ETag, because Express's own is the size and modification time,
+  and the image's files are all dated 1970: a changed file of the same
+  size would look unchanged. `StaticFiles.url`
   adds it as `?v=`, and with the right `v` a file is kept for a year
   (`immutable`). The nearby page links its script and styles that way,
   the font's stylesheet included; a file the page links must go through

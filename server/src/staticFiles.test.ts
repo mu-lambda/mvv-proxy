@@ -168,6 +168,53 @@ const tests = [
         }),
     ),
 
+    testAsync("files are read once, when the server starts", () =>
+        withSite(SITE, FONTS, async (base, files, dir) => {
+            const before = files.url("/index.css");
+            await fs.writeFile(path.join(dir, "www", "index.css"), "changed");
+            const res = await fetch(base + "/index.css");
+            expect(await res.text()).toBe(SITE["index.css"]);
+            expect(files.url("/index.css")).toBe(before);
+        }),
+    ),
+
+    testAsync("each file says its type, and HEAD sends no body", () =>
+        withSite(SITE, FONTS, async (base) => {
+            for (const [url, type] of [
+                ["/index.css", "text/css; charset=utf-8"],
+                ["/out/index-bundle.js", "text/javascript; charset=utf-8"],
+                ["/pin.svg", "image/svg+xml"],
+                ["/fonts/librefranklin/font.ttf", "font/ttf"],
+            ]) {
+                const res = await fetch(base + url!);
+                expect(res.headers.get("content-type")).toBe(type!);
+            }
+            const head = await fetch(base + "/index.css", { method: "HEAD" });
+            expect(head.status).toBe(200);
+            expect(head.headers.get("etag")).toNotBe(null);
+            expect(await head.text()).toBe("");
+        }),
+    ),
+
+    testAsync("a page added in memory is served like a file", () =>
+        withSite(SITE, FONTS, async (base, files) => {
+            files.add("/impressum", "<p>Impressum</p>", "html");
+            const url = files.url("/impressum");
+            expect(url.startsWith("/impressum?v=")).toBe(true);
+            const versioned = await fetch(base + url);
+            expect(await versioned.text()).toBe("<p>Impressum</p>");
+            expect(versioned.headers.get("content-type")).toBe(
+                "text/html; charset=utf-8",
+            );
+            expect(versioned.headers.get("cache-control")).toBe(
+                CACHE.versioned,
+            );
+            const plain = await fetch(base + "/impressum");
+            expect(plain.headers.get("cache-control")).toBe(CACHE.code);
+            expect(plain.headers.get("etag")).toBe(`"${url.split("?v=")[1]}"`);
+        }),
+    ),
+
     testAsync("a missing file is a 404 nobody keeps", () =>
         withSite(SITE, FONTS, async (base, files) => {
             expect(files.url("/missing.js")).toBe("/missing.js");

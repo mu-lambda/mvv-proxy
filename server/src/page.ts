@@ -93,7 +93,12 @@ export function nearbyPage(
         <link rel="stylesheet" href="${url("/table.css")}" />
     </head>
     <body>
-        <div id="root"></div>
+        <!-- The legal pages' addresses, with their versions, for the client. -->
+        <div
+            id="root"
+            data-impressum="${url("/impressum")}"
+            data-datenschutz="${url("/datenschutz")}"
+        ></div>
         <script src="${url("/out/index-bundle.js")}"></script>
     </body>
 </html>
