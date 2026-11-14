@@ -13,6 +13,15 @@ import { GeoRenderer } from "./render.tsx";
 /** The page's text, in the language the server wrote into <html lang>. */
 const t = strings.forLang(strings.langOf(document.documentElement.lang));
 
+/**
+ * The legal pages, at the versioned addresses the server wrote into the
+ * page, and at this language's section.
+ */
+const rootData = document.getElementById("root")?.dataset ?? {};
+const impressumHref = (rootData.impressum ?? "/impressum") + t.legalAnchor;
+const datenschutzHref =
+    (rootData.datenschutz ?? "/datenschutz") + t.legalAnchor;
+
 function getPosition(
     options?: PositionOptions,
 ): Promise<{ coords: info.LatLong }> {
@@ -219,8 +228,8 @@ function GeoDepsTable({
                 {top}
                 <span className="disclaimer">
                     {t.notOfficial} ·{" "}
-                    <a href={`/impressum${t.legalAnchor}`}>{t.legalNotice}</a> ·{" "}
-                    <a href={`/datenschutz${t.legalAnchor}`}>{t.privacy}</a>
+                    <a href={impressumHref}>{t.legalNotice}</a> ·{" "}
+                    <a href={datenschutzHref}>{t.privacy}</a>
                     <a
                         href="https://www.paypal.com/donate?hosted_button_id=SVH3NYCAR3UAN"
                         className="donate"
@@ -276,7 +285,7 @@ function GeoDepsTable({
                     </button>
                     <p className="intro-privacy">
                         {t.introLocation}{" "}
-                        <a href={`/datenschutz${t.legalAnchor}`}>{t.privacy}</a>
+                        <a href={datenschutzHref}>{t.privacy}</a>
                     </p>
                 </div>,
             );

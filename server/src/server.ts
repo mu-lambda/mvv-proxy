@@ -87,12 +87,10 @@ export async function server(onReady: () => void) {
     });
     const url = (path: string) => files.url(path);
     if (operator) {
-        const send = (html: string) => (_: unknown, res: express.Response) => {
-            res.setHeader("Cache-Control", "max-age=3600");
-            res.type("html").send(html);
-        };
-        app.get("/impressum", send(legal.impressumPage(operator)));
-        app.get("/datenschutz", send(legal.privacyPage(operator)));
+        // Served like the static files, so the nearby page links them with
+        // their versions. Added before that page is written.
+        files.add("/impressum", legal.impressumPage(operator, url), "html");
+        files.add("/datenschutz", legal.privacyPage(operator, url), "html");
     }
 
     // The nearby page, in each language (page.ts). Before the static files,

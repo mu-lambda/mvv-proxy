@@ -118,6 +118,21 @@ const tests = [
         expect(html.includes(`через ${legal.LOG_DAYS} дней`)).toBe(true);
     }),
 
+    test("the font's stylesheet is linked with its version", () => {
+        const o = operator();
+        const url = (p: string) => `${p}?v=1`;
+        for (const html of [
+            legal.impressumPage(o, url),
+            legal.privacyPage(o, url),
+        ]) {
+            expect(
+                html.includes(
+                    'href="/fonts/librefranklin/librefranklin.css?v=1"',
+                ),
+            ).toBe(true);
+        }
+    }),
+
     test("each language's section can be linked to", () => {
         const o = operator();
         for (const html of [legal.impressumPage(o), legal.privacyPage(o)]) {

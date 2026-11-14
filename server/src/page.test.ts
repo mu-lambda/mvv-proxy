@@ -108,6 +108,8 @@ const tests = [
             '<link rel="stylesheet" href="/loading.css?v=1" />',
             '<link rel="stylesheet" href="/table.css?v=1" />',
             '<script src="/out/index-bundle.js?v=1"></script>',
+            'data-impressum="/impressum?v=1"',
+            'data-datenschutz="/datenschutz?v=1"',
         ]) {
             expect(html.includes(tag)).toBe(true);
         }

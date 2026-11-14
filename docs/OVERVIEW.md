@@ -115,9 +115,11 @@ server writes and what the browser shows, is in `shared/src/strings.ts`.
 styles with a version, the start of their content's hash
 (`/out/index-bundle.js?v=3f9a1c2b4d5e`), which browsers keep for a year. A
 deploy changes the hash and so the address, and visitors get the new files
-on their next load. `server/src/staticFiles.ts` hashes the static files when
-the server starts and gives each that hash as its ETag; other code is
-checked on every use, and pictures and fonts are kept for a day.
+on their next load. `server/src/staticFiles.ts` reads the static files
+once when the server starts, serves them from memory, and gives each its
+hash as its ETag; the legal pages, written at the start, are served the
+same way and linked with their versions too. Other code is checked on
+every use, and pictures and fonts are kept for a day.
 
 ### Line icons
 
