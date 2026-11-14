@@ -34,6 +34,7 @@ SERVER_SRCS = [
     "src/proxyFetcher.ts",
     "src/server.ts",
     "src/staticFiles.ts",
+    "src/stopsSource.ts",
 ]
 
 TEST_SRCS = [

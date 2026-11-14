@@ -2,6 +2,7 @@ import * as fs from "node:fs";
 import { testing as harness } from "shared";
 
 import * as legal from "./legal.ts";
+import { STOPS_SOURCE } from "./stopsSource.ts";
 
 const { suite, test, expect } = harness;
 
@@ -54,6 +55,25 @@ const tests = [
         }
         expect(Array.isArray(legal.parseOperator("just text"))).toBe(true);
         expect(Array.isArray(legal.parseOperator("a: [unclosed"))).toBe(true);
+    }),
+
+    test("the Impressum credits MVV for the stops, with the dates", () => {
+        const html = legal.impressumPage(operator());
+        const { stand, downloaded } = STOPS_SOURCE;
+        const german = (iso: string) => iso.split("-").reverse().join(".");
+        expect(
+            html.includes(
+                `Stand ${german(stand)}, abgerufen am\n${german(downloaded)},`,
+            ),
+        ).toBe(true);
+        expect(
+            html.includes(`as of ${stand},\ndownloaded on ${downloaded},`),
+        ).toBe(true);
+        expect(
+            html.includes(
+                '<a href="https://opendefinition.org/licenses/cc-by/">',
+            ),
+        ).toBe(true);
     }),
 
     test("the Impressum shows the operator, in German and English", () => {

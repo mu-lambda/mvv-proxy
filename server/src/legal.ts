@@ -11,6 +11,8 @@
  */
 import * as yaml from "yaml";
 
+import { STOPS_SOURCE } from "./stopsSource.ts";
+
 /** Who runs the site. */
 export type Operator = {
     name: string;
@@ -154,21 +156,40 @@ ${english}
 `;
 }
 
+/** The licence MVV links for its open data, which names no version. */
+const CC_BY = "https://opendefinition.org/licenses/cc-by/";
+
+/** "2026-01-07" → "07.01.2026" */
+function germanDate(iso: string): string {
+    const [y, m, d] = iso.split("-");
+    return `${d}.${m}.${y}`;
+}
+
 export function impressumPage(o: Operator): string {
     const site = escapeHtml(o.host);
+    const s = STOPS_SOURCE;
     const german = `<h1>Impressum</h1>
 <p>Angaben gemäß § 5 DDG</p>
 ${contact(o, "E-Mail")}
 <p>${site} ist kein offizielles Angebot des MVV. Die Abfahrten und
 die meisten Liniensymbole stammen von der Münchner Verkehrs- und
-Tarifverbund GmbH (MVV); alle Angaben ohne Gewähr.</p>`;
+Tarifverbund GmbH (MVV); alle Angaben ohne Gewähr.</p>
+<p>Die Haltestellen stammen aus der
+<a href="${s.page}">Haltestellenliste</a> der Münchner Verkehrs- und
+Tarifverbund GmbH (MVV), Stand ${germanDate(s.stand)}, abgerufen am
+${germanDate(s.downloaded)}, unter der Lizenz
+<a href="${CC_BY}">Creative Commons Attribution (CC BY)</a>.</p>`;
     const english = `<h1>Legal notice</h1>
 <p>Information under § 5 DDG (German Digital Services Act). If in doubt,
 the German version applies.</p>
 ${contact(o, "Email")}
 <p>${site} is not an official service of MVV. Departures and most
 line icons come from Münchner Verkehrs- und Tarifverbund GmbH (MVV); no
-guarantee that they are correct.</p>`;
+guarantee that they are correct.</p>
+<p>The stops come from the <a href="${s.page}">stop list</a> of
+Münchner Verkehrs- und Tarifverbund GmbH (MVV), as of ${s.stand},
+downloaded on ${s.downloaded}, under the
+<a href="${CC_BY}">Creative Commons Attribution (CC BY)</a> licence.</p>`;
     return page("Impressum", o.host, german, english);
 }
 
