@@ -11,6 +11,7 @@ const tests = [
         // What Express's acceptsLanguages("en", "de") returns.
         expect(strings.pickLang("de")).toBe("de");
         expect(strings.pickLang("en")).toBe("en");
+        expect(strings.pickLang("ru")).toBe("ru");
         // Neither: English.
         expect(strings.pickLang(false)).toBe("en");
     }),
@@ -19,6 +20,9 @@ const tests = [
         expect(strings.langOf("de")).toBe("de");
         expect(strings.langOf("de-AT")).toBe("de");
         expect(strings.langOf("en")).toBe("en");
+        expect(strings.langOf("ru")).toBe("ru");
+        expect(strings.langOf("ru-RU")).toBe("ru");
+        expect(strings.langOf("rux")).toBe("en");
         expect(strings.langOf("")).toBe("en");
     }),
 
@@ -39,10 +43,18 @@ const tests = [
         expect(en.includes(`rel="canonical" href="https://${HOST}/en"`)).toBe(
             true,
         );
+
+        const ru = page.nearbyPage("ru", "ru", HOST);
+        expect(ru.includes('<html lang="ru">')).toBe(true);
+        expect(ru.includes("<title>MVV: Что Где Куда</title>")).toBe(true);
+        expect(ru.includes('og:locale" content="ru_RU"')).toBe(true);
+        expect(ru.includes(`rel="canonical" href="https://${HOST}/ru"`)).toBe(
+            true,
+        );
     }),
 
     test("/ is its own address, whatever language it shows", () => {
-        for (const lang of ["de", "en"] as const) {
+        for (const lang of strings.LANGS) {
             const html = page.nearbyPage(lang, "auto", HOST);
             expect(
                 html.includes(`rel="canonical" href="https://${HOST}/"`),
@@ -53,15 +65,17 @@ const tests = [
         }
     }),
 
-    test("every version lists all three for search engines", () => {
+    test("every version lists them all for search engines", () => {
         for (const html of [
             page.nearbyPage("de", "de", HOST),
             page.nearbyPage("en", "en", HOST),
+            page.nearbyPage("ru", "ru", HOST),
             page.nearbyPage("en", "auto", HOST),
         ]) {
             for (const link of [
                 `hreflang="de" href="https://${HOST}/de"`,
                 `hreflang="en" href="https://${HOST}/en"`,
+                `hreflang="ru" href="https://${HOST}/ru"`,
                 `hreflang="x-default" href="https://${HOST}/"`,
             ]) {
                 expect(html.includes(link)).toBe(true);
@@ -95,7 +109,7 @@ const tests = [
     }),
 
     test("a manifest has what browsers need to install the site", () => {
-        for (const lang of ["de", "en"] as const) {
+        for (const lang of strings.LANGS) {
             const m = JSON.parse(page.manifest(lang));
             expect(m.lang).toBe(lang);
             expect(m.start_url).toBe(`/${lang}`);
@@ -113,6 +127,16 @@ const tests = [
         }
         expect(JSON.parse(page.manifest("de")).short_name).toBe("Abfahrten");
         expect(JSON.parse(page.manifest("en")).short_name).toBe("Departures");
+        expect(JSON.parse(page.manifest("ru")).short_name).toBe("Что Где Куда");
+    }),
+
+    test("Russian counts stops with the right ending", () => {
+        const t = strings.forLang("ru");
+        const ending = (n: number) => t.fetching(n).split(" ").pop();
+        for (const n of [1, 21, 101]) expect(ending(n)).toBe("остановки");
+        for (const n of [2, 4, 5, 11, 12, 14, 20, 25, 111]) {
+            expect(ending(n)).toBe("остановок");
+        }
     }),
 
     test("styles and script load from the root, also under /de/", () => {

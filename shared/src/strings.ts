@@ -1,14 +1,18 @@
 /**
- * All of the nearby page's text, in German and English: what the server
- * writes into its HTML (server/src/page.ts) and what the client shows
- * (client/src/index.tsx). Add new text here in both languages. German
- * speaks to the visitor as "du".
+ * All of the nearby page's text, in German, English and Russian: what the
+ * server writes into its HTML (server/src/page.ts) and what the client
+ * shows (client/src/index.tsx). Add new text here in every language.
+ * German speaks to the visitor as "du", Russian as "вы". Line and stop
+ * names stay German, and so do U-Bahn and S-Bahn.
  *
  * The server picks the language and writes it into `<html lang>`; the
  * client reads it back from there with `langOf`.
  */
 
-export type Lang = "de" | "en";
+export type Lang = "de" | "en" | "ru";
+
+/** Every language, English first: it is the one for browsers that prefer none. */
+export const LANGS: readonly Lang[] = ["en", "de", "ru"];
 
 /** The page's HTML head: title, description and link previews. */
 export type PageText = {
@@ -156,19 +160,92 @@ const de: Strings = {
 };
 
 /**
- * The language for `/`, from the Accept-Language header's choice between
- * the two (Express's `req.acceptsLanguages("en", "de")`). English when the
- * browser prefers neither.
+ * The Russian noun after a number, by its plural rule: `one` for 1, 21,
+ * 31…, `few` for 2–4, 22–24…, `many` for the rest, 11–14 included.
+ */
+function ruPlural(n: number, one: string, few: string, many: string): string {
+    const tens = n % 100;
+    const ones = n % 10;
+    if (tens >= 11 && tens <= 14) return many;
+    if (ones === 1) return one;
+    if (ones >= 2 && ones <= 4) return few;
+    return many;
+}
+
+const ru: Strings = {
+    page: {
+        // The site's Russian name, in every title.
+        title: "MVV: Что Где Куда",
+        description:
+            "Все отправления с остановок рядом с вами в Мюнхене: U-Bahn, " +
+            "S-Bahn, трамвай и автобус, одним списком. Без приложения, без " +
+            "регистрации, без cookies.",
+        ogTitle: "MVV: Что Где Куда",
+        ogDescription:
+            "Все отправления рядом с вами в Мюнхене, одним списком. Без " +
+            "приложения, без регистрации, без cookies.",
+        ogLocale: "ru_RU",
+        ogImageAlt:
+            "Отправления у Мариенплац: трамвай 21, автобус 52 и U6, у " +
+            "каждого остановка, расстояние и время.",
+        appName: "MVV: Что Где Куда",
+        appShortName: "Что Где Куда",
+    },
+
+    title: "MVV: Что Где Куда",
+    // "MVV: Что Где Куда [рядом с вами] в 13:05"
+    header: { before: "MVV: Что Где Куда ", link: "рядом с вами", at: " в " },
+    notOfficial: "Неофициальный сервис, не от MVV",
+    // The pages themselves are in German and English.
+    legalNotice: "Impressum",
+    privacy: "Конфиденциальность",
+    donateAlt: "Пожертвовать через PayPal",
+    // PayPal's button in English: there is no Russian one here.
+    donateImage: "/paypal-donate.gif",
+
+    introHeading: "Все отправления рядом с вами",
+    introText:
+        "U-Bahn, S-Bahn, трамвай и автобус со всех остановок в нескольких " +
+        "минутах ходьбы, одним списком.",
+    introButton: "Показать отправления рядом",
+    introLocation:
+        "Браузер спросит ваше местоположение. Оно нужно только для того, " +
+        "чтобы найти ближайшие остановки.",
+
+    loading: "Загрузка…",
+    // "с 1 остановки", "с 2 остановок", "с 21 остановки"
+    fetching: (n) =>
+        `Загружаем отправления с ${n} ` +
+        ruPlural(n, "остановки", "остановок", "остановок"),
+    noStops: (m) => `В радиусе ${m} м нет остановок`,
+    // "мин" needs no plural.
+    noDepartures: (min) =>
+        min === undefined
+            ? "Нет отправлений"
+            : `Нет отправлений в ближайшие ${min} мин`,
+
+    geolocationFailed: "Не удалось определить местоположение",
+    stopsFailed: (reason) => `Не удалось загрузить остановки: ${reason}`,
+    tryAgain: "Попробуйте ещё раз",
+};
+
+/**
+ * The language for `/`, from the Accept-Language header's choice among
+ * them (Express's `req.acceptsLanguages(...LANGS)`). English when the
+ * browser prefers none of them.
  */
 export function pickLang(accepted: string | false): Lang {
-    return accepted === "de" ? "de" : "en";
+    return LANGS.find((l) => l === accepted) ?? "en";
 }
 
-/** The language `<html lang>` names; English unless it is German. */
+/** The language `<html lang>` names; English unless it is another of ours. */
 export function langOf(htmlLang: string): Lang {
-    return htmlLang.toLowerCase().startsWith("de") ? "de" : "en";
+    const tag = htmlLang.toLowerCase();
+    return LANGS.find((l) => tag === l || tag.startsWith(`${l}-`)) ?? "en";
 }
+
+const STRINGS: Record<Lang, Strings> = { de, en, ru };
 
 export function forLang(lang: Lang): Strings {
-    return lang === "de" ? de : en;
+    return STRINGS[lang];
 }

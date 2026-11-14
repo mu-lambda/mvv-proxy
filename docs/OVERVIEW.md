@@ -86,8 +86,8 @@ An Express 5 server (`server/src/server.ts`), started by
 
 | Address                                          | What it is                                                                                                                                                  |
 | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/`, `/de`, `/en`                                | The nearby page. `/de` and `/en` fix the language; `/` picks it from the browser's preferred languages.                                                     |
-| `/de.webmanifest`, `/en.webmanifest`             | Manifests that let the page be installed to a phone's home screen.                                                                                          |
+| `/`, `/de`, `/en`, `/ru`                         | The nearby page. `/de`, `/en` and `/ru` fix the language; `/` picks it from the browser's preferred languages.                                              |
+| `/de.webmanifest`, `/en.webmanifest`, `/ru.webmanifest` | Manifests that let the page be installed to a phone's home screen.                                                                                   |
 | `/timetable.html`                                | The kiosk's timetable page.                                                                                                                                 |
 | `/api/v1/stopsNearby?lat=…&long=…&d=…&minutes=…` | The stops within `d` metres (default 500) that you can walk to within `minutes` (default 30), and a ready-made request for the departures in those minutes. |
 | `/api/v1/timetable?timestamp=…`                  | Departures for the configured stops (404 if none are configured).                                                                                           |
@@ -102,7 +102,7 @@ and puts it in a quadtree (`server/src/geo.ts`) to find the stops near a
 point quickly.
 
 **The HTML** of the nearby page is written by the server
-(`server/src/page.ts`), in German or English, with the right title,
+(`server/src/page.ts`), in German, English or Russian, with the right title,
 description and link preview for each. The page's text, both what the
 server writes and what the browser shows, is in `shared/src/strings.ts`.
 
