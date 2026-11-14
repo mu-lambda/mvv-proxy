@@ -34,6 +34,15 @@ update both.
   tests. Run it before handing over a commit.
 - Runnable targets: `//server:server_bin`, `//tests:record_departures`,
   `//:gen_stop_signs`, `//server:icon_samples` (redraws `docs/icons`).
+- `./update-stops.sh` replaces `server/data/stops.csv` with MVV's current
+  stop list (about once a year, under a new file name). It finds the link
+  on MVV's page for developers, checks the download against the page's
+  checksum (called md5 there, but a SHA-1) and the columns the server
+  reads, and writes the list's date, the download date and the source to
+  `server/src/stopsSource.ts`: the list is CC BY, crediting MVV and the
+  date of the download, and the Impressum shows both. Commit the two
+  files together. `stops-for-testing.csv` stays as it is: the geo tests
+  count its stops.
 - Tests use the harness in `shared/src/testing.ts`. A test file runs its
   suite and must set `process.exitCode = 1` on failure, or a failing test
   counts as a pass.

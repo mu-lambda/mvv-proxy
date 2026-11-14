@@ -99,7 +99,10 @@ An Express 5 server (`server/src/server.ts`), started by
 **Stops** come from MVV's open data: `server/data/stops.csv` has every
 stop's name, town, global id and position. The server loads it at start
 and puts it in a quadtree (`server/src/geo.ts`) to find the stops near a
-point quickly. When there are no stops near enough and the place is
+point quickly. `update-stops.sh` updates the file from MVV's site, and
+records in `server/src/stopsSource.ts` which list it is and when it was
+downloaded, which the Impressum shows: the list is CC BY. When there are
+no stops near enough and the place is
 outside the stops' bounding box (Berlin, say), the page says it's outside
 the MVV area.
 
