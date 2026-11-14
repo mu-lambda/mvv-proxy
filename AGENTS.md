@@ -199,6 +199,14 @@ update both.
   German version is the one that applies. The Russian page uses the English
   PayPal button.
 - The kiosk only loads `timetable.html`, which stays English.
+- Link previews (WhatsApp, Telegram…) show `www/og-image-<lang>.png`, the
+  page in its own language. They are screenshots of departures at
+  Marienplatz (`/<lang>?lat=48.13743&long=11.57549`) at 600×315 CSS pixels
+  and scale 2, so 1200×630, taken in headless Chrome over the DevTools
+  protocol with the scrollbar hidden and the blinking of close departures
+  (`.time-close`) turned off. Retake all of them after a visible change to
+  the page, and when adding a language. Messengers cache previews by
+  image address, so a new picture may need a new file name to show up.
 - The site can be installed ("Add to Home Screen"): the server writes a
   manifest per language (`/de.webmanifest`, `/en.webmanifest`,
   `/ru.webmanifest`,
