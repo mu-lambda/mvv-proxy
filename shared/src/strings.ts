@@ -70,8 +70,8 @@ const en: Strings = {
             "account, no cookies.",
         ogLocale: "en_GB",
         ogImageAlt:
-            "Departures around Marienplatz: tram 21, bus 52 and U6, each " +
-            "with its stop, distance and time.",
+            "Departures around Marienplatz: each line with its destination, " +
+            "stop, distance and time.",
         appName: "MVV Departures nearby",
         appShortName: "Departures",
     },
@@ -120,8 +120,8 @@ const de: Strings = {
             "App, ohne Konto, ohne Cookies.",
         ogLocale: "de_DE",
         ogImageAlt:
-            "Abfahrten am Marienplatz: Tram 21, Bus 52 und U6, jeweils mit " +
-            "Haltestelle, Entfernung und Uhrzeit.",
+            "Abfahrten am Marienplatz: jede Linie mit Ziel, Haltestelle, " +
+            "Entfernung und Uhrzeit.",
         appName: "MVV-Abfahrten in deiner Nähe",
         appShortName: "Abfahrten",
     },
@@ -186,8 +186,8 @@ const ru: Strings = {
             "приложения, без регистрации, без cookies.",
         ogLocale: "ru_RU",
         ogImageAlt:
-            "Отправления у Мариенплац: трамвай 21, автобус 52 и U6, у " +
-            "каждого остановка, расстояние и время.",
+            "Отправления у Мариенплац: у каждой линии направление, " +
+            "остановка, расстояние и время.",
         appName: "MVV: Что Где Куда",
         appShortName: "Что Где Куда",
     },

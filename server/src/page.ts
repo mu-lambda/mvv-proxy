@@ -24,6 +24,7 @@ function attr(s: string): string {
  * search engines, and the link preview. Without a host there are none.
  */
 function siteLinks(
+    lang: Lang,
     t: strings.PageText,
     at: Lang | "auto",
     host: string | undefined,
@@ -47,7 +48,7 @@ function siteLinks(
         <meta property="og:title" content="${attr(t.ogTitle)}" />
         <meta property="og:description" content="${attr(t.ogDescription)}" />
         <meta property="og:locale" content="${t.ogLocale}" />
-        <meta property="og:image" content="${site}/og-image.png" />
+        <meta property="og:image" content="${site}/og-image-${lang}.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="${attr(t.ogImageAlt)}" />
@@ -71,7 +72,7 @@ export function nearbyPage(
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>${t.title}</title>
-        <meta name="description" content="${attr(t.description)}" />${siteLinks(t, at, host)}
+        <meta name="description" content="${attr(t.description)}" />${siteLinks(lang, t, at, host)}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
 

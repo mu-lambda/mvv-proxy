@@ -33,6 +33,9 @@ const tests = [
             true,
         );
         expect(de.includes('og:locale" content="de_DE"')).toBe(true);
+        expect(
+            de.includes(`og:image" content="https://${HOST}/og-image-de.png"`),
+        ).toBe(true);
         expect(de.includes(`rel="canonical" href="https://${HOST}/de"`)).toBe(
             true,
         );
@@ -48,6 +51,9 @@ const tests = [
         expect(ru.includes('<html lang="ru">')).toBe(true);
         expect(ru.includes("<title>MVV: Что Где Куда</title>")).toBe(true);
         expect(ru.includes('og:locale" content="ru_RU"')).toBe(true);
+        expect(
+            ru.includes(`og:image" content="https://${HOST}/og-image-ru.png"`),
+        ).toBe(true);
         expect(ru.includes(`rel="canonical" href="https://${HOST}/ru"`)).toBe(
             true,
         );

@@ -59,8 +59,9 @@ Ranked by effect for effort.
     - [x] `lang` on `<html>`: `de` or `en`, with the German item below
     - [x] favicon: a German bus-stop sign, green H on yellow
           (`favicon.svg`, and `favicon.ico` for browsers that ask for it)
-    - [x] Open Graph tags, with `og-image.png`: departures at Marienplatz.
-          Retake it after a visible change to the page.
+    - [x] Open Graph tags, with `og-image-<lang>.png`: departures at
+          Marienplatz, in the page's own language. Retake them after a
+          visible change to the page (see AGENTS.md).
     - [x] viewport meta tag. The header's padding is now in `vw` too, so
           phones show the same layout as before; the donate button is now
           big enough to tap.
