@@ -122,12 +122,16 @@ update both.
   Paths such as `../www/` and `./data/stops.csv` are relative to the
   working directory, which must be `server/`. The Bazel targets `chdir`
   there.
-- On the Pi, pi-kiosk's `services/mvv-proxy.sh` runs the `server_bin`
-  launcher (`bazel-bin/server/server_bin_/server_bin`) from its runfiles
-  tree, as `bazel run` does, after `update-projects.sh` builds
-  `//server:server_bin`. The launcher brings Bazel's Node and changes into
-  `server/` itself, so a file the server reads at runtime must be in the
-  binary's `data`.
+- On the Pi, pi-kiosk's `deploy.sh` pulls this repository, builds
+  `//server:server_bin` and copies the launcher with its runfiles into a
+  release under `~/pi-kiosk.releases/`. Its `services/mvv-proxy.sh` runs
+  that copy from the runfiles root, as `bazel run` does, with
+  `BAZEL_BINDIR=.`, which the launcher needs outside `bazel-out`. The
+  launcher brings Bazel's Node and changes into `server/` itself. The
+  release has only the runfiles, so a file the server reads at runtime
+  must be in the binary's `data`.
+- `deploy.sh` refuses a checkout with uncommitted changes, here as in
+  pi-kiosk.
 - The SOCKS proxy URL contains credentials. Never print it, and keep it out
   of logs; the service script turns off xtrace around it.
 - MVV works without the proxy, so you can test live by leaving `SOCKS_PROXY`
