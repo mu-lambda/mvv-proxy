@@ -1,0 +1,2167 @@
+{
+    "available_lines|de:09162:500": {
+        "error": "",
+        "lines": [
+            {
+                "number": "U3",
+                "symbol": "010U3.svg",
+                "direction": "Sendlinger Tor",
+                "stateless": "swm:010U3:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U3",
+                "symbol": "010U3.svg",
+                "direction": "Moosach",
+                "stateless": "swm:010U3:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U6",
+                "symbol": "010U6.svg",
+                "direction": "Goetheplatz",
+                "stateless": "swm:010U6:G:H:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "U6",
+                "symbol": "010U6.svg",
+                "direction": "Fröttmaning",
+                "stateless": "swm:010U6:G:R:016",
+                "name": "U-Bahn"
+            },
+            {
+                "number": "23",
+                "symbol": "02023.svg",
+                "direction": "Schwabing Nord",
+                "stateless": "swm:02023:G:R:016",
+                "name": "Tram"
+            },
+            {
+                "number": "53",
+                "symbol": "03053.svg",
+                "direction": "Aidenbachstraße",
+                "stateless": "swm:03053:G:H:016",
+                "name": "MetroBus"
+            },
+            {
+                "number": "54",
+                "symbol": "03054.svg",
+                "direction": "Lorettoplatz",
+                "stateless": "swm:03054:G:H:016",
+                "name": "MetroBus"
+            },
+            {
+                "number": "59",
+                "symbol": "03059.svg",
+                "direction": "Giesing",
+                "stateless": "swm:03059:G:H:016",
+                "name": "MetroBus"
+            },
+            {
+                "number": "59",
+                "symbol": "03059.svg",
+                "direction": "Ackermannbogen",
+                "stateless": "swm:03059:G:R:016",
+                "name": "MetroBus"
+            },
+            {
+                "number": "142",
+                "symbol": "03142.svg",
+                "direction": "Scheidplatz",
+                "stateless": "swm:03142:G:R:016",
+                "name": "Bus"
+            },
+            {
+                "number": "N40",
+                "symbol": "33N40.svg",
+                "direction": "Kieferngarten",
+                "stateless": "swm:33N40:G:R:016",
+                "name": "NachtBus"
+            },
+            {
+                "number": "N43",
+                "symbol": "33N43.svg",
+                "direction": "Ostbahnhof",
+                "stateless": "swm:33N43:G:H:016",
+                "name": "NachtBus"
+            },
+            {
+                "number": "N44",
+                "symbol": "33N44.svg",
+                "direction": "Ostbahnhof",
+                "stateless": "swm:33N44:G:H:016",
+                "name": "NachtBus"
+            }
+        ],
+        "icons": {
+            "U-Bahn": "/fileadmin/Lines/010U6.svg.svg",
+            "Tram": "/fileadmin/Lines/02023.svg.svg",
+            "MetroBus": "/fileadmin/Lines/03059.svg.svg",
+            "Bus": "/fileadmin/Lines/03142.svg.svg",
+            "NachtBus": "/fileadmin/Lines/33N44.svg.svg"
+        }
+    },
+    "get_departures|de:09162:500|1794695941": {
+        "error": "",
+        "departures": [
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261114",
+                "departurePlanned": "23:41",
+                "departureLive": "23:41",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261114",
+                "departurePlanned": "23:43",
+                "departureLive": "Halt entfällt",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "54",
+                    "symbol": "03054.svg",
+                    "direction": "Lorettoplatz",
+                    "stateless": "swm:03054:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Lorettoplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 5",
+                "departureDate": "20261114",
+                "departurePlanned": "23:45",
+                "departureLive": "23:45",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "23",
+                    "symbol": "02023.svg",
+                    "direction": "Schwabing Nord",
+                    "stateless": "swm:02023:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Schwabing Nord",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 1",
+                "departureDate": "20261114",
+                "departurePlanned": "23:47",
+                "departureLive": "23:47",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261114",
+                "departurePlanned": "23:48",
+                "departureLive": "23:48",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Garching, Forschungszentrum",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Garching, Forschungszentrum",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261114",
+                "departurePlanned": "23:48",
+                "departureLive": "23:48",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Ackermannbogen",
+                    "stateless": "swm:03059:G:R:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Ackermannbogen",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261114",
+                "departurePlanned": "23:49",
+                "departureLive": "23:50",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261114",
+                "departurePlanned": "23:51",
+                "departureLive": "23:51",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261114",
+                "departurePlanned": "23:53",
+                "departureLive": "23:53",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "53",
+                    "symbol": "03053.svg",
+                    "direction": "Aidenbachstraße",
+                    "stateless": "swm:03053:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Aidenbachstraße",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261114",
+                "departurePlanned": "23:55",
+                "departureLive": "23:55",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261114",
+                "departurePlanned": "23:58",
+                "departureLive": "23:58",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Fröttmaning",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Fröttmaning",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261114",
+                "departurePlanned": "23:58",
+                "departureLive": "23:58",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Giesing Bf.",
+                    "stateless": "swm:03059:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Giesing Bf.",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261114",
+                "departurePlanned": "23:58",
+                "departureLive": "23:58",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "142",
+                    "symbol": "03142.svg",
+                    "direction": "Scheidplatz",
+                    "stateless": "swm:03142:G:R:016",
+                    "name": "Bus"
+                },
+                "direction": "Scheidplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261114",
+                "departurePlanned": "23:58",
+                "departureLive": "23:58",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:01",
+                "departureLive": "00:01",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:03",
+                "departureLive": "00:03",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "54",
+                    "symbol": "03054.svg",
+                    "direction": "Lorettoplatz",
+                    "stateless": "swm:03054:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Lorettoplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 5",
+                "departureDate": "20261115",
+                "departurePlanned": "00:05",
+                "departureLive": "00:05",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "23",
+                    "symbol": "02023.svg",
+                    "direction": "Schwabing Nord",
+                    "stateless": "swm:02023:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Schwabing Nord",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:07",
+                "departureLive": "00:07",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Garching, Forschungszentrum",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Garching, Forschungszentrum",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:08",
+                "departureLive": "Halt entfällt",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261115",
+                "departurePlanned": "00:08",
+                "departureLive": "00:08",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Ackermannbogen",
+                    "stateless": "swm:03059:G:R:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Ackermannbogen",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:09",
+                "departureLive": "00:09",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:11",
+                "departureLive": "00:11",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:13",
+                "departureLive": "00:13",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "53",
+                    "symbol": "03053.svg",
+                    "direction": "Aidenbachstraße",
+                    "stateless": "swm:03053:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Aidenbachstraße",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:15",
+                "departureLive": "00:15",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261115",
+                "departurePlanned": "00:18",
+                "departureLive": "00:18",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Fröttmaning",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Fröttmaning",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:18",
+                "departureLive": "00:18",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Giesing Bf.",
+                    "stateless": "swm:03059:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Giesing Bf.",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:18",
+                "departureLive": "00:18",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "142",
+                    "symbol": "03142.svg",
+                    "direction": "Scheidplatz",
+                    "stateless": "swm:03142:G:R:016",
+                    "name": "Bus"
+                },
+                "direction": "Scheidplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:18",
+                "departureLive": "00:18",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:21",
+                "departureLive": "00:21",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:23",
+                "departureLive": "00:23",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "54",
+                    "symbol": "03054.svg",
+                    "direction": "Lorettoplatz",
+                    "stateless": "swm:03054:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Lorettoplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 5",
+                "departureDate": "20261115",
+                "departurePlanned": "00:25",
+                "departureLive": "00:25",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "23",
+                    "symbol": "02023.svg",
+                    "direction": "Schwabing Nord",
+                    "stateless": "swm:02023:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Schwabing Nord",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:27",
+                "departureLive": "00:27",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Garching, Forschungszentrum",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Garching, Forschungszentrum",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:28",
+                "departureLive": "00:28",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261115",
+                "departurePlanned": "00:28",
+                "departureLive": "00:28",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Ackermannbogen",
+                    "stateless": "swm:03059:G:R:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Ackermannbogen",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:29",
+                "departureLive": "00:29",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:33",
+                "departureLive": "00:33",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "53",
+                    "symbol": "03053.svg",
+                    "direction": "Aidenbachstraße",
+                    "stateless": "swm:03053:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Aidenbachstraße",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:35",
+                "departureLive": "00:35",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Fröttmaning",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Fröttmaning",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:38",
+                "departureLive": "00:38",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Giesing Bf.",
+                    "stateless": "swm:03059:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Giesing Bf.",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:38",
+                "departureLive": "00:38",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261115",
+                "departurePlanned": "00:38",
+                "departureLive": "00:38",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            }
+        ],
+        "notifications": []
+    },
+    "get_departures|de:09162:500|1794697201": {
+        "error": "",
+        "departures": [
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:01",
+                "departureLive": "00:01",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:03",
+                "departureLive": "00:03",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "54",
+                    "symbol": "03054.svg",
+                    "direction": "Lorettoplatz",
+                    "stateless": "swm:03054:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Lorettoplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 5",
+                "departureDate": "20261115",
+                "departurePlanned": "00:05",
+                "departureLive": "00:05",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "23",
+                    "symbol": "02023.svg",
+                    "direction": "Schwabing Nord",
+                    "stateless": "swm:02023:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Schwabing Nord",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:07",
+                "departureLive": "00:07",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261115",
+                "departurePlanned": "00:08",
+                "departureLive": "00:08",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Garching, Forschungszentrum",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Garching, Forschungszentrum",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:08",
+                "departureLive": "Halt entfällt",
+                "inTime": false,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Ackermannbogen",
+                    "stateless": "swm:03059:G:R:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Ackermannbogen",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:09",
+                "departureLive": "00:09",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:11",
+                "departureLive": "00:11",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:13",
+                "departureLive": "00:13",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "53",
+                    "symbol": "03053.svg",
+                    "direction": "Aidenbachstraße",
+                    "stateless": "swm:03053:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Aidenbachstraße",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:15",
+                "departureLive": "00:15",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261115",
+                "departurePlanned": "00:18",
+                "departureLive": "00:18",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Fröttmaning",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Fröttmaning",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:18",
+                "departureLive": "00:18",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Giesing Bf.",
+                    "stateless": "swm:03059:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Giesing Bf.",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:18",
+                "departureLive": "00:18",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "142",
+                    "symbol": "03142.svg",
+                    "direction": "Scheidplatz",
+                    "stateless": "swm:03142:G:R:016",
+                    "name": "Bus"
+                },
+                "direction": "Scheidplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:18",
+                "departureLive": "00:18",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:21",
+                "departureLive": "00:21",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:23",
+                "departureLive": "00:23",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "54",
+                    "symbol": "03054.svg",
+                    "direction": "Lorettoplatz",
+                    "stateless": "swm:03054:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Lorettoplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 5",
+                "departureDate": "20261115",
+                "departurePlanned": "00:25",
+                "departureLive": "00:25",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "23",
+                    "symbol": "02023.svg",
+                    "direction": "Schwabing Nord",
+                    "stateless": "swm:02023:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Schwabing Nord",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:27",
+                "departureLive": "00:27",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Garching, Forschungszentrum",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Garching, Forschungszentrum",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:28",
+                "departureLive": "00:28",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261115",
+                "departurePlanned": "00:28",
+                "departureLive": "00:28",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Ackermannbogen",
+                    "stateless": "swm:03059:G:R:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Ackermannbogen",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:29",
+                "departureLive": "00:29",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:33",
+                "departureLive": "00:33",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "53",
+                    "symbol": "03053.svg",
+                    "direction": "Aidenbachstraße",
+                    "stateless": "swm:03053:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Aidenbachstraße",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:35",
+                "departureLive": "00:35",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261115",
+                "departurePlanned": "00:38",
+                "departureLive": "00:38",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Fröttmaning",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Fröttmaning",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:38",
+                "departureLive": "00:38",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Giesing Bf.",
+                    "stateless": "swm:03059:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Giesing Bf.",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:38",
+                "departureLive": "00:38",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "142",
+                    "symbol": "03142.svg",
+                    "direction": "Scheidplatz",
+                    "stateless": "swm:03142:G:R:016",
+                    "name": "Bus"
+                },
+                "direction": "Scheidplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:38",
+                "departureLive": "00:38",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:41",
+                "departureLive": "00:41",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "54",
+                    "symbol": "03054.svg",
+                    "direction": "Lorettoplatz",
+                    "stateless": "swm:03054:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Lorettoplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 5",
+                "departureDate": "20261115",
+                "departurePlanned": "00:45",
+                "departureLive": "00:45",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "23",
+                    "symbol": "02023.svg",
+                    "direction": "Schwabing Nord",
+                    "stateless": "swm:02023:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Schwabing Nord",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:47",
+                "departureLive": "00:47",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Sendlinger Tor",
+                    "stateless": "swm:010U3:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Sendlinger Tor",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 4",
+                "departureDate": "20261115",
+                "departurePlanned": "00:48",
+                "departureLive": "00:48",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Ackermannbogen",
+                    "stateless": "swm:03059:G:R:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Ackermannbogen",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:49",
+                "departureLive": "00:49",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Goetheplatz",
+                    "stateless": "swm:010U6:G:H:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Goetheplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:53",
+                "departureLive": "00:53",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "53",
+                    "symbol": "03053.svg",
+                    "direction": "Aidenbachstraße",
+                    "stateless": "swm:03053:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Aidenbachstraße",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 2",
+                "departureDate": "20261115",
+                "departurePlanned": "00:55",
+                "departureLive": "00:55",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U6",
+                    "symbol": "010U6.svg",
+                    "direction": "Garching, Forschungszentrum",
+                    "stateless": "swm:010U6:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Garching, Forschungszentrum",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 1",
+                "departureDate": "20261115",
+                "departurePlanned": "00:58",
+                "departureLive": "00:58",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "59",
+                    "symbol": "03059.svg",
+                    "direction": "Giesing Bf.",
+                    "stateless": "swm:03059:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Giesing Bf.",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:58",
+                "departureLive": "00:58",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62926_D9ayX",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/62995_Q3kFk",
+                        "type": "line"
+                    },
+                    {
+                        "text": "",
+                        "link": "https://www.mvg.de/api/ems/tickers/file/59960__haMi",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "142",
+                    "symbol": "03142.svg",
+                    "direction": "Scheidplatz",
+                    "stateless": "swm:03142:G:R:016",
+                    "name": "Bus"
+                },
+                "direction": "Scheidplatz",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 3",
+                "departureDate": "20261115",
+                "departurePlanned": "00:58",
+                "departureLive": "Halt entfällt",
+                "inTime": false,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "U3",
+                    "symbol": "010U3.svg",
+                    "direction": "Moosach",
+                    "stateless": "swm:010U3:G:R:016",
+                    "name": "U-Bahn"
+                },
+                "direction": "Moosach",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Gleis 3",
+                "departureDate": "20261115",
+                "departurePlanned": "01:01",
+                "departureLive": "01:01",
+                "inTime": true,
+                "notifications": [
+                    {
+                        "text": "",
+                        "link": "http://",
+                        "type": "line"
+                    }
+                ]
+            },
+            {
+                "line": {
+                    "number": "54",
+                    "symbol": "03054.svg",
+                    "direction": "Ostbahnhof",
+                    "stateless": "swm:03054:G:H:016",
+                    "name": "MetroBus"
+                },
+                "direction": "Ostbahnhof",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 5",
+                "departureDate": "20261115",
+                "departurePlanned": "01:05",
+                "departureLive": "01:05",
+                "inTime": true,
+                "notifications": []
+            },
+            {
+                "line": {
+                    "number": "23",
+                    "symbol": "02023.svg",
+                    "direction": "Schwabing Nord",
+                    "stateless": "swm:02023:G:R:016",
+                    "name": "Tram"
+                },
+                "direction": "Schwabing Nord",
+                "station": {
+                    "id": "91000500",
+                    "name": "Münchner Freiheit"
+                },
+                "track": "Pos. 1",
+                "departureDate": "20261115",
+                "departurePlanned": "01:07",
+                "departureLive": "01:07",
+                "inTime": true,
+                "notifications": []
+            }
+        ],
+        "notifications": []
+    }
+}
