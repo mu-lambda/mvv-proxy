@@ -8,12 +8,13 @@ type Departure = info.Departure;
 
 /**
  * Parses MVV's raw `track` string into a DeparturePoint. The designation is the
- * last number in the string; the kind is read from the string's own vocabulary
- * (see departurePointKind). Returns undefined when there is no number (e.g.
- * plain bus stops, whose `track` is empty).
+ * last number in the string; the kind comes from the string and the line's
+ * product (see departurePointKind). Returns undefined when there is no number
+ * (e.g. plain bus stops, whose `track` is empty).
  */
 function parseDeparturePoint(
     track: string | undefined,
+    product: string,
 ): info.DeparturePoint | undefined {
     if (track === undefined) {
         return undefined;
@@ -22,20 +23,25 @@ function parseDeparturePoint(
     if (designation === undefined) {
         return undefined;
     }
-    return { kind: departurePointKind(track), designation };
+    return { kind: departurePointKind(track, product), designation };
 }
 
-function departurePointKind(track: string): "Gleis" | "UBahnGleis" | "Steig" {
+function departurePointKind(
+    track: string,
+    product: string,
+): "Gleis" | "UBahnGleis" | "Steig" {
     // Trams report "Pos. N" (position) and buses "Bstg. N" (Bussteig): a Steig.
     if (/steig|bstg|pos/i.test(track)) {
         return "Steig";
     }
-    // U-Bahn platforms are written as a "U" line/label followed by the word
-    // "Gleis" ("U-Bahn Gleis 1", "U1/7 Gleis 3"). A plain "Gleis N" or a bare
-    // number ("1", "36") is an S-Bahn/train Gleis.
-    if (/u.*gleis/i.test(track)) {
+    // A U-Bahn's platform. Only some stations name the U-Bahn in the track
+    // ("U-Bahn Gleis 1", "U1/7 Gleis 3"); many write just "Gleis 1"
+    // (Münchner Freiheit, Scheidplatz), so the line's product decides. The
+    // text still counts for a reply without a product.
+    if (product === "U-Bahn" || /u.*gleis/i.test(track)) {
         return "UBahnGleis";
     }
+    // An S-Bahn or train: a bare number ("1", "36") or "Gleis N".
     return "Gleis";
 }
 
@@ -306,7 +312,10 @@ export class Q {
                             : obj.departureLive,
                     inTime: obj.inTime,
                 },
-                departurePoint: parseDeparturePoint(obj.track),
+                departurePoint: parseDeparturePoint(
+                    obj.track,
+                    obj.line?.name ?? "",
+                ),
             };
             result.push(d);
         }

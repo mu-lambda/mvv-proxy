@@ -15,6 +15,7 @@ import { test as mulitstopReal } from "./multistopReal.test.ts";
 import { test as hbf } from "./hbf.test.ts";
 import { test as hbfReal } from "./hbf_real.test.ts";
 import { test as planegg } from "./planegg.test.ts";
+import { test as muenchnerFreiheit } from "./muenchnerFreiheit.test.ts";
 import { test as missingDepartures } from "./missingDepartures.test.ts";
 import { test as lineLookup } from "./lineLookup.test.ts";
 import { test as lineMissing } from "./lineMissing.test.ts";
@@ -39,6 +40,7 @@ async function main() {
         hbf,
         hbfReal,
         planegg,
+        muenchnerFreiheit,
         missingDepartures,
         lineLookup,
         lineMissing,

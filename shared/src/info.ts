@@ -72,8 +72,9 @@ export type StopWithDistance = {
  * `track` field. Three kinds:
  * - `Gleis`: an S-Bahn / train platform — a bare track number
  *   (raw MVV e.g. "1", "36").
- * - `UBahnGleis`: a U-Bahn platform — MVV writes these with the word "Gleis"
- *   (raw MVV e.g. "U-Bahn Gleis 1", "U1/7 Gleis 3").
+ * - `UBahnGleis`: a U-Bahn platform — any departure of a U-Bahn line, whose
+ *   track MVV writes with the word "Gleis" (raw MVV e.g. "U-Bahn Gleis 1",
+ *   "U1/7 Gleis 3", or just "Gleis 1" at Münchner Freiheit).
  * - `Steig`: a street-level boarding point — Trams and Buses
  *   (raw MVV e.g. "Bstg. 2" (Bussteig), "Pos. 6" (tram position)).
  *

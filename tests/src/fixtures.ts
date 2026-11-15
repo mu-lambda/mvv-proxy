@@ -40,6 +40,13 @@ const STOPS: info.Stop[] = [
         location: undefined,
     },
     {
+        id: 500,
+        name: "Münchner Freiheit",
+        town: "Munich",
+        gid: "de:09162:500",
+        location: undefined,
+    },
+    {
         id: 2600,
         name: "Planegg",
         town: "Planegg",
