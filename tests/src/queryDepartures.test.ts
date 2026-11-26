@@ -19,7 +19,7 @@ import { test as muenchnerFreiheit } from "./muenchnerFreiheit.test.ts";
 import { test as missingDepartures } from "./missingDepartures.test.ts";
 import { test as lineLookup } from "./lineLookup.test.ts";
 import { test as lineMissing } from "./lineMissing.test.ts";
-import { fetchesDaily, emptyAskedAgain } from "./lineCache.test.ts";
+import { fetchesHourly, emptyAskedAgain } from "./lineCache.test.ts";
 
 // Each *.test.ts exports a single Test (the result of a testAsync call); this
 // combines them into one suite.
@@ -44,7 +44,7 @@ async function main() {
         missingDepartures,
         lineLookup,
         lineMissing,
-        fetchesDaily,
+        fetchesHourly,
         emptyAskedAgain,
     );
     if (!ok) process.exitCode = 1;

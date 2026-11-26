@@ -15,7 +15,7 @@ const HOUR = 60 * 60 * 1000;
 
 // A stop's line list is fetched once an hour, and a failed fetch is retried on
 // the next query rather than kept.
-export const fetchesDaily = testAsync(
+export const fetchesHourly = testAsync(
     "fetches a stop's lines once an hour, and retries failures",
     async () => {
         const mvv = new FakeMvv([
