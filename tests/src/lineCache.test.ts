@@ -11,12 +11,12 @@ const STOP: info.Stop = {
     location: undefined,
 };
 
-const DAY = 24 * 60 * 60 * 1000;
+const HOUR = 60 * 60 * 1000;
 
-// A stop's line list is fetched once a day, and a failed fetch is retried on
+// A stop's line list is fetched once an hour, and a failed fetch is retried on
 // the next query rather than kept.
-export const test = testAsync(
-    "fetches a stop's lines once a day, and retries failures",
+export const fetchesDaily = testAsync(
+    "fetches a stop's lines once an hour, and retries failures",
     async () => {
         const mvv = new FakeMvv([
             { number: "S6", stateless: "ddb:920S6: :H:j26" },
@@ -44,7 +44,7 @@ export const test = testAsync(
         expect(mvv.lineListRequests).toBe(2);
 
         // Named lines and all lines share the stop's list.
-        now += DAY - 1;
+        now += HOUR - 1;
         await query(["S6-i"]);
         await query([]);
         expect(mvv.lineListRequests).toBe(2);
@@ -53,5 +53,36 @@ export const test = testAsync(
         await query(["S6-i"]);
         expect(mvv.lineListRequests).toBe(3);
         expect(mvv.departureLines.length).toBe(4);
+    },
+);
+
+// MVV once answered every stop with no lines for an evening; kept for a day,
+// that emptied the kiosk until a restart.
+export const emptyAskedAgain = testAsync(
+    "asks again for a stop MVV lists no lines for",
+    async () => {
+        const mvv = new FakeMvv([
+            { number: "S6", stateless: "ddb:920S6: :H:j26" },
+        ]);
+        const now = 1783324800 * 1000;
+        const q = new queryDepartures.Q(lines, [STOP], mvv, () => now);
+        const query = () =>
+            q.getDepartures(
+                { stopGid: STOP.gid, lines: ["S6-i"], timeToStop: 0 },
+                new Date(now),
+            );
+
+        mvv.emptyLineLists = true;
+        expect((await query()).length).toBe(0);
+        await query();
+        expect(mvv.lineListRequests).toBe(2);
+        // Without lines there is nothing to ask departures for.
+        expect(mvv.departureLines.length).toBe(0);
+
+        mvv.emptyLineLists = false;
+        await query();
+        await query();
+        expect(mvv.lineListRequests).toBe(3);
+        expect(mvv.departureLines.length).toBe(2);
     },
 );

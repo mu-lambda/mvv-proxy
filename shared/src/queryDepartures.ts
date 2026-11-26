@@ -68,8 +68,12 @@ function directionOf(stateless: string): string | undefined {
     return stateless.split(":")[3];
 }
 
-/** How long a stop's line list from MVV is reused. */
-const AVAILABLE_LINES_TTL_MS = 24 * 60 * 60 * 1000;
+/**
+ * How long a stop's line list from MVV is reused. The ids change rarely, but
+ * a list MVV got wrong should not stick for long: an hour still saves nearly
+ * every request on the kiosk's minute refresh.
+ */
+const AVAILABLE_LINES_TTL_MS = 60 * 60 * 1000;
 
 type AvailableLinesEntry = {
     fetchedAt: number;
@@ -126,8 +130,11 @@ export class Q {
     }
 
     /**
-     * The lines MVV lists for a stop, fetched at most once a day. A failed
-     * fetch is not kept, so the next query asks again.
+     * The lines MVV lists for a stop, fetched at most once an hour. A failed
+     * fetch is not kept, so the next query asks again, and neither is an
+     * empty list: every stop has lines, and MVV has answered every stop with
+     * none during an outage (2026-11-08), which kept for a day then left the
+     * kiosk without departures until a restart.
      */
     private availableLines(stopGid: string): AvailableLinesEntry {
         const now = this.#now();
@@ -141,11 +148,14 @@ export class Q {
             reportedMissing: new Set(),
         };
         this.#availableLines.set(stopGid, entry);
-        entry.lines.catch(() => {
+        const forget = () => {
             if (this.#availableLines.get(stopGid) === entry) {
                 this.#availableLines.delete(stopGid);
             }
-        });
+        };
+        entry.lines.then((l) => {
+            if (l.length === 0) forget();
+        }, forget);
         return entry;
     }
 
@@ -169,6 +179,12 @@ export class Q {
     private async lineIds(s: request.SingleStop): Promise<string[]> {
         const entry = this.availableLines(s.stopGid);
         const available = await entry.lines;
+        if (available.length === 0) {
+            // Not each requested line as missing: the list is asked for
+            // again next time (availableLines).
+            console.error(`MVV lists no lines at stop ${s.stopGid}`);
+            return [];
+        }
         if (s.lines.length === 0) {
             return available.map((l) => l.stateless);
         }

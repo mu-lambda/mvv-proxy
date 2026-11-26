@@ -76,11 +76,13 @@ export type FakeLine = { number: string; stateless: string };
 /**
  * A stand-in for MVV: lists the given lines for every stop, answers
  * departures with none, and records which lines each departures request
- * asked for. Set {@link failLineLists} to make line lists fail.
+ * asked for. Set {@link failLineLists} to make line lists fail, and
+ * {@link emptyLineLists} to make them list no lines, as in an outage.
  */
 export class FakeMvv implements IFetcher {
     lineListRequests = 0;
     failLineLists = false;
+    emptyLineLists = false;
     /** The MVV line ids each get_departures request asked for, in order. */
     readonly departureLines: string[][] = [];
 
@@ -94,7 +96,7 @@ export class FakeMvv implements IFetcher {
             if (this.failLineLists) {
                 throw new fetcher.MVVRequestFailure("MVV is down", 503);
             }
-            body = { lines: this.lines };
+            body = { lines: this.emptyLineLists ? [] : this.lines };
         } else {
             const decoded = atob(params.get("lines") ?? "");
             this.departureLines.push(

@@ -181,8 +181,9 @@ update both.
   every December and sometimes in between (S6 went from `92M06` to `920S6`
   within 2026). `Q` looks the ids up in MVV's `available_lines` for the
   stop, matching `number` and the `H`/`R` field, and keeps that list for
-  24 hours. A named line MVV doesn't list at the stop is skipped and logged
-  once per list.
+  an hour; a failed fetch or an empty list (MVV in trouble) isn't kept. A
+  named line MVV doesn't list at the stop is skipped and logged once per
+  list.
 - `/svg/*filename` serves MVV's line icons. mvv-proxy also runs on the
   internet (mvv.mulambda.de), so it asks MVV as little as it can, to avoid
   being rate-limited: it keeps MVV's answer for each icon (the icon, or 404
